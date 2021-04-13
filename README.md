@@ -11,6 +11,8 @@ Front End Capstone: Project Catwalk
 ├── node_modules
 ├── .gitignore
 ├── package.json
+├── server
+│   └── index.jsx
 ├── src
 │   └── components
 │   └── index.jsx
