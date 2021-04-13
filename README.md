@@ -1,6 +1,22 @@
 # FEC
 Front End Capstone: Project Catwalk
 
+## File Structure
+```
+.
+├── dist
+│   └── index.html
+│   └── bundle.js
+│   └── style.css
+├── node_modules
+├── .gitignore
+├── package.json
+├── src
+│   └── components
+│   └── index.jsx
+└── webpack.config.js
+```
+
 ## Git Workflow
 1) Switch the repo to the master branch, pull the latest commits and resets the repo's local copy of master to match the latest version
 ```
