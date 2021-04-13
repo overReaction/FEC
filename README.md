@@ -4,18 +4,21 @@ Front End Capstone: Project Catwalk
 ## File Structure
 ```
 .
-├── dist
-│   └── index.html
-│   └── bundle.js
-│   └── style.css
+├── client
+│   └── dist
+│   │   └── bundle.js
+│   │   └── style.css
+│   │   └── index.html
+│   └── src
+│       └── index.jsx   
+│       └── components
+├── config.js
 ├── node_modules
 ├── .gitignore
 ├── package.json
 ├── server
 │   └── index.js
-├── src
-│   └── components
-│   └── index.jsx
+│   └── helpers
 └── webpack.config.js
 ```
 
