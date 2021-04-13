@@ -12,7 +12,7 @@ Front End Capstone: Project Catwalk
 ├── .gitignore
 ├── package.json
 ├── server
-│   └── index.jsx
+│   └── index.js
 ├── src
 │   └── components
 │   └── index.jsx
