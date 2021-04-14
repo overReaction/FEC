@@ -50,3 +50,12 @@ git pull
 git pull origin new-feature
 git push
 ```
+## Dependencies
+- Styling framework: Material UI
+- Testing: Jest
+- Linter: ESLint with Pomander 
+- Asset compilation: Webpack/Webpack-dev
+- Transpiling: Babel 
+- Front-End MVC: ReactJS with hooks for state management 
+- Server MVC: Express
+- HTTP client: Axios 
