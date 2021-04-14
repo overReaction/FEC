@@ -1,13 +1,18 @@
 {
   "parser": "@babel/eslint-parser",
-  "extends": "react",
+  "extends": ["react", "plugin:jest-dom/recommended"],
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "settings": {
     "react": {
       "version": "detect"
     }
-  }
+  },
+  "rules": {
+    "indent": ["error", 2]
+  },
+  "plugins": ["jest-dom"]
 }
