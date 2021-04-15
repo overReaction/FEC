@@ -28,7 +28,7 @@ Front End Capstone: Project Catwalk
 1) Switch the repo to the master branch, pull the latest commits and resets the repo's local copy of master to match the latest version
 ```
 git checkout main
-git fetch origin
+git fetch origin 
 git reset --hard origin/main
 ```
 2) Use a separate branch for each feature or issue you work on. After creating a branch, check it out locally so that any changes you make will be on that branch. This checks out a branch called new-feature based on master, and the -b flag tells Git to create the branch if it doesn’t already exist.
