@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - node/install-packages
-        - run: 
+        - run:
           command: npm run test:e2e
           command: npm run test:unit
           command: npm run test:supertest
