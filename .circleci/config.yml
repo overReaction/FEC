@@ -1,7 +1,29 @@
 version: 2.1
 orbs:
-  node: circleci/node@3.0.0
+  node: circleci/node@<version??>
+jobs:
+  test:
+    // test defined here
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/install-packages
+        - run: 
+          command: npm run test:e2e
+          command: npm run test:unit
+          command: npm run test:supertest
 workflows:
-  node-tests:
+  test_my_app:
     jobs:
-      - node/test
+      - test
+      
+# version: 2.1
+# orbs:
+#   node: circleci/node@3.0.0
+# workflows:
+#   node-tests:
+#     jobs:
+#       - node/test
+
+      
