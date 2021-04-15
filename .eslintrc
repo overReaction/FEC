@@ -14,5 +14,11 @@
   "rules": {
     "indent": ["error", 2]
   },
-  "plugins": ["jest-dom"]
+  "plugins": ["jest-dom"],
+  "globals": {
+    "page": true,
+    "browser": true,
+    "context": true,
+    "jestPuppeteer": true
+  }
 }
