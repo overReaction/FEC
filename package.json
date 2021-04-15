@@ -5,10 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
+    "test:supertest": "jest -c supertest/jest.config.js",
     "start-dev": "webpack-dev-server --mode development",
     "start": "nodemon server.js",
-    "start-react": "webpack -d --watch",
-    "supertest": "supertest"
+    "start-react": "webpack -d --watch"
   },
   "repository": {
     "type": "git",
@@ -51,6 +51,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "jest": {
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
+    "testPathIgnorePatterns": ["supertest"]
   }
 }
