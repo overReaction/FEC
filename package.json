@@ -4,11 +4,11 @@
   "description": "team over reactions fec",
   "main": "server.js",
   "scripts": {
-    "test:unit": "jest",
-    "start-dev": "webpack-dev-server --mode development",
     "start": "nodemon server.js",
+    "start-dev": "webpack-dev-server --mode development",
     "start-react": "webpack -d --watch",
-    "test:integration": "jest -c integration/jest.config.js"
+    "test:e2e": "jest -c e2e/jest.config.js",
+    "test:unit": "jest"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,7 @@
     "eslint-plugin-jest-dom": "^3.8.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-webpack-plugin": "^2.5.3",
+    "expect-puppeteer": "^4.4.0",
     "jest": "^26.6.3",
     "jest-puppeteer": "^4.4.0",
     "jsdom-global": "^3.0.2",
@@ -53,6 +54,8 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "testPathIgnorePatterns": ["integration"]
+    "testPathIgnorePatterns": [
+      "e2e"
+    ]
   }
 }
