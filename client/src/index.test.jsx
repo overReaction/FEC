@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from '@testing-library/react'; //Allows artificial rendering
 import userEvent from '@testing-library/user-event'; //Allows triggering of user events. Not demo'd on this page.
-import '@testing-library/jest-dom'; //Provides matchers for testing assertions
+import '@testing-library/jest-dom'; //Provides a set of custom jest matchers that you can use to extend jest. These will make your tests more declarative, clear to read and to maintain.
 
 //Normally, you will be importing the component you want to test. For examples's sake, I am declaring a class and functional component below.
 class Component extends React.Component {
