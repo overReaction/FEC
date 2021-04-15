@@ -3,7 +3,6 @@ orbs:
   node: circleci/node@<version??>
 jobs:
   test:
-    // test defined here
     executor:
       name: node/default
     steps:
@@ -17,7 +16,7 @@ workflows:
   test_my_app:
     jobs:
       - test
-      
+
 # version: 2.1
 # orbs:
 #   node: circleci/node@3.0.0
