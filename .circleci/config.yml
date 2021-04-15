@@ -8,10 +8,9 @@ jobs:
     steps:
       - checkout
       - node/install-packages
-        - run:
-          command: npm run test:e2e
-          command: npm run test:unit
-          command: npm run test:supertest
+      - run: "npm run test:e2e"
+      - run: "npm run test:unit"
+      - run: "npm run test:supertest"
 workflows:
   test_my_app:
     jobs:
