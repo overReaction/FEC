@@ -1,9 +1,11 @@
 const axios = require('axios');
 const config = require('../config');
-const API_URL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
+const API_URL = 'http://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 
-const getAllProducts = (callback) => {
-  axios.get(`${API_URL}/products`, {
+const getEndpoint = (endpoint, callback) => {
+  console.log('AT:', endpoint);
+  console.log('URL:', `${API_URL}/${endpoint}`);
+  axios.get(`${API_URL}/${endpoint}`, {
     headers: {
       Authorization: config.API_KEY
     }
@@ -17,5 +19,5 @@ const getAllProducts = (callback) => {
 };
 
 module.exports = {
-  getAllProducts
+  getEndpoint
 };

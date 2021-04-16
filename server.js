@@ -9,8 +9,11 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, './client/dist')));
 
 // Get all products
-app.get('/products', (req, res) => {
-  atelier.getAllProducts((error, products) => {
+app.get('/api/*', (req, res) => {
+  console.log('HI');
+  let endpoint = req.query.endpoint;
+  console.log(endpoint);
+  atelier.getEndpoint(endpoint, (error, products) => {
     if (error) {
       console.log('Server Error while retrieving all products:', error);
     } else {
@@ -18,12 +21,6 @@ app.get('/products', (req, res) => {
     }
   });
 });
-
-// Get one product based on id
-app.get('/products/:id', (req, res) => {
-  res.send('Hello World!');
-});
-
 
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
