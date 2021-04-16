@@ -114,19 +114,9 @@ var Overview = function Overview(props) {
   !*** ./client/src/components/questionsAnswers.jsx ***!
   \****************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var QuestionsAnswers = function QuestionsAnswers(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " Questions and answers widget placeholder");
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (QuestionsAnswers);
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/kaylaelortondo/Documents/Galvanize/SEI/FEC/client/src/components/questionsAnswers.jsx'");
 
 /***/ }),
 
@@ -135,19 +125,9 @@ var QuestionsAnswers = function QuestionsAnswers(props) {
   !*** ./client/src/components/ratingsReviews.jsx ***!
   \**************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var RatingsReviews = function RatingsReviews(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " Ratings and reviews widget placeholder");
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (RatingsReviews);
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/kaylaelortondo/Documents/Galvanize/SEI/FEC/client/src/components/ratingsReviews.jsx'");
 
 /***/ }),
 
@@ -156,19 +136,9 @@ var RatingsReviews = function RatingsReviews(props) {
   !*** ./client/src/components/relatedItemsComparison.jsx ***!
   \**********************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var RelatedItemsComparison = function RelatedItemsComparison(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " Related items and comparison widget placeholder");
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (RelatedItemsComparison);
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/kaylaelortondo/Documents/Galvanize/SEI/FEC/client/src/components/relatedItemsComparison.jsx'");
 
 /***/ }),
 
