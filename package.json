@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "start-dev": "webpack-dev-server --mode development",
     "start-react": "webpack -d --watch",
     "test:e2e": "jest --maxWorkers=2 -c e2e/jest.config.js",
     "test:unit": "jest",

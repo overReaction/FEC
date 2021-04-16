@@ -18,7 +18,7 @@ module.exports = {
     ]
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'ignoredBundle.js',
     path: __dirname + '/client/dist'
   },
   watch: true,
