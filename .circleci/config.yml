@@ -1,7 +1,31 @@
 version: 2.1
 orbs:
-  node: circleci/node@3.0.0
+  node: circleci/node@4.2.1
+  puppeteer: threetreeslight/puppeteer@0.1.2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest-browsers
+        environment:
+          NODE_ENV: development
+    steps:
+      - checkout
+      - run: echo "running docker build"
+  test:
+    docker:
+      - image: circleci/node:latest-browsers
+        environment:
+          NODE_ENV: development
+    steps:
+      - checkout
+      - node/install-packages
+      - run: "npm run test:unit"
+      - run: "npm run test:supertest"
+      - run: "npm run test:e2e"
 workflows:
-  node-tests:
+  test_my_app:
     jobs:
-      - node/test
+      - build
+      - test
+
+#
