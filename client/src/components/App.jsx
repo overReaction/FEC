@@ -1,7 +1,7 @@
-import Overview from './overview.jsx';
-import RatingsReviews from './ratingsReviews.jsx';
-import QuestionsAnswers from './questionsAnswers.jsx';
-import RelatedItemsComparison from './relatedItemsComparison.jsx';
+import Overview from './overview/overview.jsx';
+import RatingsReviews from './ratingsReviews/ratingsReviews.jsx';
+import QuestionsAnswers from './questionsAnswers/questionsAnswers.jsx';
+import RelatedItemsComparison from './relatedItemsComparison/relatedItemsComparison.jsx';
 import React, { useState, useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
