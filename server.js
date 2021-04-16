@@ -8,7 +8,6 @@ const port = 3000;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, './client/dist')));
 
-// Get all products
 app.get('/api/*', (req, res) => {
   let endpoint = req.query.endpoint;
   atelier.getEndpoint(endpoint, (error, products) => {

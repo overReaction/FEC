@@ -1,5 +1,5 @@
 const axios = require('axios');
-const config = require('../config');
+const config = require('../APIconfig');
 const API_URL = 'http://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 
 const getEndpoint = (endpoint, callback) => {
