@@ -1,4 +1,5 @@
-import Overview from './components/overview/overview.jsx';
-import RatingsReviews from './components/ratingsReviews.jsx';
-import QuestionsAnswers from './components/questionsAnswers.jsx';
-import RelatedItemsComparison from './components/relatedItemsComparison.jsx';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/App.jsx';
+
+ReactDOM.render(<App />, document.getElementById('app'));
