@@ -10,7 +10,7 @@ import Overview from './overview.jsx';
 3)optionally insert user events to manipulate elements: https://testing-library.com/docs/ecosystem-user-event
 4)test assertions about the component: https://github.com/testing-library/jest-dom */
 
-beforeAll(() => {
+beforeEach(() => {
   render(<Overview />);
 });
 
@@ -19,19 +19,19 @@ describe('Overview Widget', () => {
     expect(screen.getByTestId('overview')).toBeInTheDocument();
   });
 
-  xtest('Should have an image gallery', () => {
+  test('Should have an image gallery', () => {
     expect(screen.getByTestId('gallery')).toBeInTheDocument();
   });
 
-  xtest('Should have a product information section', () => {
+  test('Should have a product information section', () => {
     expect(screen.getByTestId('product-info')).toBeInTheDocument();
   });
 
-  xtest('Should have a style selector', () => {
+  test('Should have a style selector', () => {
     expect(screen.getByTestId('style-selector')).toBeInTheDocument();
   });
 
-  xtest('Should have an add to cart section', () => {
+  test('Should have an add to cart section', () => {
     expect(screen.getByTestId('add-to-cart')).toBeInTheDocument();
   });
 });
