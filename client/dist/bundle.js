@@ -86,10 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./client/src/components/overview.jsx":
-/*!********************************************!*\
-  !*** ./client/src/components/overview.jsx ***!
-  \********************************************/
+/***/ "./client/src/components/overview/overview.jsx":
+/*!*****************************************************!*\
+  !*** ./client/src/components/overview/overview.jsx ***!
+  \*****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -100,7 +100,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Overview = function Overview(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " Overview widget placeholder");
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "data-testid": "overview"
+  }, " Overview widget placeholder");
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Overview);
@@ -179,7 +181,7 @@ var RelatedItemsComparison = function RelatedItemsComparison(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_overview_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/overview.jsx */ "./client/src/components/overview.jsx");
+/* harmony import */ var _components_overview_overview_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/overview/overview.jsx */ "./client/src/components/overview/overview.jsx");
 /* harmony import */ var _components_ratingsReviews_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/ratingsReviews.jsx */ "./client/src/components/ratingsReviews.jsx");
 /* harmony import */ var _components_questionsAnswers_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/questionsAnswers.jsx */ "./client/src/components/questionsAnswers.jsx");
 /* harmony import */ var _components_relatedItemsComparison_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/relatedItemsComparison.jsx */ "./client/src/components/relatedItemsComparison.jsx");

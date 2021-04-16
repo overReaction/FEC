@@ -2,7 +2,7 @@ import React from 'react';
 
 const Overview = (props) => {
   return (
-    <div> Overview widget placeholder</div>
+    <div data-testid="overview"> Overview widget placeholder</div>
   );
 };
 
