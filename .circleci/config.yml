@@ -12,8 +12,10 @@ jobs:
       - checkout
       - run: echo "running docker build"
   test:
-    executor:
-      name: node/default
+    docker:
+      - image: circleci/node:latest-browsers
+        environment:
+          NODE_ENV: development
     steps:
       - checkout
       - node/install-packages
@@ -25,5 +27,7 @@ workflows:
     jobs:
       - build
       - test
+        requires:
+          - build
 
 #
