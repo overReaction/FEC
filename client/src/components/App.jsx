@@ -3,6 +3,7 @@ import RatingsReviews from './ratingsReviews.jsx';
 import QuestionsAnswers from './questionsAnswers.jsx';
 import RelatedItemsComparison from './relatedItemsComparison.jsx';
 import React, { useState, useEffect } from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 
 var App = () => {
@@ -17,6 +18,7 @@ var App = () => {
 
   return (
     <div>
+      <CssBaseline />
       <Overview state={stateVariable}/>
       <RatingsReviews setState={setStateVariable}/>
       <QuestionsAnswers />
