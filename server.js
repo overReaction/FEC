@@ -10,9 +10,7 @@ app.use(express.static(path.join(__dirname, './client/dist')));
 
 // Get all products
 app.get('/api/*', (req, res) => {
-  console.log('HI');
   let endpoint = req.query.endpoint;
-  console.log(endpoint);
   atelier.getEndpoint(endpoint, (error, products) => {
     if (error) {
       console.log('Server Error while retrieving all products:', error);

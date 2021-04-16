@@ -3,8 +3,6 @@ const config = require('../config');
 const API_URL = 'http://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
 
 const getEndpoint = (endpoint, callback) => {
-  console.log('AT:', endpoint);
-  console.log('URL:', `${API_URL}/${endpoint}`);
   axios.get(`${API_URL}/${endpoint}`, {
     headers: {
       Authorization: config.API_KEY
