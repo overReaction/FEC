@@ -4,6 +4,8 @@ Front End Capstone: Project Catwalk
 ## File Structure
 ```
 .
+├── circleci/
+│   └── config.yml
 ├── client/
 │   └── dist/
 │   │   └── bundle.js
@@ -11,15 +13,25 @@ Front End Capstone: Project Catwalk
 │   │   └── index.html
 │   └── src/
 │       └── index.jsx
+│       └── example.test.jsx
 │       └── components/
-├── config.js
+│           └── overview/
+│           └── questionsAnswers/
+│           └── ratingsReviews/
+│           └── relatedItemsComparison/
 ├── coverage/
-├── integration/
+├── e2e/
 │   └── jest.config.js
-├── node_modules/
-├── .gitignore
-├── package.json
+│   └── sample.test.js
 ├── helpers/
+│   └── atelier.js
+├── supertest/
+│   └── jest.config.js
+│   └── sample.test.js
+├── .eslintrc
+├── babel.config.json
+├── package.json
+├── README.md
 ├── server.js
 └── webpack.config.js
 ```
@@ -54,13 +66,20 @@ git pull origin new-feature
 git push
 ```
 ## Running Tests
-To run unit tests, run npm run `test:unit`
-To run end-to-end testing, run `test:e2e`
+<b>All of the below tests will be run whenver you commit/push to your feature branch via CircleCI. The results of the specific tests can be viewed on CircleCI's GUI.</b>
+- To run ALL unit tests, run npm run `test:unit`
+- To run widget tests:
+  - Overview: `test:overview`
+  - Questions & Answers: `test:qa`
+  - Ratings & Reviews: `test:rr`
+  - Related Items & Comparisons: `test:ric`
+- To run integration testing with supertest, run `test:supertest`
+- To run end-to-end testing, run `test:e2e`
 
 ## Dependencies
 - Styling framework: Material UI
-- Testing: Jest
-- Linter: ESLint with Pomander
+- Testing: Jest with React Testing Library, Supertest, Puppeteer, CircleCI
+- Linter: ESLint
 - Asset compilation: Webpack/Webpack-dev
 - Transpiling: Babel
 - Front-End MVC: ReactJS with hooks for state management
