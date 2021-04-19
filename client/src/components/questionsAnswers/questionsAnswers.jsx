@@ -7,6 +7,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Questions from './Questions.jsx';
 import SearchBar from './SearchBar.jsx';
+import ButtonGroup from '@material-ui/core/InputBase';
+import Button from '@material-ui/core/InputBase';
 // import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -22,24 +24,30 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const QuestionsAnswers = props => {
-  // const productId = useSelector((state) => state.app.productId);
+  const productId = useSelector((state) => state.app.productId);
   const dispatch = useDispatch();
 
   const classes = useStyles();
 
   return (
-    <div>
-      <h2> Questions & Answers </h2>
-      <div data-testid="qa">
+    <div data-testid="qa">
+      <h2>Questions & Answers</h2>
+      <div>
         <Paper className={classes.paper}>
           <SearchBar />
           <Grid>
             <Questions />
           </Grid>
-          <div> I can also change state at the app level! </div>
+          {/* <div> Current Product ID: {productId}</div>
           <button onClick={() => dispatch(changeProductId(18084))}> 18084 </button>
           <button onClick={() => dispatch(changeProductId(18085))}> 18085</button>
-          <button onClick={() => dispatch(changeProductId(18086))}> 18086 </button>
+          <button onClick={() => dispatch(changeProductId(18086))}> 18086 </button> */}
+          <ButtonGroup color="primary" aria-label="outlined primary button group">
+            <Button>One</Button>
+            <Button>Two</Button>
+            <Button>Three</Button>
+          </ButtonGroup>
+
         </Paper>
       </div>
     </div>

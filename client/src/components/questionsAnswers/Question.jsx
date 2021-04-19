@@ -1,7 +1,7 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { changeProductId } from '../appSlice.js';
-import Grid from '@material-ui/core/Grid';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { changeProductId } from '../appSlice.js';
+// import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
