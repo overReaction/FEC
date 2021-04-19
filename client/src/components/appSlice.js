@@ -1,10 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+const axios = require('axios');
+
+export const fetchProductInfo = createAsyncThunk(
+  'products/getProductInfo',
+  async (productId, thunkAPI) => {
+    const response = await axios.get(`/api/?endpoint=products/${productId}`);
+    console.log(response.data);
+    return response.data;
+  }
+);
 
 export const appSlice = createSlice({
   name: 'app',
   initialState: {
     //Initial state here
-    productId: 18078
+    productId: 18078,
+    productInfo: {}
   },
   //A reducer is a function that receives the current state and an action object, decides how to update the state if necessary, and returns the new state
   reducers: {
@@ -12,6 +23,11 @@ export const appSlice = createSlice({
     changeProductId: (state, action) => {
       //Set the productId in state to be equal to the value of action.payload
       state.productId = action.payload;
+    }
+  },
+  extraReducers: {
+    [fetchProductInfo.fulfilled]: (state, action) => {
+      state.productInfo = action.payload;
     }
   }
 });

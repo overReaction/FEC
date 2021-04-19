@@ -5,7 +5,7 @@ import RelatedItemsComparison from './relatedItemsComparison/relatedItemsCompari
 import React, { useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeProductId } from './appSlice.js';
+import { changeProductId, fetchProductInfo } from './appSlice.js';
 
 
 var App = () => {
@@ -15,6 +15,7 @@ var App = () => {
   //Use Effect is similiar to component did mount
   useEffect(() => {
     document.title = `Let's OverReact!`;
+    dispatch(fetchProductInfo(productId));
   });
 
   return (

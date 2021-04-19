@@ -6,8 +6,6 @@ const Overview = (props) => {
   const productId = useSelector((state) => state.app.productId);
   const dispatch = useDispatch();
 
-
-
   return (
     <div>
       <h2> Overview </h2>
