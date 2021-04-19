@@ -28,8 +28,6 @@ const Questions = props => {
         <Grid>
           <Question />
           <Question />
-          <Question />
-          <Question />
         </Grid>
       </div>
     </Paper>

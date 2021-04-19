@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: 'center',
+    textAlign: 'left',
     color: theme.palette.text.secondary
   }
 }));
@@ -25,7 +25,7 @@ const Question = props => {
   return (
     <Paper className={classes.paper}>
       <div>
-        Question: Why??
+        <span><b>Q:</b> Why??</span>
         <Answers />
       </div>
     </Paper>

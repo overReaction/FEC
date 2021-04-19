@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
@@ -16,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flexGrow',
     flex: 1,
     border: 'solid 1px',
-    borderColor: 'grey',
+    borderColor: '#666666',
     height: 50
   },
   iconButton: {
@@ -31,7 +30,7 @@ export default function SearchBar () {
     <div component="form" className={classes.root}>
       <InputBase
         className={classes.input}
-        placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+        placeholder=" HAVE A QUESTION? SEARCH FOR ANSWERS..."
       />
       <IconButton type="submit" className={classes.iconButton} aria-label="search">
         <SearchIcon />
