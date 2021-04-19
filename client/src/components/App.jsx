@@ -21,7 +21,7 @@ var App = () => {
       <CssBaseline />
       <Overview state={stateVariable}/>
       <RatingsReviews setState={setStateVariable}/>
-      <QuestionsAnswers />
+      <QuestionsAnswers setState={setStateVariable}/>
       <RelatedItemsComparison />
     </div>
   );
