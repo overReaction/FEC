@@ -13,7 +13,7 @@ const ReviewList = (props) => {
   return (
     <div>
       <Paper className={classes.paper}>
-        Ratings and reviews reviewList component placeholder
+        reviewList component
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <ReviewSortSearch />

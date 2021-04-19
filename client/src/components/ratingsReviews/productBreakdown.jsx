@@ -9,7 +9,7 @@ const ProductBreakdown = (props) => {
   return (
     <div>
       <Paper className={classes.paper}>
-        productBreakdown component placeholder
+        ProductBreakdown component
       </Paper>
     </div>
   );

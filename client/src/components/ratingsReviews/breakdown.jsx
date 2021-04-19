@@ -12,7 +12,7 @@ const Breakdown = (props) => {
   return (
     <div>
       <Paper className={classes.paper}>
-        Ratings and reviews breakdown component placeholder
+        breakdown component
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <RatingsBreakdown />
