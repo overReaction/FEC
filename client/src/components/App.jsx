@@ -2,26 +2,34 @@ import Overview from './overview/overview.jsx';
 import RatingsReviews from './ratingsReviews/ratingsReviews.jsx';
 import QuestionsAnswers from './questionsAnswers/questionsAnswers.jsx';
 import RelatedItemsComparison from './relatedItemsComparison/relatedItemsComparison.jsx';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeProductId } from './appSlice.js';
 
 
 var App = () => {
-  //declaring a new state variable, called stateVariable, and corresponding set function
-  const [stateVariable, setStateVariable] = useState('initial value');
+  const productId = useSelector((state) => state.app.productId); //Accesses the store to retrieve current state
+  const dispatch = useDispatch(); //Dispatch an action to the store to update state
 
   //Use Effect is similiar to component did mount
   useEffect(() => {
     document.title = `Let's OverReact!`;
   });
 
-
   return (
     <div>
       <CssBaseline />
-      <Overview state={stateVariable}/>
-      <RatingsReviews setState={setStateVariable}/>
-      <QuestionsAnswers setState={setStateVariable}/>
+      <h2> App </h2>
+      <div> Here is our current product number: <b>{productId}</b>  </div>
+      <div> Try clicking one of these buttons to update the product id
+        (imagine you were clicking a thumbnail for a related item)</div>
+      <button onClick={() => dispatch(changeProductId(18078))}> 18078 </button>
+      <button onClick={() => dispatch(changeProductId(18079))}> 18079 </button>
+      <button onClick={() => dispatch(changeProductId(18080))}> 18080 </button>
+      <Overview />
+      <RatingsReviews />
+      <QuestionsAnswers />
       <RelatedItemsComparison />
     </div>
   );
