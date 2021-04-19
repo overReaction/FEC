@@ -10,15 +10,8 @@ const Overview = (props) => {
   const productId = useSelector((state) => state.app.productId);
   const dispatch = useDispatch();
 
-
-
   return (
     <div data-testid="overview"> Overview widget placeholder
-      <ImageGallery />
-      <ProductInformation />
-      <StyleSelector />
-      <AddToCart />
-    <div>
       <h2> Overview </h2>
       <div data-testid="overview"> Overview widget placeholder.
       I can see the state change from the App level! Product Id: <b>{productId}</b>
@@ -26,6 +19,10 @@ const Overview = (props) => {
       <button onClick={() => dispatch(changeProductId(18081))}> 18081 </button>
       <button onClick={() => dispatch(changeProductId(18082))}> 18082</button>
       <button onClick={() => dispatch(changeProductId(18083))}> 18083 </button>
+      <ImageGallery />
+      <ProductInformation />
+      <StyleSelector />
+      <AddToCart />
       </div>
     </div>
   );
