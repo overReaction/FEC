@@ -26,6 +26,8 @@
   "homepage": "https://github.com/overReaction/FEC#readme",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@material-ui/lab": "latest",
+    "@material-ui/icons": "latest",
     "@reduxjs/toolkit": "^1.5.1",
     "axios": "^0.21.1",
     "express": "^4.17.1",
