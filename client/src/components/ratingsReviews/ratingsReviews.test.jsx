@@ -7,7 +7,7 @@ import ReviewList from "./reviewList.jsx";
 import RatingsReviews from "./ratingsReviews.jsx";
 
 describe('Ratings & Reviews Widget', () => {
-  test('Breakdown component should render to screen', () => {
+  test('Ratings and Reviews sanity check', () => {
     //Render the component to the virtual screen (see import on line 2)
     render(<RatingsReviews />);
     expect(screen.getByTestId('RatingsReviews')).toHaveTextContent('testing sanity');
