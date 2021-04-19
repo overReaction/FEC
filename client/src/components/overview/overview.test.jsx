@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'; //Allows artificial ren
 import userEvent from '@testing-library/user-event'; //Allows triggering of user events. Not demo'd on this page.
 import '@testing-library/jest-dom'; //Provides a set of custom jest matchers that you can use to extend jest. These will make your tests more declarative, clear to read and to maintain.
 //import Overview from './overview.jsx';
-import App from '../app.jsx';
+import App from '../App.jsx';
 import store from '../../store.js';
 import { Provider } from 'react-redux';
 
