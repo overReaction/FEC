@@ -19,6 +19,28 @@ app.get('/api/*', (req, res) => {
   });
 });
 
+app.post('/api/*', (req, res) => {
+  let endpoint = req.query.endpoint;
+  atelier.postToEndpoint(endpoint, req.body, (error, results) => {
+    if (error) {
+      console.log('Server Error while posting: ', error);
+    } else {
+      res.send(results);
+    }
+  });
+});
+
+app.put('/api/*', (req, res) => {
+  let endpoint = req.query.endpoint;
+  atelier.putToEndpoint(endpoint, req.body, (error, results) => {
+    if (error) {
+      console.log('Server Error while posting: ', error);
+    } else {
+      res.send(results);
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 });
