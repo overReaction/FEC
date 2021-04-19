@@ -2,7 +2,10 @@ import React from "react";
 import { render, screen } from '@testing-library/react'; //Allows artificial rendering
 import userEvent from '@testing-library/user-event'; //Allows triggering of user events. Not demo'd on this page.
 import '@testing-library/jest-dom'; //Provides a set of custom jest matchers that you can use to extend jest. These will make your tests more declarative, clear to read and to maintain.
-import Overview from './overview.jsx';
+//import Overview from './overview.jsx';
+import App from '../App.jsx';
+import store from '../../store.js';
+import { Provider } from 'react-redux';
 
 /* Some example templates for testing are provided below. In general, you will
 1)render the component (see examples below)
@@ -15,6 +18,7 @@ beforeEach(() => {
 });
 
 describe('Overview Widget', () => {
+<<<<<<< HEAD
   test('Should render to the screen', () => {
     expect(screen.getByTestId('overview')).toBeInTheDocument();
   });
@@ -87,5 +91,12 @@ describe('Product Information component', () => {
 
   xtest('Should have share buttons for Facebook, Twitter, and Pinterest', () => {
 
+=======
+  test('The Overview Widget should render to the screen', () => {
+    render(<Provider store={store}>
+      <App />
+    </Provider>,);
+    expect(screen.getByTestId('overview')).toHaveTextContent('Overview widget placeholder');
+>>>>>>> e7e0e44cd277f311dbaef3506869e3ab6ce92468
   });
 });

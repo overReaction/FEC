@@ -6,9 +6,9 @@
   "scripts": {
     "start": "nodemon server.js",
     "start-react": "webpack -d --watch",
-    "test:e2e": "jest --maxWorkers=2 -c e2e/jest.config.js",
+    "test:e2e": "jest --maxWorkers=2 -c testing/e2e/jest.config.js",
     "test:unit": "jest",
-    "test:supertest": "jest -c supertest/jest.config.js",
+    "test:supertest": "jest -c testing/supertest/jest.config.js",
     "test:overview": "jest -c client/src/components/overview/jest.config.js",
     "test:qa": "jest -c client/src/components/questionsAnswers/jest.config.js",
     "test:rr": "jest -c client/src/components/ratingsReviews/jest.config.js",
@@ -26,10 +26,12 @@
   "homepage": "https://github.com/overReaction/FEC#readme",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@reduxjs/toolkit": "^1.5.1",
     "axios": "^0.21.1",
     "express": "^4.17.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.3",
     "yarn": "^1.22.10"
   },
   "devDependencies": {
