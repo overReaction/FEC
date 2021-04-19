@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const axios = require('axios');
 
+//This is how to use middleware (redux thunk, specificially) to perform async actions
 export const fetchProductInfo = createAsyncThunk(
   'products/getProductInfo',
   async (productId, thunkAPI) => {
@@ -24,6 +25,7 @@ export const appSlice = createSlice({
       state.productId = action.payload;
     }
   },
+  //Reducers that depend upon async actions are defined here
   extraReducers: {
     [fetchProductInfo.fulfilled]: (state, action) => {
       state.productInfo = action.payload;
