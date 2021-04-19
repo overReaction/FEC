@@ -14,13 +14,16 @@ import { Provider } from 'react-redux';
 4)test assertions about the component: https://github.com/testing-library/jest-dom */
 
 beforeEach(() => {
-  render(<Overview />);
+  render(
+    <Provider store={store}>
+      <App />
+    </Provider>,);
 });
 
+
 describe('Overview Widget', () => {
-<<<<<<< HEAD
-  test('Should render to the screen', () => {
-    expect(screen.getByTestId('overview')).toBeInTheDocument();
+  test('The Overview Widget should render to the screen', () => {
+    expect(screen.getByTestId('overview')).toHaveTextContent('Overview widget placeholder');
   });
 
   test('Should have an image gallery', () => {
@@ -91,12 +94,5 @@ describe('Product Information component', () => {
 
   xtest('Should have share buttons for Facebook, Twitter, and Pinterest', () => {
 
-=======
-  test('The Overview Widget should render to the screen', () => {
-    render(<Provider store={store}>
-      <App />
-    </Provider>,);
-    expect(screen.getByTestId('overview')).toHaveTextContent('Overview widget placeholder');
->>>>>>> e7e0e44cd277f311dbaef3506869e3ab6ce92468
   });
 });
