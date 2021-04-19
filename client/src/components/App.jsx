@@ -9,21 +9,20 @@ import { changeProductId } from './appSlice.js';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    textAlign: 'right'
-  },
-  paper: {
-    justifyContent: 'center',
-    padding: theme.spacing(2),
-    color: theme.palette.text.secondary,
-    width: '75%'
-  }
-}));
+// const useStyles = makeStyles((theme) => ({
+//   paper: {
+//     display: 'flex',
+//     flexDirection: 'column',
+//     justifyContent: 'center',
+//     padding: theme.spacing(2),
+//     color: theme.palette.text.secondary,
+//     width: '75%'
+//   }
+// }));
 
 
 var App = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const productId = useSelector((state) => state.app.productId); //Accesses the store to retrieve current state
   const dispatch = useDispatch(); //Dispatch an action to the store to update state
 
@@ -33,7 +32,7 @@ var App = () => {
   });
 
   return (
-    <div className={classes.paper}>
+    <div>
       <CssBaseline />
       <h2> App </h2>
       <div> Here is our current product number: <b>{productId}</b>  </div>
