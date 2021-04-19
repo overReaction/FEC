@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 const RatingsReviews = (props) => {
   return (
     <div>
+      <div data-testid="RatingsReviews">testing sanity</div>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={4}>
           <Breakdown />
