@@ -14,11 +14,11 @@ import { Provider } from 'react-redux';
 4)test assertions about the component: https://github.com/testing-library/jest-dom */
 
 
-describe('Overview Widget', () => {
-  test('The Overview Widget should render to the screen', () => {
+describe('Related Related items and comparison widget', () => {
+  test('The Related items and comparison widget should render to the screen', () => {
     render(<Provider store={store}>
       <App />
     </Provider>,);
-    expect(screen.getByTestId('overview')).toHaveTextContent('Overview widget placeholder');
+    expect(screen.getByTestId('related')).toHaveTextContent('Related items and comparison widget placeholder');
   });
 });
