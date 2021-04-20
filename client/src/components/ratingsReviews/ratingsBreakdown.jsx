@@ -12,8 +12,10 @@ const RatingsBreakdown = (props) => {
   return (
     <div className="overall-rating">
       <Paper className={classes.paper}>
-        <h1>3.5</h1>
-        <Rating name="half-rating-read" size="small" defaultValue={3.5} precision={0.5} readOnly />
+        <Typography variant="h3">
+          3.5
+          <Rating name="half-rating-read" size="small" defaultValue={3.5} precision={0.5} readOnly />
+        </Typography>
         <div className="star-links">
           <a href="#" >5 stars</a><br></br>
           <a href="#" >4 stars</a><br></br>

@@ -21,7 +21,6 @@ const ReviewList = (props) => {
           <Grid item xs={12}>
             <Review />
             <Review />
-            <Review />
           </Grid>
           <Grid item xs={12}>
             <ReviewActions />
