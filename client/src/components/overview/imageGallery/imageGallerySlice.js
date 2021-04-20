@@ -9,7 +9,7 @@ export const gallerySlice = createSlice({
   reducers: {
     increment: (state, action) => {
       state.currentStep++;
-      if (state.visibleSteps.indexOf(state.currentStep)) {
+      if (state.visibleSteps.indexOf(state.currentStep) === -1) {
         let arr = [];
         for (let x = state.currentStep; arr.length <= 7; x--) {
           arr.unshift(x);

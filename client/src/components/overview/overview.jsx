@@ -9,7 +9,7 @@ import AddToCart from './addToCart/addToCart.jsx';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
     maxWidth: 450,
