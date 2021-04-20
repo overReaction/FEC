@@ -47,7 +47,7 @@ const Overview = (props) => {
           </Grid>
           <Grid item container xs={12}>
             <Grid item xs={8}>
-              {productInfo.slogan}
+              <div> <b>{productInfo.slogan}</b></div>
               {productInfo.description}
             </Grid>
             <Grid item xs={4}>

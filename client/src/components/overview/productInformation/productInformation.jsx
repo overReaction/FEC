@@ -28,13 +28,13 @@ const ProductInformation = (props) => {
           <Grid item>
             Star rating
           </Grid>
-          <Grid item>
+          <Grid item data-testid="product-category">
             {productInfo.category}
           </Grid>
-          <Grid item>
+          <Grid item data-testid="product-name">
             {productInfo.name}
           </Grid>
-          <Grid item>
+          <Grid item data-testid="price">
             ${productInfo.default_price}
           </Grid>
         </Grid>

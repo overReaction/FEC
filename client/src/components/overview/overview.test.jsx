@@ -2,7 +2,6 @@ import React from "react";
 import { render, screen } from '@testing-library/react'; //Allows artificial rendering
 import userEvent from '@testing-library/user-event'; //Allows triggering of user events. Not demo'd on this page.
 import '@testing-library/jest-dom'; //Provides a set of custom jest matchers that you can use to extend jest. These will make your tests more declarative, clear to read and to maintain.
-//import Overview from './overview.jsx';
 import App from '../App.jsx';
 import store from '../../store.js';
 import { Provider } from 'react-redux';
@@ -17,13 +16,12 @@ beforeEach(() => {
   render(
     <Provider store={store}>
       <App />
-    </Provider>,);
+    </Provider>);
 });
-
 
 describe('Overview Widget', () => {
   test('The Overview Widget should render to the screen', () => {
-    expect(screen.getByTestId('overview')).toHaveTextContent('Overview widget placeholder');
+    expect(screen.getByTestId('overview')).toBeInTheDocument();
   });
 
   test('Should have an image gallery', () => {
@@ -68,16 +66,19 @@ describe('Product Information component', () => {
 
   });
 
-  xtest('Should display a product category', () => {
-
+  xtest('Should display a product category', async () => {
+    expect(screen.getByTestId('product-category')).toBeInTheDocument();
+    expect(screen.getByTestId('product-category')).toHaveTextContent('Jackets');
   });
 
   xtest('Should display a product title', () => {
-
+    expect(screen.getByTestId('product-name')).toBeInTheDocument();
+    expect(screen.getByTestId('product-name')).toHaveTextContent('Camo Onoesie');
   });
 
   xtest('Should display a price which is derived from the initial default selected style', () => {
-
+    expect(screen.getByTestId('price')).toBeInTheDocument();
+    expect(screen.getByTestId('price')).toHaveTextContent('$140.00');
   });
 
   xtest('The price should update based on a style being selected', () => {
