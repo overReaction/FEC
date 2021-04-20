@@ -26,22 +26,33 @@ const ReviewSortSearch = (props) => {
   const classes = useStyles();
   return (
     <div>
-      <Paper className={classes.paper}> 
-        <Typography variant="h5" direction="row">
-          248 reviews, sorted by 
-          <TextField
-            id="select-priority"
-            select
-            label= {options[0].priority}
-            // value={currency}
-            // onChange={handleChange}
-            helperText="select sort method from menu"
-          >
-            {options.map((option) => (
-              <MenuItem value={options.priority}></MenuItem>
-            ))}
-          </TextField>
-        </Typography>
+      <Paper className={classes.paper}>
+        <Grid container
+          direction="row"
+          justify="flex-start"
+          alignItems="center"
+          spacing={1}
+        >
+          <Grid item>
+            <Typography variant="h6" direction="row">
+              248 reviews, sorted by
+            </Typography>
+          </Grid>
+          <Grid item>
+            <TextField
+              id="select-priority"
+              select
+              // label= {options[0].priority}
+              // value={currency}
+              // onChange={handleChange}
+              helperText="choose sort method"
+            >
+              {options.map((option) => (
+                <MenuItem key ={option.priority} value={option.priority}>{option.priority}</MenuItem>
+              ))}
+            </TextField>
+          </Grid>
+        </Grid>
       </Paper>
     </div>
   );
