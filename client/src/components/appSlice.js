@@ -14,7 +14,7 @@ export const appSlice = createSlice({
   name: 'app',
   initialState: {
     //Initial state here
-    productId: 18078,
+    productId: 18079,
     productInfo: {}
   },
   //A reducer is a function that receives the current state and an action object, decides how to update the state if necessary, and returns the new state

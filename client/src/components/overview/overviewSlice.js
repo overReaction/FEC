@@ -26,7 +26,7 @@ export const overviewSlice = createSlice({
   extraReducers: {
     [fetchStyleInfo.fulfilled]: (state, action) => {
       state.styles = action.payload.results;
-      state.currentStyle = action.payload.results[1];
+      state.currentStyle = action.payload.results[0];
     }
   }
 });
