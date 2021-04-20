@@ -4,6 +4,7 @@
   references to it should be deleted once the widget is complete.
 */
 
+import { TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2)
   },
   rating: {
+    flexDirection: 'row'
+  },
+  typography: {
+    flexDirection: 'row'
+  },
+  textfield: {
     flexDirection: 'row'
   }
 }));
