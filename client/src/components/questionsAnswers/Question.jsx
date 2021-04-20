@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
 import Answers from './Answers.jsx';
-import Answer from './Answer.jsx';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +26,7 @@ const Question = props => {
         <span style={{ float: "right" }}>
           Helpful? <u>Yes</u> ({props.question.question_helpfulness}) | <u>Add Answer</u>
         </span>
-        <Answers questionId={props.question.question_id}/>
+        <Answers question={props.question}/>
       </div>
     </Paper>
   );

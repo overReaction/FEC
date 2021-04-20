@@ -13,7 +13,7 @@ const Answers = props => {
   // console.log('currentA:', currentAnswers);
 
   useEffect(() => {
-    dispatch(fetchAnswers(props.questionId));
+    dispatch(fetchAnswers(props.question.question_id));
   }, [currentQuestions]);
 
   return (
