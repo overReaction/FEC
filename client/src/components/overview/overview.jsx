@@ -25,7 +25,7 @@ const Overview = (props) => {
   return (
     <div data-testid="overview">
       <Grid container spacing={3} style={{ maxHeight: 700 }}>
-        <Grid item container xs={7} justify="flex-end" style={{ maxHeight: 600 }}>
+        <Grid item container xs={7} style={{ maxHeight: 600 }}>
           <ImageGallery />
         </Grid>
         <Grid item container xs={5} direction="column" classes={{ root: classes.root }}>
