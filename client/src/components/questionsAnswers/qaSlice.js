@@ -6,7 +6,16 @@ export const fetchQuestions = createAsyncThunk(
   async (productId, thunkAPI) => {
     const response = await axios.get(`/api/?endpoint=qa/questions?product_id=${productId}`);
 
-    console.log('response:', response.data);
+    return response.data;
+  }
+);
+
+export const fetchAnswers = createAsyncThunk(
+  'qa/questions/:question_id/answers',
+  async (questionId, thunkAPI) => {
+    const response = await axios.get(`/api/?endpoint=qa/questions/${questionId}/answers`);
+
+    console.log('AnswersResponse:', response.data);
     return response.data;
   }
 );
@@ -14,11 +23,11 @@ export const fetchQuestions = createAsyncThunk(
 export const qaSlice = createSlice({
   name: 'qa',
   initialState: {
-    //Initial state here
     currentStyle: null,
-    questions: []
+    questions: [],
+    answers: []
   },
-  //A reducer is a function that receives the current state and an action object, decides how to update the state if necessary, and returns the new state
+
   reducers: {
     selectStyle: (state, action) => {
       state.currentStyle = action.payload;
@@ -28,6 +37,9 @@ export const qaSlice = createSlice({
     [fetchQuestions.fulfilled]: (state, action) => {
       state.questions = action.payload.results;
       state.currentStyle = action.payload.results[1];
+    },
+    [fetchAnswers.fulfilled]: (state, action) => {
+      state.answers = action.payload.results;
     }
   }
 });

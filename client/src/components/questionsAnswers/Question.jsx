@@ -17,14 +17,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Question = props => {
   const classes = useStyles();
-  console.log(props);
 
   return (
     <Paper className={classes.paper}>
       <div>
         <span><b>Q: </b>{props.question.question_body}</span>
-        <span style={{ float: "right" }}>Helpful? <u>Yes</u> (num) | <u>Add Answer</u></span>
-        <Answers />
+        <span style={{ float: "right" }}>
+          Helpful? <u>Yes</u> ({props.question.question_helpfulness}) | <u>Add Answer</u>
+        </span>
+        <Answers questionId={props.question.question_id}/>
       </div>
     </Paper>
   );

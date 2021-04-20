@@ -19,9 +19,9 @@ const Questions = props => {
   return (
     <div>
       <Grid>
-        {currentQuestions.map(question => {
+        {currentQuestions.map((question, index) => {
           return (
-            <Question key={question.id} question={question}/>
+            <Question key={`${question.question_id}`} question={question}/>
           );
         })}
       </Grid>

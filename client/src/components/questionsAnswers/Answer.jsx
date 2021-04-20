@@ -16,16 +16,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
 const Answer = props => {
   const classes = useStyles();
 
   return (
     <div className={classes.paper}>
-      <span><b>A:</b> 42</span>
+      <span><b>A: </b>{props.answer.body}</span>
     </div>
   );
 };
-
 
 export default Answer;

@@ -1,32 +1,28 @@
-import React from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { changeProductId } from '../appSlice.js';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
-// import { makeStyles } from '@material-ui/core/styles';
-// import Paper from '@material-ui/core/Paper';
 
 import Answer from './Answer.jsx';
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     flexGrow: 1
-//   },
-//   paper: {
-//     padding: theme.spacing(2),
-//     textAlign: 'center',
-//     color: theme.palette.text.secondary
-//   }
-// }));
-
+import { fetchAnswers } from './qaSlice.js';
 
 const Answers = props => {
-  // const classes = useStyles();
+  const productId = useSelector((state) => state.app.productId);
+  const dispatch = useDispatch();
+  const currentAnswers = useSelector((state) => state.qa.answers);
+
+  useEffect(() => {
+    console.log('fetchOn:', props.questionId);
+    dispatch(fetchAnswers(props.questionId));
+  }, [props.questionId]);
 
   return (
     <div>
       <Grid>
-        <Answer />
-        <Answer />
+        {currentAnswers.map((answer, index) => {
+          return (
+            <Answer key={`${answer.answer_id}`} answer={answer}/>
+          );
+        })}
       </Grid>
     </div>
   );
