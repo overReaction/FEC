@@ -2,16 +2,27 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
+import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { fetchStyleInfo, selectStyle } from '../overviewSlice.js';
 
 const useStyles = makeStyles({
   root: {
-    borderRadius: 100 + '%',
+    borderRadius: 10 + '%',
     height: 100,
     width: 100,
     margin: 'auto'
+  },
+  titleBar: {
+    background: 'none',
+    height: 25
+  },
+  icon: {
+    color: 'white',
+    backgroundImage: "radial-gradient(circle, rgba(0, 0, 0, 0.3), transparent 15px)"
   }
 });
 
@@ -47,6 +58,17 @@ const StyleSelector = (props) => {
                   classes={{ tile: classes.root }}
                 >
                   <img src={url} style={{ objectFit: 'cover' }}/>
+                  {style.style_id === currentStyle.style_id ? <GridListTileBar
+                    actionIcon={
+                      <IconButton>
+                        <DoneOutlineIcon classes={{ root: classes.icon }}/>
+                      </IconButton>}
+                    actionPosition="left"
+                    classes={{ root: classes.titleBar }}
+                    titlePosition="top"
+                  /> : <GridListTileBar
+                    classes={{ root: classes.titleBar }}
+                    titlePosition="top"/>}
                 </GridListTile>
               );
             }
