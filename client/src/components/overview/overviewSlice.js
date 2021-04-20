@@ -5,7 +5,6 @@ export const fetchStyleInfo = createAsyncThunk(
   'products/getStyleInfo',
   async (productId, thunkAPI) => {
     const response = await axios.get(`/api/?endpoint=products/${productId}/styles`);
-    console.log(response.data);
     return response.data;
   }
 );

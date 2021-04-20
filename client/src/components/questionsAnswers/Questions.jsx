@@ -11,6 +11,7 @@ const Questions = props => {
   const productId = useSelector((state) => state.app.productId);
   const dispatch = useDispatch();
   const currentQuestions = useSelector((state) => state.qa.questions);
+  // console.log('currentQ:', currentQuestions);
 
   useEffect(() => {
     dispatch(fetchQuestions(productId));

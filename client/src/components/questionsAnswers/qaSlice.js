@@ -5,7 +5,7 @@ export const fetchQuestions = createAsyncThunk(
   'qa/questions',
   async (productId, thunkAPI) => {
     const response = await axios.get(`/api/?endpoint=qa/questions?product_id=${productId}`);
-
+    console.log('QuestionsResponse:', response.data);
     return response.data;
   }
 );
@@ -23,9 +23,9 @@ export const fetchAnswers = createAsyncThunk(
 export const qaSlice = createSlice({
   name: 'qa',
   initialState: {
-    currentStyle: null,
     questions: [],
-    answers: []
+    answers: [],
+    count: 4
   },
 
   reducers: {
@@ -36,7 +36,6 @@ export const qaSlice = createSlice({
   extraReducers: {
     [fetchQuestions.fulfilled]: (state, action) => {
       state.questions = action.payload.results;
-      state.currentStyle = action.payload.results[1];
     },
     [fetchAnswers.fulfilled]: (state, action) => {
       state.answers = action.payload.results;

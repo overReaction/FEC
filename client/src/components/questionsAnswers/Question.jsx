@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
 import Answers from './Answers.jsx';
+import Answer from './Answer.jsx';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +23,7 @@ const Question = props => {
   return (
     <Paper className={classes.paper}>
       <div>
-        <span><b>Q: </b>{props.question.question_body}</span>
+        <span><b>Q: </b>{`${props.question.question_body} ${props.question.question_id}`}</span>
         <span style={{ float: "right" }}>
           Helpful? <u>Yes</u> ({props.question.question_helpfulness}) | <u>Add Answer</u>
         </span>

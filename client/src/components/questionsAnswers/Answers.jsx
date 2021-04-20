@@ -9,11 +9,12 @@ const Answers = props => {
   const productId = useSelector((state) => state.app.productId);
   const dispatch = useDispatch();
   const currentAnswers = useSelector((state) => state.qa.answers);
+  const currentQuestions = useSelector((state) => state.qa.questions);
+  // console.log('currentA:', currentAnswers);
 
   useEffect(() => {
-    console.log('fetchOn:', props.questionId);
     dispatch(fetchAnswers(props.questionId));
-  }, [props.questionId]);
+  }, [currentQuestions]);
 
   return (
     <div>
@@ -27,6 +28,5 @@ const Answers = props => {
     </div>
   );
 };
-
 
 export default Answers;
