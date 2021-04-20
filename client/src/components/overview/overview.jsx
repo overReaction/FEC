@@ -15,8 +15,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 450,
     minWidth: 410,
     padding: 0
-  },
-
+  }
 }));
 
 const Overview = (props) => {
@@ -25,11 +24,11 @@ const Overview = (props) => {
 
   return (
     <div data-testid="overview">
-      <Grid container spacing={3} >
-        <Grid item container xs={8}>
+      <Grid container spacing={3} style={{ maxHeight: 700 }}>
+        <Grid item container xs={7} justify="flex-end" style={{ maxHeight: 600 }}>
           <ImageGallery />
         </Grid>
-        <Grid item container xs={4} direction="column" classes={{ root: classes.root }}>
+        <Grid item container xs={5} direction="column" classes={{ root: classes.root }}>
           <Grid item>
             <ProductInformation />
           </Grid>

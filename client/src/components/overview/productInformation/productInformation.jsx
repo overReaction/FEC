@@ -1,19 +1,10 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1
-  }
-}));
 
 const ProductInformation = (props) => {
-  const classes = useStyles();
   const currentStyle = useSelector((state) => state.overview.currentStyle);
   const productInfo = useSelector((state) => state.app.productInfo);
-  const dispatch = useDispatch();
 
   return (
     <div data-testid="product-info">
