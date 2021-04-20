@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flexGrow',
     flex: 1,
     border: 'solid 1px',
-    borderColor: '#666666',
+    borderColor: '#777777',
     height: 50
   },
   iconButton: {

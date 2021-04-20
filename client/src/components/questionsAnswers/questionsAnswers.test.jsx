@@ -12,7 +12,6 @@ import { Provider } from 'react-redux';
 3)optionally insert user events to manipulate elements: https://testing-library.com/docs/ecosystem-user-event
 4)test assertions about the component: https://github.com/testing-library/jest-dom */
 
-
 describe('qa Widget', () => {
   test('The qa Widget should render to the screen', () => {
     render(<Provider store={store}>

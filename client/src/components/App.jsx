@@ -28,9 +28,9 @@ var App = () => {
       <button onClick={() => dispatch(changeProductId(18079))}> 18079 </button>
       <button onClick={() => dispatch(changeProductId(18080))}> 18080 </button>
       <Overview />
-      <RatingsReviews />
-      <QuestionsAnswers />
       <RelatedItemsComparison />
+      <QuestionsAnswers />
+      <RatingsReviews />
     </div>
   );
 };

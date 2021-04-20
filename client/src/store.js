@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import overviewReducer from './components/overview/overviewSlice.js';
+import qaReducer from './components/questionsAnswers/qaSlice.js';
 import appReducer from './components/appSlice.js';
 
 export default configureStore({
@@ -7,6 +8,7 @@ export default configureStore({
   reducer: {
     //List all reducers here. Will be passed to combineReducers()
     app: appReducer,
-    overview: overviewReducer
+    overview: overviewReducer,
+    qa: qaReducer
   }
 });

@@ -26,6 +26,7 @@ const Question = props => {
     <Paper className={classes.paper}>
       <div>
         <span><b>Q:</b> Why??</span>
+        <span style={{ float: "right" }}>Helpful? <u>Yes</u> (num) | <u>Add Answer</u></span>
         <Answers />
       </div>
     </Paper>
