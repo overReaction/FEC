@@ -43,9 +43,9 @@ const ReviewSortSearch = (props) => {
               id="select-priority"
               select
               // label= {options[0].priority}
-              // value={currency}
+              defaultValue={options[0].priority}
               // onChange={handleChange}
-              helperText="choose sort method"
+              // helperText="choose sort method"
             >
               {options.map((option) => (
                 <MenuItem key ={option.priority} value={option.priority}>{option.priority}</MenuItem>
