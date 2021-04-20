@@ -16,7 +16,7 @@ const RelatedProductsList = (props) => {
   if (relatedList) {
     return (
       <div data-testid="relatedProductsList"> Related Products
-        {relatedList.map((product) => <RelatedProductCard />)}
+        {relatedList.map((product) => <RelatedProductCard product={product}/>)}
       </div>
     );
   } else {
