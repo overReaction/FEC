@@ -23,9 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Overview = (props) => {
   const classes = useStyles();
-  const productId = useSelector((state) => state.app.productId);
   const productInfo = useSelector((state) => state.app.productInfo);
-  const dispatch = useDispatch();
 
   return (
     <div data-testid="overview" className={classes.root}>
