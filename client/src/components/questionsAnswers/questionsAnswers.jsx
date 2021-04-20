@@ -45,7 +45,6 @@ const QuestionsAnswers = props => {
             <Button onClick={() => dispatch(changeProductId(18085))}> 18085</Button>
             <Button onClick={() => dispatch(changeProductId(18086))}> 18086</Button>
           </ButtonGroup>
-
         </Paper>
       </div>
     </div>

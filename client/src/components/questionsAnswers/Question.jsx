@@ -1,7 +1,4 @@
 import React from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { changeProductId } from '../appSlice.js';
-// import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
@@ -18,14 +15,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
 const Question = props => {
   const classes = useStyles();
+  console.log(props);
 
   return (
     <Paper className={classes.paper}>
       <div>
-        <span><b>Q:</b> Why??</span>
+        <span><b>Q: </b>{props.question.question_body}</span>
         <span style={{ float: "right" }}>Helpful? <u>Yes</u> (num) | <u>Add Answer</u></span>
         <Answers />
       </div>
