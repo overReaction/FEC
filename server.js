@@ -10,14 +10,13 @@ app.use(express.static(path.join(__dirname, './client/dist')));
 
 app.get('/api/*', (req, res) => {
   let endpoint = req.query.endpoint;
-  console.log('prams:', req.query);
   atelier.getEndpoint(endpoint, (error, products) => {
     if (error) {
       console.log('Server Error while retrieving all products:', error);
     } else {
       res.send(products);
     }
-  }, req.query.product_id);
+  });
 });
 
 app.listen(port, () => {
