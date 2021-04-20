@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 import ProductInformation from './productInformation/productInformation.jsx';
@@ -12,13 +11,12 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    maxWidth: 450,
+    minWidth: 410,
+    padding: 0
   },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary
-  }
+
 }));
 
 const Overview = (props) => {
@@ -26,34 +24,32 @@ const Overview = (props) => {
   const productInfo = useSelector((state) => state.app.productInfo);
 
   return (
-    <div data-testid="overview" className={classes.root}>
-      <Paper className={classes.paper}>
-        <Grid container spacing={3}>
-          <Grid item container xs={8}>
-            <ImageGallery />
+    <div data-testid="overview">
+      <Grid container spacing={3} >
+        <Grid item container xs={8}>
+          <ImageGallery />
+        </Grid>
+        <Grid item container xs={4} direction="column" classes={{ root: classes.root }}>
+          <Grid item>
+            <ProductInformation />
           </Grid>
-          <Grid item container xs={4} direction="column">
-            <Grid item>
-              <ProductInformation />
-            </Grid>
-            <Grid item>
-              <StyleSelector />
-            </Grid>
-            <Grid item>
-              <AddToCart />
-            </Grid>
+          <Grid item>
+            <StyleSelector />
           </Grid>
-          <Grid item container xs={12}>
-            <Grid item xs={8}>
-              <div> <b>{productInfo.slogan}</b></div>
-              {productInfo.description}
-            </Grid>
-            <Grid item xs={4}>
-              Features to go here
-            </Grid>
+          <Grid item>
+            <AddToCart />
           </Grid>
         </Grid>
-      </Paper>
+        <Grid item container xs={12}>
+          <Grid item xs={8}>
+            <div> <b>{productInfo.slogan}</b></div>
+            {productInfo.description}
+          </Grid>
+          <Grid item xs={4}>
+            Features to go here
+          </Grid>
+        </Grid>
+      </Grid>
     </div>
   );
 };
