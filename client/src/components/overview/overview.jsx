@@ -25,19 +25,21 @@ const Overview = (props) => {
 
   return (
     <div data-testid="overview" style={{ padding: 20 }}>
-      <Grid container spacing={3} style={{ height: 850 }}>
-        <Grid item justify="center" container xs={7} style={{ paddingLeft: 50, height: 'auto', maxHeight: 700 }}>
-          <ImageGallery />
-        </Grid>
-        <Grid item container xs={5} direction="column" classes={{ root: classes.root }}>
-          <Grid item>
-            <ProductInformation />
+      <Grid container spacing={3}>
+        <Grid container wrap="wrap-reverse">
+          <Grid item justify="center" container xs={7}>
+            <ImageGallery />
           </Grid>
-          <Grid item>
-            <StyleSelector />
-          </Grid>
-          <Grid item>
-            <AddToCart />
+          <Grid item container xs={5} direction="column" classes={{ root: classes.root }}>
+            <Grid item>
+              <ProductInformation />
+            </Grid>
+            <Grid item>
+              <StyleSelector />
+            </Grid>
+            <Grid item>
+              <AddToCart />
+            </Grid>
           </Grid>
         </Grid>
         <Grid item container xs={12}>

@@ -29,12 +29,12 @@ export const fetchReviews = createAsyncThunk(
 
 const calcAvgRating = (objectOfRatings) => {
   let numOfReviews = Object.values(objectOfRatings).reduce(function (accumulator, currentValue) {
-    return accumulator + parseInt(currentValue);
+    return accumulator + parseInt(currentValue, 10);
   }, 0);
 
   let total = 0;
   for (let key in objectOfRatings) {
-    total += parseInt(key) * parseInt(objectOfRatings[key]);
+    total += parseInt(key, 10) * parseInt(objectOfRatings[key], 10);
   }
 
   let avg = total / numOfReviews;
@@ -47,7 +47,7 @@ export const appSlice = createSlice({
     //Initial state here
     productId: 18078,
     productInfo: {},
-    reviews: [],
+    reviews: {},
     reviewMetadata: {},
     rating: 0
   },

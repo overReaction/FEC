@@ -14,7 +14,7 @@ const ImageGallery = (props) => {
 
   if (currentStyle) {
     return (
-      <Grid container alignItems="center">
+      <Grid container alignItems="center" wrap="nowrap">
         <Grid item>
           <GalleryNav />
         </Grid>

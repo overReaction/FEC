@@ -7,7 +7,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import ZoomInIcon from '@material-ui/icons/ZoomIn';
 
 //Component/Redux dependencies
 import { increment, decrement } from './imageGallerySlice.js';
@@ -20,7 +19,7 @@ const GalleryMainImg = (props) => {
 
   return (
     <Grid container alignItems="center">
-      <Grid item>
+      <Grid item xs={1}>
         <IconButton
           style={activeStep === 0 ? { visibility: 'hidden' } : {}}
           onClick={() => dispatch(decrement())}
@@ -28,19 +27,17 @@ const GalleryMainImg = (props) => {
           <ArrowBackIcon/>
         </IconButton>
       </Grid>
-      <Grid item container style={{ width: 700 }} justify="center">
+      <Grid item container xs={10} justify="center">
         <img
           src={currentPhoto.url}
           style={{
             cursor: "zoom-in",
             objectFit: "cover",
-            maxHeight: 700,
-            maxWidth: 700,
-            height: 'auto',
-            width: 'auto'
+            maxHeight: 80 + "%",
+            maxWidth: 80 + "%"
           }}/>
       </Grid>
-      <Grid item>
+      <Grid item xs={1}>
         <IconButton
           style={activeStep === currentStyle.photos.length - 1 ? { visibility: 'hidden' } : {}}
           onClick={() => dispatch(increment())}

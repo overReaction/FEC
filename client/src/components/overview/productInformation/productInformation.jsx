@@ -10,8 +10,13 @@ const ProductInformation = (props) => {
   const productInfo = useSelector((state) => state.app.productInfo);
   const productId = useSelector((state) => state.app.productId);
   const rating = useSelector((state) => state.app.rating);
-  const numOfReviews = 5;
-  //useSelector((state) => state.app.reviews[0].results.length);
+  const numOfReviews = useSelector((state) => {
+    if (Object.keys(state.app.reviews).length > 0) {
+      return state.app.reviews.results.length;
+    } else {
+      return 0;
+    }
+  });
 
   useEffect(() => {
     dispatch(fetchReviewMetadata(productId));
@@ -21,12 +26,17 @@ const ProductInformation = (props) => {
   return (
     <div data-testid="product-info">
       <Grid container spacing={3} direction="column">
-        <Grid item container alignItems="center" >
+        <Grid
+          item
+          container
+          alignItems="center"
+          style={numOfReviews === 0 ? { visibility: 'hidden' } : {}}
+        >
           <Grid item>
             <StarRating rating={rating}/>
           </Grid>
           <Grid item>
-            &nbsp; Read all {numOfReviews} reviews
+            &nbsp; <a href="#RatingsReviews">Read all {numOfReviews} reviews</a>
           </Grid>
         </Grid>
         <Grid item data-testid="product-name" >
