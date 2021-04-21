@@ -23,9 +23,9 @@ const Overview = (props) => {
   const productInfo = useSelector((state) => state.app.productInfo);
 
   return (
-    <div data-testid="overview">
+    <div data-testid="overview" style={{ padding: 20 }}>
       <Grid container spacing={3} style={{ height: 850 }}>
-        <Grid item container xs={7} style={{ height: 'auto', maxHeight: 700 }}>
+        <Grid item justify="center" container xs={7} style={{ paddingLeft: 50, height: 'auto', maxHeight: 700 }}>
           <ImageGallery />
         </Grid>
         <Grid item container xs={5} direction="column" classes={{ root: classes.root }}>

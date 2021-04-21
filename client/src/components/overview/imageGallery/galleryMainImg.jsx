@@ -28,7 +28,7 @@ const GalleryMainImg = (props) => {
           <ArrowBackIcon/>
         </IconButton>
       </Grid>
-      <Grid item>
+      <Grid item container style={{ width: 700 }} justify="center">
         <img
           src={currentPhoto.url}
           style={{
