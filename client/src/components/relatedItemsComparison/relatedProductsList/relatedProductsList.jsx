@@ -19,11 +19,9 @@ const RelatedProductsList = (props) => {
         {/* {relatedList.map((product) => <RelatedProductCard product={product}/>)} */}
         {relatedList.map((product) => {
           return (
-            <span>
-              <div>
-                {product}
-              </div>
-            </span>
+            <div>
+              < RelatedProductCard index={product}/>
+            </div>
           );
         }
         )}
