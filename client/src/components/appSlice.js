@@ -14,6 +14,14 @@ export const fetchReviewMetadata = createAsyncThunk(
   'reviews/getReviewMetadata',
   async (productId, thunkAPI) => {
     const response = await axios.get(`/api/?endpoint=reviews/meta?product_id=${productId}`);
+    return response.data;
+  }
+);
+
+export const fetchReviews = createAsyncThunk(
+  'reviews/getReviews',
+  async (productId, thunkAPI) => {
+    const response = await axios.get(`/api/?endpoint=reviews/?product_id=${productId}&count=100`);
     console.log(response.data);
     return response.data;
   }
@@ -30,7 +38,6 @@ const calcAvgRating = (objectOfRatings) => {
   }
 
   let avg = total / numOfReviews;
-
   return avg;
 };
 
@@ -40,6 +47,7 @@ export const appSlice = createSlice({
     //Initial state here
     productId: 18078,
     productInfo: {},
+    reviews: [],
     reviewMetadata: {},
     rating: 0
   },
@@ -61,6 +69,9 @@ export const appSlice = createSlice({
       if (state.reviewMetadata.ratings) {
         state.rating = calcAvgRating(state.reviewMetadata.ratings);
       }
+    },
+    [fetchReviews.fulfilled]: (state, action) => {
+      state.reviews = action.payload;
     }
   }
 });

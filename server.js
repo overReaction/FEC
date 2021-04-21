@@ -9,7 +9,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, './client/dist')));
 
 app.get('/api/*', (req, res) => {
-  let endpoint = req.query.endpoint;
+  console.log(req.url);
+  let endpoint = req.url.substring(15);
   atelier.getEndpoint(endpoint, (error, products) => {
     if (error) {
       console.log('Server Error while retrieving all products:', error);
