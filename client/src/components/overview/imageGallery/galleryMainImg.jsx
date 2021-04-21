@@ -9,16 +9,21 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 //Component/Redux dependencies
-import { increment, decrement, setStep, setCurrentPhoto } from './imageGallerySlice.js';
+import { increment, decrement } from './imageGallerySlice.js';
 
 const GalleryMainImg = (props) => {
   const dispatch = useDispatch();
   const currentPhoto = useSelector((state) => state.gallery.currentPhoto);
+  const currentStyle = useSelector((state) => state.overview.currentStyle);
+  const activeStep = useSelector((state) => state.gallery.currentStep);
 
   return (
-    <Grid container>
+    <Grid container alignItems="center">
       <Grid item>
-        <IconButton>
+        <IconButton
+          disabled={activeStep === 0}
+          onClick={() => dispatch(decrement())}
+        >
           <ArrowBackIcon/>
         </IconButton>
       </Grid>
@@ -28,15 +33,16 @@ const GalleryMainImg = (props) => {
           style={{
             objectFit: "cover",
             maxHeight: 700,
-            maxWidth: 850,
+            maxWidth: 700,
             height: 'auto',
             width: 'auto'
-            // zIndex: -100,
-            // position: 'absolute'
           }}/>
       </Grid>
       <Grid item>
-        <IconButton>
+        <IconButton
+          disabled={activeStep === currentStyle.photos.length - 1}
+          onClick={() => dispatch(increment())}
+        >
           <ArrowForwardIcon/>
         </IconButton>
       </Grid>
