@@ -17,10 +17,10 @@ const RealtedProductCard = (props) => {
     <div data-testid="relatedProductCard">
       <CssBaseline />
       RelatedProductCard placeholder
-      {/* <button onClick={() => dispatch(changeProductId(props.product))}> `{props.product}` </button> */}
-      <span>
+      <button onClick={() => dispatch(changeProductId(props.product))}> `{props.product}` </button>
+      {/* <span>
         {props.product}
-      </span>
+      </span> */}
     </div>
   );
 };
