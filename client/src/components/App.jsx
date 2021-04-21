@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeProductId, fetchProductInfo } from './appSlice.js';
 import Grid from '@material-ui/core/Grid';
 
+import { changeProductId, fetchProductInfo } from './appSlice.js';
 
 var App = () => {
   const productId = useSelector((state) => state.app.productId); //Accesses the store to retrieve current state

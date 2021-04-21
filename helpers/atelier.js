@@ -28,7 +28,7 @@ const postToEndpoint = (endpoint, body, callback) => {
       callback(null, response);
     })
     .catch(error => {
-      console.log('Error posting to Atelier', error);
+      console.log('Error posting to Atelier', error.message);
     });
 };
 
