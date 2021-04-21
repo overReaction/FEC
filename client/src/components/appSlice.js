@@ -10,12 +10,38 @@ export const fetchProductInfo = createAsyncThunk(
   }
 );
 
+export const fetchReviewMetadata = createAsyncThunk(
+  'reviews/getReviewMetadata',
+  async (productId, thunkAPI) => {
+    const response = await axios.get(`/api/?endpoint=reviews/meta?product_id=${productId}`);
+    console.log(response.data);
+    return response.data;
+  }
+);
+
+const calcAvgRating = (objectOfRatings) => {
+  let numOfReviews = Object.values(objectOfRatings).reduce(function (accumulator, currentValue) {
+    return accumulator + parseInt(currentValue);
+  }, 0);
+
+  let total = 0;
+  for (let key in objectOfRatings) {
+    total += parseInt(key) * parseInt(objectOfRatings[key]);
+  }
+
+  let avg = total / numOfReviews;
+
+  return avg;
+};
+
 export const appSlice = createSlice({
   name: 'app',
   initialState: {
     //Initial state here
     productId: 18078,
-    productInfo: {}
+    productInfo: {},
+    reviewMetadata: {},
+    rating: 0
   },
   //A reducer is a function that receives the current state and an action object, decides how to update the state if necessary, and returns the new state
   reducers: {
@@ -29,6 +55,12 @@ export const appSlice = createSlice({
   extraReducers: {
     [fetchProductInfo.fulfilled]: (state, action) => {
       state.productInfo = action.payload;
+    },
+    [fetchReviewMetadata.fulfilled]: (state, action) => {
+      state.reviewMetadata = action.payload;
+      if (state.reviewMetadata.ratings) {
+        state.rating = calcAvgRating(state.reviewMetadata.ratings);
+      }
     }
   }
 });

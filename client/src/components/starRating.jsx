@@ -17,7 +17,7 @@ const StarRating = (props) => {
 
   return (
     <div className={classes.root}>
-      <Rating defaultValue={props.value} precision={0.25} readOnly />
+      <Rating value={props.rating} precision={0.25} readOnly />
     </div>
   );
 };
