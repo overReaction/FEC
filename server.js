@@ -21,9 +21,10 @@ app.get('/api/*', (req, res) => {
 
 app.post('/api/*', (req, res) => {
   let endpoint = req.query.endpoint;
+  console.log('endpoint:', endpoint);
   atelier.postToEndpoint(endpoint, req.body, (error, results) => {
     if (error) {
-      console.log('Server Error while posting: ', error);
+      console.log('Server Error while posting: ');
     } else {
       res.send('Successfully added! Status Code: ' + results.status);
     }
