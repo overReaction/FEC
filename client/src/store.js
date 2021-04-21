@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import overviewReducer from './components/overview/overviewSlice.js';
 import appReducer from './components/appSlice.js';
 import relatedReducer from './components/relatedItemsComparison/relatedSlice.js';
+import galleryReducer from './components/overview/imageGallery/imageGallerySlice.js';
 
 export default configureStore({
   //Root reducer (a combination of all reducers)
@@ -9,6 +10,7 @@ export default configureStore({
     //List all reducers here. Will be passed to combineReducers()
     app: appReducer,
     overview: overviewReducer,
-    related: relatedReducer
+    related: relatedReducer,
+    gallery: galleryReducer
   }
 });
