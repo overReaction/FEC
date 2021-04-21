@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import ZoomInIcon from '@material-ui/icons/ZoomIn';
 
 //Component/Redux dependencies
 import { increment, decrement } from './imageGallerySlice.js';
@@ -31,6 +32,7 @@ const GalleryMainImg = (props) => {
         <img
           src={currentPhoto.url}
           style={{
+            cursor: "zoom-in",
             objectFit: "cover",
             maxHeight: 700,
             maxWidth: 700,
