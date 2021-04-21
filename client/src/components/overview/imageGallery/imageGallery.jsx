@@ -2,15 +2,26 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import Grid from '@material-ui/core/Grid';
+
 //Component/Redux dependencies
 import GalleryNav from './galleryNav.jsx';
+import GalleryMainImg from './galleryMainImg.jsx';
+
 
 const ImageGallery = (props) => {
   const currentStyle = useSelector((state) => state.overview.currentStyle);
 
   if (currentStyle) {
     return (
-      <GalleryNav />
+      <Grid container alignItems="center">
+        <Grid item>
+          <GalleryNav />
+        </Grid>
+        <Grid item>
+          <GalleryMainImg/>
+        </Grid>
+      </Grid>
     );
   } else {
     return (
