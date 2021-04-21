@@ -7,7 +7,7 @@ import ImageGallery from './imageGallery/imageGallery.jsx';
 import StyleSelector from './styleSelector/styleSelector.jsx';
 import AddToCart from './addToCart/addToCart.jsx';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -22,6 +22,7 @@ const useStyles = makeStyles(() => ({
 const Overview = (props) => {
   const classes = useStyles();
   const productInfo = useSelector((state) => state.app.productInfo);
+  // const dispatch = useDispatch();
 
   return (
     <div data-testid="overview" style={{ padding: 20 }}>

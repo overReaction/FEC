@@ -5,8 +5,8 @@ import RelatedItemsComparison from './relatedItemsComparison/relatedItemsCompari
 import React, { useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeProductId, fetchProductInfo } from './appSlice.js';
 
+import { changeProductId, fetchProductInfo } from './appSlice.js';
 
 var App = () => {
   const productId = useSelector((state) => state.app.productId); //Accesses the store to retrieve current state
@@ -29,9 +29,9 @@ var App = () => {
       <button onClick={() => dispatch(changeProductId(18079))}> 18079 </button>
       <button onClick={() => dispatch(changeProductId(18080))}> 18080 </button>
       <Overview />
-      <RatingsReviews />
-      <QuestionsAnswers />
       <RelatedItemsComparison />
+      <QuestionsAnswers />
+      <RatingsReviews />
     </div>
   );
 };
