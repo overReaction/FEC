@@ -1,5 +1,5 @@
 //React dependencies
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 //Material-UI dependencies
@@ -12,7 +12,7 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 //Component/Redux dependencies
-import { increment, decrement, setStep } from './imageGallerySlice.js';
+import { increment, decrement, setStep, setCurrentPhoto, setStylePhotos } from './imageGallerySlice.js';
 
 const theme = createMuiTheme({
   overrides: {
@@ -44,6 +44,13 @@ const GalleryNav = (props) => {
   const currentStyle = useSelector((state) => state.overview.currentStyle);
   const activeStep = useSelector((state) => state.gallery.currentStep);
   const visibleSteps = useSelector((state) => state.gallery.visibleSteps);
+
+  useEffect(() => {
+    if (currentStyle.photos[0] && currentStyle.photos[activeStep].url) {
+      dispatch(setCurrentPhoto(currentStyle.photos[activeStep]));
+      dispatch(setStylePhotos(currentStyle.photos));
+    }
+  }, [currentStyle]);
 
   return (
     <ThemeProvider theme={theme}>
