@@ -12,6 +12,7 @@ import { useSelector, useDispatch } from 'react-redux';
 const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
+    flexShrink: 1,
     maxWidth: 450,
     minWidth: 410,
     padding: 0

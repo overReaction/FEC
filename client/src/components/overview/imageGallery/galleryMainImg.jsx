@@ -22,7 +22,7 @@ const GalleryMainImg = (props) => {
     <Grid container alignItems="center">
       <Grid item>
         <IconButton
-          disabled={activeStep === 0}
+          style={activeStep === 0 ? { visibility: 'hidden' } : {}}
           onClick={() => dispatch(decrement())}
         >
           <ArrowBackIcon/>
@@ -42,7 +42,7 @@ const GalleryMainImg = (props) => {
       </Grid>
       <Grid item>
         <IconButton
-          disabled={activeStep === currentStyle.photos.length - 1}
+          style={activeStep === currentStyle.photos.length - 1 ? { visibility: 'hidden' } : {}}
           onClick={() => dispatch(increment())}
         >
           <ArrowForwardIcon/>

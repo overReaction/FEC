@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
+import StarRating from '../../starRating.jsx';
 
 const ProductInformation = (props) => {
   const currentStyle = useSelector((state) => state.overview.currentStyle);
@@ -10,7 +11,7 @@ const ProductInformation = (props) => {
     <div data-testid="product-info">
       <Grid container spacing={3} direction="column">
         <Grid item>
-          Star rating
+          <StarRating value={4.25}/>
         </Grid>
         <Grid item data-testid="product-name" >
           <span style={{ fontSize: 14, lineHeight: 100 + '%' }}> <b>CATEGORY ></b> {productInfo.category} <br/></span>
