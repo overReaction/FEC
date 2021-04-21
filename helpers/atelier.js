@@ -24,6 +24,7 @@ const postToEndpoint = (endpoint, body, callback) => {
     }
   })
     .then(response => {
+      console.log('response: ', response);
       callback(null, response);
     })
     .catch(error => {
@@ -31,18 +32,19 @@ const postToEndpoint = (endpoint, body, callback) => {
     });
 };
 
-const putToEndpoint = (endpoint, data, callback) => {
-  console.log('data in helper: ', data);
-  axios.put(`${API_URL}/${endpoint}`, data, {
+const putToEndpoint = (endpoint, body, callback) => {
+  console.log('body in helper: ', body);
+  axios.put(`${API_URL}/${endpoint}`, body, {
     headers: {
       Authorization: config.API_KEY
     }
   })
     .then(response => {
+      console.log('response: ', response);
       callback(null, response);
     })
     .catch(error => {
-      console.log('Error posting to Atelier', error);
+      console.log('Error updating Atelier', error);
     });
 };
 
