@@ -10,7 +10,7 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 
-//Redux dependencies
+//Component/Redux dependencies
 import { fetchStyleInfo, selectStyle } from '../overviewSlice.js';
 
 //Styles for StyleSelector component
