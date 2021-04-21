@@ -16,11 +16,24 @@ import { increment, decrement, setStep } from './imageGallerySlice.js';
 
 const theme = createMuiTheme({
   overrides: {
-    MuiStepConnector: {
-      // Name of the rule
-      vertical: {
-        // Some CSS
-        display: 'none'
+    MuiStepContent: {
+      root: {
+        borderLeft: 'none',
+        paddingLeft: 10,
+        paddingRight: 10,
+        marginTop: 0,
+        marginBottom: 5,
+        marginLeft: 0
+      }
+    },
+    MuiStepper: {
+      root: {
+        padding: 8
+      }
+    },
+    MuiPaper: {
+      root: {
+        backgroundColor: 'transparent'
       }
     }
   }
@@ -34,7 +47,7 @@ const GalleryNav = (props) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div style={{ height: 600 }}>
+      <div style={{ height: 'auto', maxHeight: 700 }}>
 
         <div>
           <IconButton
@@ -48,7 +61,7 @@ const GalleryNav = (props) => {
         <Stepper
           activeStep={activeStep}
           orientation="vertical"
-          style={{ height: 500 }}
+          style={{ height: "auto", maxHeight: 650 }}
           connector={<></>}
         >
           {currentStyle.photos.map((photo, index) => {
@@ -68,7 +81,7 @@ const GalleryNav = (props) => {
                   onClick={() => dispatch(setStep(index))}>
                   <img src={url}
                     style={activeStep === index ?
-                      { border: '2px solid red', objectFit: "cover", height: 75, width: 75 } :
+                      { filter: "drop-shadow(8px 8px 10px gray)", objectFit: "cover", height: 75, width: 75 } :
                       { objectFit: "cover", height: 75, width: 75 }}
                   />
                 </StepContent>
