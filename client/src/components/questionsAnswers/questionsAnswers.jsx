@@ -39,12 +39,17 @@ const QuestionsAnswers = props => {
           <Grid>
             <Questions />
           </Grid>
-          <div> Current Product ID: {productId}</div>
+          <ButtonGroup aria-label="outlined primary button group">
+            <Button onClick={() => console.log('mas')}> MORE ANSWERED QUESTIONS </Button>
+            <Button onClick={() => console.log('+')}> ADD A QUESTION + </Button>
+          </ButtonGroup>
+          <br></br>
           <ButtonGroup aria-label="outlined primary button group">
             <Button onClick={() => dispatch(changeProductId(18084))}> 18084 </Button>
-            <Button onClick={() => dispatch(changeProductId(18085))}> 18085</Button>
-            <Button onClick={() => dispatch(changeProductId(18086))}> 18086</Button>
+            <Button onClick={() => dispatch(changeProductId(18085))}> 18085 </Button>
+            <Button onClick={() => dispatch(changeProductId(18086))}> 18086 </Button>
           </ButtonGroup>
+          <div> Current Product ID: {productId}</div>
         </Paper>
       </div>
     </div>

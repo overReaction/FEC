@@ -8,9 +8,6 @@ import { fetchAnswers } from './qaSlice.js';
 const Answers = props => {
   const productId = useSelector((state) => state.app.productId);
   const dispatch = useDispatch();
-  const currentAnswers = useSelector((state) => state.qa.answers);
-  const currentQuestions = useSelector((state) => state.qa.questions);
-  // console.log('currentA:', currentAnswers);
 
   useEffect(() => {
     dispatch(fetchAnswers(props.question.question_id));
@@ -19,10 +16,12 @@ const Answers = props => {
   return (
     <div>
       <Grid>
-        {currentAnswers.map((answer, index) => {
-          return (
-            <Answer key={`${answer.answer_id}`} answer={answer}/>
-          );
+        {answers.map((answer, index) => {
+          return answer.map(a => {
+            return (
+              <Answer key={`${a.id} ${index}`} answer={a}/>
+            );
+          });
         })}
       </Grid>
     </div>

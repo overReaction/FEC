@@ -21,7 +21,7 @@ const Answer = props => {
 
   return (
     <div className={classes.paper}>
-      <span><b>A: </b>{`${props.answer.body} ${props.answer.answer_id}`}</span>
+      <span><b>A: </b>{`${props.answer.body} ${props.answer.id}`}</span>
     </div>
   );
 };

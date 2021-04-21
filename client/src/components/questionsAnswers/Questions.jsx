@@ -10,8 +10,14 @@ import { fetchQuestions } from './qaSlice.js';
 const Questions = props => {
   const productId = useSelector((state) => state.app.productId);
   const dispatch = useDispatch();
-  const currentQuestions = useSelector((state) => state.qa.questions);
-  // console.log('currentQ:', currentQuestions);
+  const currentQuestions = useSelector((state) => state.qa.data);
+  console.log('QUESTIONS:', currentQuestions);
+
+  let answers = currentQuestions.map(question => {
+    return Object.values(question.answers);
+  });
+  console.log('ANSWERS:', answers);
+
 
   useEffect(() => {
     dispatch(fetchQuestions(productId));
@@ -22,7 +28,12 @@ const Questions = props => {
       <Grid>
         {currentQuestions.map((question, index) => {
           return (
-            <Question key={`${question.question_id}`} question={question}/>
+            <Question
+              key={`${question.question_id}`}
+              i={index}
+              question={question}
+              answers={answers}
+            />
           );
         })}
       </Grid>

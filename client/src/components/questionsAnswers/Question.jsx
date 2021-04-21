@@ -3,7 +3,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
-import Answers from './Answers.jsx';
+import { useSelector, useDispatch } from 'react-redux';
+
+// import Answers from './Answers.jsx';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,17 +18,22 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 const Question = props => {
   const classes = useStyles();
+  console.log('PROPSERS:', props.answers);
 
   return (
     <Paper className={classes.paper}>
       <div>
-        <span><b>Q: </b>{`${props.question.question_body} ${props.question.question_id}`}</span>
+        <span><b>Q: </b>{props.question.question_body}</span>
         <span style={{ float: "right" }}>
           Helpful? <u>Yes</u> ({props.question.question_helpfulness}) | <u>Add Answer</u>
         </span>
-        <Answers question={props.question}/>
+        <div>
+          A: {props.answers[0].body}
+        </div>
+        {/* <Answers question={props.question}/> */}
       </div>
     </Paper>
   );
