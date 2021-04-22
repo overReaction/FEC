@@ -17,6 +17,6 @@ describe('qa Widget', () => {
     render(<Provider store={store}>
       <App />
     </Provider>,);
-    expect(screen.getByTestId('qa')).toHaveTextContent('Questions & Answers');
+    expect(screen.getByTestId('qa')).toHaveTextContent('QUESTIONS & ANSWERS');
   });
 });
