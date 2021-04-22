@@ -22,7 +22,7 @@ export const fetchReviews = createAsyncThunk(
   'reviews/getReviews',
   async (productId, thunkAPI) => {
     const response = await axios.get(`/api/?endpoint=reviews/?product_id=${productId}&count=100`);
-    console.log(response.data);
+    //console.log(response.data);
     return response.data;
   }
 );

@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from '@testing-library/react'; //Allows artificial rendering
+import { render, fireEvent, waitFor, screen } from '@testing-library/react'; //Allows artificial rendering
 import userEvent from '@testing-library/user-event'; //Allows triggering of user events. Not demo'd on this page.
 import '@testing-library/jest-dom'; //Provides a set of custom jest matchers that you can use to extend jest. These will make your tests more declarative, clear to read and to maintain.
 import App from '../App.jsx';
@@ -42,8 +42,7 @@ describe('Overview Widget', () => {
 });
 
 describe('Product Information component', () => {
-  xtest('Should have a star rating component', () => {
-    expect(screen.getByTestId('star-rating')).toBeInTheDocument();
+  xtest('Should have a star rating component', async () => {
   });
 
   xtest('The star rating should contain a total of 5 stars', () => {
@@ -66,9 +65,14 @@ describe('Product Information component', () => {
 
   });
 
-  xtest('Should display a product category', async () => {
+  test('Should display a product category', async () => {
+    render(
+      <Provider store={store}>
+        <App />
+      </Provider>);
     expect(screen.getByTestId('product-category')).toBeInTheDocument();
-    expect(screen.getByTestId('product-category')).toHaveTextContent('Jackets');
+    await (userEvent.click(screen.getByText('18078')));
+    expect(screen.getByTestId('product-category')).toHaveTextContent('CATEGORY > Jackets');
   });
 
   xtest('Should display a product title', () => {

@@ -11,12 +11,12 @@ const Questions = props => {
   const productId = useSelector((state) => state.app.productId);
   const dispatch = useDispatch();
   const currentQuestions = useSelector((state) => state.qa.data);
-  console.log('QUESTIONS:', currentQuestions);
+  //('QUESTIONS:', currentQuestions);
 
   let answers = currentQuestions.map(question => {
     return Object.values(question.answers);
   });
-  console.log('ANSWERS:', answers);
+  //console.log('ANSWERS:', answers);
 
 
   useEffect(() => {

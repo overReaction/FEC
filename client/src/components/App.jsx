@@ -24,7 +24,6 @@ var App = () => {
       <Grid container direction="column">
         <Grid item>
           <h2> App </h2>
-          <div> Here is our current product number: <b>{productId}</b>  </div>
           <div> Try clicking one of these buttons to update the product id
             (imagine you were clicking a thumbnail for a related item)</div>
           <button onClick={() => dispatch(changeProductId(18078))}> 18078 </button>

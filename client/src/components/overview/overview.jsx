@@ -36,7 +36,7 @@ const Overview = (props) => {
           <Grid item justify="center" container xs={7}>
             <ImageGallery />
           </Grid>
-          <Grid item container xs={5} direction="column" classes={{ root: classes.root }}>
+          <Grid item container xs={5} spacing={2} direction="column" classes={{ root: classes.root }}>
             <Grid item>
               <ProductInformation />
             </Grid>

@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Question = props => {
   const classes = useStyles();
-  console.log('PROPSERS:', props.answers);
+  //console.log('PROPSERS:', props.answers);
 
   return (
     <Paper className={classes.paper}>
