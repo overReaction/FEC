@@ -17,13 +17,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Question = props => {
   const classes = useStyles();
-  let firstFourAnswers = props.answers[props.index].slice(0, 4);
-  console.log(firstFourAnswers);
+  const firstFourAnswers = props.answers[props.index].slice(0, 4);
 
   return (
     <Paper className={classes.paper}>
       <div>
-        <span><b>Q: </b>{props.question.question_body}</span>
+        <span><b>Q: {props.question.question_body}</b></span>
         <span style={{ float: "right" }}>
           Helpful? <u>Yes</u> ({props.question.question_helpfulness}) &nbsp; | &nbsp; <u>Add Answer</u>
         </span>

@@ -25,8 +25,9 @@ const Questions = props => {
     <div>
       <Grid>
         {currentQuestions.map((question, index) => {
+          let count = 4;
           if (!moreQsClicked) {
-            while (index < 4) {
+            while (index < count) {
               return (
                 <Question
                   key={`${question.question_id}`}
@@ -37,14 +38,17 @@ const Questions = props => {
               );
             }
           } else {
-            return (
-              <Question
-                key={`${question.question_id}`}
-                index={index}
-                question={question}
-                answers={answers}
-              />
-            );
+            count += 2;
+            while (index < count) {
+              return (
+                <Question
+                  key={`${question.question_id}`}
+                  index={index}
+                  question={question}
+                  answers={answers}
+                />
+              );
+            }
           }
         })}
       </Grid>

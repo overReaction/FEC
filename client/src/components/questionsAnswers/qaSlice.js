@@ -9,14 +9,13 @@ export const fetchQuestions = createAsyncThunk(
   }
 );
 
-// export const fetchAnswers = createAsyncThunk(
-//   'qa/questions/:question_id/answers',
-//   async (questionId, thunkAPI) => {
-//     const response = await axios.get(`/api/?endpoint=qa/questions/${questionId}/answers`);
-
-//     return response.data;
-//   }
-// );
+export const incrementHelpfulQuestionCount = createAsyncThunk(
+  'qa/questions/helpfulQuestion',
+  async (questionId, thunkAPI) => {
+    const response = await axios.put(`/api/?endpoint=qa/questions?question_id=${questionId}/helpful`);
+    return `Question marked as helpful: ${response.data}`;
+  }
+);
 
 export const qaSlice = createSlice({
   name: 'qa',
@@ -25,7 +24,8 @@ export const qaSlice = createSlice({
     moreQs: false,
     addQs: false,
     addAs: false,
-    searchValue: ''
+    searchValue: '',
+    helpfulQClicked: false
   },
 
   reducers: {
@@ -39,6 +39,10 @@ export const qaSlice = createSlice({
   extraReducers: {
     [fetchQuestions.fulfilled]: (state, action) => {
       state.data = action.payload.results;
+    },
+    [incrementHelpfulQuestionCount.fullfilled]: (state, action) => {
+      state.helpfulQClicked = true;
+      console.log(state.helpfulQClicked);
     }
   }
 });

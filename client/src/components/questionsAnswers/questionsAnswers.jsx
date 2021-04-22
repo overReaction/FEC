@@ -33,7 +33,7 @@ const QuestionsAnswers = props => {
 
   return (
     <div data-testid="qa">
-      <h2>Questions & Answers</h2>
+      <span style={{ marginLeft: 15 }}>QUESTIONS & ANSWERS</span>
       <div>
         <Paper className={classes.paper}>
           <SearchBar />
