@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { changeProductId } from '../appSlice.js';
-
 import { Grid } from '@material-ui/core/';
 
 import Question from './Question.jsx';
@@ -10,14 +8,14 @@ import { fetchQuestions } from './qaSlice.js';
 const Questions = props => {
   const productId = useSelector((state) => state.app.productId);
   const dispatch = useDispatch();
-  const currentQuestions = useSelector((state) => state.qa.data);
-  // console.log('QUESTIONS:', currentQuestions);
 
-  let answers = currentQuestions.map(question => {
+  const currentQuestions = useSelector((state) => state.qa.data);
+
+  const answers = currentQuestions.map(question => {
     return Object.values(question.answers);
   });
-  // console.log('ANSWERS:', answers);
 
+  const moreQsClicked = useSelector((state) => state.qa.moreQs);
 
   useEffect(() => {
     dispatch(fetchQuestions(productId));
@@ -27,7 +25,18 @@ const Questions = props => {
     <div>
       <Grid>
         {currentQuestions.map((question, index) => {
-          while (index < 4) {
+          if (!moreQsClicked) {
+            while (index < 4) {
+              return (
+                <Question
+                  key={`${question.question_id}`}
+                  index={index}
+                  question={question}
+                  answers={answers}
+                />
+              );
+            }
+          } else {
             return (
               <Question
                 key={`${question.question_id}`}

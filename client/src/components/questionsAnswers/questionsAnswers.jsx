@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeProductId } from '../appSlice.js';
+import { handleMoreQsClick } from './qaSlice.js';
 
 import { Grid } from '@material-ui/core/';
 import { makeStyles } from '@material-ui/core/styles';
@@ -24,10 +25,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 const QuestionsAnswers = props => {
   const productId = useSelector((state) => state.app.productId);
   const dispatch = useDispatch();
-
   const classes = useStyles();
 
   return (
@@ -40,10 +41,12 @@ const QuestionsAnswers = props => {
             <Questions />
           </Grid>
           <ButtonGroup aria-label="outlined primary button group">
-            <Button onClick={() => console.log('mas')}> MORE ANSWERED QUESTIONS </Button>
+            <Button
+              onClick={() => dispatch(handleMoreQsClick())}> MORE ANSWERED QUESTIONS </Button>
             <Button onClick={() => console.log('+')}> ADD A QUESTION + </Button>
           </ButtonGroup>
-          <br></br>
+          <br />
+          <br />
           <ButtonGroup aria-label="outlined primary button group">
             <Button onClick={() => dispatch(changeProductId(18084))}> 18084 </Button>
             <Button onClick={() => dispatch(changeProductId(18085))}> 18085 </Button>

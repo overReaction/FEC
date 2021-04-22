@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Question = props => {
   const classes = useStyles();
-  let firstFour = props.answers[props.index].slice(0, 4);
-
+  let firstFourAnswers = props.answers[props.index].slice(0, 4);
+  // console.log(firstFourAnswers);
 
   return (
     <Paper className={classes.paper}>
@@ -28,7 +28,7 @@ const Question = props => {
           Helpful? <u>Yes</u> ({props.question.question_helpfulness}) | <u>Add Answer</u>
         </span>
         <div>
-          {firstFour.map((answer, index) => {
+          {firstFourAnswers.map((answer, index) => {
             if (index < 2) {
               return (
                 <div key={answer.id}>
