@@ -16,15 +16,14 @@ const RelatedProductsList = (props) => {
   if (relatedList) {
     return (
       <div data-testid="relatedProductsList"> Related Products
-        {/* {relatedList.map((product) => <RelatedProductCard product={product}/>)} */}
-        {relatedList.map((product) => {
+        {/* {relatedList.map((product, index) => {
           return (
             <div>
-              < RelatedProductCard index={product}/>
+              < RelatedProductCard key={`${product} ${index}` + Math.random()} index={product}/>
             </div>
           );
         }
-        )}
+        )} */}
       </div>
     );
   } else {

@@ -3,10 +3,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
-import { useSelector, useDispatch } from 'react-redux';
-
-// import Answers from './Answers.jsx';
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1
@@ -21,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Question = props => {
   const classes = useStyles();
-  console.log('PROPSERS:', props.answers);
+  let firstFour = props.answers[props.index].slice(0, 4);
+
 
   return (
     <Paper className={classes.paper}>
@@ -31,9 +28,16 @@ const Question = props => {
           Helpful? <u>Yes</u> ({props.question.question_helpfulness}) | <u>Add Answer</u>
         </span>
         <div>
-          A: {props.answers[0].body}
+          {firstFour.map((answer) => {
+            return (
+              <div key={answer.id}>
+                <br />
+                <b>&nbsp; &nbsp; A:</b> {answer.body}
+                <br />
+              </div>
+            );
+          })}
         </div>
-        {/* <Answers question={props.question}/> */}
       </div>
     </Paper>
   );
