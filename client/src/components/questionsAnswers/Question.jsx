@@ -28,14 +28,16 @@ const Question = props => {
           Helpful? <u>Yes</u> ({props.question.question_helpfulness}) | <u>Add Answer</u>
         </span>
         <div>
-          {firstFour.map((answer) => {
-            return (
-              <div key={answer.id}>
-                <br />
-                <b>&nbsp; &nbsp; A:</b> {answer.body}
-                <br />
-              </div>
-            );
+          {firstFour.map((answer, index) => {
+            if (index < 2) {
+              return (
+                <div key={answer.id}>
+                  <br />
+                  <b>&nbsp; &nbsp; A:</b> {answer.body}
+                  <br />
+                </div>
+              );
+            }
           })}
         </div>
       </div>

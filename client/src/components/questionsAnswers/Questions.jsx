@@ -27,14 +27,16 @@ const Questions = props => {
     <div>
       <Grid>
         {currentQuestions.map((question, index) => {
-          return (
-            <Question
-              key={`${question.question_id}`}
-              index={index}
-              question={question}
-              answers={answers}
-            />
-          );
+          while (index < 4) {
+            return (
+              <Question
+                key={`${question.question_id}`}
+                index={index}
+                question={question}
+                answers={answers}
+              />
+            );
+          }
         })}
       </Grid>
     </div>
