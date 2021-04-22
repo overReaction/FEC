@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 // import { useSelector } from 'react-redux';
 // import { useDispatch } from 'react-redux';
@@ -13,7 +13,10 @@ const RealtedProductCard = (props) => {
   // useEffect(() => {
   //   dispatch(fetchProductInfo(productId));
   // });
-
+  // const relatedProductIndex = props.index;
+  // useEffect(() => {
+  //   dispatch(fetchProductInfo(relatedProductIndex));
+  // }, [productId]);
 
   return (
     <div data-testid="relatedProductCard">
@@ -21,7 +24,7 @@ const RealtedProductCard = (props) => {
       RelatedProductCard placeholder
       {/* <button onClick={() => dispatch(changeProductId(props.index))}> `{props.index}` </button> */}
       <span>
-        {props.index}
+        {props.productInfo.name}
       </span>
     </div>
   );
