@@ -18,23 +18,29 @@ const useStyles = makeStyles((theme) => ({
 const Question = props => {
   const classes = useStyles();
   let firstFourAnswers = props.answers[props.index].slice(0, 4);
-  // console.log(firstFourAnswers);
+  console.log(firstFourAnswers);
 
   return (
     <Paper className={classes.paper}>
       <div>
         <span><b>Q: </b>{props.question.question_body}</span>
         <span style={{ float: "right" }}>
-          Helpful? <u>Yes</u> ({props.question.question_helpfulness}) | <u>Add Answer</u>
+          Helpful? <u>Yes</u> ({props.question.question_helpfulness}) &nbsp; | &nbsp; <u>Add Answer</u>
         </span>
         <div>
           {firstFourAnswers.map((answer, index) => {
             if (index < 2) {
               return (
-                <div key={answer.id}>
+                <div key={answer.id} style={{ marginLeft: 10 }}>
                   <br />
-                  <b>&nbsp; &nbsp; A:</b> {answer.body}
+                  <b>A:</b> {answer.body}
                   <br />
+                  <span style={{ fontSize: 11 }}>
+                    by {answer.answerer_name} &nbsp;
+                    {new Date(answer.date).toString().slice(3, 16)} &nbsp; | &nbsp; Helpful? <u>
+                    Yes</u> ({props.question.question_helpfulness}) &nbsp; | &nbsp; <u>
+                    Report</u>
+                  </span>
                 </div>
               );
             }

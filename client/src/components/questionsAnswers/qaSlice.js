@@ -34,7 +34,6 @@ export const qaSlice = createSlice({
     },
     handleMoreQsClick: (state, action) => {
       state.moreQs = !state.moreQs;
-      console.log(state.moreQs);
     }
   },
   extraReducers: {
