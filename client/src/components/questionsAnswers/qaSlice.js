@@ -21,6 +21,7 @@ export const incrementHelpfulAnswerCount = createAsyncThunk(
   'qa/Answers/helpfulAnswer',
   async (answerId, thunkAPI) => {
     const response = await axios.put(`/api/?endpoint=qa/answers/${answerId}/helpful`);
+    console.log('cool');
     return response.data;
   }
 );
