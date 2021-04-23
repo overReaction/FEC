@@ -5,7 +5,8 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState: {
     sku: null,
-    skuInfo: {}
+    skuInfo: {},
+    err: null
   },
   reducers: {
     updateSku: (state, action) => {
@@ -13,6 +14,9 @@ export const cartSlice = createSlice({
     },
     updateSkuInfo: (state, action) => {
       state.skuInfo = action.payload;
+    },
+    throwErr: (state, action) => {
+      state.err = action.payload;
     }
   },
   extraReducers: {
@@ -20,22 +24,6 @@ export const cartSlice = createSlice({
   }
 });
 
-export const { updateSku, updateSkuInfo } = cartSlice.actions;
+export const { updateSku, updateSkuInfo, throwErr } = cartSlice.actions;
 export default cartSlice.reducer;
 
-
-// export const fetchStyleInfo = createAsyncThunk(
-//   'products/getStyleInfo',
-//   async (productId, thunkAPI) => {
-//     const response = await axios.get(`/api/?endpoint=products/${productId}/styles`);
-//     return response.data;
-//   }
-// );
-
-//   extraReducers: {
-//     [fetchStyleInfo.fulfilled]: (state, action) => {
-//       state.styles = action.payload.results;
-//       state.currentStyle = action.payload.results[0];
-//     }
-//   }
-// });
