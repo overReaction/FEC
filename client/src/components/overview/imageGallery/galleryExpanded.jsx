@@ -9,7 +9,6 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
-import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 
 //Component/Redux dependencies
 import { increment, decrement, setStep } from './imageGallerySlice.js';
@@ -83,18 +82,5 @@ const ExpandedView = (props) => {
     </div>
   );
 };
-
-// <ReactImageMagnify {...{
-//     smallImage: {
-//         alt: 'Wristwatch by Ted Baker London',
-//         isFluidWidth: true,
-//         src: watchImg300
-//     },
-//     largeImage: {
-//         src: watchImg1200,
-//         width: 1200,
-//         height: 1800
-//     }
-// }} />
 
 export default ExpandedView;
