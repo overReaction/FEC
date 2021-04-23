@@ -54,7 +54,6 @@ export const qaSlice = createSlice({
     },
     [incrementHelpfulAnswerCount.fulfilled]: (state, action) => {
       state.helpfulAClicked = true;
-      console.log(state.helpfulAClicked);
     }
   }
 });

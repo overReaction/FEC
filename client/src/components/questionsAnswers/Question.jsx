@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Answer from './Answer.jsx';
+import Answers from './Answers.jsx';
 
 import { incrementHelpfulQuestionCount } from './qaSlice.js';
 
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 const Question = props => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const firstTwoAnswers = props.answers[props.index].slice(0, 2);
+  // const firstTwoAnswers = props.answers[props.index].slice(0, 2);
   const questionId = props.question.question_id;
 
   const [questionHelpfulnessCount, setQuestionHelpfulnessCount] = useState(props.question.question_helpfulness);
@@ -45,11 +45,7 @@ const Question = props => {
             ({questionHelpfulnessCount}) &nbsp; | &nbsp; <u>Add Answer</u>
         </span>
         <div>
-          {firstTwoAnswers.map((answer, index) => {
-            if (index < 2) {
-              return <Answer key={answer.id} answer={answer} index={index}/>;
-            }
-          })}
+          <Answers answers={props.answers} index={props.index}/>
         </div>
       </div>
     </Paper>
