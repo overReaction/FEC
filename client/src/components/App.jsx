@@ -7,11 +7,13 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeProductId, fetchProductInfo } from './appSlice.js';
 import ExpandedView from './overview/imageGallery/galleryExpanded.jsx';
+import MagnifiedView from './overview/imageGallery/galleryMagnified.jsx';
 import Grid from '@material-ui/core/Grid';
 
 var App = () => {
   const productId = useSelector((state) => state.app.productId); //Accesses the store to retrieve current state
   const viewExpanded = useSelector((state) => state.overview.expanded);
+  const viewMagnified = useSelector((state) => state.overview.magnified);
   const dispatch = useDispatch(); //Dispatch an action to the store to update state
 
   //Use Effect is similiar to component did mount
@@ -20,7 +22,14 @@ var App = () => {
     dispatch(fetchProductInfo(productId));
   });
 
-  if (viewExpanded) {
+  if (viewMagnified) {
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <MagnifiedView/>
+      </React.Fragment>
+    );
+  } else if (viewExpanded) {
     return (
       <React.Fragment>
         <CssBaseline />
