@@ -32,7 +32,11 @@ const QuestionsAnswers = props => {
   const [searchValue, setSearchValue] = useState('');
 
   const onInputChange = e => {
-    setSearchValue(e.target.value);
+    if (e.target.value.length > 2) {
+      setSearchValue(e.target.value);
+    } else {
+      setSearchValue('');
+    }
   };
 
   return (
