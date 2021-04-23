@@ -1,26 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import Select from 'react-select';
 import Grid from '@material-ui/core/Grid';
 const axios = require('axios');
 import { useSelector, useDispatch } from 'react-redux';
-import { throwErr, reset } from './cartSlice.js';
+import { throwErr, updateSizeDropDownDisplay, updateQuantDropDownDisplay, updateSkuInfo } from './cartSlice.js';
 import SizeSelect from './sizeSelect.jsx';
+import QuantSelect from './quantSelect.jsx';
 
 const AddToCart = (props) => {
   const dispatch = useDispatch();
   const sku = useSelector((state) => state.cart.sku);
   const err = useSelector((state) => state.cart.err);
-  const quant = useSelector((state) => state.cart.skuInfo.quantity);
   const sizes = useSelector((state) => state.cart.sizes);
-
-  const getQuantities = (quantAvail) => {
-    let quants = [];
-    for (let x = 1; x <= quantAvail && x <= 15; x++) {
-      quants.push({ value: x, label: x });
-    }
-    return quants;
-  };
 
   const addToCart = (sku) => {
     axios.post(`/api/?endpoint=cart`, {
@@ -38,30 +30,19 @@ const AddToCart = (props) => {
         <SizeSelect />
       </Grid>
       <Grid item xs={6}>
-        <div style={quant ? {} : { display: 'none' }}>
-          <Select
-            isClearable ={false}
-            defaultValue={{ value: 1, label: '1' }}
-            options={getQuantities(quant)} />
-        </div>
-        <div style={quant ? { display: 'none' } : {}}>
-          <Select
-            isDisabled={true}
-            isClearable ={false}
-            defaultValue={{ value: null, label: '-' }}
-            options={{}} />
-        </div>
+        <QuantSelect />
       </Grid>
       <Grid item xs={6}>
         <Button
           style={sizes.length === 0 ? { display: 'none' } : {}}
           onClick={() => {
-            if (err === null && !quant) {
+            if (err === null) {
               dispatch(throwErr(true));
             } else {
               addToCart(sku);
-              dispatch(reset());
-              sizeDropdown.value = { value: 'default', label: 'SELECT SIZE' };
+              dispatch(updateSizeDropDownDisplay({ value: 'default', label: 'SELECT SIZE' }));
+              dispatch(updateQuantDropDownDisplay({ value: null, label: '-' }));
+              dispatch(updateSkuInfo({}));
             }
           }}
         >Add to cart</Button>

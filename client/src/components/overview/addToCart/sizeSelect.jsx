@@ -1,7 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Select from 'react-select';
-import { updateSku, throwErr, updateDropDownDisplay, reset, setSizes } from './cartSlice.js';
+import {
+  updateSku,
+  throwErr,
+  updateSizeDropDownDisplay,
+  updateQuantDropDownDisplay,
+  reset,
+  setSizes,
+  updateSkuInfo } from './cartSlice.js';
 
 
 const SizeSelect = (props) => {
@@ -64,8 +71,10 @@ const SizeSelect = (props) => {
         menuIsOpen={true}
         options={sizes}
         onChange={(selected) => {
-          dispatch(updateDropDownDisplay(selected));
+          dispatch(updateSizeDropDownDisplay(selected));
+          dispatch(updateQuantDropDownDisplay({ value: 1, label: '1' }));
           dispatch(updateSku(selected.value));
+          dispatch(updateSkuInfo(skus[selected.value]));
           dispatch(throwErr(false));
         }}
       />
@@ -76,8 +85,10 @@ const SizeSelect = (props) => {
         value={dropDownDisplay}
         options={sizes}
         onChange={(selected) => {
-          dispatch(updateDropDownDisplay(selected));
+          dispatch(updateSizeDropDownDisplay(selected));
+          dispatch(updateQuantDropDownDisplay({ value: 1, label: '1' }));
           dispatch(updateSku(selected.value));
+          dispatch(updateSkuInfo(skus[selected.value]));
           dispatch(throwErr(false));
         }}
       />
