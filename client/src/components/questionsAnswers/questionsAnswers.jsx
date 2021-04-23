@@ -11,6 +11,7 @@ import { Paper } from '@material-ui/core/';
 
 import Questions from './Questions.jsx';
 import SearchBar from './SearchBar.jsx';
+import AddQModal from './AddQuestion.jsx';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,10 +49,9 @@ const QuestionsAnswers = props => {
           <Grid>
             <Questions searchValue={searchValue}/>
           </Grid>
-          <ButtonGroup aria-label="outlined primary button group">
-            <Button
-              onClick={() => dispatch(handleMoreQsClick())}> MORE ANSWERED QUESTIONS </Button>
-            <Button onClick={() => console.log('+')}> ADD A QUESTION + </Button>
+          <ButtonGroup>
+            <Button variant="outlined" onClick={() => dispatch(handleMoreQsClick())}> MORE ANSWERED QUESTIONS </Button>
+            <AddQModal />
           </ButtonGroup>
           <br />
           <br />
