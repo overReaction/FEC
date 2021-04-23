@@ -12,7 +12,8 @@ function getModalStyle () {
     textAlign: 'center',
     top: '20%',
     left: '35%',
-    width: '20%'
+    width: '20%',
+    outline: 0
   };
 }
 
@@ -31,6 +32,9 @@ export default function AddAModal () {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
+  const [question, setQuestion] = useState('');
 
   const handleOpen = () => {
     setOpen(true);
@@ -40,11 +44,26 @@ export default function AddAModal () {
     setOpen(false);
   };
 
+  const handleInputChange = (e) => {
+    if (e.target.name === 'nickname') {
+      setNickname(e.target.value);
+      console.log('nickname:', nickname);
+    }
+    if (e.target.name === 'email') {
+      setEmail(e.target.value);
+      console.log('Email:', email);
+    }
+    if (e.target.name === 'question') {
+      setQuestion(e.target.value);
+      console.log('Question:', question);
+    }
+  };
+
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <h2 id="ask-a-question-modal">Ask A Question</h2>
       <p>(all fields required)</p>
-      <form>
+      <form onChange={handleInputChange}>
         Your Nickname: <input name="nickname"/>
         <br/>
         Your Email: <input name="email"/>

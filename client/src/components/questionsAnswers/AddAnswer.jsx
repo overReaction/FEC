@@ -11,7 +11,8 @@ function getModalStyle () {
     textAlign: 'center',
     top: '20%',
     left: '35%',
-    width: '20%'
+    width: '20%',
+    outline: 0
   };
 }
 
