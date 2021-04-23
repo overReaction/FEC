@@ -38,7 +38,7 @@ var App = () => {
     );
   } else {
     return (
-      <div>
+      <React.Fragment>
         <CssBaseline />
         <Grid container direction="column">
           <Grid item>
@@ -62,7 +62,7 @@ var App = () => {
             <RatingsReviews />
           </Grid>
         </Grid>
-      </div>
+      </React.Fragment>
     );
   }
 };

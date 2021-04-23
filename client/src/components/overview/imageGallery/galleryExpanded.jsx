@@ -9,11 +9,10 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
-import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 
 //Component/Redux dependencies
-import { increment, decrement } from './imageGallerySlice.js';
+import { increment, decrement, setStep } from './imageGallerySlice.js';
 import { expandView, magnifyView } from '../overviewSlice.js';
 
 const ExpandedView = (props) => {
@@ -65,13 +64,17 @@ const ExpandedView = (props) => {
           if (activeStep === index) {
             return (
               <Grid item>
-                <RadioButtonCheckedIcon style={{ color: 'white' }}/>
+                <IconButton onClick={() => dispatch(setStep(index))}>
+                  <RadioButtonCheckedIcon style={{ color: 'white' }}/>
+                </IconButton>
               </Grid>
             );
           } else {
             return (
               <Grid item>
-                <RadioButtonUncheckedIcon style={{ color: 'white' }}/>
+                <IconButton onClick={() => dispatch(setStep(index))}>
+                  <RadioButtonUncheckedIcon style={{ color: 'white' }}/>
+                </IconButton>
               </Grid>
             );
           }

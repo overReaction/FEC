@@ -28,12 +28,8 @@ const theme = createMuiTheme({
     },
     MuiStepper: {
       root: {
-        padding: 8
-      }
-    },
-    MuiPaper: {
-      root: {
-        backgroundColor: 'transparent'
+        padding: 8,
+        backgroundColor: '#fafafa'
       }
     }
   }

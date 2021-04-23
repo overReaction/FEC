@@ -32,12 +32,12 @@ const Overview = (props) => {
 
   return (
     <div data-testid="overview" style={{ padding: 20 }}>
-      <Grid container spacing={3}>
+      <Grid container spacing={2}>
         <Grid item container spacing={2} wrap="wrap-reverse">
           <Grid item justify="center" container xs={7}>
             <ImageGallery />
           </Grid>
-          <Grid item container xs={5} spacing={2} direction="column" classes={{ root: classes.root }}>
+          <Grid item container xs={5} spacing={2} direction="column" classes={{ root: classes.root }} justify="left">
             <Grid item>
               <ProductInformation />
             </Grid>

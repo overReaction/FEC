@@ -18,7 +18,7 @@ const ImageGallery = (props) => {
         <Grid item>
           <GalleryNav />
         </Grid>
-        <Grid item>
+        <Grid item container justify="center">
           <GalleryMainImg/>
         </Grid>
       </Grid>
