@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
 import { incrementHelpfulQuestionCount } from './qaSlice.js';
+import { incrementHelpfulAnswerCount } from './qaSlice.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,13 +39,15 @@ const Question = props => {
                   dispatch(incrementHelpfulQuestionCount(questionId));
                   setQuestionHelpfulnessCount(questionHelpfulnessCount + 1);
                   setHelpfulQClicked(true);
-                }}>Yes</a> : <a>Yes</a>
+                }}>Yes</a> : '   '
             }
           </u>
             ({questionHelpfulnessCount}) &nbsp; | &nbsp; <u>Add Answer</u>
         </span>
         <div>
           {firstFourAnswers.map((answer, index) => {
+            const [answerHelpfulnessCount, setAnswerHelpfulnessCount] = useState(answer.helpfulness);
+            const [helpfulAClicked, setHelpfulAClicked] = useState(false);
             if (index < 2) {
               return (
                 <div key={answer.id} style={{ marginLeft: 10 }}>
@@ -53,8 +56,18 @@ const Question = props => {
                   <br />
                   <span style={{ fontSize: 11 }}>
                     by {answer.answerer_name} &nbsp;
-                    {new Date(answer.date).toString().slice(3, 16)} &nbsp; | &nbsp; Helpful? <u>
-                    Yes</u> ({answer.helpfulness}) &nbsp; | &nbsp; <u>
+                    {new Date(answer.date).toString().slice(3, 16)} &nbsp; | &nbsp;
+                    Helpful? <u>
+                      {!helpfulAClicked ?
+                        <a
+                          onClick={() => {
+                            dispatch(incrementHelpfulAnswerCount(answer.id));
+                            setAnswerHelpfulnessCount(answerHelpfulnessCount + 1);
+                            setHelpfulAClicked(true);
+                          }}>Yes</a> : '   '
+                      }
+                    </u>
+                    ({answerHelpfulnessCount}) &nbsp; | &nbsp; <u>
                     Report</u>
                   </span>
                 </div>

@@ -32,9 +32,7 @@ export const qaSlice = createSlice({
     moreQs: false,
     addQs: false,
     addAs: false,
-    searchValue: '',
-    helpfulQClicked: false,
-    helpfulAClicked: false
+    searchValue: ''
   },
 
   reducers: {
