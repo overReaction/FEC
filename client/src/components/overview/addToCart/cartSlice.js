@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-//const axios = require('axios');
 
 export const cartSlice = createSlice({
   name: 'cart',
@@ -18,9 +17,6 @@ export const cartSlice = createSlice({
     throwErr: (state, action) => {
       state.err = action.payload;
     }
-  },
-  extraReducers: {
-
   }
 });
 

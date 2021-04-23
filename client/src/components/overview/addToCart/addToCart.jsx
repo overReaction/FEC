@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Select from 'react-select';
 import Grid from '@material-ui/core/Grid';
+const axios = require('axios');
 import { useSelector, useDispatch } from 'react-redux';
 import { updateSku, updateSkuInfo, throwErr } from './cartSlice.js';
 
@@ -27,6 +28,12 @@ const AddToCart = (props) => {
       quants.push({ value: x, label: x });
     }
     return quants;
+  };
+
+  const addToCart = (sku) => {
+    axios.post(`/api/?endpoint=cart`, {
+      sku_id: sku
+    });
   };
 
   if (currentStyle) {
@@ -98,6 +105,8 @@ const AddToCart = (props) => {
           onClick={() => {
             if (err === null && !quant) {
               dispatch(throwErr(true));
+            } else {
+              addToCart(sku);
             }
           }}
         >Add to cart</Button>
