@@ -29,8 +29,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddQModal () {
   const classes = useStyles();
+
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
+  const [answer, setAnswer] = useState('');
 
   const handleOpen = () => {
     setOpen(true);
@@ -40,11 +44,26 @@ export default function AddQModal () {
     setOpen(false);
   };
 
+  const handleInputChange = (e) => {
+    if (e.target.name === 'nickname') {
+      setNickname(e.target.value);
+      console.log('nickname:', nickname);
+    }
+    if (e.target.name === 'email') {
+      setEmail(e.target.value);
+      console.log('Email:', email);
+    }
+    if (e.target.name === 'answer') {
+      setAnswer(e.target.value);
+      console.log('Answer:', answer);
+    }
+  };
+
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <h2 id="ask-a-question-modal">Answer A Question</h2>
       <p>(all fields required)</p>
-      <form>
+      <form onChange={handleInputChange}>
         Your Nickname: <input name="nickname"/>
         <br/>
         Your Email: <input name="email"/>

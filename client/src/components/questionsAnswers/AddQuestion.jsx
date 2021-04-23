@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddAModal () {
   const classes = useStyles();
+
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
   const [nickname, setNickname] = useState('');
