@@ -1,17 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from '@material-ui/core/';
 import { ButtonGroup } from '@material-ui/core/';
 import Modal from "@material-ui/core/Modal";
 
-// function rand () {
-//   return Math.round(Math.random() * 20) - 10;
-// }
 
 function getModalStyle () {
-  // const top = 50 + rand();
-  // const left = 50 + rand();
-
   return {
     display: 'flex',
     flexDirection: 'column',
@@ -19,7 +13,6 @@ function getModalStyle () {
     top: '20%',
     left: '35%',
     width: '20%'
-    // transform: `translate(-${top}%, -${left}%)`
   };
 }
 
@@ -34,11 +27,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function AddQModal () {
+export default function AddAModal () {
   const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
-  const [modalStyle] = React.useState(getModalStyle);
-  const [open, setOpen] = React.useState(false);
+  const [modalStyle] = useState(getModalStyle);
+  const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);

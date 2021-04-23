@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Answers from './Answers.jsx';
+import AddAModal from './AddAnswer.jsx';
 
 import { incrementHelpfulQuestionCount } from './qaSlice.js';
 
@@ -42,7 +43,7 @@ const Question = props => {
                 }}>Yes</a> : '   '
             }
           </u>
-            ({questionHelpfulnessCount}) &nbsp; | &nbsp; <u>Add Answer</u>
+            ({questionHelpfulnessCount}) &nbsp; | &nbsp; <u style={{ display: 'inline-block' }}><AddAModal /></u>
         </span>
         <div>
           <Answers answers={props.answers} index={props.index}/>
