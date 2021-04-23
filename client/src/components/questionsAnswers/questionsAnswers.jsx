@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeProductId } from '../appSlice.js';
 import { handleMoreQsClick } from './qaSlice.js';
@@ -29,14 +29,20 @@ const QuestionsAnswers = props => {
   const dispatch = useDispatch();
   const classes = useStyles();
 
+  const [searchValue, setSearchValue] = useState('');
+
+  const onInputChange = e => {
+    setSearchValue(e.target.value);
+  };
+
   return (
     <div data-testid="qa">
       <span style={{ marginLeft: 15 }}>QUESTIONS & ANSWERS</span>
       <div>
         <Paper className={classes.paper}>
-          <SearchBar />
+          <SearchBar onInputChange={onInputChange} />
           <Grid>
-            <Questions />
+            <Questions searchValue={searchValue}/>
           </Grid>
           <ButtonGroup aria-label="outlined primary button group">
             <Button

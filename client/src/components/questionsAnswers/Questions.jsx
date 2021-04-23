@@ -24,33 +24,36 @@ const Questions = props => {
   return (
     <div>
       <Grid>
-        {currentQuestions.map((question, index) => {
-          let count = 4;
-          if (!moreQsClicked) {
-            while (index < count) {
-              return (
-                <Question
-                  key={`${question.question_id}`}
-                  index={index}
-                  question={question}
-                  answers={answers}
-                />
-              );
+        {currentQuestions.filter(question =>
+          question.question_body.toLowerCase().includes(props.searchValue.toLowerCase())
+        )
+          .map((question, index) => {
+            let count = 4;
+            if (!moreQsClicked) {
+              while (index < count) {
+                return (
+                  <Question
+                    key={`${question.question_id}`}
+                    index={index}
+                    question={question}
+                    answers={answers}
+                  />
+                );
+              }
+            } else {
+              count += 2;
+              while (index < count) {
+                return (
+                  <Question
+                    key={`${question.question_id}`}
+                    index={index}
+                    question={question}
+                    answers={answers}
+                  />
+                );
+              }
             }
-          } else {
-            count += 2;
-            while (index < count) {
-              return (
-                <Question
-                  key={`${question.question_id}`}
-                  index={index}
-                  question={question}
-                  answers={answers}
-                />
-              );
-            }
-          }
-        })}
+          })}
       </Grid>
     </div>
   );

@@ -35,6 +35,7 @@ export const qaSlice = createSlice({
     searchValue: ''
   },
 
+
   reducers: {
     selectStyle: (state, action) => {
       state.currentStyle = action.payload;
@@ -56,6 +57,6 @@ export const qaSlice = createSlice({
   }
 });
 
-export const { selectStyle, handleMoreQsClick } = qaSlice.actions;
+export const { selectStyle, handleMoreQsClick, handleSearchInputChange } = qaSlice.actions;
 
 export default qaSlice.reducer;

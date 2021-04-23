@@ -44,7 +44,7 @@ const Question = props => {
           </u>
             ({questionHelpfulnessCount}) &nbsp; | &nbsp; <u>Add Answer</u>
         </span>
-        <div>
+        {/* <div>
           {firstFourAnswers.map((answer, index) => {
             const [answerHelpfulnessCount, setAnswerHelpfulnessCount] = useState(answer.helpfulness);
             const [helpfulAClicked, setHelpfulAClicked] = useState(false);
@@ -74,7 +74,7 @@ const Question = props => {
               );
             }
           })}
-        </div>
+        </div> */}
       </div>
     </Paper>
   );

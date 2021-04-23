@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SearchBar () {
+export default function SearchBar (props) {
   const classes = useStyles();
 
   return (
@@ -31,6 +31,7 @@ export default function SearchBar () {
       <InputBase
         className={classes.input}
         placeholder=" HAVE A QUESTION? SEARCH FOR ANSWERS..."
+        onChange={props.onInputChange}
       />
       <IconButton type="submit" className={classes.iconButton} aria-label="search">
         <SearchIcon />
