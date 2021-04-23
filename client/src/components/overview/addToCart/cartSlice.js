@@ -1,21 +1,27 @@
-// import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-// const axios = require('axios');
+import { createSlice } from '@reduxjs/toolkit';
+//const axios = require('axios');
 
-// export const cartSlice = createSlice({
-//   name: 'cart',
-//   initialState: {
-//     //
-//   },
-//   reducers: {
-//     //
-//   },
-//   extraReducers: {
+export const cartSlice = createSlice({
+  name: 'cart',
+  initialState: {
+    sku: null,
+    skuInfo: {}
+  },
+  reducers: {
+    updateSku: (state, action) => {
+      state.sku = action.payload;
+    },
+    updateSkuInfo: (state, action) => {
+      state.skuInfo = action.payload;
+    }
+  },
+  extraReducers: {
 
-//   }
-// });
+  }
+});
 
-// export const { } = cartSlice.actions;
-// export default cartSlice.reducer;
+export const { updateSku, updateSkuInfo } = cartSlice.actions;
+export default cartSlice.reducer;
 
 
 // export const fetchStyleInfo = createAsyncThunk(
