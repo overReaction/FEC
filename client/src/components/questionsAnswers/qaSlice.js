@@ -12,8 +12,8 @@ export const fetchQuestions = createAsyncThunk(
 export const incrementHelpfulQuestionCount = createAsyncThunk(
   'qa/questions/helpfulQuestion',
   async (questionId, thunkAPI) => {
-    const response = await axios.put(`/api/?endpoint=qa/questions?question_id=${questionId}/helpful`);
-    return `Question marked as helpful: ${response.data}`;
+    const response = await axios.put(`/api/?endpoint=qa/questions/${questionId}/helpful`);
+    return `Question marked as helpful: ${response.status}`;
   }
 );
 

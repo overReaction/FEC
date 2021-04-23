@@ -1,7 +1,10 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+
+import { incrementHelpfulQuestionCount } from './qaSlice.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,7 +18,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Question = props => {
+// useEffect(() => {
+  //   dispatch(incrementHelpfulQuestionCount(questionId));
+  // }, [questionId]);
+
+  const Question = props => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const firstFourAnswers = props.answers[props.index].slice(0, 4);
 
@@ -24,7 +32,9 @@ const Question = props => {
       <div>
         <span><b>Q: {props.question.question_body}</b></span>
         <span style={{ float: "right" }}>
-          Helpful? <u>Yes</u> ({props.question.question_helpfulness}) &nbsp; | &nbsp; <u>Add Answer</u>
+          Helpful? <u
+            onClick={() => dispatch(incrementHelpfulQuestionCount(props.question.question_id))}>Yes</u>
+            ({props.question.question_helpfulness}) &nbsp; | &nbsp; <u>Add Answer</u>
         </span>
         <div>
           {firstFourAnswers.map((answer, index) => {

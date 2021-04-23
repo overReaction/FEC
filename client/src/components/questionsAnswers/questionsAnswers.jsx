@@ -11,7 +11,6 @@ import { Paper } from '@material-ui/core/';
 
 import Questions from './Questions.jsx';
 import SearchBar from './SearchBar.jsx';
-// import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
