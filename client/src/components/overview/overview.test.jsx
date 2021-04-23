@@ -65,7 +65,7 @@ describe('Product Information component', () => {
 
   });
 
-  test('Should display a product category', async () => {
+  xtest('Should display a product category', async () => {
     render(
       <Provider store={store}>
         <App />
