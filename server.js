@@ -9,7 +9,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, './client/dist')));
 
 app.get('/api/*', (req, res) => {
-  // console.log(req.url);
   let endpoint = req.url.substring(15);
   atelier.getEndpoint(endpoint, (error, products) => {
     if (error) {

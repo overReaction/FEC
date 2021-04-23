@@ -7,6 +7,11 @@ import ImageGallery from './imageGallery/imageGallery.jsx';
 import StyleSelector from './styleSelector/styleSelector.jsx';
 import AddToCart from './addToCart/addToCart.jsx';
 
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import PinterestIcon from '@material-ui/icons/Pinterest';
+import IconButton from '@material-ui/core/IconButton';
+
 import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(() => ({
@@ -31,7 +36,7 @@ const Overview = (props) => {
           <Grid item justify="center" container xs={7}>
             <ImageGallery />
           </Grid>
-          <Grid item container xs={5} direction="column" classes={{ root: classes.root }}>
+          <Grid item container xs={5} spacing={2} direction="column" classes={{ root: classes.root }}>
             <Grid item>
               <ProductInformation />
             </Grid>
@@ -40,6 +45,24 @@ const Overview = (props) => {
             </Grid>
             <Grid item>
               <AddToCart />
+            </Grid>
+            <Grid item>
+              <Grid container alignItems="center">
+                <Grid item>
+                  <span><b>SHARE > </b></span>
+                </Grid>
+                <Grid>
+                  <IconButton href="#" style={{ color: "black" }}>
+                    <FacebookIcon/>
+                  </IconButton>
+                  <IconButton href="#" style={{ color: "black" }}>
+                    <TwitterIcon/>
+                  </IconButton>
+                  <IconButton href="#" style={{ color: "black" }}>
+                    <PinterestIcon/>
+                  </IconButton>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>

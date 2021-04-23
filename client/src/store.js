@@ -4,6 +4,7 @@ import qaReducer from './components/questionsAnswers/qaSlice.js';
 import appReducer from './components/appSlice.js';
 import relatedReducer from './components/relatedItemsComparison/relatedSlice.js';
 import galleryReducer from './components/overview/imageGallery/imageGallerySlice.js';
+import cartReducer from './components/overview/addToCart/cartSlice.js';
 
 export default configureStore({
   //Root reducer (a combination of all reducers)
@@ -13,6 +14,7 @@ export default configureStore({
     overview: overviewReducer,
     qa: qaReducer,
     related: relatedReducer,
-    gallery: galleryReducer
+    gallery: galleryReducer,
+    cart: cartReducer
   }
 });

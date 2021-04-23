@@ -39,9 +39,9 @@ const ProductInformation = (props) => {
             &nbsp; <a href="#RatingsReviews">Read all {numOfReviews} reviews</a>
           </Grid>
         </Grid>
-        <Grid item data-testid="product-name" >
-          <span style={{ fontSize: 14, lineHeight: 100 + '%' }}> <b>CATEGORY ></b> {productInfo.category} <br/></span>
-          <span style={{ fontSize: 40, lineHeight: 75 + '%' }}> {productInfo.name} </span>
+        <Grid item  >
+          <span data-testid="product-category" style={{ fontSize: 14, lineHeight: 100 + '%' }}> <b>CATEGORY ></b> {productInfo.category} <br/></span>
+          <span data-testid="product-name" style={{ fontSize: 40, lineHeight: 75 + '%' }}> {productInfo.name} </span>
         </Grid>
         <Grid item data-testid="price">
           {(currentStyle) && currentStyle.sale_price ?
