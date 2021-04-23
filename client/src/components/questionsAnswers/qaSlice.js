@@ -5,17 +5,23 @@ export const fetchQuestions = createAsyncThunk(
   'qa/questions',
   async (productId, thunkAPI) => {
     const response = await axios.get(`/api/?endpoint=qa/questions?product_id=${productId}`);
-    // console.log('QuestionsResponse:', response.data);
     return response.data;
   }
 );
 
-export const fetchAnswers = createAsyncThunk(
-  'qa/questions/:question_id/answers',
+export const incrementHelpfulQuestionCount = createAsyncThunk(
+  'qa/questions/helpfulQuestion',
   async (questionId, thunkAPI) => {
-    const response = await axios.get(`/api/?endpoint=qa/questions/${questionId}/answers`);
+    const response = await axios.put(`/api/?endpoint=qa/questions/${questionId}/helpful`);
+    return response.data;
+  }
+);
 
-    // console.log('AnswersResponse:', response.data);
+export const incrementHelpfulAnswerCount = createAsyncThunk(
+  'qa/Answers/helpfulAnswer',
+  async (answerId, thunkAPI) => {
+    const response = await axios.put(`/api/?endpoint=qa/answers/${answerId}/helpful`);
+    console.log('cool');
     return response.data;
   }
 );
@@ -23,27 +29,35 @@ export const fetchAnswers = createAsyncThunk(
 export const qaSlice = createSlice({
   name: 'qa',
   initialState: {
-    data: []
+    data: [],
+    moreQs: false,
+    addQs: false,
+    addAs: false,
+    searchValue: ''
   },
+
 
   reducers: {
     selectStyle: (state, action) => {
       state.currentStyle = action.payload;
+    },
+    handleMoreQsClick: (state, action) => {
+      state.moreQs = !state.moreQs;
     }
   },
   extraReducers: {
     [fetchQuestions.fulfilled]: (state, action) => {
       state.data = action.payload.results;
+    },
+    [incrementHelpfulQuestionCount.fulfilled]: (state, action) => {
+      state.helpfulQClicked = true;
+    },
+    [incrementHelpfulAnswerCount.fulfilled]: (state, action) => {
+      state.helpfulAClicked = true;
     }
-    // [fetchAnswers.fulfilled]: (state, action) => {
-    //   state.answers = action.payload.results;
-    //   console.log('payload:', action.payload.results);
-    // }
   }
 });
 
-//Action creators are generated for each reducer function. Add multiple like so { reducer1, reducer2, ...}
-export const { selectStyle } = qaSlice.actions;
+export const { selectStyle, handleMoreQsClick, handleSearchInputChange } = qaSlice.actions;
 
-//Makes the reducers defined above available to the store
 export default qaSlice.reducer;

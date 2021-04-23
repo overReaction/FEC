@@ -24,7 +24,7 @@ const postToEndpoint = (endpoint, body, callback) => {
     }
   })
     .then(response => {
-      console.log('response: ', response);
+      console.log('response: ', response.status);
       callback(null, response);
     })
     .catch(error => {
@@ -33,14 +33,12 @@ const postToEndpoint = (endpoint, body, callback) => {
 };
 
 const putToEndpoint = (endpoint, body, callback) => {
-  console.log('body in helper: ', body);
   axios.put(`${API_URL}/${endpoint}`, body, {
     headers: {
       Authorization: config.API_KEY
     }
   })
     .then(response => {
-      console.log('response: ', response);
       callback(null, response);
     })
     .catch(error => {
