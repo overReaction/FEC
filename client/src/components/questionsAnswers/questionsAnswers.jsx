@@ -31,13 +31,20 @@ const QuestionsAnswers = props => {
   const classes = useStyles();
 
   const [searchValue, setSearchValue] = useState('');
+  const [searchValueShort, setSearchValueShort] = useState('');
 
   const onInputChange = e => {
     if (e.target.value.length > 2) {
       setSearchValue(e.target.value);
     } else {
       setSearchValue('');
+      setSearchValueShort(e.target.value);
     }
+  };
+
+  const onSearch = () => {
+    let currentSearchValue = searchValueShort;
+    setSearchValue(currentSearchValue);
   };
 
   return (
@@ -45,7 +52,7 @@ const QuestionsAnswers = props => {
       <span style={{ marginLeft: 15 }}>QUESTIONS & ANSWERS</span>
       <div>
         <Paper className={classes.paper}>
-          <SearchBar onInputChange={onInputChange} />
+          <SearchBar onInputChange={onInputChange} onSearchClick={onSearch}/>
           <Grid>
             <Questions searchValue={searchValue}/>
           </Grid>

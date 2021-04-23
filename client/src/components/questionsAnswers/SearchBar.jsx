@@ -34,9 +34,9 @@ export default function SearchBar (props) {
         placeholder=" HAVE A QUESTION? SEARCH FOR ANSWERS..."
         onChange={props.onInputChange}
       />
-      {/* <IconButton type="submit" className={classes.iconButton} aria-label="search">
+      <IconButton type="submit" onClick={props.onSearchClick} className={classes.iconButton} aria-label="search">
         <SearchIcon />
-      </IconButton> */}
+      </IconButton>
     </div>
   );
 }
