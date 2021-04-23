@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
 const QuestionsAnswers = props => {
   const productId = useSelector((state) => state.app.productId);
   const dispatch = useDispatch();
