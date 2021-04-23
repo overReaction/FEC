@@ -10,8 +10,4 @@ describe('Google', () => {
   it('should be titled "Google"', async () => {
     await expect(page.title()).resolves.toMatch('Google');
   });
-
-  it('should have a button called Google Search"', async () => {
-    await expect(page).toClick('input', { value: 'Google Search' });
-  });
 });

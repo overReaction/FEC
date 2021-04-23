@@ -1,5 +1,5 @@
 //React dependencies
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 //Material-UI dependencies
@@ -10,6 +10,7 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 //Component/Redux dependencies
 import { increment, decrement } from './imageGallerySlice.js';
+import { expandView } from '../overviewSlice.js';
 
 const GalleryMainImg = (props) => {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const GalleryMainImg = (props) => {
       </Grid>
       <Grid item container xs={10} justify="center">
         <img
+          onClick={() => dispatch(expandView(true))}
           src={currentPhoto.url}
           style={{
             cursor: "zoom-in",

@@ -14,12 +14,16 @@ export const overviewSlice = createSlice({
   initialState: {
     //Initial state here
     currentStyle: null,
-    styles: {}
+    styles: {},
+    expanded: false
   },
   //A reducer is a function that receives the current state and an action object, decides how to update the state if necessary, and returns the new state
   reducers: {
     selectStyle: (state, action) => {
       state.currentStyle = action.payload;
+    },
+    expandView: (state, action) => {
+      state.expanded = action.payload;
     }
   },
   extraReducers: {
@@ -31,7 +35,7 @@ export const overviewSlice = createSlice({
 });
 
 //Action creators are generated for each reducer function. Add multiple like so { reducer1, reducer2, ...}
-export const { selectStyle } = overviewSlice.actions;
+export const { selectStyle, expandView } = overviewSlice.actions;
 
 //Makes the reducers defined above available to the store
 export default overviewSlice.reducer;
