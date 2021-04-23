@@ -17,13 +17,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
 const Question = props => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const firstFourAnswers = props.answers[props.index].slice(0, 4);
   const questionId = props.question.question_id;
+
   const [questionHelpfulnessCount, setQuestionHelpfulnessCount] = useState(props.question.question_helpfulness);
+  const [helpfulQClicked, setHelpfulQClicked] = useState(false);
 
   return (
     <Paper className={classes.paper}>
@@ -31,11 +32,15 @@ const Question = props => {
         <span><b>Q: {props.question.question_body}</b></span>
         <span style={{ float: "right" }}>
           Helpful? <u>
-            <a
-              onClick={() => {
-                dispatch(incrementHelpfulQuestionCount(questionId));
-                setQuestionHelpfulnessCount(questionHelpfulnessCount + 1);
-              }}>Yes</a></u>
+            {!helpfulQClicked ?
+              <a
+                onClick={() => {
+                  dispatch(incrementHelpfulQuestionCount(questionId));
+                  setQuestionHelpfulnessCount(questionHelpfulnessCount + 1);
+                  setHelpfulQClicked(true);
+                }}>Yes</a> : <a>Yes</a>
+            }
+          </u>
             ({questionHelpfulnessCount}) &nbsp; | &nbsp; <u>Add Answer</u>
         </span>
         <div>
@@ -61,6 +66,5 @@ const Question = props => {
     </Paper>
   );
 };
-
 
 export default Question;
