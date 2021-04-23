@@ -5,21 +5,33 @@ export const cartSlice = createSlice({
   initialState: {
     sku: null,
     skuInfo: {},
-    err: null
+    err: null,
+    sizes: [],
+    sizeDropDownDisplay: { value: 'default', label: 'SELECT SIZE' }
   },
   reducers: {
     updateSku: (state, action) => {
       state.sku = action.payload;
     },
-    updateSkuInfo: (state, action) => {
-      state.skuInfo = action.payload;
+    updateDropDownDisplay: (state, action) => {
+      state.sizeDropDownDisplay = action.payload;
     },
     throwErr: (state, action) => {
       state.err = action.payload;
+    },
+    setSizes: (state, action) => {
+      state.sizes = action.payload;
+    },
+    reset: (state, action) => {
+      state.sku = null;
+      state.skuInfo = {};
+      state.err = null;
+      state.sizes = [];
+      state.sizeDropDownDisplay = { value: 'default', label: 'SELECT SIZE' };
     }
   }
 });
 
-export const { updateSku, updateSkuInfo, throwErr } = cartSlice.actions;
+export const { updateSku, throwErr, reset, setSizes, updateDropDownDisplay } = cartSlice.actions;
 export default cartSlice.reducer;
 

@@ -1,26 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Select from 'react-select';
 import Grid from '@material-ui/core/Grid';
 const axios = require('axios');
 import { useSelector, useDispatch } from 'react-redux';
-import { updateSku, updateSkuInfo, throwErr } from './cartSlice.js';
+import { throwErr, reset } from './cartSlice.js';
+import SizeSelect from './sizeSelect.jsx';
 
 const AddToCart = (props) => {
   const dispatch = useDispatch();
-  const currentStyle = useSelector((state) => state.overview.currentStyle);
   const sku = useSelector((state) => state.cart.sku);
   const err = useSelector((state) => state.cart.err);
   const quant = useSelector((state) => state.cart.skuInfo.quantity);
-  let skus, sizes;
-
-  const getSizes = (skus) => {
-    let sizes = [];
-    Object.keys(skus).map((sku) => {
-      sizes.push({ value: sku, label: skus[sku].size });
-    });
-    return sizes;
-  };
+  const sizes = useSelector((state) => state.cart.sizes);
 
   const getQuantities = (quantAvail) => {
     let quants = [];
@@ -36,17 +28,6 @@ const AddToCart = (props) => {
     });
   };
 
-  if (currentStyle) {
-    skus = useSelector((state) => state.overview.currentStyle.skus);
-    if (skus.null) {
-      skus = null;
-    } else {
-      sizes = getSizes(skus);
-    }
-  } else {
-    skus = useSelector((state) => state.overview.currentStyle);
-  }
-
   return (
     <Grid data-testid="add-to-cart" container spacing={2}>
       <Grid item xs={12}
@@ -54,35 +35,7 @@ const AddToCart = (props) => {
         <span>Please select a size.</span>
       </Grid>
       <Grid item xs={6}>
-        <div style={skus && err !== true ? {} : { display: 'none' }}>
-          <Select
-            defaultValue={{ value: 'default', label: 'SELECT SIZE' }}
-            options={sizes}
-            onChange={(selectedItem) => {
-              dispatch(updateSku(selectedItem.value));
-              dispatch(updateSkuInfo(skus[selectedItem.value]));
-              dispatch(throwErr(false));
-            }}
-          />
-        </div>
-        <div style={err === true ? {} : { display: 'none' }}>
-          <Select
-            menuIsOpen={true}
-            defaultValue={{ value: 'default', label: 'SELECT SIZE' }}
-            options={sizes}
-            onChange={(selectedItem) => {
-              dispatch(updateSku(selectedItem.value));
-              dispatch(updateSkuInfo(skus[selectedItem.value]));
-              dispatch(throwErr(false));
-            }}
-          />
-        </div>
-        <div style={skus ? { display: 'none' } : {}}>
-          <Select
-            isDisabled={true}
-            defaultValue={{ value: 'default', label: 'OUT OF STOCK' }}
-            options={{}} />
-        </div>
+        <SizeSelect />
       </Grid>
       <Grid item xs={6}>
         <div style={quant ? {} : { display: 'none' }}>
@@ -101,19 +54,21 @@ const AddToCart = (props) => {
       </Grid>
       <Grid item xs={6}>
         <Button
-          style={!skus ? { display: 'none' } : {}}
+          style={sizes.length === 0 ? { display: 'none' } : {}}
           onClick={() => {
             if (err === null && !quant) {
               dispatch(throwErr(true));
             } else {
               addToCart(sku);
+              dispatch(reset());
+              sizeDropdown.value = { value: 'default', label: 'SELECT SIZE' };
             }
           }}
         >Add to cart</Button>
       </Grid>
       <Grid item xs={6}>
         <Button
-          style={!skus ? { display: 'none' } : {}}
+          style={sizes.length === 0 ? { display: 'none' } : {}}
         >Add to outfit</Button>
       </Grid>
     </Grid>
