@@ -38,7 +38,6 @@ const StyleSelector = (props) => {
   const productId = useSelector((state) => state.app.productId);
   const allStyles = useSelector((state) => state.overview.styles);
   const currentStyle = useSelector((state) => state.overview.currentStyle);
-  console.log(currentStyle);
 
   useEffect(() => {
     dispatch(fetchStyleInfo(productId));
