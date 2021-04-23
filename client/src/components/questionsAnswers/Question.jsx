@@ -26,6 +26,8 @@ const Question = props => {
 
   const [questionHelpfulnessCount, setQuestionHelpfulnessCount] = useState(props.question.question_helpfulness);
   const [helpfulQClicked, setHelpfulQClicked] = useState(false);
+  const [answerHelpfulnessCount, setAnswerHelpfulnessCount] = useState(0);
+  const [helpfulAClicked, setHelpfulAClicked] = useState(false);
 
   return (
     <Paper className={classes.paper}>
@@ -44,10 +46,8 @@ const Question = props => {
           </u>
             ({questionHelpfulnessCount}) &nbsp; | &nbsp; <u>Add Answer</u>
         </span>
-        {/* <div>
+        <div>
           {firstFourAnswers.map((answer, index) => {
-            const [answerHelpfulnessCount, setAnswerHelpfulnessCount] = useState(answer.helpfulness);
-            const [helpfulAClicked, setHelpfulAClicked] = useState(false);
             if (index < 2) {
               return (
                 <div key={answer.id} style={{ marginLeft: 10 }}>
@@ -74,7 +74,7 @@ const Question = props => {
               );
             }
           })}
-        </div> */}
+        </div>
       </div>
     </Paper>
   );
