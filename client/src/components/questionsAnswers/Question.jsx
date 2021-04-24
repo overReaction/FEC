@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 const Question = props => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  // const firstTwoAnswers = props.answers[props.index].slice(0, 2);
   const questionId = props.question.question_id;
 
   const [questionHelpfulnessCount, setQuestionHelpfulnessCount] = useState(props.question.question_helpfulness);
