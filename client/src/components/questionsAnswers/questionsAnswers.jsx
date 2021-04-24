@@ -57,7 +57,10 @@ const QuestionsAnswers = props => {
             <Questions searchValue={searchValue}/>
           </Grid>
           <ButtonGroup>
-            <Button variant="outlined" onClick={() => dispatch(handleMoreQsClick())}> MORE ANSWERED QUESTIONS </Button>
+            <Button
+              data-testid="moreQsButton"
+              variant="outlined"
+              onClick={() => dispatch(handleMoreQsClick())}> MORE ANSWERED QUESTIONS </Button>
             <AddQModal />
           </ButtonGroup>
           <br />

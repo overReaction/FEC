@@ -23,7 +23,7 @@ const Questions = props => {
   }, [productId]);
 
   return (
-    <div>
+    <div data-testid="questions">
       <Grid>
         {currentQuestions.filter(question =>
           question.question_body.toLowerCase().includes(props.searchValue.toLowerCase())

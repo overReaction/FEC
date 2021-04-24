@@ -30,6 +30,7 @@ export default function SearchBar (props) {
   return (
     <div component="form" className={classes.root}>
       <InputBase
+        data-testid="search-bar"
         className={classes.input}
         placeholder=" HAVE A QUESTION? SEARCH FOR ANSWERS..."
         onChange={props.onInputChange}

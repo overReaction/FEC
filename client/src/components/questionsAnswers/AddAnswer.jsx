@@ -100,9 +100,13 @@ export default function AddAModal (props) {
 
   return (
     <div>
-      <p onClick={handleOpen}>
+      <button
+        className="clickable"
+        data-testid="addAnswerButton"
+        onClick={handleOpen}
+        style={{ border: 'none', backgroundColor: 'white', color: '#555555' }}>
         Add Answer
-      </p>
+      </button>
       <Modal
         open={open}
         onClose={handleClose}

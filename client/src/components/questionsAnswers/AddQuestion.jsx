@@ -101,7 +101,7 @@ export default function AddQModal () {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleOpen}>
+      <Button data-testid="addQbutton" variant="outlined" onClick={handleOpen}>
         ADD A QUESTION +
       </Button>
       <Modal
