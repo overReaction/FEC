@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -27,6 +28,12 @@ const Question = props => {
 
   const [questionHelpfulnessCount, setQuestionHelpfulnessCount] = useState(props.question.question_helpfulness);
   const [helpfulQClicked, setHelpfulQClicked] = useState(false);
+  const [reported, setReported] = useState(false);
+
+  const onReportClick = (questionId) => {
+    axios.put(`/api/?endpoint=qa/questions/${questionId}/report`)
+      .then(setReported(true));
+  };
 
   return (
     <Paper className={classes.paper}>
@@ -44,7 +51,8 @@ const Question = props => {
             }
           </u>
             ({questionHelpfulnessCount}) &nbsp; | &nbsp; <u style={{ display: 'inline-block' }}>
-            <AddAModal questionId={questionId}/></u>
+            <AddAModal questionId={questionId}/></u> &nbsp; | &nbsp;
+          {!reported ? <u onClick={() => onReportClick(questionId)}>Report</u> : 'Reported!'}
         </span>
         <div>
           <Answers answers={props.answers} index={props.index}/>
