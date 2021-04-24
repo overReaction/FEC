@@ -1,5 +1,5 @@
 //React dependencies
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 //Material-UI dependencies
@@ -10,6 +10,7 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 //Component/Redux dependencies
 import { increment, decrement } from './imageGallerySlice.js';
+import { expandView } from '../overviewSlice.js';
 
 const GalleryMainImg = (props) => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const GalleryMainImg = (props) => {
 
   return (
     <Grid container alignItems="center">
-      <Grid item xs={1}>
+      <Grid item xs={2} container justify="flex-end">
         <IconButton
           style={activeStep === 0 ? { visibility: 'hidden' } : {}}
           onClick={() => dispatch(decrement())}
@@ -27,17 +28,18 @@ const GalleryMainImg = (props) => {
           <ArrowBackIcon/>
         </IconButton>
       </Grid>
-      <Grid item container xs={10} justify="center">
+      <Grid item container xs={8} justify="center">
         <img
+          onClick={() => dispatch(expandView(true))}
           src={currentPhoto.url}
           style={{
             cursor: "zoom-in",
             objectFit: "cover",
-            maxHeight: 80 + "%",
-            maxWidth: 80 + "%"
+            width: '30vw',
+            height: '70vh'
           }}/>
       </Grid>
-      <Grid item xs={1}>
+      <Grid item xs={2} container justify="flex-start">
         <IconButton
           style={activeStep === currentStyle.photos.length - 1 ? { visibility: 'hidden' } : {}}
           onClick={() => dispatch(increment())}
