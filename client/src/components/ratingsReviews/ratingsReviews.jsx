@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 
 const RatingsReviews = (props) => {
   return (
-    <div>
+    <div style={{ padding: '1em' }}>
       <div data-testid="RatingsReviews" id="RatingsReviews">
         <Grid container spacing={2}>
           <Grid item xs={12} sm={4}>

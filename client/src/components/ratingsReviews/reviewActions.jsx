@@ -1,35 +1,28 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
-
-// DELETE WHEN FINISHED
-import useStyles from "./tempStyles.jsx";
+import { useDispatch } from 'react-redux';
+import { loadReviews } from './ratingsReviewsSlice.js';
 
 const ReviewActions = (props) => {
-  const classes = useStyles();
+  const dispatch = useDispatch();
   return (
     <div>
-      <Paper className={classes.paper}>
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          className={classes.button}
-        >
-          More Reviews
-        </Button>
-        {" "}
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          className={classes.button}
-          endIcon={<AddIcon />}
-        >
-          Add Review
-        </Button>
-      </Paper>
+      <Button
+        variant="outlined"
+        size="medium"
+        onClick={() => dispatch(loadReviews())}
+      >
+        More Reviews
+      </Button>
+      {" "}
+      <Button
+        variant="outlined"
+        size="medium"
+        endIcon={<AddIcon />}
+      >
+        Add Review
+      </Button>
     </div>
   );
 };

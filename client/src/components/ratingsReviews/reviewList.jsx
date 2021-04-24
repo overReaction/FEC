@@ -10,6 +10,8 @@ import ReviewActions from './reviewActions.jsx';
 
 const ReviewList = (props) => {
   const reviews = useSelector((state) => state.app.reviews);
+  const numReviewsToShow = useSelector((state) => state.reviews.reviewsCount);
+
   console.log(reviews);
   return (
     <Grid container spacing={1}>
@@ -25,6 +27,7 @@ const ReviewList = (props) => {
               xs={12}
               key={index}
               index={index}
+              style={index > numReviewsToShow - 1 ? { display: 'none' } : {}}
             >
               <Review review={review}/>
             </Box>

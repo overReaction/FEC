@@ -42,6 +42,8 @@ const AddToCart = (props) => {
       </Grid>
       <Grid item xs={6}>
         <Button
+          variant="outlined"
+          size="medium"
           style={sizes.length === 0 ? { display: 'none' } : {}}
           onClick={() => {
             if (err === null) {
@@ -57,6 +59,8 @@ const AddToCart = (props) => {
       </Grid>
       <Grid item xs={6}>
         <Button
+          variant="outlined"
+          size="medium"
           style={sizes.length === 0 ? { display: 'none' } : {}}
         >Add to outfit</Button>
       </Grid>
