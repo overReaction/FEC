@@ -28,12 +28,8 @@ const theme = createMuiTheme({
     },
     MuiStepper: {
       root: {
-        padding: 8
-      }
-    },
-    MuiPaper: {
-      root: {
-        backgroundColor: 'transparent'
+        padding: 8,
+        backgroundColor: '#fafafa'
       }
     }
   }
@@ -46,7 +42,7 @@ const GalleryNav = (props) => {
   const visibleSteps = useSelector((state) => state.gallery.visibleSteps);
 
   useEffect(() => {
-    if (currentStyle.photos[0] && currentStyle.photos[activeStep].url) {
+    if (currentStyle.photos[activeStep] && currentStyle.photos[activeStep].url) {
       dispatch(setCurrentPhoto(currentStyle.photos[activeStep]));
       dispatch(setStylePhotos(currentStyle.photos));
     }

@@ -1,14 +1,22 @@
+//React
 import React, { useEffect } from 'react';
+
+//Redux
 import { useSelector, useDispatch } from 'react-redux';
+
+//Material UI
 import Grid from '@material-ui/core/Grid';
+
+//Components
 import StarRating from '../../starRating.jsx';
 import { fetchReviewMetadata, fetchReviews } from '../../appSlice.js';
 
 const ProductInformation = (props) => {
   const dispatch = useDispatch();
-  const currentStyle = useSelector((state) => state.overview.currentStyle);
+
   const productInfo = useSelector((state) => state.app.productInfo);
   const productId = useSelector((state) => state.app.productId);
+  const currentStyle = useSelector((state) => state.overview.currentStyle);
   const rating = useSelector((state) => state.app.rating);
   const numOfReviews = useSelector((state) => {
     if (Object.keys(state.app.reviews).length > 0) {
@@ -39,9 +47,17 @@ const ProductInformation = (props) => {
             &nbsp; <a href="#RatingsReviews">Read all {numOfReviews} reviews</a>
           </Grid>
         </Grid>
-        <Grid item  >
-          <span data-testid="product-category" style={{ fontSize: 14, lineHeight: 100 + '%' }}> <b>CATEGORY ></b> {productInfo.category} <br/></span>
-          <span data-testid="product-name" style={{ fontSize: 40, lineHeight: 75 + '%' }}> {productInfo.name} </span>
+        <Grid item>
+          <span
+            data-testid="product-category"
+            style={{ fontSize: 14, lineHeight: 100 + '%' }}
+          > <b>CATEGORY ></b> {productInfo.category} <br/>
+          </span>
+          <span
+            data-testid="product-name"
+            style={{ fontSize: 40, lineHeight: 75 + '%' }}
+          > {productInfo.name}
+          </span>
         </Grid>
         <Grid item data-testid="price">
           {(currentStyle) && currentStyle.sale_price ?
