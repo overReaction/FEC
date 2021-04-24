@@ -1,6 +1,7 @@
 .clickable:hover {
   cursor: pointer;
 }
+
 a:link {
   color: black;
 }
