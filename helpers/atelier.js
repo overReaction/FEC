@@ -16,6 +16,38 @@ const getEndpoint = (endpoint, callback) => {
     });
 };
 
+const postToEndpoint = (endpoint, body, callback) => {
+  console.log('body in helper: ', body);
+  axios.post(`${API_URL}/${endpoint}`, body, {
+    headers: {
+      Authorization: config.API_KEY
+    }
+  })
+    .then(response => {
+      console.log('response: ', response.status);
+      callback(null, response);
+    })
+    .catch(error => {
+      console.log('Error posting to Atelier', error.message);
+    });
+};
+
+const putToEndpoint = (endpoint, body, callback) => {
+  axios.put(`${API_URL}/${endpoint}`, body, {
+    headers: {
+      Authorization: config.API_KEY
+    }
+  })
+    .then(response => {
+      callback(null, response);
+    })
+    .catch(error => {
+      console.log('Error updating Atelier', error);
+    });
+};
+
 module.exports = {
-  getEndpoint
+  getEndpoint: getEndpoint,
+  postToEndpoint: postToEndpoint,
+  putToEndpoint: putToEndpoint
 };

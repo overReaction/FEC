@@ -9,12 +9,35 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, './client/dist')));
 
 app.get('/api/*', (req, res) => {
-  let endpoint = req.query.endpoint;
+  let endpoint = req.url.substring(15);
   atelier.getEndpoint(endpoint, (error, products) => {
     if (error) {
       console.log('Server Error while retrieving all products:', error);
     } else {
       res.send(products);
+    }
+  });
+});
+
+app.post('/api/*', (req, res) => {
+  let endpoint = req.query.endpoint;
+  // console.log('endpoint:', endpoint);
+  atelier.postToEndpoint(endpoint, req.body, (error, results) => {
+    if (error) {
+      console.log('Server Error while posting: ');
+    } else {
+      res.send('Successfully added! Status Code: ' + results.status);
+    }
+  });
+});
+
+app.put('/api/*', (req, res) => {
+  let endpoint = req.query.endpoint;
+  atelier.putToEndpoint(endpoint, req.body, (error, results) => {
+    if (error) {
+      console.log('Server Error while putting: ', error);
+    } else {
+      res.send('Successfully updated! Status Code: ' + results.status);
     }
   });
 });

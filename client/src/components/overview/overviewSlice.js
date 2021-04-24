@@ -5,7 +5,6 @@ export const fetchStyleInfo = createAsyncThunk(
   'products/getStyleInfo',
   async (productId, thunkAPI) => {
     const response = await axios.get(`/api/?endpoint=products/${productId}/styles`);
-    console.log(response.data);
     return response.data;
   }
 );
@@ -26,7 +25,7 @@ export const overviewSlice = createSlice({
   extraReducers: {
     [fetchStyleInfo.fulfilled]: (state, action) => {
       state.styles = action.payload.results;
-      state.currentStyle = action.payload.results[1];
+      state.currentStyle = action.payload.results[0];
     }
   }
 });
