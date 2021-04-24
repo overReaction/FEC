@@ -21,7 +21,7 @@ export const fetchReviews = createAsyncThunk(
   'reviews/getReviews',
   async (productId, thunkAPI) => {
     const response = await axios.get(`/api/?endpoint=reviews/?product_id=${productId}&count=100`);
-    return response.data;
+    return response.data.results;
   }
 );
 
@@ -45,7 +45,7 @@ export const appSlice = createSlice({
     //Initial state here
     productId: 18078,
     productInfo: {},
-    reviews: {},
+    reviews: [],
     reviewMetadata: {},
     rating: 0
   },
