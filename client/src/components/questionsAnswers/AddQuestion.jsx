@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from '@material-ui/core/';
 import { ButtonGroup } from '@material-ui/core/';
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddQModal () {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const productId = useSelector((state) => state.app.productId);
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
@@ -71,10 +73,11 @@ export default function AddQModal () {
         name: nickname,
         email: email,
         product_id: productId
-      });
+      })
+        .then(handleClose)
+        .then(() => dispatch(fetchQuestions(productId)));
     }
   };
-
 
   const body = (
     <div style={modalStyle} className={classes.paper}>

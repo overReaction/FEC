@@ -31,7 +31,7 @@ export const qaSlice = createSlice({
   name: 'qa',
   initialState: {
     data: [],
-    moreQs: false,
+    Qcount: 4,
     addQs: false,
     addAs: false,
     searchValue: ''
@@ -42,7 +42,8 @@ export const qaSlice = createSlice({
       state.currentStyle = action.payload;
     },
     handleMoreQsClick: (state, action) => {
-      state.moreQs = !state.moreQs;
+      state.Qcount = state.Qcount + 2;
+      console.log(state.Qcount);
     }
   },
   extraReducers: {

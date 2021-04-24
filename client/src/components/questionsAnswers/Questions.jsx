@@ -16,7 +16,7 @@ const Questions = props => {
     return Object.values(question.answers);
   });
 
-  const moreQsClicked = useSelector((state) => state.qa.moreQs);
+  const Qcount = useSelector((state) => state.qa.Qcount);
 
   useEffect(() => {
     dispatch(fetchQuestions(productId));
@@ -29,9 +29,8 @@ const Questions = props => {
           question.question_body.toLowerCase().includes(props.searchValue.toLowerCase())
         )
           .map((question, index) => {
-            let count = 4;
-            if (!moreQsClicked) {
-              while (index < count) {
+            if (Qcount === 4) {
+              while (index < Qcount) {
                 return (
                   <Question
                     key={`${question.question_id}`}
@@ -42,8 +41,7 @@ const Questions = props => {
                 );
               }
             } else {
-              count += 2;
-              while (index < count) {
+              while (index < Qcount) {
                 return (
                   <Question
                     key={`${question.question_id}`}
