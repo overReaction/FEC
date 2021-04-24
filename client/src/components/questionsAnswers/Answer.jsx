@@ -25,7 +25,7 @@ const Answer = (props) => {
         by {props.answer.answerer_name} &nbsp;
         {new Date(props.answer.date).toString().slice(3, 16)} &nbsp; | &nbsp; Helpful? &nbsp;
         {!helpfulAClicked ?
-          <u
+          <u className="clickable"
             onClick={() => {
               dispatch(incrementHelpfulAnswerCount(props.answer.id));
               setAnswerHelpfulnessCount(answerHelpfulnessCount + 1);
@@ -33,7 +33,7 @@ const Answer = (props) => {
             }}>Yes
           </u> : <span>&nbsp;</span>}
           ({answerHelpfulnessCount}) &nbsp; | &nbsp;
-        {!reported ? <u onClick={() => onReportClick(props.answer.id)}>Report</u> : 'Reported'}
+        {!reported ? <u className="clickable" onClick={() => onReportClick(props.answer.id)}>Report</u> : 'Reported'}
       </span>
     </div>
   );
