@@ -22,7 +22,7 @@ const Answer = (props) => {
       <b>A:</b> {props.answer.body}
       <br />
       <span style={{ fontSize: 11 }}>
-        by {props.answer.answerer_name} &nbsp;
+        by {props.answer.answerer_name === 'Seller' ? <b>Seller</b> : props.answer.answerer_name} &nbsp;
         {new Date(props.answer.date).toString().slice(3, 16)} &nbsp; | &nbsp; Helpful? &nbsp;
         {!helpfulAClicked ?
           <u className="clickable"
