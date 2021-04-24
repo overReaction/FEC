@@ -1,10 +1,15 @@
+import axios from 'axios';
+jest.mock('axios');
+
 import React from "react";
-import { render, fireEvent, waitFor, screen } from '@testing-library/react'; //Allows artificial rendering
+import { render, screen, cleanup } from '@testing-library/react'; //Allows artificial rendering
 import userEvent from '@testing-library/user-event'; //Allows triggering of user events. Not demo'd on this page.
 import '@testing-library/jest-dom'; //Provides a set of custom jest matchers that you can use to extend jest. These will make your tests more declarative, clear to read and to maintain.
+
 import App from '../App.jsx';
 import store from '../../store.js';
 import { Provider } from 'react-redux';
+import { reviewsMeta, reviews, reviewsNone, styles, related, qa, product } from './mockData.js';
 
 /* Some example templates for testing are provided below. In general, you will
 1)render the component (see examples below)
@@ -12,14 +17,13 @@ import { Provider } from 'react-redux';
 3)optionally insert user events to manipulate elements: https://testing-library.com/docs/ecosystem-user-event
 4)test assertions about the component: https://github.com/testing-library/jest-dom */
 
-beforeEach(() => {
-  render(
-    <Provider store={store}>
-      <App />
-    </Provider>);
-});
-
 describe('Overview Widget', () => {
+  beforeEach(() => {
+    render(
+      <Provider store={store}>
+        <App />
+      </Provider>);
+  });
   test('The Overview Widget should render to the screen', () => {
     expect(screen.getByTestId('overview')).toBeInTheDocument();
   });
@@ -42,45 +46,64 @@ describe('Overview Widget', () => {
 });
 
 describe('Product Information component', () => {
-  xtest('Should have a star rating component', async () => {
-  });
-
-  xtest('The star rating should contain a total of 5 stars', () => {
-
-  });
-
-  xtest('The star rating should be representative up to a quarter of a review point', () => {
-
-  });
-
-  xtest('There should be a link next to the star rating stating "Read all <#> reviews', () => {
-
-  });
-
-  xtest('The read all reviews link should scroll the page to Ratings & Reviews section when clicked', () => {
-
-  });
-
-  xtest('The entire star rating section should be hidden if the product has no reviews', () => {
-
-  });
-
-  xtest('Should display a product category', async () => {
-    render(
+  beforeEach(async () => {
+    axios.get.mockResolvedValueOnce({ data: reviewsMeta });
+    axios.get.mockResolvedValueOnce({ data: reviews });
+    axios.get.mockResolvedValueOnce({ data: styles });
+    axios.get.mockResolvedValueOnce({ data: related });
+    axios.get.mockResolvedValueOnce({ data: qa });
+    axios.get.mockResolvedValueOnce({ data: product });
+    await render(
       <Provider store={store}>
         <App />
       </Provider>);
-    expect(screen.getByTestId('product-category')).toBeInTheDocument();
-    await (userEvent.click(screen.getByText('18078')));
+  });
+
+  afterEach(cleanup);
+
+  test('Should have a star rating component', () => {
+    expect(screen.getByTestId("star-rating-section")).toBeInTheDocument();
+  });
+
+  test('The star rating should contain a total of 5 stars', () => {
+    const overview = screen.getByTestId('product-info');
+    expect(overview.getElementsByClassName('MuiRating-decimal').length).toBe(5);
+  });
+
+  test('The star rating should be representative up to a quarter of a review point', () => {
+    const overview = screen.getByTestId('product-info');
+    const rating = overview.getElementsByClassName('MuiRating-root');
+    expect(rating[0]).toHaveAttribute('aria-label', "3.5 Stars");
+  });
+
+  test('There should be a link next to the star rating stating "Read all <#> reviews', () => {
+    expect(screen.getByTestId('reviews-link')).toHaveTextContent('Read all 31 reviews');
+  });
+
+  test('The read all reviews link should scroll the page to Ratings & Reviews section when clicked', () => {
+    expect(screen.getByTestId('reviews-link')).toHaveAttribute('href', '#RatingsReviews');
+  });
+
+  xtest('The entire star rating section should be hidden if the product has no reviews', async () => {
+    await cleanup();
+    await render(
+      <Provider store={store}>
+        <App />
+      </Provider>);
+    expect(screen.getByTestId("star-rating")).not.toBeInTheDocument();
+    expect(screen.getByTestId("reviews-link")).not.toBeInTheDocument();
+  });
+
+  test('Should display a product category', () => {
     expect(screen.getByTestId('product-category')).toHaveTextContent('CATEGORY > Jackets');
   });
 
-  xtest('Should display a product title', () => {
+  test('Should display a product title', () => {
     expect(screen.getByTestId('product-name')).toBeInTheDocument();
-    expect(screen.getByTestId('product-name')).toHaveTextContent('Camo Onoesie');
+    expect(screen.getByTestId('product-name')).toHaveTextContent('Camo Onesie');
   });
 
-  xtest('Should display a price which is derived from the initial default selected style', () => {
+  test('Should display a price which is derived from the initial default selected style', () => {
     expect(screen.getByTestId('price')).toBeInTheDocument();
     expect(screen.getByTestId('price')).toHaveTextContent('$140.00');
   });
