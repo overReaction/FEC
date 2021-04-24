@@ -1,33 +1,41 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
+import { useSelector } from 'react-redux';
+
+import Grid from '@material-ui/core/Grid';
+import Box from "@material-ui/core/Box";
+
 import ReviewSortSearch from './reviewSortSearch.jsx';
 import Review from './review.jsx';
-import Grid from '@material-ui/core/Grid';
 import ReviewActions from './reviewActions.jsx';
 
-// DELETE WHEN FINISHED
-import useStyles from "./tempStyles.jsx";
-
 const ReviewList = (props) => {
-  const classes = useStyles();
+  const reviews = useSelector((state) => state.app.reviews);
+  console.log(reviews);
   return (
-    <div>
-      <Paper className={classes.paper}>
-        reviewList component
-        <Grid container spacing={1}>
-          <Grid item xs={12}>
-            <ReviewSortSearch />
-          </Grid>
-          <Grid item xs={12}>
-            <Review />
-            <Review />
-          </Grid>
-          <Grid item xs={12}>
-            <ReviewActions />
-          </Grid>
-        </Grid>
-      </Paper>
-    </div>
+    <Grid container spacing={1}>
+      <Grid item xs={12}>
+        <ReviewSortSearch />
+      </Grid>
+      <Grid container spacing={1}>
+        {reviews.map((review, index) => {
+          return (
+            <Box
+              item
+              component={Grid}
+              xs={12}
+              key={index}
+              index={index}
+            >
+              <Review review={review}/>
+            </Box>
+          );
+        })}
+      </Grid>
+      <Grid item xs={12}>
+        <ReviewActions />
+      </Grid>
+    </Grid>
+
   );
 };
 
