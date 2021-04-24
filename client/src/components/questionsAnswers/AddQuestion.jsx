@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from '@material-ui/core/';
 import { ButtonGroup } from '@material-ui/core/';
 import Modal from "@material-ui/core/Modal";
-import { useSelector } from 'react-redux';
 
 import { fetchQuestions } from './qaSlice.js';
-
 
 function getModalStyle () {
   return {
@@ -74,8 +73,13 @@ export default function AddQModal () {
         email: email,
         product_id: productId
       })
-        .then(handleClose)
-        .then(() => dispatch(fetchQuestions(productId)));
+        .then(() => dispatch(fetchQuestions(productId)))
+        .then(
+          setEmail(''),
+          setQuestion(''),
+          setNickname(''),
+          handleClose()
+        );
     }
   };
 

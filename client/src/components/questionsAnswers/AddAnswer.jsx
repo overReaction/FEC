@@ -1,10 +1,14 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from '@material-ui/core/';
 import { ButtonGroup } from '@material-ui/core/';
 import Modal from "@material-ui/core/Modal";
+
+import { fetchQuestions } from './qaSlice.js';
 
 function getModalStyle () {
   return {
@@ -32,6 +36,8 @@ const useStyles = makeStyles((theme) => ({
 export default function AddAModal (props) {
   const classes = useStyles();
 
+  const dispatch = useDispatch();
+  const productId = useSelector((state) => state.app.productId);
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
   const [nickname, setNickname] = useState('');
@@ -69,11 +75,12 @@ export default function AddAModal (props) {
         email: email,
         photos: ['']
       })
+        .then(() => dispatch(fetchQuestions(productId)))
         .then(
           setEmail(''),
           setAnswer(''),
           setNickname(''),
-          handleClose('')
+          handleClose()
         );
     }
   };
