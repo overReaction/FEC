@@ -13,9 +13,17 @@ export const fetchRelated = createAsyncThunk(
 export const fetchRelatedInfo = createAsyncThunk(
   'products/getRelatedInfo',
   async (productNumber, thunkAPI) => {
-    console.log('product id: ', productNumber);
     const response = await axios.get(`/api/?endpoint=products/${productNumber}`);
     // console.log('related item info obj: ', response.data);
+    return response.data;
+  }
+);
+
+export const fetchRelatedStyleInfo = createAsyncThunk(
+  'products/getRelatedStyleInfo',
+  async (productNumber, thunkAPI) => {
+    const response = await axios.get(`/api/?endpoint=products/${productNumber}/styles`);
+    // console.log('related item style obj: ', response.data);
     return response.data;
   }
 );
@@ -26,7 +34,8 @@ export const relatedSlice = createSlice({
     //Initial state here
     currentItem: null,
     related: [],
-    relatedInfo: []
+    relatedInfo: [],
+    relatedStyleInfo: []
   },
   //A reducer is a function that receives the current state and an action object, decides how to update the state if necessary, and returns the new state
   //Redux toolkit allows for "mutating" logic in reducers by interally copying initial state and producing a new state object
@@ -42,6 +51,17 @@ export const relatedSlice = createSlice({
     [fetchRelatedInfo.fulfilled]: (state, action) => {
       // console.log('action.payload: ', action.payload);
       state.relatedInfo.push(action.payload);
+    },
+    [fetchRelatedStyleInfo.fulfilled]: (state, action) => {
+      // console.log('action.payload: ', action.payload.results[0].photos[0].thumbnail_url);
+      state.relatedStyleInfo.push(action.payload);
+        // .then(() => {
+        //   state.relatedInfo.map((product) => {
+        //     if (product.id === action.payload.product_id) {
+        //       product.photo_url = action.payload.results[0].photos[0].thumbnail_url;
+        //     }
+        //   });
+        // });
     }
   }
 });
