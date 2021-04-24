@@ -1,23 +1,27 @@
+//React dependencies
 import React from 'react';
+
+//Redux
+import { useSelector } from 'react-redux';
+
+//Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-
-import ProductInformation from './productInformation/productInformation.jsx';
-import ImageGallery from './imageGallery/imageGallery.jsx';
-import StyleSelector from './styleSelector/styleSelector.jsx';
-import AddToCart from './addToCart/addToCart.jsx';
-
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import PinterestIcon from '@material-ui/icons/Pinterest';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import IconButton from '@material-ui/core/IconButton';
 
-import { useSelector } from 'react-redux';
+//Components
+import ProductInformation from './productInformation/productInformation.jsx';
+import ImageGallery from './imageGallery/imageGallery.jsx';
+import StyleSelector from './styleSelector/styleSelector.jsx';
+import AddToCart from './addToCart/addToCart.jsx';
 
 const useStyles = makeStyles(() => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 0,
     flexShrink: 1,
     maxWidth: 450,
     minWidth: 410,
@@ -28,7 +32,6 @@ const useStyles = makeStyles(() => ({
 const Overview = (props) => {
   const classes = useStyles();
   const productInfo = useSelector((state) => state.app.productInfo);
-  console.log(productInfo);
 
   return (
     <div data-testid="overview" style={{ padding: 20 }}>
@@ -37,7 +40,14 @@ const Overview = (props) => {
           <Grid item justify="center" container xs={7}>
             <ImageGallery />
           </Grid>
-          <Grid item container xs={5} spacing={2} direction="column" classes={{ root: classes.root }} justify="left">
+          <Grid item
+            container
+            xs={5}
+            spacing={2}
+            direction="column"
+            classes={{ root: classes.root }}
+            justify="flex-start"
+          >
             <Grid item>
               <ProductInformation />
             </Grid>
@@ -67,20 +77,38 @@ const Overview = (props) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item spacing={2} container xs={12} wrap="wrap">
-          <Grid item xs={7} style={{ border: '1px solid black' }}>
-            <div style={{ fontSize: `1.5em` }}> <b>{productInfo.slogan}</b></div>
+        <Grid item
+          spacing={2}
+          container
+          xs={12}
+          wrap="wrap">
+          <Grid item
+            xs={7}
+            style={{ border: '1px solid black' }}
+          >
+            <div style={{ fontSize: `1.5em` }}>
+              <b>{productInfo.slogan}</b>
+            </div>
             {productInfo.description}
           </Grid>
-          <Grid item xs={5} style={{ border: '1px solid black' }}>
+          <Grid item
+            xs={5}
+            style={{ border: '1px solid black' }}
+          >
             <Grid item container>
               <Grid item xs={12}>
                 <div style={{ fontSize: `1em` }}> <b>FEATURES > </b></div>
               </Grid>
               {productInfo.features ?
-                productInfo.features.map((feature) => {
+                productInfo.features.map((feature, index) => {
                   return (
-                    <Grid item container alignItems="center" xs={12} style={{ paddingLeft: '1em' }}>
+                    <Grid item
+                      container
+                      alignItems="center"
+                      xs={12}
+                      style={{ paddingLeft: '1em' }}
+                      key={index}
+                    >
                       <Grid item>
                         <CheckCircleOutlineIcon/>
                       </Grid>

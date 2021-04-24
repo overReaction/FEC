@@ -1,9 +1,18 @@
+//React
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-const axios = require('axios');
+
+//Redux
 import { useSelector, useDispatch } from 'react-redux';
 import { throwErr, updateSizeDropDownDisplay, updateQuantDropDownDisplay, updateSkuInfo } from './cartSlice.js';
+
+//Axios
+const axios = require('axios');
+
+//Material UI
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+
+//Components
 import SizeSelect from './sizeSelect.jsx';
 import QuantSelect from './quantSelect.jsx';
 

@@ -1,14 +1,22 @@
+//React
 import React, { useEffect } from 'react';
+
+//Redux
 import { useSelector, useDispatch } from 'react-redux';
+
+//Material UI
 import Grid from '@material-ui/core/Grid';
+
+//Components
 import StarRating from '../../starRating.jsx';
 import { fetchReviewMetadata, fetchReviews } from '../../appSlice.js';
 
 const ProductInformation = (props) => {
   const dispatch = useDispatch();
-  const currentStyle = useSelector((state) => state.overview.currentStyle);
+
   const productInfo = useSelector((state) => state.app.productInfo);
   const productId = useSelector((state) => state.app.productId);
+  const currentStyle = useSelector((state) => state.overview.currentStyle);
   const rating = useSelector((state) => state.app.rating);
   const numOfReviews = useSelector((state) => {
     if (Object.keys(state.app.reviews).length > 0) {

@@ -1,22 +1,29 @@
+//React dependencies
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+//Material UI
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+
+//Redux
+import { changeProductId, fetchProductInfo } from './appSlice.js';
+
+//Components
 import Overview from './overview/overview.jsx';
 import RatingsReviews from './ratingsReviews/ratingsReviews.jsx';
 import QuestionsAnswers from './questionsAnswers/questionsAnswers.jsx';
 import RelatedItemsComparison from './relatedItemsComparison/relatedItemsComparison.jsx';
-import React, { useEffect } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { useSelector, useDispatch } from 'react-redux';
-import { changeProductId, fetchProductInfo } from './appSlice.js';
 import ExpandedView from './overview/imageGallery/galleryExpanded.jsx';
 import MagnifiedView from './overview/imageGallery/galleryMagnified.jsx';
-import Grid from '@material-ui/core/Grid';
 
+//App component
 var App = () => {
-  const productId = useSelector((state) => state.app.productId); //Accesses the store to retrieve current state
+  const productId = useSelector((state) => state.app.productId);
   const viewExpanded = useSelector((state) => state.overview.expanded);
   const viewMagnified = useSelector((state) => state.overview.magnified);
-  const dispatch = useDispatch(); //Dispatch an action to the store to update state
+  const dispatch = useDispatch();
 
-  //Use Effect is similiar to component did mount
   useEffect(() => {
     document.title = `Let's OverReact!`;
     dispatch(fetchProductInfo(productId));

@@ -1,6 +1,5 @@
+//React
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-//import ReactImageMagnify from 'react-image-magnify';
 
 //Material-UI dependencies
 import IconButton from '@material-ui/core/IconButton';
@@ -11,6 +10,7 @@ import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 
 //Component/Redux dependencies
+import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement, setStep } from './imageGallerySlice.js';
 import { expandView, magnifyView } from '../overviewSlice.js';
 
@@ -62,7 +62,7 @@ const ExpandedView = (props) => {
         {currentStyle.photos.map((photo, index) => {
           if (activeStep === index) {
             return (
-              <Grid item>
+              <Grid item key={index}>
                 <IconButton onClick={() => dispatch(setStep(index))}>
                   <RadioButtonCheckedIcon style={{ color: 'white' }}/>
                 </IconButton>
@@ -70,7 +70,7 @@ const ExpandedView = (props) => {
             );
           } else {
             return (
-              <Grid item>
+              <Grid item key={index}>
                 <IconButton onClick={() => dispatch(setStep(index))}>
                   <RadioButtonUncheckedIcon style={{ color: 'white' }}/>
                 </IconButton>
