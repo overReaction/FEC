@@ -11,8 +11,6 @@ import ReviewActions from './reviewActions.jsx';
 const ReviewList = (props) => {
   const reviews = useSelector((state) => state.app.reviews);
   const numReviewsToShow = useSelector((state) => state.reviews.reviewsCount);
-
-  console.log(reviews);
   return (
     <Grid container spacing={1}>
       <Grid item xs={12}>
