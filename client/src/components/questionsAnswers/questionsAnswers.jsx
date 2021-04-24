@@ -11,6 +11,7 @@ import { Paper } from '@material-ui/core/';
 
 import Questions from './Questions.jsx';
 import SearchBar from './SearchBar.jsx';
+import AddQModal from './AddQuestion.jsx';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,9 +31,20 @@ const QuestionsAnswers = props => {
   const classes = useStyles();
 
   const [searchValue, setSearchValue] = useState('');
+  const [searchValueShort, setSearchValueShort] = useState('');
 
   const onInputChange = e => {
-    setSearchValue(e.target.value);
+    if (e.target.value.length > 2) {
+      setSearchValue(e.target.value);
+    } else {
+      setSearchValue('');
+      setSearchValueShort(e.target.value);
+    }
+  };
+
+  const onSearch = () => {
+    let currentSearchValue = searchValueShort;
+    setSearchValue(currentSearchValue);
   };
 
   return (
@@ -40,14 +52,16 @@ const QuestionsAnswers = props => {
       <span style={{ marginLeft: 15 }}>QUESTIONS & ANSWERS</span>
       <div>
         <Paper className={classes.paper}>
-          <SearchBar onInputChange={onInputChange} />
+          <SearchBar onInputChange={onInputChange} onSearchClick={onSearch}/>
           <Grid>
             <Questions searchValue={searchValue}/>
           </Grid>
-          <ButtonGroup aria-label="outlined primary button group">
+          <ButtonGroup>
             <Button
+              data-testid="moreQsButton"
+              variant="outlined"
               onClick={() => dispatch(handleMoreQsClick())}> MORE ANSWERED QUESTIONS </Button>
-            <Button onClick={() => console.log('+')}> ADD A QUESTION + </Button>
+            <AddQModal />
           </ButtonGroup>
           <br />
           <br />

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
@@ -29,11 +30,12 @@ export default function SearchBar (props) {
   return (
     <div component="form" className={classes.root}>
       <InputBase
+        data-testid="search-bar"
         className={classes.input}
         placeholder=" HAVE A QUESTION? SEARCH FOR ANSWERS..."
         onChange={props.onInputChange}
       />
-      <IconButton type="submit" className={classes.iconButton} aria-label="search">
+      <IconButton type="submit" onClick={props.onSearchClick} className={classes.iconButton} aria-label="search">
         <SearchIcon />
       </IconButton>
     </div>

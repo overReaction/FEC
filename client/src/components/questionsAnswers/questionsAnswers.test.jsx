@@ -13,10 +13,29 @@ import { Provider } from 'react-redux';
 4)test assertions about the component: https://github.com/testing-library/jest-dom */
 
 describe('qa Widget', () => {
+  beforeEach(() => {
+    render(
+      <Provider store={store}>
+        <App />
+      </Provider>);
+  });
   test('The qa Widget should render to the screen', () => {
-    render(<Provider store={store}>
-      <App />
-    </Provider>,);
-    expect(screen.getByTestId('qa')).toHaveTextContent('QUESTIONS & ANSWERS');
+    expect(screen.getByTestId('qa')).toBeInTheDocument();
+  });
+
+  test('Should have an list of questions', () => {
+    expect(screen.getByTestId('questions')).toBeInTheDocument();
+  });
+
+  test('Should have a search bar', () => {
+    expect(screen.getByTestId('search-bar')).toBeInTheDocument();
+  });
+
+  test('Should have an Add A Question button', () => {
+    expect(screen.getByTestId('addQbutton')).toBeInTheDocument();
+  });
+
+  test('Should have an More Answered Questions button', () => {
+    expect(screen.getByTestId('moreQsButton')).toBeInTheDocument();
   });
 });

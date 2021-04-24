@@ -1,6 +1,8 @@
 //React dependencies
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { ButtonGroup } from '@material-ui/core/';
+import { Button } from '@material-ui/core/';
 
 //Material UI
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -48,13 +50,15 @@ var App = () => {
       <React.Fragment>
         <CssBaseline />
         <Grid container direction="column">
-          <Grid item>
-            <h2> App </h2>
+          <Grid item style={{ textAlign: 'center' }}>
+            <h1> Project Catwalk </h1>
             <div> Try clicking one of these buttons to update the product id
               (imagine you were clicking a thumbnail for a related item)</div>
-            <button onClick={() => dispatch(changeProductId(18078))}> 18078 </button>
-            <button onClick={() => dispatch(changeProductId(18079))}> 18079 </button>
-            <button onClick={() => dispatch(changeProductId(18080))}> 18080 </button>
+            <ButtonGroup aria-label="outlined primary button group">
+              <Button onClick={() => dispatch(changeProductId(18078))}> 18078 </Button>
+              <Button onClick={() => dispatch(changeProductId(18079))}> 18079 </Button>
+              <Button onClick={() => dispatch(changeProductId(18080))}> 18080 </Button>
+            </ButtonGroup>
           </Grid>
           <Grid item>
             <Overview />
