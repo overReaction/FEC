@@ -71,15 +71,7 @@ export default function AddQModal () {
         name: nickname,
         email: email,
         product_id: productId
-      })
-        .then(response => {
-          console.log('success:', response.data);
-        })
-        .catch(error => {
-          console.log('err posting new q:', error.message);
-        });
-    } else {
-      console.log('Please enter required info!');
+      });
     }
   };
 

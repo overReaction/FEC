@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from '@material-ui/core/';
 import { ButtonGroup } from '@material-ui/core/';
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function AddAModal () {
+export default function AddAModal (props) {
   const classes = useStyles();
 
   const [modalStyle] = useState(getModalStyle);
@@ -59,6 +60,23 @@ export default function AddAModal () {
     }
   };
 
+  const onSubmitClick = (questionId) => {
+    if (answer.length && nickname.length && email.length) {
+      axios.post(`/api/?endpoint=qa/questions/${questionId}/answers`, {
+        body: answer,
+        name: nickname,
+        email: email,
+        photos: ['']
+      })
+        .then(
+          setEmail(''),
+          setAnswer(''),
+          setNickname(''),
+          handleClose('')
+        );
+    }
+  };
+
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <h2 id="ask-a-question-modal">Answer A Question</h2>
@@ -73,7 +91,7 @@ export default function AddAModal () {
         <br/>
         <ButtonGroup>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button>Submit</Button>
+          <Button onClick={() => onSubmitClick(props.questionId)}>Submit</Button>
         </ButtonGroup>
       </form>
     </div>

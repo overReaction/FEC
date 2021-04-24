@@ -43,7 +43,8 @@ const Question = props => {
                 }}>Yes</a> : '   '
             }
           </u>
-            ({questionHelpfulnessCount}) &nbsp; | &nbsp; <u style={{ display: 'inline-block' }}><AddAModal /></u>
+            ({questionHelpfulnessCount}) &nbsp; | &nbsp; <u style={{ display: 'inline-block' }}>
+            <AddAModal questionId={questionId}/></u>
         </span>
         <div>
           <Answers answers={props.answers} index={props.index}/>
