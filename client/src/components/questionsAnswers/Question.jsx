@@ -39,7 +39,7 @@ const Question = props => {
     <Paper className={classes.paper}>
       <div>
         <span><b>Q: {props.question.question_body}</b></span>
-        <span style={{ float: "right" }}>
+        <span style={{ float: 'right', marginTop: -15 }}>
           Helpful? &nbsp;
           {!helpfulQClicked ?
             <u className="clickable"
