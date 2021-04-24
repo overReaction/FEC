@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function AddQModal () {
+export default function AddAModal () {
   const classes = useStyles();
 
   const [modalStyle] = useState(getModalStyle);

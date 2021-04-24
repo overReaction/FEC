@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from '@material-ui/core/';
 import { ButtonGroup } from '@material-ui/core/';
 import Modal from "@material-ui/core/Modal";
+import { useSelector } from 'react-redux';
+
+import { fetchQuestions } from './qaSlice.js';
 
 
 function getModalStyle () {
@@ -28,9 +32,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function AddAModal () {
+export default function AddQModal () {
   const classes = useStyles();
-
+  const productId = useSelector((state) => state.app.productId);
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
   const [nickname, setNickname] = useState('');
@@ -60,6 +64,26 @@ export default function AddAModal () {
     }
   };
 
+  const onSubmitClick = () => {
+    if (question.length && nickname.length && email.length) {
+      axios.post('/api/?endpoint=qa/questions', {
+        body: question,
+        name: nickname,
+        email: email,
+        product_id: productId
+      })
+        .then(response => {
+          console.log('success:', response.data);
+        })
+        .catch(error => {
+          console.log('err posting new q:', error.message);
+        });
+    } else {
+      console.log('Please enter required info!');
+    }
+  };
+
+
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <h2 id="ask-a-question-modal">Ask A Question</h2>
@@ -74,7 +98,7 @@ export default function AddAModal () {
         <br/>
         <ButtonGroup>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button>Submit</Button>
+          <Button onClick={onSubmitClick}>Submit</Button>
         </ButtonGroup>
       </form>
     </div>
