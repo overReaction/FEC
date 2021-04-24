@@ -62,14 +62,14 @@ const Overview = (props) => {
                 <Grid item>
                   <span><b>SHARE > </b></span>
                 </Grid>
-                <Grid>
-                  <IconButton href="#" style={{ color: "black" }}>
+                <Grid data-testid="share-icons">
+                  <IconButton data-testid="fb-icon" href="#" style={{ color: "black" }}>
                     <FacebookIcon/>
                   </IconButton>
-                  <IconButton href="#" style={{ color: "black" }}>
+                  <IconButton data-testid="twitter-icon" href="#" style={{ color: "black" }}>
                     <TwitterIcon/>
                   </IconButton>
-                  <IconButton href="#" style={{ color: "black" }}>
+                  <IconButton data-testid="pinterest-icon" href="#" style={{ color: "black" }}>
                     <PinterestIcon/>
                   </IconButton>
                 </Grid>
@@ -77,54 +77,59 @@ const Overview = (props) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item
-          spacing={2}
-          container
-          xs={12}
-          wrap="wrap">
+        {productInfo.description ?
           <Grid item
-            xs={7}
-            style={{ border: '1px solid black' }}
+            spacing={2}
+            container
+            xs={12}
+            wrap="wrap"
+            data-testid="product-details"
           >
-            <div style={{ fontSize: `1.5em` }}>
-              <b>{productInfo.slogan}</b>
-            </div>
-            {productInfo.description}
-          </Grid>
-          <Grid item
-            xs={5}
-            style={{ border: '1px solid black' }}
-          >
-            <Grid item container>
-              <Grid item xs={12}>
-                <div style={{ fontSize: `1em` }}> <b>FEATURES > </b></div>
-              </Grid>
-              {productInfo.features ?
-                productInfo.features.map((feature, index) => {
-                  return (
-                    <Grid item
-                      container
-                      alignItems="center"
-                      xs={12}
-                      style={{ paddingLeft: '1em' }}
-                      key={index}
-                    >
-                      <Grid item>
-                        <CheckCircleOutlineIcon/>
-                      </Grid>
-                      <Grid item>
-                        {feature.feature} - {feature.value}
-                      </Grid>
-                    </Grid>
-                  );
-                }) :
-                <div>
-                  Loading
-                </div>
-              }
+            <Grid item
+              xs={7}
+              style={{ border: '1px solid black' }}
+            >
+              <div style={{ fontSize: `1.5em` }}>
+                <b>{productInfo.slogan}</b>
+              </div>
+              {productInfo.description}
             </Grid>
-          </Grid>
-        </Grid>
+            <Grid item
+              xs={5}
+              style={{ border: '1px solid black' }}
+            >
+              <Grid item container>
+                <Grid item xs={12}>
+                  <div style={{ fontSize: `1em` }}> <b>FEATURES > </b></div>
+                </Grid>
+                {productInfo.features ?
+                  productInfo.features.map((feature, index) => {
+                    return (
+                      <Grid item
+                        container
+                        alignItems="center"
+                        xs={12}
+                        style={{ paddingLeft: '1em' }}
+                        key={index}
+                      >
+                        <Grid item>
+                          <CheckCircleOutlineIcon/>
+                        </Grid>
+                        <Grid item>
+                          {feature.feature} - {feature.value}
+                        </Grid>
+                      </Grid>
+                    );
+                  }) :
+                  <div>
+                    Loading
+                  </div>
+                }
+              </Grid>
+            </Grid>
+          </Grid> :
+          <Grid />
+        }
       </Grid>
     </div>
   );

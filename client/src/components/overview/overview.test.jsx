@@ -4,6 +4,7 @@ jest.mock('axios');
 import React from "react";
 import { render, screen, cleanup } from '@testing-library/react'; //Allows artificial rendering
 import userEvent from '@testing-library/user-event'; //Allows triggering of user events. Not demo'd on this page.
+import { act } from "react-dom/test-utils";
 import '@testing-library/jest-dom'; //Provides a set of custom jest matchers that you can use to extend jest. These will make your tests more declarative, clear to read and to maintain.
 
 import App from '../App.jsx';
@@ -58,8 +59,9 @@ describe('Product Information component', () => {
         <App />
       </Provider>);
   });
-
-  afterEach(cleanup);
+  afterEach(async () => {
+    cleanup();
+  });
 
   test('Should have a star rating component', () => {
     expect(screen.getByTestId("star-rating-section")).toBeInTheDocument();
@@ -84,14 +86,24 @@ describe('Product Information component', () => {
     expect(screen.getByTestId('reviews-link')).toHaveAttribute('href', '#RatingsReviews');
   });
 
-  xtest('The entire star rating section should be hidden if the product has no reviews', async () => {
-    await cleanup();
-    await render(
-      <Provider store={store}>
-        <App />
-      </Provider>);
-    expect(screen.getByTestId("star-rating")).not.toBeInTheDocument();
-    expect(screen.getByTestId("reviews-link")).not.toBeInTheDocument();
+  test('The entire star rating section should be hidden if the product has no reviews', () => {
+    let container = document.createElement("div");
+    document.body.appendChild(container);
+
+    act(() => {
+      axios.get.mockResolvedValueOnce({ data: reviewsMeta });
+      axios.get.mockResolvedValueOnce({ data: reviewsNone });
+      axios.get.mockResolvedValueOnce({ data: styles });
+      axios.get.mockResolvedValueOnce({ data: related });
+      axios.get.mockResolvedValueOnce({ data: qa });
+      axios.get.mockResolvedValueOnce({ data: product });
+      render(
+        <Provider store={store}>
+          <App />
+        </Provider>, container);
+    });
+
+    expect(container.querySelector("[data-testid=star-rating]")).not.toBeInTheDocument();
   });
 
   test('Should display a product category', () => {
@@ -103,24 +115,56 @@ describe('Product Information component', () => {
     expect(screen.getByTestId('product-name')).toHaveTextContent('Camo Onesie');
   });
 
-  test('Should display a price which is derived from the initial default selected style', () => {
-    expect(screen.getByTestId('price')).toBeInTheDocument();
+  test('Should display a price which is derived from the initial default selected style', async () => {
     expect(screen.getByTestId('price')).toHaveTextContent('$140.00');
   });
 
-  xtest('The price should update based on a style being selected', () => {
-
+  test('The price should update based on a style being selected', () => {
+    userEvent.click(screen.getByTestId('style2'));
+    expect(screen.getByTestId('price')).toHaveTextContent('SALE $100.00');
   });
 
-  xtest('If an item is on sale, the sale price should appear in red followed by the struckthrough original price', () => {
-
+  test('If an item is on sale, the sale price should appear in red followed by the struckthrough original price', () => {
+    userEvent.click(screen.getByTestId('style2'));
+    expect(screen.getByTestId('price')).toHaveTextContent('SALE $100.00 $140.00');
+    expect(screen.getByTestId('price')).not.toHaveTextContent('SALE $100.00 $150.00');
   });
 
-  xtest('Should show a product overview section if available for that item, and not show it if unavailable', () => {
+  test('Should show a product overview section if available for that item, and not show it if unavailable', () => {
+    expect(screen.getByTestId('product-details')).toHaveTextContent('The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.');
+    let noDescription = { ...product };
+    delete noDescription.description;
 
+    let container = document.createElement("div");
+    document.body.appendChild(container);
+
+    act(() => {
+      axios.get.mockResolvedValueOnce({ data: reviewsMeta });
+      axios.get.mockResolvedValueOnce({ data: reviewsNone });
+      axios.get.mockResolvedValueOnce({ data: styles });
+      axios.get.mockResolvedValueOnce({ data: related });
+      axios.get.mockResolvedValueOnce({ data: qa });
+      axios.get.mockResolvedValueOnce({ data: noDescription });
+
+      render(
+        <Provider store={store}>
+          <App />
+        </Provider>, container);
+    });
+
+    expect(container.querySelector("[data-testid=product-details]")).not.toBeInTheDocument();
   });
 
-  xtest('Should have share buttons for Facebook, Twitter, and Pinterest', () => {
-
+  test('Should have share buttons for Facebook, Twitter, and Pinterest', () => {
+    const fbIcon = screen.getByTestId('fb-icon');
+    const twitterIcon = screen.getByTestId('twitter-icon');
+    const pinterestIcon = screen.getByTestId('pinterest-icon');
+    const shareDiv = screen.getByTestId('share-icons');
+    expect(shareDiv).toBeVisible();
+    expect(shareDiv).toContainElement(fbIcon);
+    expect(shareDiv).toContainElement(twitterIcon);
+    expect(shareDiv).toContainElement(pinterestIcon);
   });
 });
+
+
