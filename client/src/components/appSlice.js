@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const axios = require('axios');
 
-//This is how to use middleware (redux thunk, specificially) to perform async actions
 export const fetchProductInfo = createAsyncThunk(
   'products/getProductInfo',
   async (productId, thunkAPI) => {
@@ -22,8 +21,7 @@ export const fetchReviews = createAsyncThunk(
   'reviews/getReviews',
   async (productId, thunkAPI) => {
     const response = await axios.get(`/api/?endpoint=reviews/?product_id=${productId}&count=100`);
-    console.log(response.data);
-    return response.data;
+    return response.data.results;
   }
 );
 
@@ -47,7 +45,7 @@ export const appSlice = createSlice({
     //Initial state here
     productId: 18078,
     productInfo: {},
-    reviews: {},
+    reviews: [],
     reviewMetadata: {},
     rating: 0
   },

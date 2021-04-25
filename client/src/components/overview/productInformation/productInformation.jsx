@@ -1,22 +1,25 @@
+//React
 import React, { useEffect } from 'react';
+
+//Redux
 import { useSelector, useDispatch } from 'react-redux';
+
+//Material UI
 import Grid from '@material-ui/core/Grid';
+import Box from "@material-ui/core/Box";
+
+//Components
 import StarRating from '../../starRating.jsx';
 import { fetchReviewMetadata, fetchReviews } from '../../appSlice.js';
 
 const ProductInformation = (props) => {
   const dispatch = useDispatch();
-  const currentStyle = useSelector((state) => state.overview.currentStyle);
+
   const productInfo = useSelector((state) => state.app.productInfo);
   const productId = useSelector((state) => state.app.productId);
+  const currentStyle = useSelector((state) => state.overview.currentStyle);
   const rating = useSelector((state) => state.app.rating);
-  const numOfReviews = useSelector((state) => {
-    if (Object.keys(state.app.reviews).length > 0) {
-      return state.app.reviews.results.length;
-    } else {
-      return 0;
-    }
-  });
+  const numOfReviews = useSelector((state) => state.app.reviews.length);
 
   useEffect(() => {
     dispatch(fetchReviewMetadata(productId));
@@ -26,22 +29,42 @@ const ProductInformation = (props) => {
   return (
     <div data-testid="product-info">
       <Grid container spacing={3} direction="column">
-        <Grid
-          item
-          container
-          alignItems="center"
-          style={numOfReviews === 0 ? { visibility: 'hidden' } : {}}
-        >
-          <Grid item>
-            <StarRating rating={rating}/>
-          </Grid>
-          <Grid item>
-            &nbsp; <a href="#RatingsReviews">Read all {numOfReviews} reviews</a>
-          </Grid>
-        </Grid>
-        <Grid item data-testid="product-name" >
-          <span style={{ fontSize: 14, lineHeight: 100 + '%' }}> <b>CATEGORY ></b> {productInfo.category} <br/></span>
-          <span style={{ fontSize: 40, lineHeight: 75 + '%' }}> {productInfo.name} </span>
+        {numOfReviews === 0 ?
+          <Box
+            component={Grid}
+            item
+            container
+            alignItems="center"
+            data-testid="star-rating-section"
+            display="none"
+          /> :
+          <Box
+            component={Grid}
+            item
+            container
+            alignItems="center"
+            data-testid="star-rating-section"
+          >
+            <Grid item data-testid="star-rating">
+              <StarRating rating={rating}/>
+            </Grid>
+            <Grid item>
+              &nbsp; <a data-testid="reviews-link" href="#RatingsReviews">Read all {numOfReviews} reviews</a>
+            </Grid>
+          </Box>
+        }
+
+        <Grid item>
+          <span
+            data-testid="product-category"
+            style={{ fontSize: 14, lineHeight: 100 + '%' }}
+          > <b>CATEGORY ></b> {productInfo.category} <br/>
+          </span>
+          <span
+            data-testid="product-name"
+            style={{ fontSize: 40, lineHeight: 75 + '%' }}
+          > {productInfo.name}
+          </span>
         </Grid>
         <Grid item data-testid="price">
           {(currentStyle) && currentStyle.sale_price ?

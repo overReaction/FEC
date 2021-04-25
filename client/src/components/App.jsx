@@ -1,51 +1,81 @@
+//React dependencies
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ButtonGroup } from '@material-ui/core/';
+import { Button } from '@material-ui/core/';
+
+//Material UI
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+
+//Redux
+import { changeProductId, fetchProductInfo } from './appSlice.js';
+
+//Components
 import Overview from './overview/overview.jsx';
 import RatingsReviews from './ratingsReviews/ratingsReviews.jsx';
 import QuestionsAnswers from './questionsAnswers/questionsAnswers.jsx';
 import RelatedItemsComparison from './relatedItemsComparison/relatedItemsComparison.jsx';
-import React, { useEffect } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { useSelector, useDispatch } from 'react-redux';
-import { changeProductId, fetchProductInfo } from './appSlice.js';
-import Grid from '@material-ui/core/Grid';
+import ExpandedView from './overview/imageGallery/galleryExpanded.jsx';
+import MagnifiedView from './overview/imageGallery/galleryMagnified.jsx';
 
+//App component
 var App = () => {
-  const productId = useSelector((state) => state.app.productId); //Accesses the store to retrieve current state
-  const dispatch = useDispatch(); //Dispatch an action to the store to update state
+  const productId = useSelector((state) => state.app.productId);
+  const viewExpanded = useSelector((state) => state.overview.expanded);
+  const viewMagnified = useSelector((state) => state.overview.magnified);
+  const dispatch = useDispatch();
 
-  //Use Effect is similiar to component did mount
   useEffect(() => {
     document.title = `Let's OverReact!`;
     dispatch(fetchProductInfo(productId));
   });
 
-  return (
-    <div>
-      <CssBaseline />
-      <Grid container direction="column">
-        <Grid item>
-          <h2> App </h2>
-          <div> Here is our current product number: <b>{productId}</b>  </div>
-          <div> Try clicking one of these buttons to update the product id
-            (imagine you were clicking a thumbnail for a related item)</div>
-          <button onClick={() => dispatch(changeProductId(18078))}> 18078 </button>
-          <button onClick={() => dispatch(changeProductId(18079))}> 18079 </button>
-          <button onClick={() => dispatch(changeProductId(18080))}> 18080 </button>
+  if (viewMagnified) {
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <MagnifiedView/>
+      </React.Fragment>
+    );
+  } else if (viewExpanded) {
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <ExpandedView/>
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <Grid container direction="column">
+          <Grid item style={{ textAlign: 'center' }}>
+            <h1> Project Catwalk </h1>
+            <div> Try clicking one of these buttons to update the product id
+              (imagine you were clicking a thumbnail for a related item)</div>
+            <ButtonGroup aria-label="outlined primary button group">
+              <Button onClick={() => dispatch(changeProductId(18078))}> 18078 </Button>
+              <Button onClick={() => dispatch(changeProductId(18079))}> 18079 </Button>
+              <Button onClick={() => dispatch(changeProductId(18080))}> 18080 </Button>
+            </ButtonGroup>
+          </Grid>
+          <Grid item>
+            <Overview />
+          </Grid>
+          <Grid item>
+            <RelatedItemsComparison />
+          </Grid>
+          <Grid item>
+            <QuestionsAnswers />
+          </Grid>
+          <Grid item>
+            <RatingsReviews />
+          </Grid>
         </Grid>
-        <Grid item>
-          <Overview />
-        </Grid>
-        <Grid item>
-          <RelatedItemsComparison />
-        </Grid>
-        <Grid item>
-          <QuestionsAnswers />
-        </Grid>
-        <Grid item>
-          <RatingsReviews />
-        </Grid>
-      </Grid>
-    </div>
-  );
+      </React.Fragment>
+    );
+  }
 };
 
 export default App;

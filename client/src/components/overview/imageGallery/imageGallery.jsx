@@ -1,7 +1,10 @@
 //React dependencies
 import React from 'react';
+
+//Redux
 import { useSelector } from 'react-redux';
 
+//Material UI
 import Grid from '@material-ui/core/Grid';
 
 //Component/Redux dependencies
@@ -14,11 +17,11 @@ const ImageGallery = (props) => {
 
   if (currentStyle) {
     return (
-      <Grid container alignItems="center" wrap="nowrap">
+      <Grid data-testid="gallery" container alignItems="center" wrap="nowrap">
         <Grid item>
           <GalleryNav />
         </Grid>
-        <Grid item>
+        <Grid item container justify="center">
           <GalleryMainImg/>
         </Grid>
       </Grid>

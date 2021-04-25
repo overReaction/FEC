@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeProductId } from '../appSlice.js';
+import { handleMoreQsClick } from './qaSlice.js';
 
 import { Grid } from '@material-ui/core/';
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,7 +11,7 @@ import { Paper } from '@material-ui/core/';
 
 import Questions from './Questions.jsx';
 import SearchBar from './SearchBar.jsx';
-// import axios from 'axios';
+import AddQModal from './AddQuestion.jsx';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,23 +28,43 @@ const useStyles = makeStyles((theme) => ({
 const QuestionsAnswers = props => {
   const productId = useSelector((state) => state.app.productId);
   const dispatch = useDispatch();
-
   const classes = useStyles();
+
+  const [searchValue, setSearchValue] = useState('');
+  const [searchValueShort, setSearchValueShort] = useState('');
+
+  const onInputChange = e => {
+    if (e.target.value.length > 2) {
+      setSearchValue(e.target.value);
+    } else {
+      setSearchValue('');
+      setSearchValueShort(e.target.value);
+    }
+  };
+
+  const onSearch = () => {
+    let currentSearchValue = searchValueShort;
+    setSearchValue(currentSearchValue);
+  };
 
   return (
     <div data-testid="qa">
-      <h2>Questions & Answers</h2>
+      <span style={{ marginLeft: 15 }}>QUESTIONS & ANSWERS</span>
       <div>
         <Paper className={classes.paper}>
-          <SearchBar />
+          <SearchBar onInputChange={onInputChange} onSearchClick={onSearch}/>
           <Grid>
-            <Questions />
+            <Questions searchValue={searchValue}/>
           </Grid>
-          <ButtonGroup aria-label="outlined primary button group">
-            <Button onClick={() => console.log('mas')}> MORE ANSWERED QUESTIONS </Button>
-            <Button onClick={() => console.log('+')}> ADD A QUESTION + </Button>
+          <ButtonGroup>
+            <Button
+              data-testid="moreQsButton"
+              variant="outlined"
+              onClick={() => dispatch(handleMoreQsClick())}> MORE ANSWERED QUESTIONS </Button>
+            <AddQModal />
           </ButtonGroup>
-          <br></br>
+          <br />
+          <br />
           <ButtonGroup aria-label="outlined primary button group">
             <Button onClick={() => dispatch(changeProductId(18084))}> 18084 </Button>
             <Button onClick={() => dispatch(changeProductId(18085))}> 18085 </Button>

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from '@testing-library/react'; //Allows artificial rendering
-import userEvent from '@testing-library/user-event'; //Allows triggering of user events. Not demo'd on this page.
+// import userEvent from '@testing-library/user-event'; //Allows triggering of user events. Not demo'd on this page.
 import '@testing-library/jest-dom'; //Provides a set of custom jest matchers that you can use to extend jest. These will make your tests more declarative, clear to read and to maintain.
 import App from '../App.jsx';
 import store from '../../store.js';
@@ -13,10 +13,29 @@ import { Provider } from 'react-redux';
 4)test assertions about the component: https://github.com/testing-library/jest-dom */
 
 describe('qa Widget', () => {
+  beforeEach(() => {
+    render(
+      <Provider store={store}>
+        <App />
+      </Provider>);
+  });
   test('The qa Widget should render to the screen', () => {
-    render(<Provider store={store}>
-      <App />
-    </Provider>,);
-    expect(screen.getByTestId('qa')).toHaveTextContent('Questions & Answers');
+    expect(screen.getByTestId('qa')).toBeInTheDocument();
+  });
+
+  test('Should have an list of questions', () => {
+    expect(screen.getByTestId('questions')).toBeInTheDocument();
+  });
+
+  test('Should have a search bar', () => {
+    expect(screen.getByTestId('search-bar')).toBeInTheDocument();
+  });
+
+  test('Should have an Add A Question button', () => {
+    expect(screen.getByTestId('addQbutton')).toBeInTheDocument();
+  });
+
+  test('Should have an More Answered Questions button', () => {
+    expect(screen.getByTestId('moreQsButton')).toBeInTheDocument();
   });
 });

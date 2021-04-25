@@ -60,6 +60,7 @@ const StyleSelector = (props) => {
               <GridListTile
                 xs={3}
                 key={style.style_id}
+                data-testid={`style${index}`}
                 cols={1}
                 onClick={() => dispatch(selectStyle(style))}
                 classes={{ tile: classes.root }}

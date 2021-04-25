@@ -1,29 +1,43 @@
-import React from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { changeProductId } from '../appSlice.js';
-// import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-// import Paper from '@material-ui/core/Paper';
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { incrementHelpfulAnswerCount } from './qaSlice';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'left',
-    color: theme.palette.text.secondary
-  }
-}));
+const Answer = (props) => {
+  const dispatch = useDispatch();
 
-const Answer = props => {
-  const classes = useStyles();
+  const [answerHelpfulnessCount, setAnswerHelpfulnessCount] = useState(props.answer.helpfulness);
+  const [helpfulAClicked, setHelpfulAClicked] = useState(false);
+  const [reported, setReported] = useState(false);
+
+  const onReportClick = (answerId) => {
+    axios.put(`/api/?endpoint=qa/answers/${answerId}/report`)
+      .then(setReported(true));
+  };
 
   return (
-    <div className={classes.paper}>
-      <span><b>A: </b>{`${props.answer.body} ${props.answer.id}`}</span>
+    <div style={{ marginLeft: 10 }}>
+      <br />
+      <b>A:</b> {props.answer.body}
+      <br />
+      <span style={{ fontSize: 11 }}>
+        by {props.answer.answerer_name === 'Seller' ? <b>Seller</b> : props.answer.answerer_name} &nbsp;
+        {new Date(props.answer.date).toString().slice(3, 16)} &nbsp; | &nbsp; Helpful? &nbsp;
+        {!helpfulAClicked ?
+          <u className="clickable"
+            onClick={() => {
+              dispatch(incrementHelpfulAnswerCount(props.answer.id));
+              setAnswerHelpfulnessCount(answerHelpfulnessCount + 1);
+              setHelpfulAClicked(true);
+            }}>Yes
+          </u> : <span>&nbsp;</span>}
+          ({answerHelpfulnessCount}) &nbsp; | &nbsp;
+        {!reported ? <u className="clickable" onClick={() => onReportClick(props.answer.id)}>Report</u> : 'Reported'}
+      </span>
     </div>
   );
 };
+
 
 export default Answer;

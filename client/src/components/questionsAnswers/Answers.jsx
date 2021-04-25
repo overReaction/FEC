@@ -1,29 +1,18 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import Grid from '@material-ui/core/Grid';
-
+/* eslint-disable react/prop-types */
+import React from 'react';
 import Answer from './Answer.jsx';
-import { fetchAnswers } from './qaSlice.js';
 
-const Answers = props => {
-  const productId = useSelector((state) => state.app.productId);
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchAnswers(props.question.question_id));
-  }, [currentQuestions]);
+const Answers = (props) => {
+  const firstTwoAnswers = props.answers[props.index].slice(0, 2);
 
   return (
-    <div>
-      <Grid>
-        {answers.map((answer, index) => {
-          return answer.map(a => {
-            return (
-              <Answer key={`${a.id} ${index}`} answer={a}/>
-            );
-          });
-        })}
-      </Grid>
+    <div style={{ marginLeft: 10 }}>
+      {firstTwoAnswers.map((answer, index) => {
+        if (index < 2) {
+          return <Answer key={answer.id} answer={answer} index={index}/>;
+        }
+      })}
     </div>
   );
 };

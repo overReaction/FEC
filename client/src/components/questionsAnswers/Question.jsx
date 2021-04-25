@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import Answers from './Answers.jsx';
+import AddAModal from './AddAnswer.jsx';
 
-import { useSelector, useDispatch } from 'react-redux';
-
-// import Answers from './Answers.jsx';
+import { incrementHelpfulQuestionCount } from './qaSlice.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,26 +20,45 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
 const Question = props => {
+  const dispatch = useDispatch();
   const classes = useStyles();
-  console.log('PROPSERS:', props.answers);
+  // const firstTwoAnswers = props.answers[props.index].slice(0, 2);
+  const questionId = props.question.question_id;
+
+  const [questionHelpfulnessCount, setQuestionHelpfulnessCount] = useState(props.question.question_helpfulness);
+  const [helpfulQClicked, setHelpfulQClicked] = useState(false);
+  const [reported, setReported] = useState(false);
+
+  const onReportClick = (questionId) => {
+    axios.put(`/api/?endpoint=qa/questions/${questionId}/report`)
+      .then(setReported(true));
+  };
 
   return (
     <Paper className={classes.paper}>
       <div>
-        <span><b>Q: </b>{props.question.question_body}</span>
-        <span style={{ float: "right" }}>
-          Helpful? <u>Yes</u> ({props.question.question_helpfulness}) | <u>Add Answer</u>
+        <span><b>Q: {props.question.question_body}</b></span>
+        <span style={{ float: 'right', marginTop: -10 }}>
+          Helpful? &nbsp;
+          {!helpfulQClicked ?
+            <u className="clickable"
+              onClick={() => {
+                dispatch(incrementHelpfulQuestionCount(questionId));
+                setQuestionHelpfulnessCount(questionHelpfulnessCount + 1);
+                setHelpfulQClicked(true);
+              }}>Yes
+            </u> : <span>&nbsp;</span>}
+            ({questionHelpfulnessCount}) &nbsp; | &nbsp; <u style={{ display: 'inline-block' }}>
+            <AddAModal questionId={questionId}/></u> &nbsp; | &nbsp;
+          {!reported ? <u className="clickable" onClick={() => onReportClick(questionId)}>Report</u> : 'Reported!'}
         </span>
         <div>
-          A: {props.answers[0].body}
+          <Answers answers={props.answers} index={props.index}/>
         </div>
-        {/* <Answers question={props.question}/> */}
       </div>
     </Paper>
   );
 };
-
 
 export default Question;
