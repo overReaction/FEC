@@ -5,7 +5,6 @@ export const fetchRelated = createAsyncThunk(
   'products/getRelated',
   async (productId, thunkAPI) => {
     const response = await axios.get(`/api/?endpoint=products/${productId}/related`);
-<<<<<<< HEAD
     // console.log('related item number arr: ', response.data);
     return response.data;
   }
@@ -25,8 +24,6 @@ export const fetchRelatedStyleInfo = createAsyncThunk(
   async (productNumber, thunkAPI) => {
     const response = await axios.get(`/api/?endpoint=products/${productNumber}/styles`);
     // console.log('related item style obj: ', response.data);
-=======
->>>>>>> b178c1efef9cb1e2f7c6488da3fefae933a91711
     return response.data;
   }
 );

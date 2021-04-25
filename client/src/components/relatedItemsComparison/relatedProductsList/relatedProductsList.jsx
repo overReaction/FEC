@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
 import { fetchRelated, fetchRelatedInfo, fetchRelatedStyleInfo } from '../relatedSlice.js';
 
 import RelatedProductCard from '../relatedProductCard/relatedProductCard.jsx';
@@ -31,8 +32,7 @@ const RelatedProductsList = (props) => {
 
   if (relatedList) {
     return (
-      <div data-testid="relatedProductsList"> Related Products
-<<<<<<< HEAD
+      <Grid data-testid="relatedProductsList" container alignItems="center"> Related Products
         {info.map((product) => {
           // style.map((item) => {
           //   if (product.id === item.product_id) {
@@ -41,27 +41,20 @@ const RelatedProductsList = (props) => {
           // });
           return (
             <div>
-              {/* < RelatedProductCard productInfo={product} styleInfo={style}/> */}
-              <span>{product.id}</span>
+              < RelatedProductCard productInfo={product} styleInfo={style}/>
+              {/* <span>{product.id}</span> */}
             </div>
           );
         }
         )},
-        {style.map((product) => {
+        {/* {style.map((product) => {
           return (
             <div>
               <span>{product.product_id}</span>
-=======
-        {/* {relatedList.map((product, index) => {
-          return (
-            <div>
-              < RelatedProductCard key={`${product} ${index}` + Math.random()} index={product}/>
->>>>>>> b178c1efef9cb1e2f7c6488da3fefae933a91711
             </div>
           );
         })
-        }
-<<<<<<< HEAD
+        }, */}
         {/* {info.map((product) => {
           style.map((item) => {
             if (item.product_id === product.id) {
@@ -74,10 +67,7 @@ const RelatedProductsList = (props) => {
             }
           });
         })} */}
-=======
-        )} */}
->>>>>>> b178c1efef9cb1e2f7c6488da3fefae933a91711
-      </div>
+      </Grid>
     );
   } else {
     return (
