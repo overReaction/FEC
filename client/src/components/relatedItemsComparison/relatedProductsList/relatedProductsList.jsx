@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
 import { fetchRelated } from '../relatedSlice.js';
 
 import RelatedProductCard from '../relatedProductCard/relatedProductCard.jsx';
@@ -13,18 +14,37 @@ const RelatedProductsList = (props) => {
     dispatch(fetchRelated(productId));
   }, [productId]);
 
-  if (relatedList) {
+
+  if (relatedList.length > 0) {
     return (
-      <div data-testid="relatedProductsList"> Related Products
-        {/* {relatedList.map((product, index) => {
+      <Grid data-testid="relatedProductsList" container alignItems="center"> Related Products
+        {relatedList.map((product) => {
           return (
-            <div>
-              < RelatedProductCard key={`${product} ${index}` + Math.random()} index={product}/>
-            </div>
+            < RelatedProductCard key={product.id} productInfo={product}/>
           );
         }
-        )} */}
-      </div>
+        )},
+        {/* {style.map((product) => {
+          return (
+            <div>
+              <span>{product.product_id}</span>
+            </div>
+          );
+        })
+        }, */}
+        {/* {info.map((product) => {
+          style.map((item) => {
+            if (item.product_id === product.id) {
+              return (
+                <div>
+                  <span>{product.name}</span>
+                  <span>{item.product_id}</span>
+                </div>
+              );
+            }
+          });
+        })} */}
+      </Grid>
     );
   } else {
     return (
@@ -34,3 +54,4 @@ const RelatedProductsList = (props) => {
 };
 
 export default RelatedProductsList;
+
