@@ -17,10 +17,26 @@ export const fetchReviewMetadata = createAsyncThunk(
   }
 );
 
-export const fetchReviews = createAsyncThunk(
-  'reviews/getReviews',
+export const fetchReviewsNewest = createAsyncThunk(
+  'reviews/getReviewsNewest',
   async (productId, thunkAPI) => {
-    const response = await axios.get(`/api/?endpoint=reviews/?product_id=${productId}&count=100`);
+    const response = await axios.get(`/api/?endpoint=reviews/?product_id=${productId}&count=100&sort=newest`);
+    return response.data.results;
+  }
+);
+
+export const fetchReviewsHelpful = createAsyncThunk(
+  'reviews/getReviewsHelpful',
+  async (productId, thunkAPI) => {
+    const response = await axios.get(`/api/?endpoint=reviews/?product_id=${productId}&count=100&sort=helpful`);
+    return response.data.results;
+  }
+);
+
+export const fetchReviewsRelevant = createAsyncThunk(
+  'reviews/getReviewsRelevant',
+  async (productId, thunkAPI) => {
+    const response = await axios.get(`/api/?endpoint=reviews/?product_id=${productId}&count=100&sort=relevant`);
     return response.data.results;
   }
 );
@@ -68,7 +84,13 @@ export const appSlice = createSlice({
         state.rating = calcAvgRating(state.reviewMetadata.ratings);
       }
     },
-    [fetchReviews.fulfilled]: (state, action) => {
+    [fetchReviewsNewest.fulfilled]: (state, action) => {
+      state.reviews = action.payload;
+    },
+    [fetchReviewsRelevant.fulfilled]: (state, action) => {
+      state.reviews = action.payload;
+    },
+    [fetchReviewsHelpful.fulfilled]: (state, action) => {
       state.reviews = action.payload;
     }
   }

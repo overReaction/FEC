@@ -1,26 +1,17 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Grid from '@material-ui/core/Grid';
-import { useSelector } from 'react-redux';
+import Select from 'react-select';
 
-// Static data for testing
-const options = [
-  {
-    priority: 'relevance'
-  },
-  {
-    priority: 'most recent'
-  },
-  {
-    priority: 'most helpful'
-  }
-];
-
+import { setSort } from './ratingsReviewsSlice';
+import { fetchReviewsNewest, fetchReviewsHelpful, fetchReviewsRelevant } from '../appSlice.js';
 
 const ReviewSortSearch = (props) => {
-  const reviews = useSelector((state) => state.app.reviews);
   const numOfReviews = useSelector((state) => state.app.reviews.length);
+  const productId = useSelector((state) => state.app.productId);
+  const sort = useSelector((state) => state.reviews.sortBy);
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -33,19 +24,25 @@ const ReviewSortSearch = (props) => {
         <Grid item>
           <h3>{numOfReviews} reviews, sorted by </h3>
         </Grid>
-        <Grid item>
-          <TextField
-            id="select-priority"
-            select
-            // label= {options[0].priority}
-            defaultValue={options[0].priority}
-            // onChange={handleChange}
-            // helperText="choose sort method"
-          >
-            {options.map((option) => (
-              <MenuItem key ={option.priority} value={option.priority}>{option.priority}</MenuItem>
-            ))}
-          </TextField>
+        <Grid item xs={2}>
+          <Select
+            value={sort}
+            options={[
+              { value: 'newest', label: 'newest' },
+              { value: 'relevant', label: 'relevant' },
+              { value: 'helpful', label: 'helpful' }
+            ]}
+            onChange={(selected) => {
+              dispatch(setSort(selected));
+              if (selected.value === 'newest') {
+                dispatch(fetchReviewsNewest(productId));
+              } else if (selected.value === 'relevant') {
+                dispatch(fetchReviewsRelevant(productId));
+              } else if (selected.value === 'helpful') {
+                dispatch(fetchReviewsHelpful(productId));
+              }
+            }}
+          />
         </Grid>
       </Grid>
     </div>
