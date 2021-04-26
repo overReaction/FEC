@@ -9,40 +9,22 @@ const RelatedProductsList = (props) => {
   const dispatch = useDispatch();
   const productId = useSelector((state) => state.app.productId);
   const relatedList = useSelector((state) => state.related.related);
-  const info = useSelector((state) => state.related.relatedInfo);
-  const style = useSelector((state) => state.related.relatedStyleInfo);
-  console.log(style);
+  console.log('Related list: ');
+  console.log(relatedList);
 
 
   useEffect(() => {
-    dispatch(fetchRelated(productId))
-      .then((result) => {
-        // console.log(result);
-        result.payload.map((item) => {
-          dispatch(fetchRelatedInfo(item))
-            .then((result) => {
-              // console.log(result);
-              dispatch(fetchRelatedStyleInfo(result.payload.id))
-            });
-        });
-      }
-      );
+    dispatch(fetchRelated(productId));
   }, [productId]);
 
 
-  if (relatedList) {
+  if (relatedList.length > 0) {
     return (
       <Grid data-testid="relatedProductsList" container alignItems="center"> Related Products
-        {info.map((product) => {
-          // style.map((item) => {
-          //   if (product.id === item.product_id) {
-          //     console.log('match: ', item.product_id);
-          //   }
-          // });
+        {relatedList.map((product) => {
           return (
             <div>
-              < RelatedProductCard productInfo={product} styleInfo={style}/>
-              {/* <span>{product.id}</span> */}
+              < RelatedProductCard productInfo={product}/>
             </div>
           );
         }
