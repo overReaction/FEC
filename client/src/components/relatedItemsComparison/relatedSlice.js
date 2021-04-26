@@ -1,12 +1,30 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const axios = require('axios');
 
+// const generateRelatedItemsPromise = function(productId) {
+//   return new Promise((resolve, reject) => {
+//     axios.get(`/api/?endpoint=products/${productId}/related`)
+
+//   })
+// }
+
 export const fetchRelated = createAsyncThunk(
   'products/getRelated',
   async (productId, thunkAPI) => {
-    const response = await axios.get(`/api/?endpoint=products/${productId}/related`);
-    // console.log('related item number arr: ', response.data);
-    return response.data;
+    await axios.get(`/api/?endpoint=products/${productId}/related`)
+      .then(function (response) {
+        console.log(response.data);
+        return response.data;
+      })
+      .then(function (arrayOfRelatedIds) {
+        let relatedInfo = arrayOfRelatedIds.map((item, index) => {
+          axios.get(`/api/?endpoint=products/${item}`);
+        })
+        console.log(relatedInfo);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 );
 
