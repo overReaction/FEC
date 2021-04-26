@@ -14,18 +14,16 @@ function getModalStyle () {
   return {
     display: 'flex',
     flexDirection: 'column',
-    textAlign: 'center',
-    top: '20%',
-    left: '35%',
-    width: '20%',
+    textAlign: 'right',
     outline: 0
   };
 }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    position: "absolute",
-    width: 600,
+    marginTop: '20%',
+    margin: '0 auto',
+    width: 370,
     backgroundColor: theme.palette.background.paper,
     border: "1px solid #333333",
     boxShadow: theme.shadows[5],
@@ -74,9 +72,9 @@ export default function AddAModal (props) {
       })
         .then(() => dispatch(fetchQuestions(productId)))
         .then(
-          // setEmail(''),
-          // setAnswer(''),
-          // setNickname(''),
+          setEmail(''),
+          setAnswer(''),
+          setNickname(''),
           handleClose()
         );
     }
@@ -84,17 +82,17 @@ export default function AddAModal (props) {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2 id="ask-a-question-modal">Answer A Question</h2>
-      <p>(all fields required)</p>
+      <h2 id="ask-a-question-modal" style={{ textAlign: 'center' }}>Answer A Question</h2>
+      <p style={{ textAlign: 'center' }}>(all fields required)</p>
       <form onChange={handleInputChange}>
-        Your Nickname: <input name="nickname"/>
+        Your Nickname: <input name="nickname" style={{ width: 200 }}/>
         <br/>
-        Your Email: <input name="email"/>
+        Your Email: <input name="email" style={{ width: 200 }}/>
         <br/>
         Your Answer: <input style={{ height: 200, width: 200 }} name="answer"/>
         <br/>
         <br/>
-        <ButtonGroup>
+        <ButtonGroup style={{ display: 'flex', justifyContent: 'center' }}>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={() => onSubmitClick(props.questionId)}>Submit</Button>
         </ButtonGroup>

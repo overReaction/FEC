@@ -13,18 +13,16 @@ function getModalStyle () {
   return {
     display: 'flex',
     flexDirection: 'column',
-    textAlign: 'center',
-    top: '20%',
-    left: '35%',
-    width: '20%',
+    textAlign: 'right',
     outline: 0
   };
 }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    position: "absolute",
-    width: 600,
+    marginTop: '20%',
+    margin: '0 auto',
+    width: 370,
     backgroundColor: theme.palette.background.paper,
     border: "1px solid #333333",
     boxShadow: theme.shadows[5],
@@ -82,17 +80,20 @@ export default function AddQModal () {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2 id="ask-a-question-modal">Ask A Question</h2>
-      <p>(all fields required)</p>
+      <h2 id="ask-a-question-modal" style={{ textAlign: "center" }}>Ask A Question</h2>
+      <p style={{ textAlign: "center" }}>(all fields required)</p>
       <form onChange={handleInputChange}>
-        Your Nickname: <input name="nickname"/>
+        Your Nickname: <input style={{ width: 200 }}
+          name="nickname"/>
         <br/>
-        Your Email: <input name="email"/>
+        Your Email: <input style={{ width: 200 }}
+          name="email"/>
         <br/>
-        Your Question: <input style={{ height: 200, width: 200 }} name="question"/>
+        Your Question: <input style={{ height: 200, width: 200 }}
+          name="question"/>
         <br/>
         <br/>
-        <ButtonGroup>
+        <ButtonGroup style={{ display: 'flex', justifyContent: 'center' }}>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={onSubmitClick}>Submit</Button>
         </ButtonGroup>
