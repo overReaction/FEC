@@ -1,11 +1,39 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import GridList from '@material-ui/core/GridList';
 import { fetchRelated } from '../relatedSlice.js';
 
 import RelatedProductCard from '../relatedProductCard/relatedProductCard.jsx';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper
+  },
+  gridList: {
+    flexWrap: 'nowrap',
+    // Promote the list into her own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: 'translateZ(0)'
+  },
+  title: {
+    color: theme.palette.primary.light
+  },
+  titleBar: {
+    background:
+      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+    icon: {
+      color: 'white'
+    }
+  }
+}));
+
 const RelatedProductsList = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const productId = useSelector((state) => state.app.productId);
   const relatedList = useSelector((state) => state.related.related);
@@ -17,14 +45,16 @@ const RelatedProductsList = () => {
 
   if (relatedList.length > 0) {
     return (
-      <Grid data-testid="relatedProductsList" container alignItems="center"> Related Products
-        {relatedList.map((product) => {
-          return (
-            < RelatedProductCard key={product.id} productInfo={product}/>
-          );
-        }
-        )}
-      </Grid>
+      <div data-testid="relatedProductsList" className={classes.root}> Related Products
+        <GridList className={classes.gridList} cols={2.5}>
+          {relatedList.map((product) => {
+            return (
+              < RelatedProductCard key={product.id} productInfo={product}/>
+            );
+          }
+          )}
+        </GridList>
+      </div>
     );
   } else {
     return (

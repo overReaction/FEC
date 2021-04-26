@@ -1,13 +1,37 @@
 import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import IconButton from '@material-ui/core/IconButton';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles((theme) => ({
+  titleBar: {
+    background:
+      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+  },
+  icon: {
+    color: 'white'
+  }
+}));
 
 const RealtedProductCard = ({ productInfo }) => {
+  const classes = useStyles();
   return (
     <div data-testid="relatedProductCard">
-      <CssBaseline />
-      <span>{productInfo.name}</span>
-      <img src={productInfo.photo}/>
+      <GridListTile >
+        <img src={productInfo.photo}/>
+        <GridListTileBar
+          title={productInfo.name}
+          subtitle={`$${productInfo.default_price}`}
+          actionIcon={
+            <IconButton >
+              <StarBorderIcon className={classes.icon}/>
+            </IconButton>
+          }
+          className={classes.titleBar}
+        />
+      </GridListTile>
     </div>
   );
 };
