@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const axios = require('axios');
 
+
 export const fetchRelated = createAsyncThunk(
   'products/getRelated',
   async (productId, thunkAPI) => {
@@ -55,13 +56,13 @@ export const relatedSlice = createSlice({
     [fetchRelatedStyleInfo.fulfilled]: (state, action) => {
       // console.log('action.payload: ', action.payload.results[0].photos[0].thumbnail_url);
       state.relatedStyleInfo.push(action.payload);
-        // .then(() => {
-        //   state.relatedInfo.map((product) => {
-        //     if (product.id === action.payload.product_id) {
-        //       product.photo_url = action.payload.results[0].photos[0].thumbnail_url;
-        //     }
-        //   });
-        // });
+      // .then(() => {
+      //   state.relatedInfo.map((product) => {
+      //     if (product.id === action.payload.product_id) {
+      //       product.photo_url = action.payload.results[0].photos[0].thumbnail_url;
+      //     }
+      //   });
+      // });
     }
   }
 });
