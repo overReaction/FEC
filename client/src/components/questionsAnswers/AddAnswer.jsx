@@ -74,9 +74,9 @@ export default function AddAModal (props) {
       })
         .then(() => dispatch(fetchQuestions(productId)))
         .then(
-          setEmail(''),
-          setAnswer(''),
-          setNickname(''),
+          // setEmail(''),
+          // setAnswer(''),
+          // setNickname(''),
           handleClose()
         );
     }
