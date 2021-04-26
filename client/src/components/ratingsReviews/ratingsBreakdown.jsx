@@ -52,51 +52,61 @@ const RatingsBreakdown = (props) => {
           <StarRating rating={rating}/>
         </Grid>
       </Grid>
-      <Grid container alignItems="center" spacing={1}>
-        <Grid item xs={2}>
-          <a href="#" >5 stars</a>
+      <Grid container spacing={1}>
+        <Grid item container alignItems="center" spacing={1}>
+          <Grid item xs={2}>
+            5 stars
+          </Grid>
+          <Grid item xs={9}>
+            <LinearProgress classes={{ root: classes.root }} variant="determinate" value={fiveStars * 100}/>
+          </Grid>
+          <Grid item xs={1}>
+            <span>({fiveStars * 100})</span>
+          </Grid>
         </Grid>
-        <Grid item xs={9}>
-          <LinearProgress classes={{ root: classes.root }} variant="determinate" value={fiveStars * 100}/>
+        <Grid item container alignItems="center" spacing={1}>
+          <Grid item xs={2}>
+            4 stars
+          </Grid>
+          <Grid item xs={9}>
+            <LinearProgress classes={{ root: classes.root }} variant="determinate" value={fourStars * 100}/>
+          </Grid>
+          <Grid item xs={1}>
+            <span>({fourStars * 100})</span>
+          </Grid>
         </Grid>
-        <Grid item xs={1}>
-          <span>({fiveStars * 100})</span>
+        <Grid item container alignItems="center" spacing={1}>
+          <Grid item xs={2}>
+            3 stars
+          </Grid>
+          <Grid item xs={9}>
+            <LinearProgress classes={{ root: classes.root }} variant="determinate" value={threeStars * 100}/>
+          </Grid>
+          <Grid item xs={1}>
+            <span>({threeStars * 100})</span>
+          </Grid>
         </Grid>
-        <Grid item xs={2}>
-          <a href="#" >4 stars</a>
+        <Grid item container alignItems="center" spacing={1}>
+          <Grid item xs={2}>
+            2 stars
+          </Grid>
+          <Grid item xs={9}>
+            <LinearProgress classes={{ root: classes.root }} variant="determinate" value={twoStars * 100}/>
+          </Grid>
+          <Grid item xs={1}>
+            <span>({twoStars * 100})</span>
+          </Grid>
         </Grid>
-        <Grid item xs={9}>
-          <LinearProgress classes={{ root: classes.root }} variant="determinate" value={fourStars * 100}/>
-        </Grid>
-        <Grid item xs={1}>
-          <span>({fourStars * 100})</span>
-        </Grid>
-        <Grid item xs={2}>
-          <a href="#" >3 stars</a>
-        </Grid>
-        <Grid item xs={9}>
-          <LinearProgress classes={{ root: classes.root }} variant="determinate" value={threeStars * 100}/>
-        </Grid>
-        <Grid item xs={1}>
-          <span>({threeStars * 100})</span>
-        </Grid>
-        <Grid item xs={2}>
-          <a href="#" >2 stars</a>
-        </Grid>
-        <Grid item xs={9}>
-          <LinearProgress classes={{ root: classes.root }} variant="determinate" value={twoStars * 100}/>
-        </Grid>
-        <Grid item xs={1}>
-          <span>({twoStars * 100})</span>
-        </Grid>
-        <Grid item xs={2}>
-          <a href="#" >1 stars</a>
-        </Grid>
-        <Grid item xs={9}>
-          <LinearProgress classes={{ root: classes.root }} variant="determinate" value={oneStars * 100}/>
-        </Grid>
-        <Grid item xs={1}>
-          <span>({oneStars * 100})</span>
+        <Grid item container alignItems="center" spacing={1}>
+          <Grid item xs={2}>
+            1 star
+          </Grid>
+          <Grid item xs={9}>
+            <LinearProgress classes={{ root: classes.root }} variant="determinate" value={oneStars * 100}/>
+          </Grid>
+          <Grid item xs={1}>
+            <span>({oneStars * 100})</span>
+          </Grid>
         </Grid>
       </Grid>
     </>
