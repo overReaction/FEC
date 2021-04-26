@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { fetchRelated, fetchRelatedStyleInfo } from '../relatedSlice.js';
+import { fetchRelated } from '../relatedSlice.js';
 // import { changeProductId } from '../../appSlice.js';
 // import { fetchProductInfo } from '../../appSlice.js';
 

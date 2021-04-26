@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
-import { fetchRelated, fetchRelatedInfo, fetchRelatedStyleInfo } from '../relatedSlice.js';
+import { fetchRelated } from '../relatedSlice.js';
 
 import RelatedProductCard from '../relatedProductCard/relatedProductCard.jsx';
 
@@ -9,9 +9,6 @@ const RelatedProductsList = (props) => {
   const dispatch = useDispatch();
   const productId = useSelector((state) => state.app.productId);
   const relatedList = useSelector((state) => state.related.related);
-  console.log('Related list: ');
-  console.log(relatedList);
-
 
   useEffect(() => {
     dispatch(fetchRelated(productId));
@@ -23,9 +20,7 @@ const RelatedProductsList = (props) => {
       <Grid data-testid="relatedProductsList" container alignItems="center"> Related Products
         {relatedList.map((product) => {
           return (
-            <div>
-              < RelatedProductCard productInfo={product}/>
-            </div>
+            < RelatedProductCard key={product.id} productInfo={product}/>
           );
         }
         )},
