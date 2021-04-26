@@ -5,7 +5,7 @@ import { fetchRelated } from '../relatedSlice.js';
 
 import RelatedProductCard from '../relatedProductCard/relatedProductCard.jsx';
 
-const RelatedProductsList = (props) => {
+const RelatedProductsList = () => {
   const dispatch = useDispatch();
   const productId = useSelector((state) => state.app.productId);
   const relatedList = useSelector((state) => state.related.related);
@@ -23,27 +23,7 @@ const RelatedProductsList = (props) => {
             < RelatedProductCard key={product.id} productInfo={product}/>
           );
         }
-        )},
-        {/* {style.map((product) => {
-          return (
-            <div>
-              <span>{product.product_id}</span>
-            </div>
-          );
-        })
-        }, */}
-        {/* {info.map((product) => {
-          style.map((item) => {
-            if (item.product_id === product.id) {
-              return (
-                <div>
-                  <span>{product.name}</span>
-                  <span>{item.product_id}</span>
-                </div>
-              );
-            }
-          });
-        })} */}
+        )}
       </Grid>
     );
   } else {
