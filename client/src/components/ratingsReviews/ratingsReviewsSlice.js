@@ -1,13 +1,28 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+const axios = require('axios');
+
+export const markHelpful = createAsyncThunk(
+  'reviews/markHelpful',
+  async (reviewId, thunkAPI) => {
+    await axios.put(`/api/?endpoint=reviews/${reviewId}/helpful`);
+    return reviewId;
+  }
+);
 
 export const reviewSlice = createSlice({
   name: 'reviews',
   initialState: {
-    reviewsCount: 2
+    reviewsCount: 2,
+    markedHelpful: []
   },
   reducers: {
     loadReviews: (state, action) => {
       state.reviewsCount += 2;
+    }
+  },
+  extraReducers: {
+    [markHelpful.fulfilled]: (state, action) => {
+      state.markedHelpful.push(action.payload);
     }
   }
 });

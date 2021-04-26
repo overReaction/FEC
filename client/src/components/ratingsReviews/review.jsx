@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { markHelpful } from './ratingsReviewsSlice.js';
 import StarRating from '../starRating.jsx';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
@@ -25,7 +27,10 @@ const useStyles = makeStyles((theme) => ({
 const Review = ({ review }) => {
   const [expanded, setExpanded] = useState(false);
   const [photoOpen, openPhoto] = useState(false);
+  const [helpfulness, addHelpfulness] = useState(review.helpfulness);
+  const helpfulReviews = useSelector((state) => state.reviews.markedHelpful);
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const dateOptions = {
     month: 'long',
@@ -43,6 +48,10 @@ const Review = ({ review }) => {
 
   const handleClose = () => {
     openPhoto(false);
+  };
+
+  const handleHelpfulClick = () => {
+    addHelpfulness(helpfulness + 1);
   };
 
   return (
@@ -147,7 +156,15 @@ const Review = ({ review }) => {
 
         <Grid item xs={12}>
           Was this review helpful? &nbsp;
-          <a href="#">Yes</a> ({review.helpfulness}) | <a href="#">No</a> ({review.nonhelpfulness || 0})
+          <a href="#RatingsReviews"
+            onClick={() => {
+              if (helpfulReviews.indexOf(review.review_id) === -1) {
+                dispatch(markHelpful(review.review_id));
+                handleHelpfulClick();
+              }
+            }}>Yes</a> ({helpfulness}) | &nbsp;
+          <a href="#">No</a> ({review.nonhelpfulness || 0}) | &nbsp;
+          <a href="#">Report</a>
         </Grid>
       </Grid>
     </Paper>
