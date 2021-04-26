@@ -7,7 +7,8 @@ const RatingsReviews = (props) => {
   return (
     <div
       data-testid="RatingsReviews"
-      id="RatingsReviews">
+      id="RatingsReviews"
+      style={{ padding: '1em' }}>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={4}>
           <Breakdown />

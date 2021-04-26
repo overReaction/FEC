@@ -22,7 +22,7 @@ const ReviewSortSearch = (props) => {
         spacing={1}
       >
         <Grid item>
-          <h3>{numOfReviews} reviews, sorted by </h3>
+          <h2>{numOfReviews} reviews, sorted by </h2>
         </Grid>
         <Grid item xs={2}>
           <Select
