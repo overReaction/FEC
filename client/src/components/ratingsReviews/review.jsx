@@ -28,7 +28,9 @@ const Review = ({ review }) => {
   const [expanded, setExpanded] = useState(false);
   const [photoOpen, openPhoto] = useState(false);
   const [helpfulness, addHelpfulness] = useState(review.helpfulness);
+  const [nonHelpfulness, addNonHelpfulness] = useState(0);
   const helpfulReviews = useSelector((state) => state.reviews.markedHelpful);
+
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -50,8 +52,16 @@ const Review = ({ review }) => {
     openPhoto(false);
   };
 
-  const handleHelpfulClick = () => {
+  const handleHelpfulClick = (e) => {
     addHelpfulness(helpfulness + 1);
+    e.target.removeAttribute("href");
+    document.getElementById("notHelpfulAnchor").removeAttribute("href");
+  };
+
+  const handleNotHelpfulClick = (e) => {
+    addNonHelpfulness(nonHelpfulness + 1);
+    e.target.removeAttribute("href");
+    document.getElementById("yesHelpfulAnchor").removeAttribute("href");
   };
 
   return (
@@ -156,14 +166,19 @@ const Review = ({ review }) => {
 
         <Grid item xs={12}>
           Was this review helpful? &nbsp;
-          <a href="#RatingsReviews"
-            onClick={() => {
+          <a href="#RatingsReviews" id="yesHelpfulAnchor"
+            onClick={(e) => {
               if (helpfulReviews.indexOf(review.review_id) === -1) {
                 dispatch(markHelpful(review.review_id));
-                handleHelpfulClick();
+                handleHelpfulClick(e);
               }
             }}>Yes</a> ({helpfulness}) | &nbsp;
-          <a href="#">No</a> ({review.nonhelpfulness || 0}) | &nbsp;
+          <a href="#" id="notHelpfulAnchor"
+            onClick={(e) => {
+              if (helpfulReviews.indexOf(review.review_id) === -1) {
+                handleNotHelpfulClick(e);
+              }
+            }}>No</a> ({nonHelpfulness}) | &nbsp;
           <a href="#">Report</a>
         </Grid>
       </Grid>
