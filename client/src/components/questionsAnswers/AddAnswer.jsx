@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function AddAModal (props) {
+export default function AddAModal ({ question }) {
   const classes = useStyles();
 
   const dispatch = useDispatch();
@@ -56,7 +56,6 @@ export default function AddAModal (props) {
   const handleInputChange = (e) => {
     if (e.target.name === 'nickname') {
       setNickname(e.target.value);
-      console.log(nickname);
       return;
     }
     if (e.target.name === 'email') {
@@ -102,7 +101,7 @@ export default function AddAModal (props) {
         id="ask-a-question-modal"
         style={{ textAlign: 'center', marginBottom: -10 }}>Submit Your Answer
       </h2>
-      <h3 style={{ textAlign: 'center' }}>{`${productName}: ${props.question}`}</h3>
+      <h3 style={{ textAlign: 'center' }}>{`${productName}: ${question}`}</h3>
       <p style={{ textAlign: 'center' }}>(all fields required)</p>
       <form onChange={handleInputChange}>
         Your Nickname: <input

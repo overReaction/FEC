@@ -9,7 +9,7 @@ const Answers = (props) => {
   let sortedAnswers = answers.slice().sort((a, b) => {
     return b.helpfulness - a.helpfulness;
   });
-  console.log(sortedAnswers);
+
   const [moreAnswersClicked, setMoreAnswersClicked] = useState(false);
 
   const onMoreAnswersClick = () => {
