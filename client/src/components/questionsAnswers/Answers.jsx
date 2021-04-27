@@ -39,7 +39,6 @@ const Answers = (props) => {
     return (
       <>
         <Grid style={{
-          marginLeft: 10,
           maxHeight: '50vh',
           boxSizing: 'border-box',
           padding: '1em',
