@@ -6,6 +6,7 @@ import appReducer from './components/appSlice.js';
 import relatedReducer from './components/relatedItemsComparison/relatedSlice.js';
 import galleryReducer from './components/overview/imageGallery/imageGallerySlice.js';
 import cartReducer from './components/overview/addToCart/cartSlice.js';
+import outfitReducer from './components/relatedItemsComparison/outfitSlice.js';
 
 export default configureStore({
   //Root reducer (a combination of all reducers)
@@ -17,6 +18,7 @@ export default configureStore({
     qa: qaReducer,
     related: relatedReducer,
     gallery: galleryReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    outfit: outfitReducer
   }
 });
