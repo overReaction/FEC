@@ -21,13 +21,16 @@ const Answers = (props) => {
             }
           })}
         </div>
-        <button
-          onClick={onMoreAnswersClick}
-          style={{ border: 'none',
-            backgroundColor: 'white',
-            color: '#666666' }}>
-          <u>show more answers</u>
-        </button>
+        <div style={{ textAlign: 'center' }}>
+          <button
+            onClick={onMoreAnswersClick}
+            style={{ border: 'none',
+              backgroundColor: 'white',
+              color: '#777777',
+              marginTop: 5 }}>
+            <u>Show more answers</u>
+          </button>
+        </div>
       </>
     );
   } else {
@@ -39,13 +42,15 @@ const Answers = (props) => {
           }
           )}
         </div>
-        <button
-          onClick={onMoreAnswersClick}
-          style={{ border: 'none',
-            backgroundColor: 'white',
-            color: '#666666' }}>
-          <u>collapse answers</u>
-        </button>
+        <div style={{ textAlign: 'center' }}>
+          <button
+            onClick={onMoreAnswersClick}
+            style={{ border: 'none',
+              backgroundColor: 'white',
+              color: '#777777' }}>
+            <u>collapse answers</u>
+          </button>
+        </div>
       </>
     );
   }

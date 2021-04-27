@@ -160,7 +160,9 @@ export default function AddAModal (props) {
         className="clickable"
         data-testid="addAnswerButton"
         onClick={handleOpen}
-        style={{ border: 'none', backgroundColor: 'white', color: '#555555' }}>
+        style={{ border: 'none',
+          backgroundColor: 'white',
+          color: '#777777' }}>
         <u>Add Answer</u>
       </button>
       <Modal

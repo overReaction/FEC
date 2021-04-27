@@ -42,16 +42,28 @@ const Question = props => {
         <span style={{ float: 'right', marginTop: 0 }}>
           Helpful? &nbsp;
           {!helpfulQClicked ?
-            <u className="clickable"
+            <u
+              className="clickable"
               onClick={() => {
                 dispatch(incrementHelpfulQuestionCount(questionId));
                 setQuestionHelpfulnessCount(questionHelpfulnessCount + 1);
                 setHelpfulQClicked(true);
               }}>Yes
             </u> : <span>&nbsp;</span>}
-            ({questionHelpfulnessCount}) &nbsp; | &nbsp; <u style={{ display: 'inline-block' }}>
-            <AddAModal questionId={questionId} question={props.question.question_body}/></u> &nbsp; | &nbsp;
-          {!reported ? <u className="clickable" onClick={() => onReportClick(questionId)}>Report</u> : 'Reported!'}
+            ({questionHelpfulnessCount}) &nbsp; | &nbsp;
+          <u style={{ display: 'inline-block' }}>
+            <AddAModal
+              questionId={questionId}
+              question={props.question.question_body}/>
+          </u>
+            &nbsp; | &nbsp;
+
+          {!reported ?
+            <u
+              className="clickable"
+              onClick={() => onReportClick(questionId)}
+              style={{ color: '#cc3300' }}>Report
+            </u> : 'Reported!'}
         </span>
         <div>
           <Answers answers={answers} index={props.index}/>

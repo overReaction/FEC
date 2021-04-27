@@ -22,10 +22,13 @@ const Answer = (props) => {
       <b>A:</b> {props.answer.body}
       <br />
       <span style={{ fontSize: 11 }}>
-        by {props.answer.answerer_name === 'Seller' ? <b>Seller</b> : props.answer.answerer_name} &nbsp;
-        {new Date(props.answer.date).toString().slice(3, 16)} &nbsp; | &nbsp; Helpful? &nbsp;
+        by {props.answer.answerer_name === 'Seller' ?
+          <b>Seller</b> : props.answer.answerer_name} &nbsp;
+        {new Date(props.answer.date).toString().slice(3, 16)}
+        &nbsp; | &nbsp; Helpful? &nbsp;
         {!helpfulAClicked ?
-          <u className="clickable"
+          <u
+            className="clickable"
             onClick={() => {
               dispatch(incrementHelpfulAnswerCount(props.answer.id));
               setAnswerHelpfulnessCount(answerHelpfulnessCount + 1);
@@ -33,7 +36,11 @@ const Answer = (props) => {
             }}>Yes
           </u> : <span>&nbsp;</span>}
           ({answerHelpfulnessCount}) &nbsp; | &nbsp;
-        {!reported ? <u className="clickable" onClick={() => onReportClick(props.answer.id)}>Report</u> : 'Reported'}
+        {!reported ?
+          <u className="clickable"
+            onClick={() => onReportClick(props.answer.id)}
+            style={{ color: '#cc3300' }}>Report
+          </u> : 'Reported'}
       </span>
     </div>
   );
