@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useEffect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Grid from '@material-ui/core/Grid';
 import Box from "@material-ui/core/Box";
@@ -11,6 +11,7 @@ import ReviewActions from './reviewActions.jsx';
 const ReviewList = (props) => {
   const reviews = useSelector((state) => state.app.reviews);
   const numReviewsToShow = useSelector((state) => state.reviews.reviewsCount);
+  const ratingsToShow = useSelector((state) => state.reviews.filter);
 
   return (
     <Grid container spacing={1} >
@@ -33,7 +34,9 @@ const ReviewList = (props) => {
               xs={12}
               key={index}
               index={index}
-              style={index > numReviewsToShow - 1 ? { display: 'none' } : {}}
+              style={index > numReviewsToShow - 1 ||
+                (ratingsToShow.indexOf(review.rating) === -1 && ratingsToShow.length > 0) ?
+                { display: 'none' } : {}}
             >
               <Review review={review}/>
             </Box>

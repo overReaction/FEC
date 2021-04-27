@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import StarRating from '../starRating.jsx';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import { seeAllReviews, adjustFilter, clearFilter } from './ratingsReviewsSlice.js';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
   root: {
@@ -13,23 +15,35 @@ const useStyles = makeStyles({
     "& .MuiLinearProgress-barColorPrimary": {
       backgroundColor: "green"
     }
+  },
+  hover: {
+    '&:hover': {
+      backgroundColor: '#e1f0e5',
+      cursor: 'pointer'
+    }
   }
 });
 import Grid from '@material-ui/core/Grid';
 
 const RatingsBreakdown = (props) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const ratings = useSelector((state) => state.app.reviewMetadata);
   const rating = useSelector((state) => state.app.rating);
   const numOfRatings = useSelector((state) => state.app.numOfRatings);
-  console.log(ratings);
-  console.log(numOfRatings);
+  const numOfReviews = useSelector((state) => state.app.reviews.length);
+  const filters = useSelector((state) => state.reviews.filter);
 
   const [fiveStars, setFiveStars] = useState(0);
   const [fourStars, setFourStars] = useState(0);
   const [threeStars, setThreeStars] = useState(0);
   const [twoStars, setTwoStars] = useState(0);
   const [oneStars, setOneStars] = useState(0);
+
+  const handleRatingClick = (rating) => {
+    dispatch(seeAllReviews(numOfReviews));
+    dispatch(adjustFilter(rating));
+  };
 
   useEffect(() => {
     if (ratings.ratings) {
@@ -44,69 +58,113 @@ const RatingsBreakdown = (props) => {
   return (
     <>
       <h2>RATINGS AND REVIEWS</h2>
-      <Grid container alignItems="center" spacing={2}>
-        <Grid item>
-          <h1>{rating}</h1>
-        </Grid>
-        <Grid item>
-          <StarRating rating={rating}/>
-        </Grid>
-      </Grid>
       <Grid container spacing={1}>
-        <Grid item container alignItems="center" spacing={1}>
-          <Grid item xs={2}>
-            5 stars
+        <Grid container item alignItems="center" spacing={2}>
+          <Grid item>
+            <h1>{rating}</h1>
           </Grid>
-          <Grid item xs={9}>
-            <LinearProgress classes={{ root: classes.root }} variant="determinate" value={fiveStars * 100}/>
+          <Grid item>
+            <StarRating rating={rating}/>
           </Grid>
-          <Grid item xs={1}>
-            <span>({fiveStars * 100})</span>
-          </Grid>
-        </Grid>
-        <Grid item container alignItems="center" spacing={1}>
-          <Grid item xs={2}>
-            4 stars
-          </Grid>
-          <Grid item xs={9}>
-            <LinearProgress classes={{ root: classes.root }} variant="determinate" value={fourStars * 100}/>
-          </Grid>
-          <Grid item xs={1}>
-            <span>({fourStars * 100})</span>
+          <Grid item>
+            ({numOfRatings})
           </Grid>
         </Grid>
-        <Grid item container alignItems="center" spacing={1}>
-          <Grid item xs={2}>
-            3 stars
+        <Grid container item spacing={1}>
+          <Grid item container alignItems="center" spacing={1} className={classes.hover}
+            onClick={() => handleRatingClick(5)}
+          >
+            <Grid item xs={2}>
+              5 stars
+            </Grid>
+            <Grid item xs={9}>
+              <LinearProgress classes={{ root: classes.root }} variant="determinate" value={fiveStars * 100}/>
+            </Grid>
+            <Grid item xs={1}>
+              <span>({fiveStars * 100})</span>
+            </Grid>
           </Grid>
-          <Grid item xs={9}>
-            <LinearProgress classes={{ root: classes.root }} variant="determinate" value={threeStars * 100}/>
+          <Grid item container alignItems="center" spacing={1} className={classes.hover}
+            onClick={() => handleRatingClick(4)}
+          >
+            <Grid item xs={2}>
+              4 stars
+            </Grid>
+            <Grid item xs={9}>
+              <LinearProgress classes={{ root: classes.root }} variant="determinate" value={fourStars * 100}/>
+            </Grid>
+            <Grid item xs={1}>
+              <span>({fourStars * 100})</span>
+            </Grid>
           </Grid>
-          <Grid item xs={1}>
-            <span>({threeStars * 100})</span>
+          <Grid item container alignItems="center" spacing={1} className={classes.hover}
+            onClick={() => handleRatingClick(3)}
+          >
+            <Grid item xs={2}>
+              3 stars
+            </Grid>
+            <Grid item xs={9}>
+              <LinearProgress classes={{ root: classes.root }} variant="determinate" value={threeStars * 100}/>
+            </Grid>
+            <Grid item xs={1}>
+              <span>({threeStars * 100})</span>
+            </Grid>
+          </Grid>
+          <Grid item container alignItems="center" spacing={1} className={classes.hover}
+            onClick={() => handleRatingClick(2)}
+          >
+            <Grid item xs={2}>
+              2 stars
+            </Grid>
+            <Grid item xs={9}>
+              <LinearProgress classes={{ root: classes.root }} variant="determinate" value={twoStars * 100}/>
+            </Grid>
+            <Grid item xs={1}>
+              <span>({twoStars * 100})</span>
+            </Grid>
+          </Grid>
+          <Grid item container alignItems="center" spacing={1} className={classes.hover}
+            onClick={() => handleRatingClick(1)}
+          >
+            <Grid item xs={2}>
+              1 star
+            </Grid>
+            <Grid item xs={9}>
+              <LinearProgress classes={{ root: classes.root }} variant="determinate" value={oneStars * 100}/>
+            </Grid>
+            <Grid item xs={1}>
+              <span>({oneStars * 100})</span>
+            </Grid>
           </Grid>
         </Grid>
-        <Grid item container alignItems="center" spacing={1}>
-          <Grid item xs={2}>
-            2 stars
-          </Grid>
-          <Grid item xs={9}>
-            <LinearProgress classes={{ root: classes.root }} variant="determinate" value={twoStars * 100}/>
-          </Grid>
-          <Grid item xs={1}>
-            <span>({twoStars * 100})</span>
-          </Grid>
-        </Grid>
-        <Grid item container alignItems="center" spacing={1}>
-          <Grid item xs={2}>
-            1 star
-          </Grid>
-          <Grid item xs={9}>
-            <LinearProgress classes={{ root: classes.root }} variant="determinate" value={oneStars * 100}/>
-          </Grid>
-          <Grid item xs={1}>
-            <span>({oneStars * 100})</span>
-          </Grid>
+        <Grid container item>
+          {filters.length > 0 ?
+            <Grid item container alignItems="center">
+              <Grid item xs={9}>
+                Filtered by star ratings: &nbsp;
+                {filters.map((number, index) => {
+                  if (index === filters.length - 1) {
+                    return (
+                      <span key={number}>{number}</span>
+                    );
+                  }
+                  return (
+                    <span key={number}>{number}, </span>
+                  );
+                })}
+              </Grid>
+              <Grid item xs={3}>
+                <Button
+                  variant="outlined"
+                  size="small"
+                  onClick={() => dispatch(clearFilter())}
+                >
+                 Clear all
+                </Button>
+              </Grid>
+            </Grid> :
+            <span/>
+          }
         </Grid>
       </Grid>
     </>

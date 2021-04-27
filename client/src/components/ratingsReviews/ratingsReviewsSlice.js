@@ -24,7 +24,8 @@ export const reviewSlice = createSlice({
     markedHelpful: [],
     markedNotHelpful: [],
     reported: [],
-    sortBy: { value: 'relevant', label: 'relevant' }
+    sortBy: { value: 'relevant', label: 'relevant' },
+    filter: []
   },
   reducers: {
     loadReviews: (state, action) => {
@@ -35,6 +36,19 @@ export const reviewSlice = createSlice({
     },
     setSort: (state, action) => {
       state.sortBy = action.payload;
+    },
+    seeAllReviews: (state, action) => {
+      state.reviewsCount = action.payload;
+    },
+    adjustFilter: (state, action) => {
+      if (state.filter.includes(action.payload)) {
+        state.filter.splice(state.filter.indexOf(action.payload), 1);
+      } else {
+        state.filter.push(action.payload);
+      }
+    },
+    clearFilter: (state, action) => {
+      state.filter = [];
     }
   },
   extraReducers: {
@@ -48,7 +62,7 @@ export const reviewSlice = createSlice({
 });
 
 //Action creators are generated for each reducer function. Add multiple like so { reducer1, reducer2, ...}
-export const { loadReviews, markNonHelpful, setSort } = reviewSlice.actions;
+export const { loadReviews, markNonHelpful, setSort, seeAllReviews, adjustFilter, clearFilter } = reviewSlice.actions;
 
 //Makes the reducers defined above available to the store
 export default reviewSlice.reducer;
