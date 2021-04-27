@@ -12,15 +12,32 @@ const ProductBreakdown = (props) => {
       MuiSlider: {
         root: {
           width: '100%',
-          color: "#D9D6CF",
-          height: 2
+          color: "#78756e",
+          height: 2,
+          cursor: 'default'
         },
         mark: {
           height: 8,
           width: 1,
-          marginTop: -3,
+          marginTop: -2,
           backgroundColor: '#000000'
-        }
+        },
+        track: {
+          height: 4
+        },
+        rail: {
+          height: 4
+        },
+        thumb: {
+          height: 12,
+          width: 12,
+          backgroundColor: '#000',
+          marginTop: -4,
+          marginLeft: -12,
+          '&:focus, &:hover, &$active': {
+            boxShadow: 'inherit',
+          },
+        },
       }
     }
   });
@@ -60,29 +77,41 @@ const ProductBreakdown = (props) => {
             let score = parseInt(chars.characteristics[char].value, 10) / 5;
             if (char === 'Quality' || char === 'Comfort') {
               return (
-                <Grid item xs={12}>
-                  {char}
+                <Grid container item xs={12} key={char}>
+                  <Grid item xs={12}>
+                    {char}
+                  </Grid>
+                  <Grid item xs={1}/>
                   <ThemeProvider theme={theme}>
-                    <Slider
-                      value={score * 100}
-                      track={false}
-                      marks={marksQuality}
-                    />
+                    <Grid item xs={10}>
+                      <Slider
+                        value={score * 100}
+                        track={false}
+                        marks={marksQuality}
+                      />
+                    </Grid>
                   </ThemeProvider>
+                  <Grid item xs={1}/>
                 </Grid>
               );
             } else {
               return (
-                <ThemeProvider theme={theme}>
+                <Grid container item xs={12} key={char}>
                   <Grid item xs={12}>
                     {char}
-                    <Slider
-                      value={score * 100}
-                      track={false}
-                      marks={marksSizing}
-                    />
                   </Grid>
-                </ThemeProvider>
+                  <Grid item xs={1}/>
+                  <ThemeProvider theme={theme}>
+                    <Grid item xs={10}>
+                      <Slider
+                        value={score * 100}
+                        track={false}
+                        marks={marksSizing}
+                      />
+                    </Grid>
+                    <Grid item xs={1}/>
+                  </ThemeProvider>
+                </Grid>
               );
             }
           })}
