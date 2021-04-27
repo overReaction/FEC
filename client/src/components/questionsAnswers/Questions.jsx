@@ -8,19 +8,18 @@ import { fetchQuestions } from './qaSlice.js';
 
 const Questions = props => {
   const productId = useSelector((state) => state.app.productId);
-  const dispatch = useDispatch();
-
   const currentQuestions = useSelector((state) => state.qa.data);
-
+  const answerSubmitted = useSelector((state) => state.qa.answerSubmitted);
+  const Qcount = useSelector((state) => state.qa.Qcount);
   const answers = currentQuestions.map(question => {
     return Object.values(question.answers);
   });
 
-  const Qcount = useSelector((state) => state.qa.Qcount);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchQuestions(productId));
-  }, [productId]);
+  }, [productId, answerSubmitted]);
 
   return (
     <div data-testid="questions">

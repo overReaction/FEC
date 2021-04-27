@@ -31,6 +31,7 @@ export const qaSlice = createSlice({
   name: 'qa',
   initialState: {
     data: [],
+    answers: [],
     Qcount: 4,
     addQs: false,
     addAs: false,
@@ -44,6 +45,10 @@ export const qaSlice = createSlice({
     handleMoreQsClick: (state, action) => {
       state.Qcount = state.Qcount + 2;
       console.log(state.Qcount);
+    },
+    onAnswerSubmit: (state, action) => {
+      state.answerSubmitted = !state.answerSubmitted;
+      console.log(state.answerSubmitted);
     }
   },
   extraReducers: {
@@ -59,6 +64,6 @@ export const qaSlice = createSlice({
   }
 });
 
-export const { selectStyle, handleMoreQsClick, handleSearchInputChange } = qaSlice.actions;
+export const { selectStyle, handleMoreQsClick, handleSearchInputChange, onAnswerSubmit } = qaSlice.actions;
 
 export default qaSlice.reducer;

@@ -9,6 +9,7 @@ import { ButtonGroup } from '@material-ui/core/';
 import Modal from "@material-ui/core/Modal";
 
 import { fetchQuestions } from './qaSlice.js';
+import { onAnswerSubmit } from './qaSlice.js';
 
 function getModalStyle () {
   return {
@@ -35,12 +36,13 @@ export default function AddAModal (props) {
   const classes = useStyles();
 
   const dispatch = useDispatch();
-  const productId = useSelector((state) => state.app.productId);
+  const productName = useSelector(state => state.app.productInfo.name);
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [answer, setAnswer] = useState('');
+  const [images, setImages] = useState([]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -68,33 +70,85 @@ export default function AddAModal (props) {
         body: answer,
         name: nickname,
         email: email,
-        photos: ['']
+        photos: images
       })
-        .then(() => dispatch(fetchQuestions(productId)))
+        .then(() => dispatch(onAnswerSubmit()))
         .then(
           setEmail(''),
           setAnswer(''),
           setNickname(''),
           handleClose()
-        );
+        )
+        .catch(error => {
+          console.log(error.status);
+        });
+    } else {
+      // eslint-disable-next-line no-alert
+      alert('Whoops! Ensure no fields are left blank and that you have provided a valid email address.');
     }
   };
 
   const body = (
-    <div style={modalStyle} className={classes.paper}>
-      <h2 id="ask-a-question-modal" style={{ textAlign: 'center' }}>Answer A Question</h2>
+    <div
+      style={modalStyle}
+      className={classes.paper}>
+      <h2
+        id="ask-a-question-modal"
+        style={{ textAlign: 'center', marginBottom: -10 }}>Submit Your Answer
+      </h2>
+      <h3 style={{ textAlign: 'center' }}>{`${productName}: ${props.question}`}</h3>
       <p style={{ textAlign: 'center' }}>(all fields required)</p>
       <form onChange={handleInputChange}>
-        Your Nickname: <input name="nickname" style={{ width: 200 }}/>
+        Your Nickname: <input
+          name="nickname"
+          placeholder="Example: jack543!"
+          maxLength="60"
+          style={{ width: 200 }}/>
+        <p style={{ fontSize: 11, textAlign: 'center' }}>
+          For privacy reasons, do not use your full name or email address.
+        </p>
         <br/>
-        Your Email: <input name="email" style={{ width: 200 }}/>
+        Your Email: <input
+          name="email"
+          placeholder="Example: jack@email.com"
+          maxLength="60"
+          style={{ width: 200 }}/>
+        <p style={{ fontSize: 11, textAlign: 'center' }}>
+          For authentication reasons, you will not be emailed.
+        </p>
         <br/>
-        Your Answer: <input style={{ height: 200, width: 200 }} name="answer"/>
+        Your Answer: <input
+          name="answer"
+          maxLength="1000"
+          style={{ height: 200, width: 200 }}
+        />
+        <br/>
+        <br/>
+        <input
+          accept="image/*"
+          className={classes.input}
+          style={{ display: 'none' }}
+          id="raised-button-file"
+          multiple
+          type="file"
+        />
+        <label htmlFor="raised-button-file">
+          <Button
+            style={{ display: 'flex', justifyContent: 'center' }}
+            variant="raised"
+            component="span"
+            className={classes.button}>
+          Upload Image
+          </Button>
+        </label>
         <br/>
         <br/>
         <ButtonGroup style={{ display: 'flex', justifyContent: 'center' }}>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={() => onSubmitClick(props.questionId)}>Submit</Button>
+          <Button onClick={() => {
+            onSubmitClick(props.questionId,
+              dispatch(fetchQuestions));
+          }}>Submit</Button>
         </ButtonGroup>
       </form>
     </div>
@@ -107,7 +161,7 @@ export default function AddAModal (props) {
         data-testid="addAnswerButton"
         onClick={handleOpen}
         style={{ border: 'none', backgroundColor: 'white', color: '#555555' }}>
-        Add Answer
+        <u>Add Answer</u>
       </button>
       <Modal
         open={open}
