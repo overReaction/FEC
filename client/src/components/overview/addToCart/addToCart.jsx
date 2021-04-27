@@ -3,6 +3,7 @@ import React from 'react';
 
 //Redux
 import { useSelector, useDispatch } from 'react-redux';
+import { addToOutfit } from '../../relatedItemsComparison/outfitSlice.js';
 import { throwErr, updateSizeDropDownDisplay, updateQuantDropDownDisplay, updateSkuInfo } from './cartSlice.js';
 
 //Axios
@@ -21,11 +22,27 @@ const AddToCart = (props) => {
   const sku = useSelector((state) => state.cart.sku);
   const err = useSelector((state) => state.cart.err);
   const sizes = useSelector((state) => state.cart.sizes);
+  const productInfo = useSelector((state) => state.app.productInfo);
+  const productId = useSelector((state) => state.app.productId);
+  const ratings = useSelector((state) => state.app.rating);
+  const style = useSelector((state) => state.overview.currentStyle);
+  const outfitIds = useSelector((state) => state.outfit.outfitIds);
+
+  let editedProductInfo = { ...productInfo };
+
+  if (style) {
+    editedProductInfo.ratings = ratings;
+    editedProductInfo.photo = style.photos[0].url;
+  }
 
   const addToCart = (sku) => {
     axios.post(`/api/?endpoint=cart`, {
       sku_id: sku
     });
+  };
+
+  const handleOutfitClick = () => {
+    dispatch(addToOutfit(editedProductInfo));
   };
 
   return (
@@ -61,7 +78,9 @@ const AddToCart = (props) => {
         <Button
           variant="outlined"
           size="medium"
+          disabled={outfitIds.includes(productId)}
           style={sizes.length === 0 ? { display: 'none' } : {}}
+          onClick={() => handleOutfitClick()}
         >Add to outfit</Button>
       </Grid>
     </Grid>

@@ -33,13 +33,18 @@ const RatingsBreakdown = (props) => {
   const numOfRatings = useSelector((state) => state.app.numOfRatings);
   const numOfReviews = useSelector((state) => state.app.reviews.length);
   const filters = useSelector((state) => state.reviews.filter);
-  console.log(ratings);
 
   const [fiveStars, setFiveStars] = useState(0);
   const [fourStars, setFourStars] = useState(0);
   const [threeStars, setThreeStars] = useState(0);
   const [twoStars, setTwoStars] = useState(0);
   const [oneStars, setOneStars] = useState(0);
+
+  // const [numFive, setNumFiveStars] = useState(0);
+  // const [numFour, setNumFourStars] = useState(0);
+  // const [numThree, setNumThreeStars] = useState(0);
+  // const [numTwo, setNumTwoStars] = useState(0);
+  // const [numOne, setNumOneStars] = useState(0);
 
   const handleRatingClick = (rating) => {
     dispatch(seeAllReviews(numOfReviews));
@@ -68,7 +73,7 @@ const RatingsBreakdown = (props) => {
       <Grid container spacing={1}>
         <Grid container item alignItems="center" spacing={2}>
           <Grid item>
-            <h1>{rating}</h1>
+            <h1>{rating.toFixed(2)}</h1>
           </Grid>
           <Grid item>
             <StarRating rating={rating}/>
@@ -79,7 +84,7 @@ const RatingsBreakdown = (props) => {
         </Grid>
         {ratings.recommended ?
           <Grid item xs={12}>
-            {calculatePercentRecommended()}% of reviews recommend this product.
+            {Math.floor(calculatePercentRecommended())}% of reviews recommend this product.
           </Grid> :
           <span/>
         }
@@ -94,7 +99,7 @@ const RatingsBreakdown = (props) => {
               <LinearProgress classes={{ root: classes.root }} variant="determinate" value={fiveStars * 100}/>
             </Grid>
             <Grid item xs={1}>
-              <span>({fiveStars * 100})</span>
+              <span>({fiveStars * numOfRatings})</span>
             </Grid>
           </Grid>
           <Grid item container alignItems="center" spacing={1} className={classes.hover}
@@ -107,7 +112,7 @@ const RatingsBreakdown = (props) => {
               <LinearProgress classes={{ root: classes.root }} variant="determinate" value={fourStars * 100}/>
             </Grid>
             <Grid item xs={1}>
-              <span>({fourStars * 100})</span>
+              <span>({fourStars * numOfRatings})</span>
             </Grid>
           </Grid>
           <Grid item container alignItems="center" spacing={1} className={classes.hover}
@@ -120,7 +125,7 @@ const RatingsBreakdown = (props) => {
               <LinearProgress classes={{ root: classes.root }} variant="determinate" value={threeStars * 100}/>
             </Grid>
             <Grid item xs={1}>
-              <span>({threeStars * 100})</span>
+              <span>({threeStars * numOfRatings})</span>
             </Grid>
           </Grid>
           <Grid item container alignItems="center" spacing={1} className={classes.hover}
@@ -133,7 +138,7 @@ const RatingsBreakdown = (props) => {
               <LinearProgress classes={{ root: classes.root }} variant="determinate" value={twoStars * 100}/>
             </Grid>
             <Grid item xs={1}>
-              <span>({twoStars * 100})</span>
+              <span>({twoStars * numOfRatings})</span>
             </Grid>
           </Grid>
           <Grid item container alignItems="center" spacing={1} className={classes.hover}
@@ -146,7 +151,7 @@ const RatingsBreakdown = (props) => {
               <LinearProgress classes={{ root: classes.root }} variant="determinate" value={oneStars * 100}/>
             </Grid>
             <Grid item xs={1}>
-              <span>({oneStars * 100})</span>
+              <span>({oneStars * numOfRatings})</span>
             </Grid>
           </Grid>
         </Grid>
