@@ -18,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const handleComparisonOpen = () => {
+
+};
+
 const RealtedProductCard = ({ productInfo }) => {
   const classes = useStyles();
   return (
@@ -28,7 +32,7 @@ const RealtedProductCard = ({ productInfo }) => {
           title={productInfo.name}
           subtitle={`$${productInfo.default_price}`}
           actionIcon={
-            <IconButton >
+            <IconButton onClick={handleComparisonOpen}>
               <StarBorderIcon className={classes.icon}/>
             </IconButton>
           }

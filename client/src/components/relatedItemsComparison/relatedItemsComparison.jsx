@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-// import StickyHeadTable from './comparisonModal/comparisonModal.jsx';
+import StickyHeadTable from './comparisonModal/comparisonModal.jsx';
 import OutfitList from './outfitList/outfitList.jsx';
 import RelatedProductsList from './relatedProductsList/relatedProductsList.jsx';
 
@@ -31,9 +31,6 @@ const RelatedItemsComparison = () => {
         <Grid item container xs={11}>
           <RelatedProductsList />
         </Grid>
-        {/* <Grid item container xs={8}>
-          < StickyHeadTable />
-        </Grid> */}
       </Grid>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -6,8 +7,27 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+
+const currentProduct = useSelector((state) => state.app.productInfo);
+const comparedProduct = {
+  id: 18084,
+  name: "Blues Suede Shoes",
+  features: [
+    {
+      feature: "Sole",
+      value: "Rubber"
+    },
+    {
+      feature: "Material",
+      value: "FullControlSkin"
+    },
+    {
+      feature: "Stitching",
+      value: "Double Stitch"
+    }
+  ]
+};
 
 const columns = [
   { id: 'currentProduct', label: 'Current Product', minWidth: 170 },
@@ -19,11 +39,12 @@ function createData (currentProduct, comparedProduct) {
   currentProduct.map((item, index) => {
     comparedProduct.map((characteristic) => {
       if (currentProduct[index].feature === characteristic.feature) {
-        return { currentProduct[index].value, characteristic.feature, characteristic.value };
+        return { currentProduct: currentProduct[index].value,
+          feature: characteristic.feature,
+          comparedProduct: characteristic.value };
       }
-    })
-
-  })
+    });
+  });
 }
 
 const rows = [
@@ -32,52 +53,15 @@ const rows = [
 
 const useStyles = makeStyles({
   root: {
-    width: '100%',
+    width: '100%'
   },
   container: {
-    maxHeight: 440,
-  },
+    maxHeight: 440
+  }
 });
 
-export default function StickyHeadTable() {
+export default function StickyHeadTable () {
   const classes = useStyles();
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const currentProduct = useSelector((state) => state.app.productInfo);
-  const comparedProduct = {
-    "id": 18084,
-    "campus": "hr-bld",
-    "name": "Blues Suede Shoes",
-    "slogan": "2019 Stanley Cup Limited Edition",
-    "description": "Touch down in the land of the Delta Blues in the middle of the pouring rain",
-    "category": "Dress Shoes",
-    "default_price": "120.00",
-    "created_at": "2021-02-23T05:08:00.350Z",
-    "updated_at": "2021-02-23T05:08:00.350Z",
-    "features": [
-        {
-            "feature": "Sole",
-            "value": "Rubber"
-        },
-        {
-            "feature": "Material",
-            "value": "FullControlSkin"
-        },
-        {
-            "feature": "Stitching",
-            "value": "Double Stitch"
-        }
-    ]
-  }
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
 
   return (
     <Paper className={classes.root}>
@@ -103,8 +87,7 @@ export default function StickyHeadTable() {
                   {columns.map((column) => {
                     const value = row[column.id];
                     return (
-                      <TableCell key={column.id} align={column.align}>
-                      </TableCell>
+                      <TableCell key={column.id} align={column.align} />
                     );
                   })}
                 </TableRow>
@@ -113,15 +96,6 @@ export default function StickyHeadTable() {
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
-      />
     </Paper>
   );
 }
