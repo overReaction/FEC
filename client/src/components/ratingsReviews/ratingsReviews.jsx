@@ -10,10 +10,10 @@ const RatingsReviews = (props) => {
       id="RatingsReviews"
       style={{ padding: '1em' }}>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={3}>
           <Breakdown />
         </Grid>
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={9}>
           <ReviewList />
         </Grid>
       </Grid>
