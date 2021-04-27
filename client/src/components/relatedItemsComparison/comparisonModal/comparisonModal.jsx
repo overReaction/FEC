@@ -9,58 +9,46 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-const currentProduct = useSelector((state) => state.app.productInfo);
-const comparedProduct = {
-  id: 18084,
-  name: "Blues Suede Shoes",
-  features: [
-    {
-      feature: "Sole",
-      value: "Rubber"
-    },
-    {
-      feature: "Material",
-      value: "FullControlSkin"
-    },
-    {
-      feature: "Stitching",
-      value: "Double Stitch"
-    }
-  ]
-};
 
-const columns = [
-  { id: 'currentProduct', label: 'Current Product', minWidth: 170 },
-  { id: 'feature', label: 'Characteristic', minWidth: 190 },
-  { id: 'comparedProduct', label: 'Compared Product', minWidth: 170 }
-];
+export default function StickyHeadTable (props) {
+  const currentProduct = useSelector((state) => state.app.productInfo);
+  const comparedProduct = props.productInfo;
 
-function createData (currentProduct, comparedProduct) {
-  currentProduct.map((item, index) => {
-    comparedProduct.map((characteristic) => {
-      if (currentProduct[index].feature === characteristic.feature) {
-        return { currentProduct: currentProduct[index].value,
-          feature: characteristic.feature,
-          comparedProduct: characteristic.value };
-      }
+  const columns = [
+    { id: 'currentProduct', label: `${currentProduct.name}`, minWidth: 170 },
+    { id: 'feature', label: 'Characteristic', minWidth: 190 },
+    { id: 'comparedProduct', label: `${comparedProduct.name}`, minWidth: 170 }
+  ];
+
+  function createData (currentFeatures, comparedFeatures) {
+    // console.log('currentFeatures: ', currentFeatures);
+    // console.log('comparedFeatures: ', comparedFeatures);
+    currentFeatures.map((item, index) => {
+      comparedFeatures.map((characteristic) => {
+        if (currentFeatures[index].feature === characteristic.feature) {
+          return { currentProduct: currentFeatures[index].value,
+            feature: characteristic.feature,
+            comparedProduct: characteristic.value };
+        }
+      });
+      return { currentProduct: currentFeatures[index].value,
+        feature: currentFeatures[index].feature,
+        comparedProduct: '' };
     });
-  });
-}
-
-const rows = [
-  createData(currentProduct.features, comparedProduct.features)
-];
-
-const useStyles = makeStyles({
-  root: {
-    width: '100%'
-  },
-  container: {
-    maxHeight: 440
   }
-});
 
-export default function StickyHeadTable () {
+  const rows = [
+    createData(currentProduct.features, comparedProduct.features)
+  ];
+
+  const useStyles = makeStyles({
+    root: {
+      width: '100%'
+    },
+    container: {
+      maxHeight: 440
+    }
+  });
   const classes = useStyles();
 
   return (
@@ -81,13 +69,15 @@ export default function StickyHeadTable () {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+            {rows.slice().map((row) => {
               return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                <TableRow hover role="checkbox" tabIndex={-1} >
                   {columns.map((column) => {
                     const value = row[column.id];
                     return (
-                      <TableCell key={column.id} align={column.align} />
+                      <TableCell key={column.id} align={column.align}>
+                        {value}
+                      </TableCell>
                     );
                   })}
                 </TableRow>

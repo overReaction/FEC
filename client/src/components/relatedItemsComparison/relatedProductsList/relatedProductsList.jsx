@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import { fetchRelated } from '../relatedSlice.js';
 
+
 import RelatedProductCard from '../relatedProductCard/relatedProductCard.jsx';
 
 const useStyles = makeStyles((theme) => ({
@@ -15,9 +16,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper
   },
   gridList: {
-    flexWrap: 'nowrap',
+    flexWrap: 'nowrap'
     // Promote the list into her own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: 'translateZ(0)'
+    // transform: 'translateZ(0)'
   }
 }));
 

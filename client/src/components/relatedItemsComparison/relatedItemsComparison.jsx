@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-import StickyHeadTable from './comparisonModal/comparisonModal.jsx';
 import OutfitList from './outfitList/outfitList.jsx';
 import RelatedProductsList from './relatedProductsList/relatedProductsList.jsx';
 
@@ -10,25 +9,29 @@ import RelatedProductsList from './relatedProductsList/relatedProductsList.jsx';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary
+    flexGrow: 0,
+    flexShrink: 1,
+    maxWidth: 1500,
+    minWidth: 410,
+    padding: 0
   }
+  // paper: {
+  //   padding: theme.spacing(2),
+  //   textAlign: 'center',
+  //   color: theme.palette.text.secondary
+  // }
 }));
 
 const RelatedItemsComparison = () => {
   const classes = useStyles();
 
   return (
-    <div data-testid="related" className={classes.root}> Related items and comparison widget placeholder
-      <Grid container spacing={3}>
-        <Grid item container xs={12}>
+    <div data-testid="related" className={classes.root}>
+      <Grid container spacing={8} justify="center">
+        <Grid item xs={11}>
           <OutfitList />
         </Grid>
-        <Grid item container xs={11}>
+        <Grid item xs={11}>
           <RelatedProductsList />
         </Grid>
       </Grid>
