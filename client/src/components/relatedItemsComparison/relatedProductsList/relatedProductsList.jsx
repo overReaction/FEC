@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper
   },
   gridList: {
+    display: 'flex',
     flexWrap: 'nowrap'
     // Promote the list into her own layer on Chrome. This cost memory but helps keeping high FPS.
     // transform: 'translateZ(0)'
@@ -35,8 +36,8 @@ const RelatedProductsList = () => {
 
   if (relatedList.length > 0) {
     return (
-      <div data-testid="relatedProductsList" className={classes.root}> Related Products
-        <GridList className={classes.gridList} cols={2.5}>
+      <div data-testid="relatedProductsList" className={classes.root}>
+        <GridList className={classes.gridList} >
           {relatedList.map((product) => {
             return (
               < RelatedProductCard key={product.id} productInfo={product}/>
