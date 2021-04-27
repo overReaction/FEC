@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import Answer from './Answer.jsx';
+import { Grid } from '@material-ui/core/';
 
 
 const Answers = (props) => {
@@ -14,13 +15,14 @@ const Answers = (props) => {
   if (!moreAnswersClicked) {
     return (
       <>
-        <div style={{ marginLeft: 10 }}>
+        <Grid
+          style={{ marginLeft: 10 }}>
           {answers.map((answer, index) => {
             if (index < 2) {
               return <Answer key={answer.id} answer={answer} index={index}/>;
             }
           })}
-        </div>
+        </Grid>
         <div style={{ textAlign: 'center' }}>
           <button
             onClick={onMoreAnswersClick}
@@ -36,12 +38,18 @@ const Answers = (props) => {
   } else {
     return (
       <>
-        <div style={{ marginLeft: 10 }}>
+        <Grid style={{
+          marginLeft: 10,
+          maxHeight: '50vh',
+          boxSizing: 'border-box',
+          padding: '1em',
+          overflowX: 'hidden',
+          overflowY: 'auto' }}>
           {answers.map((answer, index) => {
             return <Answer key={answer.id} answer={answer} index={index}/>;
           }
           )}
-        </div>
+        </Grid>
         <div style={{ textAlign: 'center' }}>
           <button
             onClick={onMoreAnswersClick}
