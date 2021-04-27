@@ -52,12 +52,15 @@ export default function AddQModal () {
   const handleInputChange = (e) => {
     if (e.target.name === 'nickname') {
       setNickname(e.target.value);
+      return;
     }
     if (e.target.name === 'email') {
       setEmail(e.target.value);
+      return;
     }
     if (e.target.name === 'question') {
       setQuestion(e.target.value);
+      return;
     }
   };
 

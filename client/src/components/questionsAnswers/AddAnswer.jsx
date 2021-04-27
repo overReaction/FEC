@@ -56,12 +56,16 @@ export default function AddAModal (props) {
   const handleInputChange = (e) => {
     if (e.target.name === 'nickname') {
       setNickname(e.target.value);
+      console.log(nickname);
+      return;
     }
     if (e.target.name === 'email') {
       setEmail(e.target.value);
+      return;
     }
     if (e.target.name === 'answer') {
       setAnswer(e.target.value);
+      return;
     }
   };
 
