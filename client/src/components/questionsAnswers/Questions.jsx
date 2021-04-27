@@ -23,7 +23,14 @@ const Questions = props => {
 
   return (
     <div data-testid="questions">
-      <Grid>
+      <Grid
+        style={{
+          maxHeight: '75vh',
+          boxSizing: 'border-box',
+          padding: '1em',
+          overflowX: 'hidden',
+          overflowY: 'auto'
+        }}>
         {currentQuestions.filter(question =>
           question.question_body.toLowerCase().includes(props.searchValue.toLowerCase())
         )
