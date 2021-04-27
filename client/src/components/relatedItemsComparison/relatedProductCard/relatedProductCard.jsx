@@ -1,50 +1,40 @@
-import React, { useEffect } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { fetchRelated } from '../relatedSlice.js';
-// import { changeProductId } from '../../appSlice.js';
-// import { fetchProductInfo } from '../../appSlice.js';
+import React from 'react';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import IconButton from '@material-ui/core/IconButton';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  title: {
+    color: theme.palette.primary.light
+  },
+  titleBar: {
+    background:
+      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)'
+  },
+  icon: {
+    color: 'white'
+  }
+}));
 
 const RealtedProductCard = ({ productInfo }) => {
-  // const productId = useSelector((state) => state.app.productId); //Accesses the store to retrieve current state
-  // const dispatch = useDispatch(); //Dispatch an action to the store to update state
-  // const dispatch = useDispatch();
-  // const style = useSelector((state) => state.related.relatedStyleInfo);
-  // console.log(style);
-  // const related = useSelector((state) => state.related.related);
-
-  // Use Effect is similiar to component did mount
-  // useEffect(() => {
-  //   related.map((item) => {
-  //     dispatch(fetchRelatedStyleInfo(item));
-  //   });
-  // }, [productId]);
-
+  const classes = useStyles();
   return (
     <div data-testid="relatedProductCard">
-      <CssBaseline />
-      RelatedProductCard placeholder
-      {/* {style.map((item) => {
-        if (item.product_id === props.productInfo.id) {
-          return (
-            <div>
-              <span>{props.productInfo.name}</span>
-              <span>{style[0].results.photos[0].thumbnail_url}</span>
-            </div>
-          );
-        } else {
-          return (
-            <div>
-              <span>{props.productInfo.name}</span>
-            </div>
-          );
-        }
-      }
-      )} */}
-      <span>{productInfo.name}</span>
-      <img src={productInfo.photo}/>
-      {/* <span>{props.styleInfo[0].results[0].original_price}</span> */}
+      <GridListTile >
+        <img src={productInfo.photo} style={{ height: '100%', maxHeight: 400, width: 'auto', objectFit: 'cover' }}/>
+        <GridListTileBar
+          title={productInfo.name}
+          subtitle={`$${productInfo.default_price}`}
+          actionIcon={
+            <IconButton >
+              <StarBorderIcon className={classes.icon}/>
+            </IconButton>
+          }
+          className={classes.titleBar}
+        />
+      </GridListTile>
     </div>
   );
 };

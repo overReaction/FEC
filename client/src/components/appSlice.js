@@ -17,10 +17,26 @@ export const fetchReviewMetadata = createAsyncThunk(
   }
 );
 
-export const fetchReviews = createAsyncThunk(
-  'reviews/getReviews',
+export const fetchReviewsNewest = createAsyncThunk(
+  'reviews/getReviewsNewest',
   async (productId, thunkAPI) => {
-    const response = await axios.get(`/api/?endpoint=reviews/?product_id=${productId}&count=100`);
+    const response = await axios.get(`/api/?endpoint=reviews/?product_id=${productId}&count=100&sort=newest`);
+    return response.data.results;
+  }
+);
+
+export const fetchReviewsHelpful = createAsyncThunk(
+  'reviews/getReviewsHelpful',
+  async (productId, thunkAPI) => {
+    const response = await axios.get(`/api/?endpoint=reviews/?product_id=${productId}&count=100&sort=helpful`);
+    return response.data.results;
+  }
+);
+
+export const fetchReviewsRelevant = createAsyncThunk(
+  'reviews/getReviewsRelevant',
+  async (productId, thunkAPI) => {
+    const response = await axios.get(`/api/?endpoint=reviews/?product_id=${productId}&count=100&sort=relevant`);
     return response.data.results;
   }
 );
@@ -39,6 +55,14 @@ const calcAvgRating = (objectOfRatings) => {
   return avg;
 };
 
+const getNumOfReviews = (objectOfRatings) => {
+  let total = 0;
+  for (let key in objectOfRatings) {
+    total += parseInt(objectOfRatings[key], 10);
+  }
+  return total;
+};
+
 export const appSlice = createSlice({
   name: 'app',
   initialState: {
@@ -47,7 +71,8 @@ export const appSlice = createSlice({
     productInfo: {},
     reviews: [],
     reviewMetadata: {},
-    rating: 0
+    rating: 0,
+    numOfRatings: 0
   },
   //A reducer is a function that receives the current state and an action object, decides how to update the state if necessary, and returns the new state
   reducers: {
@@ -66,9 +91,16 @@ export const appSlice = createSlice({
       state.reviewMetadata = action.payload;
       if (state.reviewMetadata.ratings) {
         state.rating = calcAvgRating(state.reviewMetadata.ratings);
+        state.numOfRatings = getNumOfReviews(state.reviewMetadata.ratings);
       }
     },
-    [fetchReviews.fulfilled]: (state, action) => {
+    [fetchReviewsNewest.fulfilled]: (state, action) => {
+      state.reviews = action.payload;
+    },
+    [fetchReviewsRelevant.fulfilled]: (state, action) => {
+      state.reviews = action.payload;
+    },
+    [fetchReviewsHelpful.fulfilled]: (state, action) => {
       state.reviews = action.payload;
     }
   }

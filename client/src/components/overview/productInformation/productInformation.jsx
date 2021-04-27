@@ -10,7 +10,7 @@ import Box from "@material-ui/core/Box";
 
 //Components
 import StarRating from '../../starRating.jsx';
-import { fetchReviewMetadata, fetchReviews } from '../../appSlice.js';
+import { fetchReviewMetadata, fetchReviewsRelevant } from '../../appSlice.js';
 
 const ProductInformation = (props) => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const ProductInformation = (props) => {
 
   useEffect(() => {
     dispatch(fetchReviewMetadata(productId));
-    dispatch(fetchReviews(productId));
+    dispatch(fetchReviewsRelevant(productId));
   }, [productId]);
 
   return (
