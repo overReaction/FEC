@@ -22,7 +22,6 @@ export const incrementHelpfulAnswerCount = createAsyncThunk(
   async (answerId, thunkAPI) => {
     console.log(answerId);
     const response = await axios.put(`/api/?endpoint=qa/answers/${answerId}/helpful`);
-    console.log(response.data);
     return response.data;
   }
 );
@@ -44,16 +43,14 @@ export const qaSlice = createSlice({
     },
     handleMoreQsClick: (state, action) => {
       state.Qcount = state.Qcount + 2;
-      console.log(state.Qcount);
-    },
-    onAnswerSubmit: (state, action) => {
-      state.answerSubmitted = !state.answerSubmitted;
-      console.log(state.answerSubmitted);
     }
   },
   extraReducers: {
     [fetchQuestions.fulfilled]: (state, action) => {
       state.data = action.payload.results;
+      state.answers = state.data.map(question => {
+        return Object.values(question.answers);
+      });
     },
     [incrementHelpfulQuestionCount.fulfilled]: (state, action) => {
       state.helpfulQClicked = true;

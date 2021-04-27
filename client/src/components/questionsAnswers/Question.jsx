@@ -25,7 +25,7 @@ const Question = props => {
   const classes = useStyles();
   const questionId = props.question.question_id;
 
-  const [answers, setAnswers] = useState(props.answers);
+  const [answers] = useState(props.answers);
   const [questionHelpfulnessCount, setQuestionHelpfulnessCount] = useState(props.question.question_helpfulness);
   const [helpfulQClicked, setHelpfulQClicked] = useState(false);
   const [reported, setReported] = useState(false);

@@ -6,6 +6,10 @@ import { Grid } from '@material-ui/core/';
 
 const Answers = (props) => {
   const [answers] = useState(props.answers[props.index]);
+  let sortedAnswers = answers.slice().sort((a, b) => {
+    return b.helpfulness - a.helpfulness;
+  });
+  console.log(sortedAnswers);
   const [moreAnswersClicked, setMoreAnswersClicked] = useState(false);
 
   const onMoreAnswersClick = () => {
@@ -17,9 +21,14 @@ const Answers = (props) => {
       <>
         <Grid
           style={{ marginLeft: 10 }}>
-          {answers.map((answer, index) => {
+          {sortedAnswers.map((answer, index) => {
             if (index < 2) {
-              return <Answer key={answer.id} answer={answer} index={index}/>;
+              return (
+                <Answer
+                  key={answer.id}
+                  answer={answer}
+                  index={index}/>
+              );
             }
           })}
         </Grid>
@@ -30,7 +39,7 @@ const Answers = (props) => {
               backgroundColor: 'white',
               color: '#777777',
               marginTop: 5 }}>
-            <u>Show more answers</u>
+            <u style={{ fontSize: 12 }}>Show more answers</u>
           </button>
         </div>
       </>
@@ -44,10 +53,9 @@ const Answers = (props) => {
           padding: '1em',
           overflowX: 'hidden',
           overflowY: 'auto' }}>
-          {answers.map((answer, index) => {
+          {sortedAnswers.map((answer, index) => {
             return <Answer key={answer.id} answer={answer} index={index}/>;
-          }
-          )}
+          })}
         </Grid>
         <div style={{ textAlign: 'center' }}>
           <button

@@ -11,9 +11,7 @@ const Questions = props => {
   const currentQuestions = useSelector((state) => state.qa.data);
   const answerSubmitted = useSelector((state) => state.qa.answerSubmitted);
   const Qcount = useSelector((state) => state.qa.Qcount);
-  const answers = currentQuestions.map(question => {
-    return Object.values(question.answers);
-  });
+  const answers = useSelector((state) => state.qa.answers);
 
   const dispatch = useDispatch();
 

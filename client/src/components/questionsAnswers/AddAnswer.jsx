@@ -37,12 +37,13 @@ export default function AddAModal (props) {
 
   const dispatch = useDispatch();
   const productName = useSelector(state => state.app.productInfo.name);
+  const productId = useSelector(state => state.app.productId);
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [answer, setAnswer] = useState('');
-  const [images, setImages] = useState([]);
+  const [images] = useState([]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -73,6 +74,7 @@ export default function AddAModal (props) {
         photos: images
       })
         .then(() => dispatch(onAnswerSubmit()))
+        .then(() => dispatch(fetchQuestions(productId)))
         .then(
           setEmail(''),
           setAnswer(''),
@@ -122,25 +124,6 @@ export default function AddAModal (props) {
           style={{ height: 200, width: 200, float: 'right' }}
           wrap="soft"
           name="answer"/>
-        <br/>
-        <br/>
-        <input
-          accept="image/*"
-          className={classes.input}
-          style={{ display: 'none' }}
-          id="raised-button-file"
-          multiple
-          type="file"
-        />
-        <label htmlFor="raised-button-file">
-          {/* <Button
-            style={{ display: 'flex', justifyContent: 'center' }}
-            variant="raised"
-            component="span"
-            className={classes.button}>
-          Upload Image
-          </Button> */}
-        </label>
         <br/>
         <br/>
         <ButtonGroup style={{ display: 'inline-flex' }}>
