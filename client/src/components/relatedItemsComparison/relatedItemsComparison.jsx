@@ -25,10 +25,10 @@ const RelatedItemsComparison = () => {
   return (
     <div data-testid="related" className={classes.root}> Related items and comparison widget placeholder
       <Grid container spacing={3}>
-        <Grid item container xs={8}>
+        <Grid item container xs={12}>
           <OutfitList />
         </Grid>
-        <Grid item container xs={8}>
+        <Grid item container xs={11}>
           <RelatedProductsList />
         </Grid>
         {/* <Grid item container xs={8}>
