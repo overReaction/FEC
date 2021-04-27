@@ -112,12 +112,14 @@ export default function AddQModal () {
         <p style={{ textAlign: 'center' }}>
           For authentication reasons, you will not be emailed</p>
         <br/>
-        Your Question: <input
-          style={{ height: 200, width: 200 }}
+        Your Question:
+        <textarea
+          style={{ height: 200, width: 200, float: 'right' }}
+          wrap="soft"
           name="question"/>
         <br/>
         <br/>
-        <ButtonGroup style={{ display: 'flex', justifyContent: 'center' }}>
+        <ButtonGroup style={{ display: 'inline-flex' }}>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={onSubmitClick}>Submit</Button>
         </ButtonGroup>

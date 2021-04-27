@@ -117,11 +117,11 @@ export default function AddAModal (props) {
           For authentication reasons, you will not be emailed.
         </p>
         <br/>
-        Your Answer: <input
-          name="answer"
-          maxLength="1000"
-          style={{ height: 200, width: 200 }}
-        />
+        Your Answer:
+        <textarea
+          style={{ height: 200, width: 200, float: 'right' }}
+          wrap="soft"
+          name="answer"/>
         <br/>
         <br/>
         <input
@@ -133,17 +133,17 @@ export default function AddAModal (props) {
           type="file"
         />
         <label htmlFor="raised-button-file">
-          <Button
+          {/* <Button
             style={{ display: 'flex', justifyContent: 'center' }}
             variant="raised"
             component="span"
             className={classes.button}>
           Upload Image
-          </Button>
+          </Button> */}
         </label>
         <br/>
         <br/>
-        <ButtonGroup style={{ display: 'flex', justifyContent: 'center' }}>
+        <ButtonGroup style={{ display: 'inline-flex' }}>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={() => {
             onSubmitClick(props.questionId,
