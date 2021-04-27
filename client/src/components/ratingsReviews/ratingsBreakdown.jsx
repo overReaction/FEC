@@ -33,6 +33,7 @@ const RatingsBreakdown = (props) => {
   const numOfRatings = useSelector((state) => state.app.numOfRatings);
   const numOfReviews = useSelector((state) => state.app.reviews.length);
   const filters = useSelector((state) => state.reviews.filter);
+  console.log(ratings);
 
   const [fiveStars, setFiveStars] = useState(0);
   const [fourStars, setFourStars] = useState(0);
@@ -43,6 +44,12 @@ const RatingsBreakdown = (props) => {
   const handleRatingClick = (rating) => {
     dispatch(seeAllReviews(numOfReviews));
     dispatch(adjustFilter(rating));
+  };
+
+  const calculatePercentRecommended = () => {
+    let recommend = parseInt(ratings.recommended.true, 10);
+    let dontRecommend = parseInt(ratings.recommended.false, 10);
+    return (recommend / (recommend + dontRecommend)) * 100;
   };
 
   useEffect(() => {
@@ -70,6 +77,12 @@ const RatingsBreakdown = (props) => {
             ({numOfRatings})
           </Grid>
         </Grid>
+        {ratings.recommended ?
+          <Grid item xs={12}>
+            {calculatePercentRecommended()}% of reviews recommend this product.
+          </Grid> :
+          <span/>
+        }
         <Grid container item spacing={1}>
           <Grid item container alignItems="center" spacing={1} className={classes.hover}
             onClick={() => handleRatingClick(5)}
