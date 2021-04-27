@@ -39,7 +39,7 @@ const Answer = (props) => {
         {!reported ?
           <u className="clickable"
             onClick={() => onReportClick(props.answer.id)}
-            style={{ color: '#cc3300' }}>Report
+          >Report
           </u> : 'Reported'}
       </span>
     </div>
