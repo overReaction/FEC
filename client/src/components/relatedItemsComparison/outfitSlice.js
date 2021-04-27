@@ -2,12 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 export const outfitSlice = createSlice({
   name: 'outfit',
   initialState: {
-    outfit: []
+    outfitObjects: [],
+    outfitIds: []
   },
 
   reducers: {
     addToOutfit: (state, action) => {
-      state.outfit.push(action.payload);
+      state.outfitObjects.push(action.payload);
+      state.outfitIds.push(action.payload.id);
     },
     removeFromOutfit: (state, action) => {
       state.outfit.splice(action.payload, 1);
