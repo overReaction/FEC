@@ -9,6 +9,24 @@ const generateRelatedStylePromise = function (productId) {
   return axios.get(`/api/?endpoint=products/${productId}/styles`);
 };
 
+const generateRelatedReviewMetaDataPromise = function (productId) {
+  return axios.get(`/api/?endpoint=reviews/meta?product_id=${productId}`);
+};
+
+const calcAvgRating = (objectOfRatings) => {
+  let numOfReviews = Object.values(objectOfRatings).reduce(function (accumulator, currentValue) {
+    return accumulator + parseInt(currentValue, 10);
+  }, 0);
+
+  let total = 0;
+  for (let key in objectOfRatings) {
+    total += parseInt(key, 10) * parseInt(objectOfRatings[key], 10);
+  }
+
+  let avg = total / numOfReviews;
+  return avg;
+};
+
 export const fetchRelated = createAsyncThunk(
   'products/getRelated',
   async (productId, thunkAPI) => {
@@ -46,7 +64,27 @@ export const fetchRelated = createAsyncThunk(
       })
       .then((resolvedStylePromises) => {
         resolvedStylePromises.map((item, index) => {
-          itemInfo[index].photo = item.data.results[0].photos[0].thumbnail_url;
+          if (item.data.results[0].photos[0].thumbnail_url) {
+            itemInfo[index].photo = item.data.results[0].photos[0].url;
+          } else {
+            itemInfo[index].photo = "https://images.unsplash.com/photo-1599508704512-2f19efd1e35f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=60";
+          }
+        });
+        return (itemInfo);
+      })
+      .then((itemInfoArray) => {
+        let promiseArray = [];
+        itemInfoArray.map((item, index) => {
+          promiseArray[index] = (generateRelatedReviewMetaDataPromise(item.id));
+        });
+        return promiseArray;
+      })
+      .then((promiseArray) => {
+        return (Promise.all(promiseArray));
+      })
+      .then((resolvedRatingPromises) => {
+        resolvedRatingPromises.map((item, index) => {
+          itemInfo[index].ratings = calcAvgRating(item.data.ratings);
         });
         return (itemInfo);
       })
