@@ -1,59 +1,50 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Grid from '@material-ui/core/Grid';
+import Select from 'react-select';
 
-// DELETE WHEN FINISHED
-import useStyles from "./tempStyles.jsx";
-
-// Static data for testing
-const options = [
-  {
-    priority: 'relevance'
-  },
-  {
-    priority: 'most recent'
-  },
-  {
-    priority: 'most helpful'
-  }
-];
-
+import { setSort } from './ratingsReviewsSlice';
+import { fetchReviewsNewest, fetchReviewsHelpful, fetchReviewsRelevant } from '../appSlice.js';
 
 const ReviewSortSearch = (props) => {
-  const classes = useStyles();
+  const numOfReviews = useSelector((state) => state.app.reviews.length);
+  const productId = useSelector((state) => state.app.productId);
+  const sort = useSelector((state) => state.reviews.sortBy);
+  const dispatch = useDispatch();
+
   return (
     <div>
-      <Paper className={classes.paper}>
-        <Grid container
-          direction="row"
-          justify="flex-start"
-          alignItems="center"
-          spacing={1}
-        >
-          <Grid item>
-            <Typography variant="h6" direction="row">
-              248 reviews, sorted by
-            </Typography>
-          </Grid>
-          <Grid item>
-            <TextField
-              id="select-priority"
-              select
-              // label= {options[0].priority}
-              defaultValue={options[0].priority}
-              // onChange={handleChange}
-              // helperText="choose sort method"
-            >
-              {options.map((option) => (
-                <MenuItem key ={option.priority} value={option.priority}>{option.priority}</MenuItem>
-              ))}
-            </TextField>
-          </Grid>
+      <Grid container
+        direction="row"
+        justify="flex-start"
+        alignItems="center"
+        spacing={1}
+      >
+        <Grid item>
+          <h2>{numOfReviews} reviews, sorted by </h2>
         </Grid>
-      </Paper>
+        <Grid item xs={2}>
+          <Select
+            value={sort}
+            options={[
+              { value: 'newest', label: 'newest' },
+              { value: 'relevant', label: 'relevant' },
+              { value: 'helpful', label: 'helpful' }
+            ]}
+            onChange={(selected) => {
+              dispatch(setSort(selected));
+              if (selected.value === 'newest') {
+                dispatch(fetchReviewsNewest(productId));
+              } else if (selected.value === 'relevant') {
+                dispatch(fetchReviewsRelevant(productId));
+              } else if (selected.value === 'helpful') {
+                dispatch(fetchReviewsHelpful(productId));
+              }
+            }}
+          />
+        </Grid>
+      </Grid>
     </div>
   );
 };
