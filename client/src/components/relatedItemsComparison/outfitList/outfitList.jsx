@@ -41,7 +41,7 @@ const OutfitList = () => {
     );
   } else {
     return (
-      <div>
+      <div data-testid="outfitList">
         <h3>Add some items to your outfit!</h3>
       </div>
     );

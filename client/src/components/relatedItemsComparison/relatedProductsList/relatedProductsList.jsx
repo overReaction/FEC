@@ -49,7 +49,7 @@ const RelatedProductsList = () => {
     );
   } else {
     return (
-      <div>Loading</div>
+      <div data-testid="relatedProductsList">Loading</div>
     );
   }
 };
