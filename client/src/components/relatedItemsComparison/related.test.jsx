@@ -19,6 +19,6 @@ describe('Related items and comparison widget', () => {
     render(<Provider store={store}>
       <App />
     </Provider>,);
-    expect(screen.getByTestId('related')).toHaveTextContent('Related items and comparison widget placeholder');
+    expect(screen.getByTestId('related')).toHaveTextContent('My OutfitAdd some items to your outfit!Related Products');
   });
 });

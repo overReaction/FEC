@@ -89,7 +89,7 @@ export const fetchRelated = createAsyncThunk(
         return (itemInfo);
       })
       .catch(function (error) {
-        console.log(error);
+        console.error(error);
       });
     return itemInfo;
   }
