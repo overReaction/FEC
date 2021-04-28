@@ -12,7 +12,8 @@ export const outfitSlice = createSlice({
       state.outfitIds.push(action.payload.id);
     },
     removeFromOutfit: (state, action) => {
-      state.outfit.splice(action.payload, 1);
+      state.outfitObjects.splice(action.payload, 1);
+      state.outfitIds.splice(action.payload, 1);
     }
   }
 });
