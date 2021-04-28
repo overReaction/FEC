@@ -21,22 +21,34 @@ export default function StickyHeadTable (props) {
   ];
 
   const rows = [];
+  const featuresObj = {};
 
   function createData (currentFeatures, comparedFeatures) {
-    // console.log('currentFeatures: ', currentFeatures);
-    // console.log('comparedFeatures: ', comparedFeatures);
-    currentFeatures.map((item, index) => {
-      comparedFeatures.map((characteristic) => {
-        if (currentFeatures[index].feature === characteristic.feature) {
-          rows.push({ currentProduct: currentFeatures[index].value,
-            feature: characteristic.feature,
-            comparedProduct: characteristic.value });
-        }
-      });
-      rows.push({ currentProduct: item.value,
-        feature: item.feature,
-        comparedProduct: '' });
+    // currentFeatures.map((item, index) => {
+    //   comparedFeatures.map((characteristic) => {
+    //     if (currentFeatures[index].feature === characteristic.feature) {
+    //       rows.push({ currentProduct: currentFeatures[index].value,
+    //         feature: characteristic.feature,
+    //         comparedProduct: characteristic.value });
+    //     }
+    //   });
+    //   rows.push({ currentProduct: item.value,
+    //     feature: item.feature,
+    //     comparedProduct: '' });
+    // });
+    currentFeatures.map((item) => {
+      featuresObj[item.feature] = { current: item.value, compared: null };
     });
+    comparedFeatures.map((item) => {
+      if (featuresObj[item.feature]) {
+        featuresObj[item.feature].compared = item.value;
+      } else {
+        featuresObj[item.feature] = { current: null, compared: item.value };
+      }
+    });
+    for (var key in featuresObj) {
+      rows.push({ currentProduct: featuresObj[key].current, feature: key, comparedProduct: featuresObj[key].compared });
+    }
   }
 
   createData(currentProduct.features, comparedProduct.features);
