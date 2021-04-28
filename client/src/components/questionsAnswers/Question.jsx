@@ -23,9 +23,9 @@ const useStyles = makeStyles((theme) => ({
 const Question = props => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  // const firstTwoAnswers = props.answers[props.index].slice(0, 2);
   const questionId = props.question.question_id;
 
+  const [answers] = useState(props.answers);
   const [questionHelpfulnessCount, setQuestionHelpfulnessCount] = useState(props.question.question_helpfulness);
   const [helpfulQClicked, setHelpfulQClicked] = useState(false);
   const [reported, setReported] = useState(false);
@@ -38,23 +38,35 @@ const Question = props => {
   return (
     <Paper className={classes.paper}>
       <div>
-        <span><b>Q: {props.question.question_body}</b></span>
-        <span style={{ float: 'right', marginTop: -10 }}>
+        <span><b data-testid="question">Q: {props.question.question_body}</b></span>
+        <span style={{ float: 'right', marginTop: 0 }}>
           Helpful? &nbsp;
           {!helpfulQClicked ?
-            <u className="clickable"
+            <u
+              className="clickable"
               onClick={() => {
                 dispatch(incrementHelpfulQuestionCount(questionId));
                 setQuestionHelpfulnessCount(questionHelpfulnessCount + 1);
                 setHelpfulQClicked(true);
               }}>Yes
             </u> : <span>&nbsp;</span>}
-            ({questionHelpfulnessCount}) &nbsp; | &nbsp; <u style={{ display: 'inline-block' }}>
-            <AddAModal questionId={questionId}/></u> &nbsp; | &nbsp;
-          {!reported ? <u className="clickable" onClick={() => onReportClick(questionId)}>Report</u> : 'Reported!'}
+            ({questionHelpfulnessCount}) &nbsp; | &nbsp;
+          <u style={{ display: 'inline-block' }}>
+            <AddAModal
+              questionId={questionId}
+              question={props.question.question_body}/>
+          </u>
+            &nbsp; | &nbsp;
+
+          {!reported ?
+            <u
+              className="clickable"
+              onClick={() => onReportClick(questionId)}
+            >Report
+            </u> : 'Reported!'}
         </span>
         <div>
-          <Answers answers={props.answers} index={props.index}/>
+          <Answers answers={answers} index={props.index}/>
         </div>
       </div>
     </Paper>

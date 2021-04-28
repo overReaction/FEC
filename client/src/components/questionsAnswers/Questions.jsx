@@ -8,23 +8,27 @@ import { fetchQuestions } from './qaSlice.js';
 
 const Questions = props => {
   const productId = useSelector((state) => state.app.productId);
-  const dispatch = useDispatch();
-
   const currentQuestions = useSelector((state) => state.qa.data);
-
-  const answers = currentQuestions.map(question => {
-    return Object.values(question.answers);
-  });
-
+  const answerSubmitted = useSelector((state) => state.qa.answerSubmitted);
   const Qcount = useSelector((state) => state.qa.Qcount);
+  const answers = useSelector((state) => state.qa.answers);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchQuestions(productId));
-  }, [productId]);
+  }, [productId, answerSubmitted]);
 
   return (
     <div data-testid="questions">
-      <Grid>
+      <Grid
+        style={{
+          maxHeight: '75vh',
+          boxSizing: 'border-box',
+          padding: '1em',
+          overflowX: 'hidden',
+          overflowY: 'auto'
+        }}>
         {currentQuestions.filter(question =>
           question.question_body.toLowerCase().includes(props.searchValue.toLowerCase())
         )

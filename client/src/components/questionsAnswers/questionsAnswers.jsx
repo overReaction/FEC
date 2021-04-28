@@ -49,7 +49,7 @@ const QuestionsAnswers = props => {
 
   return (
     <div data-testid="qa">
-      <span style={{ marginLeft: 15 }}>QUESTIONS & ANSWERS</span>
+      <h2 style={{ marginLeft: 15 }}>QUESTIONS & ANSWERS</h2>
       <div>
         <Paper className={classes.paper}>
           <SearchBar onInputChange={onInputChange} onSearchClick={onSearch}/>

@@ -49,7 +49,7 @@ var App = () => {
     return (
       <React.Fragment>
         <CssBaseline />
-        <Grid container direction="column">
+        <Grid container direction="column" >
           <Grid item style={{ textAlign: 'center' }}>
             <h1> Project Catwalk </h1>
             <div> Try clicking one of these buttons to update the product id
@@ -63,7 +63,7 @@ var App = () => {
           <Grid item>
             <Overview />
           </Grid>
-          <Grid item>
+          <Grid >
             <RelatedItemsComparison />
           </Grid>
           <Grid item>

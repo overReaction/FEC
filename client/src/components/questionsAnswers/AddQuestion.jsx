@@ -13,18 +13,16 @@ function getModalStyle () {
   return {
     display: 'flex',
     flexDirection: 'column',
-    textAlign: 'center',
-    top: '20%',
-    left: '35%',
-    width: '20%',
+    textAlign: 'right',
     outline: 0
   };
 }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    position: "absolute",
-    width: 600,
+    marginTop: '20%',
+    margin: '0 auto',
+    width: 370,
     backgroundColor: theme.palette.background.paper,
     border: "1px solid #333333",
     boxShadow: theme.shadows[5],
@@ -36,6 +34,7 @@ export default function AddQModal () {
   const classes = useStyles();
   const dispatch = useDispatch();
   const productId = useSelector((state) => state.app.productId);
+  const productName = useSelector(state => state.app.productInfo.name);
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
   const [nickname, setNickname] = useState('');
@@ -53,15 +52,15 @@ export default function AddQModal () {
   const handleInputChange = (e) => {
     if (e.target.name === 'nickname') {
       setNickname(e.target.value);
-      console.log('nickname:', nickname);
+      return;
     }
     if (e.target.name === 'email') {
       setEmail(e.target.value);
-      console.log('Email:', email);
+      return;
     }
     if (e.target.name === 'question') {
       setQuestion(e.target.value);
-      console.log('Question:', question);
+      return;
     }
   };
 
@@ -80,22 +79,50 @@ export default function AddQModal () {
           setNickname(''),
           handleClose()
         );
+    } else {
+      // eslint-disable-next-line no-alert
+      alert('Whoops! Ensure no fields are left blank and that you have provided a valid email address.');
     }
   };
 
   const body = (
-    <div style={modalStyle} className={classes.paper}>
-      <h2 id="ask-a-question-modal">Ask A Question</h2>
-      <p>(all fields required)</p>
+    <div
+      style={modalStyle}
+      className={classes.paper}>
+      <h2
+        id="ask-a-question-modal"
+        style={{ textAlign: 'center', marginBottom: -10 }}>Ask Your Question
+      </h2>
+      <h3 style={{ textAlign: 'center' }}>about the {productName}.</h3>
+      <p style={{ textAlign: 'center' }}>(all fields required)</p>
       <form onChange={handleInputChange}>
-        Your Nickname: <input name="nickname"/>
+        Your Nickname: <input
+          name="nickname"
+          placeholder="jackson11!"
+          maxLength="60"
+          style={{ width: 200 }}
+        />
+        <p style={{ textAlign: 'center' }}>
+          For privacy reasons, do not use your full name or email address
+        </p>
         <br/>
-        Your Email: <input name="email"/>
+        Your Email: <input
+          name="email"
+          placeholder="jackson11@email.com!"
+          maxLength="60"
+          style={{ width: 200 }}
+        />
+        <p style={{ textAlign: 'center' }}>
+          For authentication reasons, you will not be emailed</p>
         <br/>
-        Your Question: <input style={{ height: 200, width: 200 }} name="question"/>
+        Your Question:
+        <textarea
+          style={{ height: 200, width: 200, float: 'right' }}
+          wrap="soft"
+          name="question"/>
         <br/>
         <br/>
-        <ButtonGroup>
+        <ButtonGroup style={{ display: 'inline-flex' }}>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={onSubmitClick}>Submit</Button>
         </ButtonGroup>
@@ -105,15 +132,17 @@ export default function AddQModal () {
 
   return (
     <div>
-      <Button data-testid="addQbutton" variant="outlined" onClick={handleOpen}>
+      <Button
+        data-testid="addQbutton"
+        variant="outlined"
+        onClick={handleOpen}>
         ADD A QUESTION +
       </Button>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-      >
+        aria-describedby="simple-modal-description">
         {body}
       </Modal>
     </div>
