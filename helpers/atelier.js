@@ -23,7 +23,6 @@ const postToEndpoint = (endpoint, body, callback) => {
     }
   })
     .then(response => {
-      console.log('response: ', response.status);
       callback(null, response);
     })
     .catch(error => {

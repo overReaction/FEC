@@ -74,9 +74,8 @@ export default function AddAModal (props) {
         body: answer,
         name: nickname,
         email: email,
-        photos: images
+        photos: []
       })
-        .then(() => dispatch(onAnswerSubmit()))
         .then(() => dispatch(fetchQuestions(productId)))
         .then(
           setEmail(''),
@@ -85,7 +84,7 @@ export default function AddAModal (props) {
           handleClose()
         )
         .catch(error => {
-          console.log(error.status);
+          console.log('error!', error);
         });
     } else {
       // eslint-disable-next-line no-alert
@@ -133,7 +132,7 @@ export default function AddAModal (props) {
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={() => {
             onSubmitClick(props.questionId,
-              dispatch(fetchQuestions));
+              dispatch(fetchQuestions(productId)));
           }}>Submit</Button>
         </ButtonGroup>
       </form>

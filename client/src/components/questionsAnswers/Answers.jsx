@@ -39,7 +39,7 @@ const Answers = (props) => {
               backgroundColor: 'white',
               color: '#777777',
               marginTop: 5 }}>
-            <u style={{ fontSize: 12 }}>Show more answers</u>
+            <u className="clickable" style={{ fontSize: 12 }}>Show more answers</u>
           </button>
         </div>
       </>
