@@ -5,6 +5,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
 import { makeStyles } from '@material-ui/core/styles';
+import StarRating from '../../starRating.jsx';
 import { removeFromOutfit } from '../outfitSlice.js';
 
 const useStyles = makeStyles((theme) => ({
@@ -35,7 +36,9 @@ const OutfitCard = ({ productInfo, index }) => {
         <img src={productInfo.photo} style={{ height: '100%', maxHeight: 400, width: 'auto' }}/>
         <GridListTileBar
           title={productInfo.name}
-          subtitle={`$${productInfo.default_price}`}
+          subtitle={<div>
+            <span>{`$${productInfo.default_price}`}</span>
+            <StarRating rating={productInfo.ratings}/></div>}
           actionIcon={
             <IconButton onClick={() => handleOutfitClick()}>
               <ClearIcon className={classes.icon}/>
