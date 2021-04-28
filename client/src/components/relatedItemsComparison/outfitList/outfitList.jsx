@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 
@@ -30,9 +30,9 @@ const OutfitList = () => {
     return (
       <div data-testid="outfitList" className={classes.root}>
         <GridList className={classes.gridList} >
-          {outfitList.map((product) => {
+          {outfitList.map((product, index) => {
             return (
-              < OutfitCard key={product.id} productInfo={product}/>
+              < OutfitCard key={product.id} productInfo={product} index={index}/>
             );
           }
           )}

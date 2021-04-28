@@ -20,26 +20,27 @@ export default function StickyHeadTable (props) {
     { id: 'comparedProduct', label: `${comparedProduct.name}`, minWidth: 170 }
   ];
 
+  const rows = [];
+
   function createData (currentFeatures, comparedFeatures) {
     // console.log('currentFeatures: ', currentFeatures);
     // console.log('comparedFeatures: ', comparedFeatures);
     currentFeatures.map((item, index) => {
       comparedFeatures.map((characteristic) => {
         if (currentFeatures[index].feature === characteristic.feature) {
-          return { currentProduct: currentFeatures[index].value,
+          rows.push({ currentProduct: currentFeatures[index].value,
             feature: characteristic.feature,
-            comparedProduct: characteristic.value };
+            comparedProduct: characteristic.value });
         }
       });
-      return { currentProduct: currentFeatures[index].value,
-        feature: currentFeatures[index].feature,
-        comparedProduct: '' };
     });
   }
 
-  const rows = [
-    createData(currentProduct.features, comparedProduct.features)
-  ];
+  createData(currentProduct.features, comparedProduct.features);
+
+  // const rows = [
+  //   createData(currentProduct.features, comparedProduct.features)
+  // ];
 
   const useStyles = makeStyles({
     root: {

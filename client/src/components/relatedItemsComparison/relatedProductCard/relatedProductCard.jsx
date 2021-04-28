@@ -35,6 +35,7 @@ const RealtedProductCard = ({ productInfo }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [modalOpen, openModal] = useState(false);
+
   const handleOpen = () => {
     openModal(true);
   };
@@ -44,8 +45,8 @@ const RealtedProductCard = ({ productInfo }) => {
 
   return (
     <div data-testid="relatedProductCard">
-      <GridListTile onClick={() => dispatch(changeProductId(productInfo.id))}>
-        <img src={productInfo.photo} style={{ height: '100%', maxHeight: 400, width: 'auto' }}/>
+      <GridListTile >
+        <img src={productInfo.photo} style={{ height: '100%', maxHeight: 400, width: 'auto' }} onClick={() => dispatch(changeProductId(productInfo.id))}/>
         <GridListTileBar
           title={productInfo.name}
           subtitle={`$${productInfo.default_price}`}
