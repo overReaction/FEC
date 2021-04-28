@@ -129,24 +129,6 @@ export default function AddReviewModal () {
       });
   };
 
-  const onSubmitClick = () => {
-    if (question.length && nickname.length && email.length) {
-      axios.post('/api/?endpoint=qa/questions', {
-        body: question,
-        name: nickname,
-        email: email,
-        product_id: productId
-      })
-        .then(() => dispatch(fetchQuestions(productId)))
-        .then(
-          setEmail(''),
-          setQuestion(''),
-          setNickname(''),
-          handleClose()
-        );
-    }
-  };
-
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <h1>Write Your Review</h1>
@@ -672,7 +654,7 @@ export default function AddReviewModal () {
         <br/>
         <ButtonGroup>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={onSubmitClick}>Submit</Button>
+          <Button>Submit</Button>
         </ButtonGroup>
       </FormControl>
     </div>
