@@ -49,10 +49,9 @@ const RealtedProductCard = ({ productInfo }) => {
   return (
     <div data-testid="relatedProductCard">
       <GridListTile >
-        <img src={productInfo.photo} style={{ height: '100%', maxHeight: 400, width: 'auto' }} onClick={() => dispatch(changeProductId(productInfo.id))}/>
+        <img data-testid="relatedProductImage"src={productInfo.photo} style={{ height: '100%', maxHeight: 400, width: 'auto' }} onClick={() => dispatch(changeProductId(productInfo.id))}/>
         <GridListTileBar
           title={productInfo.name}
-          // subtitle={`$${productInfo.default_price}`}
           subtitle={<div>
             <span>{`$${productInfo.default_price}`}</span>
             <StarRating rating={productInfo.ratings}/></div>}
