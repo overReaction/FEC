@@ -76,7 +76,6 @@ export default function AddReviewModal () {
 
   const handleChangeSize = (event) => {
     setSize(event.target.value);
-    console.log(event.target.value);
   };
 
   const handleChangeWidth = (event) => {

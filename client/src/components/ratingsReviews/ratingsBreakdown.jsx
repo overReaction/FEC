@@ -35,8 +35,6 @@ const RatingsBreakdown = (props) => {
   const numOfReviews = useSelector((state) => state.app.reviews.length);
   const filters = useSelector((state) => state.reviews.filter);
 
-  console.log(ratings);
-
   const [fiveStars, setFiveStars] = useState(0);
   const [fourStars, setFourStars] = useState(0);
   const [threeStars, setThreeStars] = useState(0);

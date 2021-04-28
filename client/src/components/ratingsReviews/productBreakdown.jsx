@@ -69,7 +69,6 @@ const ProductBreakdown = (props) => {
   ];
 
   if (chars.characteristics) {
-    console.log(chars.characteristics);
     return (
       <>
         <Grid container spacing={1}>
