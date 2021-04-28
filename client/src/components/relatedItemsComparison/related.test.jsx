@@ -22,3 +22,4 @@ describe('Related items and comparison widget', () => {
     expect(screen.getByTestId('related')).toHaveTextContent('My OutfitAdd some items to your outfit!Related Products');
   });
 });
+
