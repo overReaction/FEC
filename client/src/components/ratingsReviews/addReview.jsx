@@ -15,6 +15,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import Box from '@material-ui/core/Box';
 
 function getModalStyle () {
   return {
@@ -75,6 +76,7 @@ export default function AddReviewModal () {
 
   const handleChangeSize = (event) => {
     setSize(event.target.value);
+    console.log(event.target.value);
   };
 
   const handleChangeWidth = (event) => {
@@ -110,7 +112,7 @@ export default function AddReviewModal () {
       <FormControl>
         <Grid container spacing={1} alignItems="center">
           <Grid item>
-            <FormLabel component="overallRating">*Overall Rating</FormLabel>
+            <FormLabel>*Overall Rating</FormLabel>
           </Grid>
           <Grid item>
             <Rating
@@ -130,10 +132,10 @@ export default function AddReviewModal () {
         </Grid>
         <Grid container spacing={1} alignItems="center">
           <Grid item>
-            <FormLabel component="recommended">*Do you recommend this product?</FormLabel>
+            <FormLabel>*Do you recommend this product?</FormLabel>
           </Grid>
           <Grid item>
-            <RadioGroup row aria-label="recommended" name="recommended" value={recommended} onChange={handleChangeRecommended}>
+            <RadioGroup row name="recommended" value={recommended} onChange={handleChangeRecommended}>
               <FormControlLabel value="yes" control={<Radio />} label="Yes" />
               <FormControlLabel value="no" control={<Radio />} label="No" />
             </RadioGroup>
@@ -141,55 +143,98 @@ export default function AddReviewModal () {
         </Grid>
         <Grid container spacing={1} alignItems="center">
           <Grid item xs={2}>
-            <FormLabel component="recommended">*Size?</FormLabel>
+            <FormLabel>*Size?</FormLabel>
           </Grid>
-          <Grid item>
-            <RadioGroup row aria-label="size" name="size" value={size} onChange={handleChangeSize}>
-              <FormControlLabel value="1" control={<Radio />} label="A size too small" labelPlacement="bottom"/>
-              <FormControlLabel value="2" control={<Radio />} label="" labelPlacement="bottom"/>
-              <FormControlLabel value="3" control={<Radio />} label="" labelPlacement="bottom"/>
-              <FormControlLabel value="4" control={<Radio />} label="" labelPlacement="bottom"/>
-              <FormControlLabel value="5" control={<Radio />} label="A size too big" labelPlacement="bottom"/>
-            </RadioGroup>
-          </Grid>
-        </Grid>
-        <Grid container spacing={1} alignItems="center">
-          <Grid item xs={2}>
-            <FormLabel component="recommended">*Width?</FormLabel>
-          </Grid>
-          <Grid item>
-            <RadioGroup row aria-label="width" name="width" value={width} onChange={handleChangeWidth}>
-              <FormControlLabel value="1" control={<Radio />} label="Too narrow" labelPlacement="bottom"/>
-              <FormControlLabel value="2" control={<Radio />} label="" labelPlacement="bottom"/>
-              <FormControlLabel value="3" control={<Radio />} label="" labelPlacement="bottom"/>
-              <FormControlLabel value="4" control={<Radio />} label="" labelPlacement="bottom"/>
-              <FormControlLabel value="5" control={<Radio />} label="Too wide" labelPlacement="bottom"/>
-            </RadioGroup>
-          </Grid>
-        </Grid>
-        <Grid container spacing={1} alignItems="center">
-          <Grid item xs={2}>
-            <FormLabel component="recommended">*Comfort?</FormLabel>
-          </Grid>
-          <Grid item>
-            <RadioGroup row aria-label="comfort" name="comfort" value={comfort} onChange={handleChangeComfort}>
-              <Grid container spacing={1} alignItems="flexStart">
-                <Grid item xs={2}>
-                  <FormControlLabel value="1" control={<Radio />} label="Uncomfortable" labelPlacement="bottom"/>
-                </Grid>
-                <Grid item xs={1}>
-                  <FormControlLabel value="2" control={<Radio />} label="Slightly uncomfortable" labelPlacement="bottom"/>
-                </Grid>
-                <Grid item xs={1}>
-                  <FormControlLabel value="3" control={<Radio />} label="Ok" hiddenLabel={!comfort === "3"} labelPlacement="top"/>
-                </Grid>
-                <Grid item xs={1}>
-                  <FormControlLabel value="4" control={<Radio />} label="Comfortable" labelPlacement="bottom"/>
-                </Grid>
-                <Grid item xs={1}>
-                  <FormControlLabel value="5" control={<Radio />} label="Perfect" labelPlacement="bottom"/>
-                </Grid>
+          <Grid item container xs={10}>
+            <Grid container item xs={2}>
+              <Grid item xs={12} >
+                <Box component="span" visibility="hidden">''</Box>
               </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={size === '1'} value="1" name="size" onChange={handleChangeSize}/>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                A size too small
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={size === "2" ? "visible" : "hidden"}>
+                   ½ a size too small
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={size === '2'} value="2" name="size" onChange={handleChangeSize}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={size === "3" ? "visible" : "hidden"}>
+                   Perfect
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={size === '3'} value="3" name="size" onChange={handleChangeSize}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={size === "4" ? "visible" : "hidden"}>
+                   ½ a size too big
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={size === '4'} value="4" name="size" onChange={handleChangeSize}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={size === '5'} value="5" name="size" onChange={handleChangeSize}/>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                A size too big
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid container spacing={1} alignItems="center">
+          <Grid item xs={2}>
+            <FormLabel>*Width?</FormLabel>
+          </Grid>
+          <Grid item xs={10} container>
+            <RadioGroup row aria-label="width" name="width" value={width} onChange={handleChangeWidth}>
+              <FormControlLabel value="1" control={<Radio />} />
+              <FormControlLabel value="2" control={<Radio />} />
+              <FormControlLabel value="3" control={<Radio />} />
+              <FormControlLabel value="4" control={<Radio />} />
+              <FormControlLabel value="5" control={<Radio />} />
+            </RadioGroup>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={1} alignItems="center">
+          <Grid item xs={2}>
+            <FormLabel>*Comfort?</FormLabel>
+          </Grid>
+          <Grid item container xs={10}>
+            <RadioGroup row aria-label="comfort" name="comfort" value={comfort} onChange={handleChangeComfort}>
+              <FormControlLabel value="1" control={<Radio />}/>
+              <FormControlLabel value="2" control={<Radio />}/>
+              <FormControlLabel value="3" control={<Radio />}/>
+              <FormControlLabel value="4" control={<Radio />}/>
+              <FormControlLabel value="5" control={<Radio />}/>
             </RadioGroup>
           </Grid>
         </Grid>
