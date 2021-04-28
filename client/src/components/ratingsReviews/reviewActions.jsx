@@ -3,6 +3,7 @@ import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadReviews } from './ratingsReviewsSlice.js';
+import AddReviewModal from './addReview.jsx';
 
 const ReviewActions = (props) => {
   const dispatch = useDispatch();
@@ -20,13 +21,7 @@ const ReviewActions = (props) => {
           More Reviews
         </Button>
         {" "}
-        <Button
-          variant="outlined"
-          size="medium"
-          endIcon={<AddIcon />}
-        >
-          Add Review
-        </Button>
+        <AddReviewModal/>
       </div>
     );
   } else if (numOfReviews === reviewsCount || numOfReviews <= 2) {

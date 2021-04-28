@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { seeAllReviews, adjustFilter, clearFilter } from './ratingsReviewsSlice.js';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
   root: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
     }
   }
 });
-import Grid from '@material-ui/core/Grid';
+
 
 const RatingsBreakdown = (props) => {
   const dispatch = useDispatch();
@@ -39,12 +40,6 @@ const RatingsBreakdown = (props) => {
   const [threeStars, setThreeStars] = useState(0);
   const [twoStars, setTwoStars] = useState(0);
   const [oneStars, setOneStars] = useState(0);
-
-  // const [numFive, setNumFiveStars] = useState(0);
-  // const [numFour, setNumFourStars] = useState(0);
-  // const [numThree, setNumThreeStars] = useState(0);
-  // const [numTwo, setNumTwoStars] = useState(0);
-  // const [numOne, setNumOneStars] = useState(0);
 
   const handleRatingClick = (rating) => {
     dispatch(seeAllReviews(numOfReviews));
