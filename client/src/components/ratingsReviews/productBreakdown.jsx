@@ -84,6 +84,7 @@ const ProductBreakdown = (props) => {
                   <ThemeProvider theme={theme}>
                     <Grid item xs={10}>
                       <Slider
+                        aria-label={`${char} rating`}
                         value={score * 100}
                         track={false}
                         marks={marksQuality}
@@ -103,6 +104,7 @@ const ProductBreakdown = (props) => {
                   <ThemeProvider theme={theme}>
                     <Grid item xs={10}>
                       <Slider
+                        aria-label={`${char} rating`}
                         value={score * 100}
                         track={false}
                         marks={marksSizing}

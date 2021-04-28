@@ -21,7 +21,7 @@ const GalleryMainImg = (props) => {
   return (
     <Grid container alignItems="center">
       <Grid item xs={2} container justify="flex-end">
-        <IconButton
+        <IconButton aria-label="previous photo"
           style={activeStep === 0 ? { visibility: 'hidden' } : {}}
           onClick={() => dispatch(decrement())}
         >
@@ -40,7 +40,7 @@ const GalleryMainImg = (props) => {
           }}/>
       </Grid>
       <Grid item xs={2} container justify="flex-start">
-        <IconButton
+        <IconButton aria-label="next photo"
           style={activeStep === currentStyle.photos.length - 1 ? { visibility: 'hidden' } : {}}
           onClick={() => dispatch(increment())}
         >

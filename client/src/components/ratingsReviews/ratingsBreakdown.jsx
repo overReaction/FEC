@@ -91,7 +91,10 @@ const RatingsBreakdown = (props) => {
               5 stars
             </Grid>
             <Grid item xs={9}>
-              <LinearProgress classes={{ root: classes.root }} variant="determinate" value={fiveStars * 100}/>
+              <LinearProgress aria-label={"Percent of 5 star reviews"}
+                classes={{ root: classes.root }}
+                variant="determinate"
+                value={fiveStars * 100}/>
             </Grid>
             <Grid item xs={1}>
               <span>({fiveStars * numOfRatings})</span>
@@ -104,7 +107,10 @@ const RatingsBreakdown = (props) => {
               4 stars
             </Grid>
             <Grid item xs={9}>
-              <LinearProgress classes={{ root: classes.root }} variant="determinate" value={fourStars * 100}/>
+              <LinearProgress aria-label={"Percent of 4 star reviews"}
+                classes={{ root: classes.root }}
+                variant="determinate"
+                value={fourStars * 100}/>
             </Grid>
             <Grid item xs={1}>
               <span>({fourStars * numOfRatings})</span>
@@ -117,7 +123,10 @@ const RatingsBreakdown = (props) => {
               3 stars
             </Grid>
             <Grid item xs={9}>
-              <LinearProgress classes={{ root: classes.root }} variant="determinate" value={threeStars * 100}/>
+              <LinearProgress aria-label={"Percent of 3 star reviews"}
+                classes={{ root: classes.root }}
+                variant="determinate"
+                value={threeStars * 100}/>
             </Grid>
             <Grid item xs={1}>
               <span>({threeStars * numOfRatings})</span>
@@ -130,7 +139,10 @@ const RatingsBreakdown = (props) => {
               2 stars
             </Grid>
             <Grid item xs={9}>
-              <LinearProgress classes={{ root: classes.root }} variant="determinate" value={twoStars * 100}/>
+              <LinearProgress aria-label={"Percent of 2 star reviews"}
+                classes={{ root: classes.root }}
+                variant="determinate"
+                value={twoStars * 100}/>
             </Grid>
             <Grid item xs={1}>
               <span>({twoStars * numOfRatings})</span>
@@ -143,7 +155,10 @@ const RatingsBreakdown = (props) => {
               1 star
             </Grid>
             <Grid item xs={9}>
-              <LinearProgress classes={{ root: classes.root }} variant="determinate" value={oneStars * 100}/>
+              <LinearProgress aria-label={"Percent of 1 star reviews"}
+                classes={{ root: classes.root }}
+                variant="determinate"
+                value={oneStars * 100}/>
             </Grid>
             <Grid item xs={1}>
               <span>({oneStars * numOfRatings})</span>
