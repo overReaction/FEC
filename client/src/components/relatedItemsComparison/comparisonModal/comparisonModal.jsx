@@ -33,14 +33,13 @@ export default function StickyHeadTable (props) {
             comparedProduct: characteristic.value });
         }
       });
+      rows.push({ currentProduct: item.value,
+        feature: item.feature,
+        comparedProduct: '' });
     });
   }
 
   createData(currentProduct.features, comparedProduct.features);
-
-  // const rows = [
-  //   createData(currentProduct.features, comparedProduct.features)
-  // ];
 
   const useStyles = makeStyles({
     root: {
