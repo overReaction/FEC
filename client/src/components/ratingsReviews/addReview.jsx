@@ -213,14 +213,68 @@ export default function AddReviewModal () {
           <Grid item xs={2}>
             <FormLabel>*Width?</FormLabel>
           </Grid>
-          <Grid item xs={10} container>
-            <RadioGroup row aria-label="width" name="width" value={width} onChange={handleChangeWidth}>
-              <FormControlLabel value="1" control={<Radio />} />
-              <FormControlLabel value="2" control={<Radio />} />
-              <FormControlLabel value="3" control={<Radio />} />
-              <FormControlLabel value="4" control={<Radio />} />
-              <FormControlLabel value="5" control={<Radio />} />
-            </RadioGroup>
+          <Grid item container xs={10}>
+            <Grid container item xs={2}>
+              <Grid item xs={12} >
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={width === '1'} value="1" name="width" onChange={handleChangeWidth}/>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                Too narrow
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={width === "2" ? "visible" : "hidden"}>
+                   Slightly narrow
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={width === '2'} value="2" name="width" onChange={handleChangeWidth}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={width === "3" ? "visible" : "hidden"}>
+                   Perfect
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={width === '3'} value="3" name="width" onChange={handleChangeWidth}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={width === "4" ? "visible" : "hidden"}>
+                   Slightly wide
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={width === '4'} value="4" name="width" onChange={handleChangeWidth}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={width === '5'} value="5" name="width" onChange={handleChangeWidth}/>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                Too wide
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
 
@@ -229,15 +283,70 @@ export default function AddReviewModal () {
             <FormLabel>*Comfort?</FormLabel>
           </Grid>
           <Grid item container xs={10}>
-            <RadioGroup row aria-label="comfort" name="comfort" value={comfort} onChange={handleChangeComfort}>
-              <FormControlLabel value="1" control={<Radio />}/>
-              <FormControlLabel value="2" control={<Radio />}/>
-              <FormControlLabel value="3" control={<Radio />}/>
-              <FormControlLabel value="4" control={<Radio />}/>
-              <FormControlLabel value="5" control={<Radio />}/>
-            </RadioGroup>
+            <Grid container item xs={2}>
+              <Grid item xs={12} >
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={comfort === '1'} value="1" name="comfort" onChange={handleChangeComfort}/>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                Uncomfortable
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={comfort === "2" ? "visible" : "hidden"}>
+                   Slightly uncomfortable
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={comfort === '2'} value="2" name="comfort" onChange={handleChangeComfort}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={comfort === "3" ? "visible" : "hidden"}>
+                   Ok
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={comfort === '3'} value="3" name="comfort" onChange={handleChangeComfort}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={comfort === "4" ? "visible" : "hidden"}>
+                   Comfortable
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={comfort === '4'} value="4" name="comfort" onChange={handleChangeComfort}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={comfort === '5'} value="5" name="comfort" onChange={handleChangeComfort}/>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                Perfect
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
+
         <ButtonGroup>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={onSubmitClick}>Submit</Button>
