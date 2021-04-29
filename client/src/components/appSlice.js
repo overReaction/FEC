@@ -223,12 +223,12 @@ export const appSlice = createSlice({
         widget: 'Ratings & Reviews',
         ratingsReviewsClicks: state.ratingsReviewsClicks
       });
-      console.log({
-        productId: state.productId,
-        sortBy5StarsClicks: state.sortBy5StarsClicks,
-        widget: 'Ratings & Reviews',
-        ratingsReviewsClicks: state.ratingsReviewsClicks
-      });
+      // console.log({
+      //   productId: state.productId,
+      //   sortBy5StarsClicks: state.sortBy5StarsClicks,
+      //   widget: 'Ratings & Reviews',
+      //   ratingsReviewsClicks: state.ratingsReviewsClicks
+      // });
     },
     countSortBy1StarClick: (state, action) => {
       state.ratingsReviewsClicks++;
@@ -239,12 +239,12 @@ export const appSlice = createSlice({
         widget: 'Ratings & Reviews',
         ratingsReviewsClicks: state.ratingsReviewsClicks
       });
-      console.log({
-        productId: state.productId,
-        sortBy1StarClicks: state.sortBy1StarClicks,
-        widget: 'Ratings & Reviews',
-        ratingsReviewsClicks: state.ratingsReviewsClicks
-      });
+      // console.log({
+      //   productId: state.productId,
+      //   sortBy1StarClicks: state.sortBy1StarClicks,
+      //   widget: 'Ratings & Reviews',
+      //   ratingsReviewsClicks: state.ratingsReviewsClicks
+      // });
     }
   },
   //Reducers that depend upon async actions are defined here
