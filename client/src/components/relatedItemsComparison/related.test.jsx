@@ -43,23 +43,23 @@ describe('Related items and comparison widget', () => {
 describe('Related Items and Comparison component', () => {
   beforeEach(async () => {
     axios.get.mockResolvedValueOnce({ data: reviewsMeta });
-    // axios.get.mockResolvedValueOnce({ data: reviews });
-    // axios.get.mockResolvedValueOnce({ data: styles });
-    // axios.get.mockResolvedValueOnce({ data: related });
-    // axios.get.mockResolvedValueOnce({ data: qa });
-    // axios.get.mockResolvedValueOnce({ data: product8 });
-    // axios.get.mockResolvedValueOnce({ data: product9 });
-    // axios.get.mockResolvedValueOnce({ data: product0 });
-    // axios.get.mockResolvedValueOnce({ data: product5 });
-    // axios.get.mockResolvedValueOnce({ data: product4 });
-    // axios.get.mockResolvedValueOnce({ data: styles9 });
-    // axios.get.mockResolvedValueOnce({ data: styles0 });
-    // axios.get.mockResolvedValueOnce({ data: styles5 });
-    // axios.get.mockResolvedValueOnce({ data: styles4 });
-    // axios.get.mockResolvedValueOnce({ data: reviewsMeta9 });
-    // axios.get.mockResolvedValueOnce({ data: reviewsMeta0 });
-    // axios.get.mockResolvedValueOnce({ data: reviewsMeta5 });
-    // axios.get.mockResolvedValueOnce({ data: reviewsMeta4 });
+    axios.get.mockResolvedValueOnce({ data: reviews });
+    axios.get.mockResolvedValueOnce({ data: styles });
+    axios.get.mockResolvedValueOnce({ data: related });
+    axios.get.mockResolvedValueOnce({ data: qa });
+    axios.get.mockResolvedValueOnce({ data: product8 });
+    axios.get.mockResolvedValueOnce({ data: product9 });
+    axios.get.mockResolvedValueOnce({ data: product0 });
+    axios.get.mockResolvedValueOnce({ data: product5 });
+    axios.get.mockResolvedValueOnce({ data: product4 });
+    axios.get.mockResolvedValueOnce({ data: styles9 });
+    axios.get.mockResolvedValueOnce({ data: styles0 });
+    axios.get.mockResolvedValueOnce({ data: styles5 });
+    axios.get.mockResolvedValueOnce({ data: styles4 });
+    axios.get.mockResolvedValueOnce({ data: reviewsMeta9 });
+    axios.get.mockResolvedValueOnce({ data: reviewsMeta0 });
+    axios.get.mockResolvedValueOnce({ data: reviewsMeta5 });
+    axios.get.mockResolvedValueOnce({ data: reviewsMeta4 });
     await render(
       <Provider store={store}>
         <App />
@@ -70,18 +70,18 @@ describe('Related Items and Comparison component', () => {
   });
 
 
-  // test('The outfit card should be hidden if the user has not added any items to their outfit', () => {
-  //   let container = document.createElement("div");
-  //   document.body.appendChild(container);
+  test('The outfit card should be hidden if the user has not added any items to their outfit', () => {
+    let container = document.createElement("div");
+    document.body.appendChild(container);
 
-  //   expect(container.querySelector("[data-testid=outfitCard]")).not.toBeInTheDocument();
-  // });
+    expect(container.querySelector("[data-testid=outfitCard]")).not.toBeInTheDocument();
+  });
 
-  // test('Should have a related product card image', () => {
-  //   expect(screen.queryAllByTestId("relatedProductImage")).toHaveLength(4);
-  // });
+  test('Should have a related product card image', () => {
+    expect(screen.queryAllByTestId("relatedProductImage")).toHaveLength(4);
+  });
 
-  // test('Should have a related product card component', () => {
+  // test('Should have a related product card component', async () => {
   //   expect(screen.queryAllByTestId("relatedProductCard")).toHaveLength(4);
   // });
 
