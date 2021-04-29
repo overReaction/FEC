@@ -3,3 +3,16 @@ client/dist/ignoredBundle.js
 client/dist/ignoredBundle.js.LICENSE.txt
 APIconfig.js
 coverage
+/client/dist/0.ignoredBundle.js
+/client/dist/1.ignoredBundle.js
+/client/dist/2.ignoredBundle.js
+/client/dist/3.ignoredBundle.js
+/client/dist/4.ignoredBundle.js
+/client/dist/5.ignoredBundle.js
+/client/dist/6.ignoredBundle.js
+/client/dist/7.ignoredBundle.js
+/client/dist/8.ignoredBundle.js
+/client/dist/9.ignoredBundle.js
+/client/dist/10.ignoredBundle.js
+/client/dist/11.ignoredBundle.js
+/client/dist/12.ignoredBundle.js

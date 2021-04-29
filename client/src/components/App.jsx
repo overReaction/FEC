@@ -1,23 +1,47 @@
 //React dependencies
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ButtonGroup } from '@material-ui/core/';
-import { Button } from '@material-ui/core/';
 
 //Material UI
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 
 //Redux
-import { changeProductId, fetchProductInfo } from './appSlice.js';
+import { fetchProductInfo } from './appSlice.js';
 
 //Components
-import Overview from './overview/overview.jsx';
-import RatingsReviews from './ratingsReviews/ratingsReviews.jsx';
-import QuestionsAnswers from './questionsAnswers/questionsAnswers.jsx';
-import RelatedItemsComparison from './relatedItemsComparison/relatedItemsComparison.jsx';
-import ExpandedView from './overview/imageGallery/galleryExpanded.jsx';
-import MagnifiedView from './overview/imageGallery/galleryMagnified.jsx';
+import Loadable from 'react-loadable';
+import Loading from './loading.jsx';
+
+const OverviewLoadable = Loadable({
+  loader: () => import('./overview/overview.jsx'),
+  loading: Loading
+});
+
+const RRLoadable = Loadable({
+  loader: () => import('./ratingsReviews/ratingsReviews.jsx'),
+  loading: Loading
+});
+
+const QALoadable = Loadable({
+  loader: () => import('./questionsAnswers/questionsAnswers.jsx'),
+  loading: Loading
+});
+
+const RICLoadable = Loadable({
+  loader: () => import('./relatedItemsComparison/relatedItemsComparison.jsx'),
+  loading: Loading
+});
+
+const EVLoadable = Loadable({
+  loader: () => import('./overview/imageGallery/galleryExpanded.jsx'),
+  loading: Loading
+});
+
+const MagVLoadable = Loadable({
+  loader: () => import('./overview/imageGallery/galleryMagnified.jsx'),
+  loading: Loading
+});
 
 //App component
 var App = () => {
@@ -35,14 +59,14 @@ var App = () => {
     return (
       <React.Fragment>
         <CssBaseline />
-        <MagnifiedView/>
+        <MagVLoadable/>
       </React.Fragment>
     );
   } else if (viewExpanded) {
     return (
       <React.Fragment>
         <CssBaseline />
-        <ExpandedView/>
+        <EVLoadable/>
       </React.Fragment>
     );
   } else {
@@ -50,27 +74,17 @@ var App = () => {
       <React.Fragment>
         <CssBaseline />
         <Grid container direction="column" >
-          {/* <Grid item style={{ textAlign: 'center' }}>
-            <h1> Project Catwalk </h1>
-            <div> Try clicking one of these buttons to update the product id
-              (imagine you were clicking a thumbnail for a related item)</div>
-            <ButtonGroup aria-label="outlined primary button group">
-              <Button onClick={() => dispatch(changeProductId(18078))}> 18078 </Button>
-              <Button onClick={() => dispatch(changeProductId(18079))}> 18079 </Button>
-              <Button onClick={() => dispatch(changeProductId(18080))}> 18080 </Button>
-            </ButtonGroup>
-          </Grid> */}
           <Grid item>
-            <Overview />
+            <OverviewLoadable />
           </Grid>
           <Grid >
-            <RelatedItemsComparison />
+            <RICLoadable />
           </Grid>
           <Grid item>
-            <QuestionsAnswers />
+            <QALoadable />
           </Grid>
           <Grid item>
-            <RatingsReviews />
+            <RRLoadable />
           </Grid>
         </Grid>
       </React.Fragment>

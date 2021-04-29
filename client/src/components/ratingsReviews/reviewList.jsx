@@ -12,6 +12,7 @@ const ReviewList = (props) => {
   const reviews = useSelector((state) => state.app.reviews);
   const numReviewsToShow = useSelector((state) => state.reviews.reviewsCount);
   const ratingsToShow = useSelector((state) => state.reviews.filter);
+  let shownReviews = [...reviews].slice(0, numReviewsToShow + 1);
 
   return (
     <Grid container spacing={1} >
@@ -26,7 +27,7 @@ const ReviewList = (props) => {
           overflowX: 'hidden',
           overflowY: 'auto'
         }}>
-        {reviews.map((review, index) => {
+        {shownReviews.map((review, index) => {
           return (
             <Box
               item
