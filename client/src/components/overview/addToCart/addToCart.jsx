@@ -84,7 +84,7 @@ const AddToCart = (props) => {
           size="medium"
           disabled={outfitIds.includes(productId)}
           style={sizes.length === 0 ? { display: 'none' } : {}}
-          onClick={ () => {
+          onClick={() => {
             handleOutfitClick();
             dispatch(countAddToOutfitClick());
           }}

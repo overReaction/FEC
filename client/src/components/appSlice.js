@@ -112,12 +112,12 @@ export const appSlice = createSlice({
         widget: 'Overview',
         overviewClicks: state.overviewClicks
       });
-      console.log({
-        productId: state.productId,
-        addToCartClicks: state.addToCartClicks,
-        widget: 'Overview',
-        overviewClicks: state.overviewClicks
-      });
+      // console.log({
+      //   productId: state.productId,
+      //   addToCartClicks: state.addToCartClicks,
+      //   widget: 'Overview',
+      //   overviewClicks: state.overviewClicks
+      // });
     },
     countAddToOutfitClick: (state, action) => {
       state.overviewClicks++;
@@ -128,12 +128,12 @@ export const appSlice = createSlice({
         widget: 'Overview',
         overviewClicks: state.overviewClicks
       });
-      console.log({
-        productId: state.productId,
-        addToOutfitClicks: state.addToOutfitClicks,
-        widget: 'Overview',
-        overviewClicks: state.overviewClicks
-      });
+      // console.log({
+      //   productId: state.productId,
+      //   addToOutfitClicks: state.addToOutfitClicks,
+      //   widget: 'Overview',
+      //   overviewClicks: state.overviewClicks
+      // });
     },
 
     // RELATED PRODUCTS TRACKING
@@ -149,6 +149,12 @@ export const appSlice = createSlice({
         widget: 'Related Products',
         relatedProductsClicks: state.relatedProductsClicks
       });
+      // console.log({
+      //   productId: state.productId,
+      //   compareClicks: state.compareClicks,
+      //   widget: 'Related Products',
+      //   relatedProductsClicks: state.relatedProductsClicks
+      // });
     },
     countProductCardClick: (state, action) => {
       state.relatedProductsClicks++;
@@ -159,6 +165,12 @@ export const appSlice = createSlice({
         widget: 'Related Products',
         relatedProductsClicks: state.relatedProductsClicks
       });
+      // console.log({
+      //   productId: state.productId,
+      //   productCardClicks: state.productCardClicks,
+      //   widget: 'Related Products',
+      //   relatedProductsClicks: state.relatedProductsClicks
+      // });
     },
 
     // QUESTIONS & ANSWERS TRACKING
@@ -211,11 +223,23 @@ export const appSlice = createSlice({
         widget: 'Ratings & Reviews',
         ratingsReviewsClicks: state.ratingsReviewsClicks
       });
+      console.log({
+        productId: state.productId,
+        sortBy5StarsClicks: state.sortBy5StarsClicks,
+        widget: 'Ratings & Reviews',
+        ratingsReviewsClicks: state.ratingsReviewsClicks
+      });
     },
     countSortBy1StarClick: (state, action) => {
       state.ratingsReviewsClicks++;
       state.sortBy1StarClicks++;
       state.trackingData.push({
+        productId: state.productId,
+        sortBy1StarClicks: state.sortBy1StarClicks,
+        widget: 'Ratings & Reviews',
+        ratingsReviewsClicks: state.ratingsReviewsClicks
+      });
+      console.log({
         productId: state.productId,
         sortBy1StarClicks: state.sortBy1StarClicks,
         widget: 'Ratings & Reviews',
