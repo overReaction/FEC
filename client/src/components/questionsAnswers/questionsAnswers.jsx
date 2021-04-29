@@ -59,7 +59,7 @@ const QuestionsAnswers = props => {
           <ButtonGroup>
             <Button
               aria-label="load more questions"
-              data-testid="moreQsButton"
+              data-testid="more-questions"
               variant="outlined"
               onClick={() => dispatch(handleMoreQsClick())}> MORE ANSWERED QUESTIONS </Button>
             <AddQModal />

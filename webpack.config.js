@@ -57,11 +57,13 @@ module.exports = {
     path: __dirname + '/client/dist'
   },
   watch: true,
-  plugins: [new ESLintPlugin(), new BundleAnalyzerPlugin()],
+  plugins: [new ESLintPlugin()],
   optimization: {
     minimize: true,
-    minimizer: [new TerserPlugin({
-      parallel: 2
-    })]
+    minimizer: [
+      new TerserPlugin({
+        parallel: 2
+      })
+    ]
   }
 };

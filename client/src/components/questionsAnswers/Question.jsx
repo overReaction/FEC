@@ -36,20 +36,21 @@ const Question = props => {
   };
 
   return (
-    <Paper className={classes.paper}>
-      <div>
-        <span><b data-testid="question">Q: {props.question.question_body}</b></span>
+    <div data-testid="question">
+      <Paper className={classes.paper}>
+        <b>Q: {props.question.question_body}</b>
         <span style={{ float: 'right', marginTop: 0 }}>
           Helpful? &nbsp;
           {!helpfulQClicked ?
             <u
+              data-testid="helpful-question"
               className="clickable"
               onClick={() => {
                 dispatch(incrementHelpfulQuestionCount(questionId));
                 setQuestionHelpfulnessCount(questionHelpfulnessCount + 1);
                 setHelpfulQClicked(true);
               }}>Yes
-            </u> : <span>&nbsp;</span>}
+            </u> : <span data-testid="marked-helpful-question">&nbsp;</span>}
             ({questionHelpfulnessCount}) &nbsp; | &nbsp;
           <u style={{ display: 'inline-block' }}>
             <AddAModal
@@ -68,8 +69,8 @@ const Question = props => {
         <div>
           <Answers answers={answers} index={props.index}/>
         </div>
-      </div>
-    </Paper>
+      </Paper>
+    </div>
   );
 };
 

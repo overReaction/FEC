@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -10,6 +12,7 @@ import Modal from '@material-ui/core/Modal';
 import Container from '@material-ui/core/Container';
 import StickyHeadTable from '../comparisonModal/comparisonModal.jsx';
 import { changeProductId } from '../../appSlice.js';
+import StarRating from '../../starRating.jsx';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -44,12 +47,14 @@ const RealtedProductCard = ({ productInfo }) => {
   };
 
   return (
-    <div data-testid="relatedProductCard">
+    <div >
       <GridListTile >
-        <img alt={`${productInfo.name}`} src={productInfo.photo} style={{ height: '100%', maxHeight: 400, width: 'auto' }} onClick={() => dispatch(changeProductId(productInfo.id))}/>
+        <img alt={`${productInfo.name}`} data-testid="relatedProductImage" src={productInfo.photo} style={{ height: '100%', maxHeight: 400, width: 'auto' }} onClick={() => dispatch(changeProductId(productInfo.id))}/>
         <GridListTileBar
           title={productInfo.name}
-          subtitle={`$${productInfo.default_price}`}
+          subtitle={<div data-testid="relatedProductCard">
+            <span>{`$${productInfo.default_price}`}</span>
+            <StarRating rating={productInfo.ratings}/></div>}
           actionIcon={
             <IconButton aria-label="view product details" onClick={handleOpen}>
               <StarBorderIcon className={classes.icon}/>
@@ -73,4 +78,3 @@ const RealtedProductCard = ({ productInfo }) => {
 };
 
 export default RealtedProductCard;
-

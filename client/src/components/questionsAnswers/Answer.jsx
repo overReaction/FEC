@@ -17,7 +17,7 @@ const Answer = (props) => {
   };
 
   return (
-    <div style={{ marginLeft: 10 }}>
+    <div data-testid="answer" style={{ marginLeft: 10 }}>
       <br />
       <b>A:</b> {props.answer.body}
       <br />
