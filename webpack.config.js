@@ -1,4 +1,5 @@
 const ESLintPlugin = require('eslint-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   entry: __dirname + '/client/src/index.jsx',
@@ -26,5 +27,11 @@ module.exports = {
     path: __dirname + '/client/dist'
   },
   watch: true,
-  plugins: [new ESLintPlugin()]
+  plugins: [new ESLintPlugin()],
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin({
+      parallel: 2
+    })]
+  }
 };
