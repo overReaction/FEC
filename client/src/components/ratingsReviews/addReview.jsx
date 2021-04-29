@@ -16,15 +16,19 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Box from '@material-ui/core/Box';
+import TextField from '@material-ui/core/TextField';
 
 function getModalStyle () {
   return {
     display: 'flex',
     flexDirection: 'column',
-    top: '20%',
-    left: '10%',
-    width: '80%',
-    outline: 0
+    width: '70%',
+    outline: 0,
+    position: 'absolute',
+    top: '10%',
+    left: '15%',
+    overflow: 'scroll',
+    height: '80%'
   };
 }
 
@@ -51,6 +55,12 @@ export default function AddReviewModal () {
   const [size, setSize] = useState(0);
   const [width, setWidth] = useState(0);
   const [comfort, setComfort] = useState(0);
+  const [quality, setQuality] = useState(0);
+  const [length, setLength] = useState(0);
+  const [fit, setFit] = useState(0);
+  const [reviewBody, setReviewBody] = useState('');
+  const [uploadedPhotos, uploadPhoto] = useState([]);
+
   const [email, setEmail] = useState('');
   let ratingToolTip;
 
@@ -86,22 +96,37 @@ export default function AddReviewModal () {
     setComfort(event.target.value);
   };
 
-  const onSubmitClick = () => {
-    if (question.length && nickname.length && email.length) {
-      axios.post('/api/?endpoint=qa/questions', {
-        body: question,
-        name: nickname,
-        email: email,
-        product_id: productId
-      })
-        .then(() => dispatch(fetchQuestions(productId)))
-        .then(
-          setEmail(''),
-          setQuestion(''),
-          setNickname(''),
-          handleClose()
-        );
-    }
+  const handleChangeQuality = (event) => {
+    setQuality(event.target.value);
+  };
+
+  const handleChangeLength = (event) => {
+    setLength(event.target.value);
+  };
+
+  const handleChangeFit = (event) => {
+    setFit(event.target.value);
+  };
+
+  const handleReviewBody = (event) => {
+    setReviewBody(event.target.value);
+  };
+
+  const handlePhotoUpload = (event) => {
+    let fd = new FormData();
+    fd.append('image', event.target.files[0]);
+    axios.post('/reviewPhotos', fd, {
+      headers: {
+        'accept': 'application/json',
+        'Accept-Language': 'en-US,en;q=0.8',
+        'Content-Type': `multipart/form-data; boundary=${fd._boundary}`
+      }
+    })
+      .then(response => {
+        let newPhotoArray = [...uploadedPhotos];
+        newPhotoArray.push(response.data.path);
+        uploadPhoto(newPhotoArray);
+      });
   };
 
   const body = (
@@ -111,7 +136,7 @@ export default function AddReviewModal () {
       <FormControl>
         <Grid container spacing={1} alignItems="center">
           <Grid item>
-            <FormLabel>*Overall Rating</FormLabel>
+            <FormLabel required>Overall Rating</FormLabel>
           </Grid>
           <Grid item>
             <Rating
@@ -131,7 +156,7 @@ export default function AddReviewModal () {
         </Grid>
         <Grid container spacing={1} alignItems="center">
           <Grid item>
-            <FormLabel>*Do you recommend this product?</FormLabel>
+            <FormLabel required>Do you recommend this product?</FormLabel>
           </Grid>
           <Grid item>
             <RadioGroup row name="recommended" value={recommended} onChange={handleChangeRecommended}>
@@ -140,9 +165,10 @@ export default function AddReviewModal () {
             </RadioGroup>
           </Grid>
         </Grid>
+
         <Grid container spacing={1} alignItems="center">
           <Grid item xs={2}>
-            <FormLabel>*Size?</FormLabel>
+            <FormLabel required>Size?</FormLabel>
           </Grid>
           <Grid item container xs={10}>
             <Grid container item xs={2}>
@@ -208,9 +234,10 @@ export default function AddReviewModal () {
             </Grid>
           </Grid>
         </Grid>
+
         <Grid container spacing={1} alignItems="center">
           <Grid item xs={2}>
-            <FormLabel>*Width?</FormLabel>
+            <FormLabel required>Width?</FormLabel>
           </Grid>
           <Grid item container xs={10}>
             <Grid container item xs={2}>
@@ -279,7 +306,7 @@ export default function AddReviewModal () {
 
         <Grid container spacing={1} alignItems="center">
           <Grid item xs={2}>
-            <FormLabel>*Comfort?</FormLabel>
+            <FormLabel required>Comfort?</FormLabel>
           </Grid>
           <Grid item container xs={10}>
             <Grid container item xs={2}>
@@ -346,9 +373,288 @@ export default function AddReviewModal () {
           </Grid>
         </Grid>
 
+        <Grid container spacing={1} alignItems="center">
+          <Grid item xs={2}>
+            <FormLabel required>Quality?</FormLabel>
+          </Grid>
+          <Grid item container xs={10}>
+            <Grid container item xs={2}>
+              <Grid item xs={12} >
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={quality === '1'} value="1" name="quality" onChange={handleChangeQuality}/>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                Poor
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={quality === "2" ? "visible" : "hidden"}>
+                   Below average
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={quality === '2'} value="2" name="quality" onChange={handleChangeQuality}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={quality === "3" ? "visible" : "hidden"}>
+                   As expected
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={quality === '3'} value="3" name="quality" onChange={handleChangeQuality}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={quality === "4" ? "visible" : "hidden"}>
+                   Pretty great
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={quality === '4'} value="4" name="quality" onChange={handleChangeQuality}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={quality === '5'} value="5" name="quality" onChange={handleChangeQuality}/>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                Perfect
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={1} alignItems="center">
+          <Grid item xs={2}>
+            <FormLabel required>Length?</FormLabel>
+          </Grid>
+          <Grid item container xs={10}>
+            <Grid container item xs={2}>
+              <Grid item xs={12} >
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={length === '1'} value="1" name="length" onChange={handleChangeLength}/>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                Runs short
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={length === "2" ? "visible" : "hidden"}>
+                   Slightly short
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={length === '2'} value="2" name="length" onChange={handleChangeLength}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={length === "3" ? "visible" : "hidden"}>
+                   Perfect
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={length === '3'} value="3" name="length" onChange={handleChangeLength}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={length === "4" ? "visible" : "hidden"}>
+                   Slightly long
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={length === '4'} value="4" name="length" onChange={handleChangeLength}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={length === '5'} value="5" name="length" onChange={handleChangeLength}/>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                Runs long
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={1} alignItems="center">
+          <Grid item xs={2}>
+            <FormLabel required>Fit?</FormLabel>
+          </Grid>
+          <Grid item container xs={10}>
+            <Grid container item xs={2}>
+              <Grid item xs={12} >
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={fit === '1'} value="1" name="fit" onChange={handleChangeFit}/>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                Runs tight
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={fit === "2" ? "visible" : "hidden"}>
+                   Slightly tight
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={fit === '2'} value="2" name="fit" onChange={handleChangeFit}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={fit === "3" ? "visible" : "hidden"}>
+                   Perfect
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={fit === '3'} value="3" name="fit" onChange={handleChangeFit}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Box component="span" visibility={fit === "4" ? "visible" : "hidden"}>
+                   Slightly loose
+                </Box>
+              </Grid>
+              <Grid item container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={fit === '4'} value="4" name="fit" onChange={handleChangeFit}/>
+              </Grid>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+            </Grid>
+            <Grid container item xs={2}>
+              <Grid item xs={12}>
+                <Box component="span" visibility="hidden">''</Box>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                <Radio checked={fit === '5'} value="5" name="fit" onChange={handleChangeFit}/>
+              </Grid>
+              <Grid item xs={12} container alignContent="stretch" alignItems="center" justify="center">
+                Runs loose
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+
+        <br/>
+        <FormLabel>Review Summary</FormLabel>
+        <TextField
+          id="reviewSummary"
+          label="Review summary"
+          placeholder="Example: Best purchase ever!"
+          variant="outlined"
+          style={{ marginTop: 8 }}
+          inputProps={{
+            maxLength: 60
+          }}/>
+        <br/>
+        <FormLabel required>Review Body</FormLabel>
+        <TextField
+          id="reviewBody"
+          label="Review body"
+          placeholder="Why did you like the product or not?"
+          style={{ marginTop: 8 }}
+          variant="outlined"
+          value={reviewBody}
+          multiline
+          onChange={handleReviewBody}
+          inputProps={{
+            maxLength: 1000
+          }}/>
+        {reviewBody.length < 50 ?
+          <div>Minimum required characters left:{50 - reviewBody.length}</div> :
+          <div>Minimum reached</div>}
+        <br/>
+        <Button variant="outlined" component="label" disabled={uploadedPhotos.length >= 5}>Upload your photos
+          <input
+            type="file"
+            accept="image/*"
+            hidden
+            onChange={handlePhotoUpload}
+          />
+        </Button>
+        <Grid container spacing={1}>
+          {uploadedPhotos.map((image) => {
+            console.log(image);
+            return (
+              <Grid item>
+                <img src={image}/>
+              </Grid>
+            );
+          })}
+        </Grid>
+        <br/>
+        <FormLabel required>What is your nickname?</FormLabel>
+        <TextField
+          id="nickname"
+          label="Nickname"
+          placeholder="Example: jackson11!"
+          variant="outlined"
+          style={{ marginTop: 8 }}
+          inputProps={{
+            maxLength: 60
+          }}/>
+        <div>For privacy reasons, do not use your full name or email address</div>
+        <br/>
+        <FormLabel required>Your email</FormLabel>
+        <TextField
+          id="email"
+          label="E-mail"
+          placeholder="Example: jackson11@email.com"
+          variant="outlined"
+          style={{ marginTop: 8 }}
+          inputProps={{
+            maxLength: 60
+          }}/>
+        <div>For authentication reasons, you will not be emailed</div>
+        <br/>
         <ButtonGroup>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={onSubmitClick}>Submit</Button>
+          <Button>Submit</Button>
         </ButtonGroup>
       </FormControl>
     </div>

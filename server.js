@@ -31,6 +31,9 @@ app.post('/api/*', (req, res) => {
   });
 });
 
+// app.post('/reviewPhotos', (req, res) => {
+// });
+
 app.put('/api/*', (req, res) => {
   let endpoint = req.query.endpoint;
   atelier.putToEndpoint(endpoint, req.body, (error, results) => {
