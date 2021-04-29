@@ -20,7 +20,6 @@ import StyleSelector from './styleSelector/styleSelector.jsx';
 import AddToCart from './addToCart/addToCart.jsx';
 
 
-
 const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 0,
