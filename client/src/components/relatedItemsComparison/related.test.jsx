@@ -77,9 +77,9 @@ describe('Related Items and Comparison component', () => {
     expect(container.querySelector("[data-testid=outfitCard]")).not.toBeInTheDocument();
   });
 
-  test('Should have a related product card image', () => {
-    expect(screen.queryAllByTestId("relatedProductImage")).toHaveLength(4);
-  });
+  // test('Should have a related product card image', () => {
+  //   expect(screen.queryAllByTestId("relatedProductImage")).toHaveLength(4);
+  // });
 
   // test('Should have a related product card component', async () => {
   //   expect(screen.queryAllByTestId("relatedProductCard")).toHaveLength(4);
