@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  changeProductId,
-  // countQuestionsAnswersClick,
-  countMoreAnsweredQuestionsClick
-  // countShowMoreAnswersClick
-} from '../appSlice.js';
 import { handleMoreQsClick } from './qaSlice.js';
-
 
 import { Grid } from '@material-ui/core/';
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,6 +11,9 @@ import { Paper } from '@material-ui/core/';
 import Questions from './Questions.jsx';
 import SearchBar from './SearchBar.jsx';
 import AddQModal from './AddQuestion.jsx';
+
+//TRACKING
+import { changeProductId, countMoreAnsweredQuestionsClick } from '../appSlice.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {

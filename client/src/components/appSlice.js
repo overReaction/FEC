@@ -91,7 +91,6 @@ export const appSlice = createSlice({
     sortBy1StarClicks: 0,
 
     trackingData: []
-
   },
   //A reducer is a function that receives the current state and an action object, decides how to update the state if necessary, and returns the new state
   reducers: {
