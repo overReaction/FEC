@@ -63,6 +63,7 @@ describe('Product Information component', () => {
     cleanup();
   });
 
+
   test('Should have a star rating component', () => {
     expect(screen.getByTestId("star-rating-section")).toBeInTheDocument();
   });
