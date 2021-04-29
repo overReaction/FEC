@@ -112,13 +112,25 @@ export const appSlice = createSlice({
         widget: 'Overview',
         overviewClicks: state.overviewClicks
       });
+      console.log({
+        productId: state.productId,
+        addToCartClicks: state.addToCartClicks,
+        widget: 'Overview',
+        overviewClicks: state.overviewClicks
+      });
     },
     countAddToOutfitClick: (state, action) => {
       state.overviewClicks++;
       state.addToOutfitClicks++;
       state.trackingData.push({
         productId: state.productId,
-        addToOutfitClicks: state.addToCartClicks,
+        addToOutfitClicks: state.addToOutfitClicks,
+        widget: 'Overview',
+        overviewClicks: state.overviewClicks
+      });
+      console.log({
+        productId: state.productId,
+        addToOutfitClicks: state.addToOutfitClicks,
         widget: 'Overview',
         overviewClicks: state.overviewClicks
       });
