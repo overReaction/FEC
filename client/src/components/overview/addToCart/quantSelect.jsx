@@ -23,6 +23,8 @@ const QuantSelect = (props) => {
         <InputLabel id="quantSelect">Select quantity</InputLabel>
         <Select
           labelId="quantSelect"
+          aria-label="quantity selector"
+          aria-required={true}
           isClearable ={false}
           value={dropDownDisplay}
           options={getQuantities(quant)}
@@ -36,6 +38,8 @@ const QuantSelect = (props) => {
       <>
         <InputLabel id="quantSelect">Select quantity</InputLabel>
         <Select
+          aria-label="quantity selector"
+          aria-required={true}
           labelId="quantSelect"
           isDisabled={true}
           isClearable ={false}

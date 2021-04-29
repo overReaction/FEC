@@ -63,6 +63,8 @@ const SizeSelect = (props) => {
       <>
         <InputLabel id="sizeSelect">Select size</InputLabel>
         <Select
+          aria-label="size selector"
+          aria-required={true}
           labelId="sizeSelect"
           value={{ value: 'default', label: 'OUT OF STOCK' }}
           isDisabled={true}
@@ -74,6 +76,8 @@ const SizeSelect = (props) => {
       <>
         <InputLabel id="sizeSelect">Select size</InputLabel>
         <Select
+          aria-label="size selector"
+          aria-required={true}
           labelId="sizeSelect"
           value={dropDownDisplay}
           menuIsOpen={true}
