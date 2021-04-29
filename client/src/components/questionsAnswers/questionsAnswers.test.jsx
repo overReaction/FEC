@@ -4,19 +4,43 @@ jest.mock('axios');
 import React from "react";
 import { render, screen, cleanup } from '@testing-library/react'; //Allows artificial rendering
 import userEvent from '@testing-library/user-event'; //Allows triggering of user events. Not demo'd on this page.
-import { act } from "react-dom/test-utils";
 import '@testing-library/jest-dom'; //Provides a set of custom jest matchers that you can use to extend jest. These will make your tests more declarative, clear to read and to maintain.
 
 import App from '../App.jsx';
 import store from '../../store.js';
 import { Provider } from 'react-redux';
-import { reviewsMeta, reviews, reviewsNone, styles, related, qa, product } from './mockData.js';
+import { reviewsMeta, reviews, styles, related, qa, product } from './mockData.js';
 
 /* Some example templates for testing are provided below. In general, you will
 1)render the component (see examples below)
 2)query for the component: https://testing-library.com/docs/queries/about
 3)optionally insert user events to manipulate elements: https://testing-library.com/docs/ecosystem-user-event
 4)test assertions about the component: https://github.com/testing-library/jest-dom */
+
+jest.mock("../relatedItemsComparison/relatedItemsComparison", () => {
+  return {
+    __esModule: true,
+    default: () => {
+      return <div>Help</div>;
+    }
+  };
+});
+jest.mock("../ratingsReviews/ratingsReviews", () => {
+  return {
+    __esModule: true,
+    default: () => {
+      return <div>Help</div>;
+    }
+  };
+});
+jest.mock("../overview/overview", () => {
+  return {
+    __esModule: true,
+    default: () => {
+      return <div>Help</div>;
+    }
+  };
+});
 
 describe('QA Widget', () => {
   beforeEach(async () => {
@@ -59,7 +83,6 @@ describe('Questions List Component', () => {
     axios.get.mockResolvedValueOnce({ data: styles });
     axios.get.mockResolvedValueOnce({ data: related });
     axios.get.mockResolvedValueOnce({ data: qa });
-    axios.get.mockResolvedValueOnce({ data: product });
     await render(
       <Provider store={store}>
         <App />
