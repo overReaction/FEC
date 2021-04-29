@@ -4,6 +4,7 @@ orbs:
   puppeteer: threetreeslight/puppeteer@0.1.2
 jobs:
   build:
+    resource_class: large
     docker:
       - image: circleci/node:latest-browsers
         environment:
