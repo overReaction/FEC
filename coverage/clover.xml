@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1619627965652" clover="3.2.0">
-  <project timestamp="1619627965652" name="All files">
-    <metrics statements="755" coveredstatements="457" conditionals="226" coveredconditionals="110" methods="319" coveredmethods="165" elements="1300" coveredelements="732" complexity="0" loc="755" ncloc="755" packages="15" files="46" classes="46"/>
+<coverage generated="1619668130901" clover="3.2.0">
+  <project timestamp="1619668130901" name="All files">
+    <metrics statements="773" coveredstatements="511" conditionals="226" coveredconditionals="113" methods="319" coveredmethods="182" elements="1318" coveredelements="806" complexity="0" loc="773" ncloc="773" packages="15" files="47" classes="47"/>
     <package name="src">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="store.js" path="/Users/jennagroth/immersive/FEC/client/src/store.js">
@@ -13,18 +13,18 @@
       <file name="App.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/App.jsx">
         <metrics statements="16" coveredstatements="11" conditionals="4" coveredconditionals="2" methods="8" coveredmethods="5"/>
         <line num="23" count="3" type="stmt"/>
-        <line num="24" count="459" type="stmt"/>
-        <line num="25" count="459" type="stmt"/>
-        <line num="26" count="459" type="stmt"/>
-        <line num="27" count="28" type="stmt"/>
-        <line num="29" count="28" type="stmt"/>
-        <line num="30" count="28" type="stmt"/>
-        <line num="31" count="28" type="stmt"/>
-        <line num="34" count="28" type="cond" truecount="1" falsecount="1"/>
+        <line num="24" count="509" type="stmt"/>
+        <line num="25" count="509" type="stmt"/>
+        <line num="26" count="509" type="stmt"/>
+        <line num="27" count="31" type="stmt"/>
+        <line num="29" count="31" type="stmt"/>
+        <line num="30" count="31" type="stmt"/>
+        <line num="31" count="31" type="stmt"/>
+        <line num="34" count="31" type="cond" truecount="1" falsecount="1"/>
         <line num="35" count="0" type="stmt"/>
-        <line num="41" count="28" type="cond" truecount="1" falsecount="1"/>
+        <line num="41" count="31" type="cond" truecount="1" falsecount="1"/>
         <line num="42" count="0" type="stmt"/>
-        <line num="49" count="28" type="stmt"/>
+        <line num="49" count="31" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
@@ -33,11 +33,11 @@
         <metrics statements="40" coveredstatements="33" conditionals="2" coveredconditionals="1" methods="14" coveredmethods="9"/>
         <line num="2" count="4" type="stmt"/>
         <line num="4" count="4" type="stmt"/>
-        <line num="7" count="28" type="stmt"/>
-        <line num="8" count="23" type="stmt"/>
+        <line num="7" count="31" type="stmt"/>
+        <line num="8" count="26" type="stmt"/>
         <line num="12" count="4" type="stmt"/>
-        <line num="15" count="28" type="stmt"/>
-        <line num="16" count="23" type="stmt"/>
+        <line num="15" count="31" type="stmt"/>
+        <line num="16" count="26" type="stmt"/>
         <line num="20" count="4" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
@@ -45,39 +45,39 @@
         <line num="31" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
         <line num="36" count="4" type="stmt"/>
-        <line num="39" count="28" type="stmt"/>
-        <line num="40" count="23" type="stmt"/>
+        <line num="39" count="31" type="stmt"/>
+        <line num="40" count="26" type="stmt"/>
         <line num="44" count="4" type="stmt"/>
-        <line num="45" count="15" type="stmt"/>
-        <line num="46" count="90" type="stmt"/>
-        <line num="49" count="15" type="stmt"/>
-        <line num="50" count="15" type="stmt"/>
-        <line num="51" count="90" type="stmt"/>
-        <line num="54" count="15" type="stmt"/>
-        <line num="55" count="15" type="stmt"/>
+        <line num="45" count="18" type="stmt"/>
+        <line num="46" count="107" type="stmt"/>
+        <line num="49" count="18" type="stmt"/>
+        <line num="50" count="18" type="stmt"/>
+        <line num="51" count="107" type="stmt"/>
+        <line num="54" count="18" type="stmt"/>
+        <line num="55" count="18" type="stmt"/>
         <line num="58" count="4" type="stmt"/>
-        <line num="59" count="15" type="stmt"/>
-        <line num="60" count="15" type="stmt"/>
-        <line num="61" count="90" type="stmt"/>
-        <line num="63" count="15" type="stmt"/>
+        <line num="59" count="18" type="stmt"/>
+        <line num="60" count="18" type="stmt"/>
+        <line num="61" count="107" type="stmt"/>
+        <line num="63" count="18" type="stmt"/>
         <line num="66" count="4" type="stmt"/>
         <line num="82" count="0" type="stmt"/>
-        <line num="88" count="15" type="stmt"/>
-        <line num="91" count="15" type="stmt"/>
-        <line num="92" count="15" type="cond" truecount="1" falsecount="1"/>
-        <line num="93" count="15" type="stmt"/>
-        <line num="94" count="15" type="stmt"/>
+        <line num="88" count="18" type="stmt"/>
+        <line num="91" count="18" type="stmt"/>
+        <line num="92" count="18" type="cond" truecount="1" falsecount="1"/>
+        <line num="93" count="18" type="stmt"/>
+        <line num="94" count="18" type="stmt"/>
         <line num="98" count="0" type="stmt"/>
-        <line num="101" count="15" type="stmt"/>
+        <line num="101" count="18" type="stmt"/>
         <line num="104" count="0" type="stmt"/>
         <line num="110" count="4" type="stmt"/>
       </file>
       <file name="starRating.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/starRating.jsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="5" count="26" type="stmt"/>
-        <line num="15" count="4" type="stmt"/>
-        <line num="16" count="533" type="stmt"/>
-        <line num="18" count="533" type="stmt"/>
+        <line num="6" count="29" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="21" count="648" type="stmt"/>
+        <line num="23" count="648" type="stmt"/>
       </file>
     </package>
     <package name="src.components.overview">
@@ -95,25 +95,25 @@
       </file>
       <file name="overview.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/overview/overview.jsx">
         <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="4"/>
-        <line num="22" count="26" type="stmt"/>
+        <line num="22" count="29" type="stmt"/>
         <line num="32" count="3" type="stmt"/>
-        <line num="33" count="30" type="stmt"/>
-        <line num="34" count="461" type="stmt"/>
-        <line num="36" count="30" type="stmt"/>
-        <line num="107" count="30" type="stmt"/>
+        <line num="33" count="35" type="stmt"/>
+        <line num="34" count="512" type="stmt"/>
+        <line num="36" count="34" type="stmt"/>
+        <line num="107" count="36" type="stmt"/>
       </file>
       <file name="overviewSlice.js" path="/Users/jennagroth/immersive/FEC/client/src/components/overview/overviewSlice.js">
         <metrics statements="11" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="3"/>
         <line num="2" count="3" type="stmt"/>
         <line num="4" count="3" type="stmt"/>
-        <line num="7" count="28" type="stmt"/>
-        <line num="8" count="23" type="stmt"/>
+        <line num="7" count="31" type="stmt"/>
+        <line num="8" count="26" type="stmt"/>
         <line num="12" count="3" type="stmt"/>
         <line num="24" count="2" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
-        <line num="35" count="15" type="stmt"/>
-        <line num="36" count="15" type="stmt"/>
+        <line num="35" count="18" type="stmt"/>
+        <line num="36" count="18" type="stmt"/>
         <line num="42" count="3" type="stmt"/>
       </file>
     </package>
@@ -123,24 +123,24 @@
         <metrics statements="27" coveredstatements="18" conditionals="12" coveredconditionals="8" methods="13" coveredmethods="9"/>
         <line num="10" count="3" type="stmt"/>
         <line num="20" count="3" type="stmt"/>
-        <line num="21" count="71" type="stmt"/>
-        <line num="22" count="502" type="stmt"/>
-        <line num="23" count="502" type="stmt"/>
-        <line num="24" count="502" type="stmt"/>
-        <line num="25" count="502" type="stmt"/>
-        <line num="26" count="502" type="stmt"/>
-        <line num="27" count="502" type="stmt"/>
-        <line num="28" count="502" type="stmt"/>
-        <line num="29" count="502" type="stmt"/>
-        <line num="31" count="71" type="stmt"/>
-        <line num="33" count="71" type="cond" truecount="2" falsecount="0"/>
-        <line num="34" count="42" type="stmt"/>
-        <line num="35" count="42" type="stmt"/>
-        <line num="38" count="71" type="stmt"/>
+        <line num="21" count="82" type="stmt"/>
+        <line num="22" count="560" type="stmt"/>
+        <line num="23" count="560" type="stmt"/>
+        <line num="24" count="560" type="stmt"/>
+        <line num="25" count="560" type="stmt"/>
+        <line num="26" count="560" type="stmt"/>
+        <line num="27" count="560" type="stmt"/>
+        <line num="28" count="560" type="stmt"/>
+        <line num="29" count="560" type="stmt"/>
+        <line num="31" count="82" type="stmt"/>
+        <line num="33" count="82" type="cond" truecount="2" falsecount="0"/>
+        <line num="34" count="50" type="stmt"/>
+        <line num="35" count="50" type="stmt"/>
+        <line num="38" count="82" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
-        <line num="44" count="71" type="stmt"/>
+        <line num="44" count="82" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
-        <line num="48" count="71" type="stmt"/>
+        <line num="48" count="82" type="stmt"/>
         <line num="66" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="67" count="0" type="stmt"/>
         <line num="69" count="0" type="stmt"/>
@@ -157,65 +157,65 @@
         <line num="21" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
-        <line num="30" count="19" type="stmt"/>
-        <line num="33" count="33" type="stmt"/>
-        <line num="34" count="33" type="stmt"/>
-        <line num="35" count="33" type="stmt"/>
-        <line num="36" count="33" type="stmt"/>
-        <line num="37" count="33" type="stmt"/>
-        <line num="38" count="33" type="stmt"/>
+        <line num="30" count="22" type="stmt"/>
+        <line num="33" count="37" type="stmt"/>
+        <line num="34" count="37" type="stmt"/>
+        <line num="35" count="37" type="stmt"/>
+        <line num="36" count="37" type="stmt"/>
+        <line num="37" count="37" type="stmt"/>
+        <line num="38" count="37" type="stmt"/>
         <line num="50" count="3" type="stmt"/>
       </file>
       <file name="quantSelect.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/overview/addToCart/quantSelect.jsx">
         <metrics statements="13" coveredstatements="7" conditionals="4" coveredconditionals="1" methods="5" coveredmethods="3"/>
         <line num="6" count="3" type="stmt"/>
-        <line num="7" count="71" type="stmt"/>
-        <line num="8" count="502" type="stmt"/>
-        <line num="9" count="502" type="stmt"/>
-        <line num="11" count="71" type="stmt"/>
+        <line num="7" count="82" type="stmt"/>
+        <line num="8" count="560" type="stmt"/>
+        <line num="9" count="560" type="stmt"/>
+        <line num="11" count="82" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="14" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="19" count="71" type="cond" truecount="1" falsecount="1"/>
+        <line num="19" count="82" type="cond" truecount="1" falsecount="1"/>
         <line num="20" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
-        <line num="30" count="71" type="stmt"/>
+        <line num="30" count="82" type="stmt"/>
       </file>
       <file name="sizeSelect.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/overview/addToCart/sizeSelect.jsx">
         <metrics statements="37" coveredstatements="25" conditionals="10" coveredconditionals="8" methods="13" coveredmethods="11"/>
         <line num="14" count="3" type="stmt"/>
-        <line num="15" count="71" type="stmt"/>
-        <line num="17" count="502" type="stmt"/>
-        <line num="18" count="502" type="stmt"/>
-        <line num="19" count="502" type="stmt"/>
-        <line num="20" count="502" type="stmt"/>
-        <line num="24" count="71" type="stmt"/>
-        <line num="25" count="42" type="stmt"/>
-        <line num="26" count="42" type="stmt"/>
-        <line num="27" count="252" type="stmt"/>
-        <line num="29" count="42" type="stmt"/>
-        <line num="33" count="71" type="cond" truecount="2" falsecount="0"/>
-        <line num="34" count="310" type="stmt"/>
-        <line num="36" count="42" type="cond" truecount="1" falsecount="1"/>
+        <line num="15" count="82" type="stmt"/>
+        <line num="17" count="560" type="stmt"/>
+        <line num="18" count="560" type="stmt"/>
+        <line num="19" count="560" type="stmt"/>
+        <line num="20" count="560" type="stmt"/>
+        <line num="24" count="82" type="stmt"/>
+        <line num="25" count="50" type="stmt"/>
+        <line num="26" count="50" type="stmt"/>
+        <line num="27" count="300" type="stmt"/>
+        <line num="29" count="50" type="stmt"/>
+        <line num="33" count="82" type="cond" truecount="2" falsecount="0"/>
+        <line num="34" count="354" type="stmt"/>
+        <line num="36" count="50" type="cond" truecount="1" falsecount="1"/>
         <line num="37" count="0" type="stmt"/>
-        <line num="40" count="42" type="stmt"/>
-        <line num="44" count="192" type="stmt"/>
-        <line num="48" count="71" type="stmt"/>
-        <line num="49" count="33" type="stmt"/>
-        <line num="53" count="71" type="stmt"/>
-        <line num="54" count="33" type="cond" truecount="2" falsecount="0"/>
-        <line num="55" count="19" type="stmt"/>
-        <line num="60" count="71" type="cond" truecount="2" falsecount="0"/>
-        <line num="61" count="30" type="stmt"/>
-        <line num="67" count="41" type="cond" truecount="1" falsecount="1"/>
+        <line num="40" count="50" type="stmt"/>
+        <line num="44" count="206" type="stmt"/>
+        <line num="48" count="82" type="stmt"/>
+        <line num="49" count="37" type="stmt"/>
+        <line num="53" count="82" type="stmt"/>
+        <line num="54" count="37" type="cond" truecount="2" falsecount="0"/>
+        <line num="55" count="22" type="stmt"/>
+        <line num="60" count="82" type="cond" truecount="2" falsecount="0"/>
+        <line num="61" count="34" type="stmt"/>
+        <line num="67" count="48" type="cond" truecount="1" falsecount="1"/>
         <line num="68" count="0" type="stmt"/>
         <line num="74" count="0" type="stmt"/>
         <line num="75" count="0" type="stmt"/>
         <line num="76" count="0" type="stmt"/>
         <line num="77" count="0" type="stmt"/>
         <line num="78" count="0" type="stmt"/>
-        <line num="83" count="41" type="stmt"/>
+        <line num="83" count="48" type="stmt"/>
         <line num="88" count="0" type="stmt"/>
         <line num="89" count="0" type="stmt"/>
         <line num="90" count="0" type="stmt"/>
@@ -261,11 +261,11 @@
       <file name="galleryMainImg.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/overview/imageGallery/galleryMainImg.jsx">
         <metrics statements="9" coveredstatements="6" conditionals="4" coveredconditionals="2" methods="7" coveredmethods="4"/>
         <line num="15" count="3" type="stmt"/>
-        <line num="16" count="26" type="stmt"/>
-        <line num="17" count="295" type="stmt"/>
-        <line num="18" count="295" type="stmt"/>
-        <line num="19" count="295" type="stmt"/>
-        <line num="21" count="26" type="stmt"/>
+        <line num="16" count="31" type="stmt"/>
+        <line num="17" count="337" type="stmt"/>
+        <line num="18" count="337" type="stmt"/>
+        <line num="19" count="337" type="stmt"/>
+        <line num="21" count="31" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
@@ -274,31 +274,31 @@
         <metrics statements="19" coveredstatements="14" conditionals="12" coveredconditionals="9" methods="9" coveredmethods="6"/>
         <line num="17" count="3" type="stmt"/>
         <line num="38" count="3" type="stmt"/>
-        <line num="39" count="21" type="stmt"/>
-        <line num="40" count="290" type="stmt"/>
-        <line num="41" count="290" type="stmt"/>
-        <line num="42" count="290" type="stmt"/>
-        <line num="44" count="21" type="stmt"/>
-        <line num="45" count="19" type="cond" truecount="3" falsecount="1"/>
-        <line num="46" count="19" type="stmt"/>
-        <line num="47" count="19" type="stmt"/>
-        <line num="51" count="21" type="stmt"/>
+        <line num="39" count="25" type="stmt"/>
+        <line num="40" count="331" type="stmt"/>
+        <line num="41" count="331" type="stmt"/>
+        <line num="42" count="331" type="stmt"/>
+        <line num="44" count="25" type="stmt"/>
+        <line num="45" count="22" type="cond" truecount="3" falsecount="1"/>
+        <line num="46" count="22" type="stmt"/>
+        <line num="47" count="22" type="stmt"/>
+        <line num="51" count="25" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
-        <line num="72" count="126" type="cond" truecount="3" falsecount="1"/>
-        <line num="73" count="126" type="stmt"/>
+        <line num="72" count="150" type="cond" truecount="3" falsecount="1"/>
+        <line num="73" count="150" type="stmt"/>
         <line num="75" count="0" type="stmt"/>
         <line num="76" count="0" type="stmt"/>
-        <line num="81" count="126" type="stmt"/>
+        <line num="81" count="150" type="stmt"/>
         <line num="88" count="0" type="stmt"/>
         <line num="101" count="0" type="stmt"/>
       </file>
       <file name="imageGallery.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/overview/imageGallery/imageGallery.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="15" count="3" type="stmt"/>
-        <line num="16" count="466" type="stmt"/>
-        <line num="18" count="35" type="cond" truecount="2" falsecount="0"/>
-        <line num="19" count="21" type="stmt"/>
-        <line num="30" count="14" type="stmt"/>
+        <line num="16" count="518" type="stmt"/>
+        <line num="18" count="40" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="25" type="stmt"/>
+        <line num="30" count="15" type="stmt"/>
       </file>
       <file name="imageGallerySlice.js" path="/Users/jennagroth/immersive/FEC/client/src/components/overview/imageGallery/imageGallerySlice.js">
         <metrics statements="17" coveredstatements="5" conditionals="4" coveredconditionals="1" methods="5" coveredmethods="2"/>
@@ -314,9 +314,9 @@
         <line num="25" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
-        <line num="32" count="19" type="stmt"/>
-        <line num="35" count="19" type="stmt"/>
-        <line num="37" count="19" type="cond" truecount="1" falsecount="1"/>
+        <line num="32" count="22" type="stmt"/>
+        <line num="35" count="22" type="stmt"/>
+        <line num="37" count="22" type="cond" truecount="1" falsecount="1"/>
         <line num="38" count="0" type="stmt"/>
         <line num="47" count="3" type="stmt"/>
       </file>
@@ -326,16 +326,16 @@
       <file name="productInformation.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/overview/productInformation/productInformation.jsx">
         <metrics statements="11" coveredstatements="11" conditionals="6" coveredconditionals="6" methods="7" coveredmethods="7"/>
         <line num="15" count="3" type="stmt"/>
-        <line num="16" count="39" type="stmt"/>
-        <line num="18" count="470" type="stmt"/>
-        <line num="19" count="470" type="stmt"/>
-        <line num="20" count="470" type="stmt"/>
-        <line num="21" count="470" type="stmt"/>
-        <line num="22" count="470" type="stmt"/>
-        <line num="24" count="39" type="stmt"/>
-        <line num="25" count="28" type="stmt"/>
-        <line num="26" count="28" type="stmt"/>
-        <line num="29" count="39" type="stmt"/>
+        <line num="16" count="50" type="stmt"/>
+        <line num="18" count="527" type="stmt"/>
+        <line num="19" count="527" type="stmt"/>
+        <line num="20" count="527" type="stmt"/>
+        <line num="21" count="527" type="stmt"/>
+        <line num="22" count="527" type="stmt"/>
+        <line num="24" count="47" type="stmt"/>
+        <line num="25" count="31" type="stmt"/>
+        <line num="26" count="31" type="stmt"/>
+        <line num="29" count="47" type="stmt"/>
       </file>
     </package>
     <package name="src.components.overview.styleSelector">
@@ -344,44 +344,44 @@
         <metrics statements="17" coveredstatements="16" conditionals="8" coveredconditionals="7" methods="7" coveredmethods="7"/>
         <line num="17" count="3" type="stmt"/>
         <line num="35" count="3" type="stmt"/>
-        <line num="36" count="35" type="stmt"/>
-        <line num="37" count="35" type="stmt"/>
-        <line num="38" count="466" type="stmt"/>
-        <line num="39" count="466" type="stmt"/>
-        <line num="40" count="466" type="stmt"/>
-        <line num="42" count="35" type="stmt"/>
-        <line num="43" count="28" type="stmt"/>
-        <line num="46" count="35" type="cond" truecount="2" falsecount="0"/>
-        <line num="47" count="21" type="stmt"/>
-        <line num="53" count="126" type="cond" truecount="3" falsecount="1"/>
-        <line num="54" count="126" type="stmt"/>
+        <line num="36" count="40" type="stmt"/>
+        <line num="37" count="40" type="stmt"/>
+        <line num="38" count="518" type="stmt"/>
+        <line num="39" count="518" type="stmt"/>
+        <line num="40" count="518" type="stmt"/>
+        <line num="42" count="40" type="stmt"/>
+        <line num="43" count="31" type="stmt"/>
+        <line num="46" count="40" type="cond" truecount="2" falsecount="0"/>
+        <line num="47" count="25" type="stmt"/>
+        <line num="53" count="150" type="cond" truecount="3" falsecount="1"/>
+        <line num="54" count="150" type="stmt"/>
         <line num="56" count="0" type="stmt"/>
-        <line num="59" count="126" type="stmt"/>
+        <line num="59" count="150" type="stmt"/>
         <line num="65" count="2" type="stmt"/>
-        <line num="92" count="14" type="stmt"/>
+        <line num="92" count="15" type="stmt"/>
       </file>
     </package>
     <package name="src.components.questionsAnswers">
       <metrics statements="166" coveredstatements="101" conditionals="40" coveredconditionals="9" methods="65" coveredmethods="33"/>
       <file name="AddAnswer.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/questionsAnswers/AddAnswer.jsx">
         <metrics statements="35" coveredstatements="18" conditionals="11" coveredconditionals="0" methods="12" coveredmethods="5"/>
-        <line num="15" count="60" type="stmt"/>
-        <line num="23" count="13" type="stmt"/>
-        <line num="36" count="120" type="stmt"/>
-        <line num="38" count="120" type="stmt"/>
-        <line num="39" count="1176" type="stmt"/>
-        <line num="40" count="1176" type="stmt"/>
-        <line num="41" count="120" type="stmt"/>
-        <line num="42" count="120" type="stmt"/>
-        <line num="43" count="120" type="stmt"/>
-        <line num="44" count="120" type="stmt"/>
-        <line num="45" count="120" type="stmt"/>
-        <line num="46" count="120" type="stmt"/>
-        <line num="48" count="120" type="stmt"/>
+        <line num="15" count="72" type="stmt"/>
+        <line num="23" count="16" type="stmt"/>
+        <line num="36" count="140" type="stmt"/>
+        <line num="38" count="140" type="stmt"/>
+        <line num="39" count="1324" type="stmt"/>
+        <line num="40" count="1324" type="stmt"/>
+        <line num="41" count="140" type="stmt"/>
+        <line num="42" count="140" type="stmt"/>
+        <line num="43" count="140" type="stmt"/>
+        <line num="44" count="140" type="stmt"/>
+        <line num="45" count="140" type="stmt"/>
+        <line num="46" count="140" type="stmt"/>
+        <line num="48" count="140" type="stmt"/>
         <line num="49" count="0" type="stmt"/>
-        <line num="52" count="120" type="stmt"/>
+        <line num="52" count="140" type="stmt"/>
         <line num="53" count="0" type="stmt"/>
-        <line num="56" count="120" type="stmt"/>
+        <line num="56" count="140" type="stmt"/>
         <line num="57" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="58" count="0" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
@@ -391,34 +391,34 @@
         <line num="65" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="66" count="0" type="stmt"/>
         <line num="67" count="0" type="stmt"/>
-        <line num="71" count="120" type="stmt"/>
+        <line num="71" count="140" type="stmt"/>
         <line num="72" count="0" type="cond" truecount="0" falsecount="5"/>
         <line num="73" count="0" type="stmt"/>
         <line num="79" count="0" type="stmt"/>
         <line num="87" count="0" type="stmt"/>
         <line num="91" count="0" type="stmt"/>
-        <line num="96" count="120" type="stmt"/>
+        <line num="96" count="140" type="stmt"/>
         <line num="134" count="0" type="stmt"/>
-        <line num="142" count="120" type="stmt"/>
+        <line num="142" count="140" type="stmt"/>
       </file>
       <file name="AddQuestion.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/questionsAnswers/AddQuestion.jsx">
         <metrics statements="32" coveredstatements="17" conditionals="11" coveredconditionals="0" methods="10" coveredmethods="5"/>
-        <line num="13" count="28" type="stmt"/>
-        <line num="21" count="26" type="stmt"/>
-        <line num="34" count="29" type="stmt"/>
-        <line num="35" count="29" type="stmt"/>
-        <line num="36" count="460" type="stmt"/>
-        <line num="37" count="460" type="stmt"/>
-        <line num="38" count="29" type="stmt"/>
-        <line num="39" count="29" type="stmt"/>
-        <line num="40" count="29" type="stmt"/>
-        <line num="41" count="29" type="stmt"/>
-        <line num="42" count="29" type="stmt"/>
-        <line num="44" count="29" type="stmt"/>
+        <line num="13" count="31" type="stmt"/>
+        <line num="21" count="29" type="stmt"/>
+        <line num="34" count="33" type="stmt"/>
+        <line num="35" count="33" type="stmt"/>
+        <line num="36" count="511" type="stmt"/>
+        <line num="37" count="511" type="stmt"/>
+        <line num="38" count="33" type="stmt"/>
+        <line num="39" count="33" type="stmt"/>
+        <line num="40" count="33" type="stmt"/>
+        <line num="41" count="33" type="stmt"/>
+        <line num="42" count="33" type="stmt"/>
+        <line num="44" count="33" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
-        <line num="48" count="29" type="stmt"/>
+        <line num="48" count="33" type="stmt"/>
         <line num="49" count="0" type="stmt"/>
-        <line num="52" count="29" type="stmt"/>
+        <line num="52" count="33" type="stmt"/>
         <line num="53" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="54" count="0" type="stmt"/>
         <line num="55" count="0" type="stmt"/>
@@ -428,24 +428,24 @@
         <line num="61" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="62" count="0" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
-        <line num="67" count="29" type="stmt"/>
+        <line num="67" count="33" type="stmt"/>
         <line num="68" count="0" type="cond" truecount="0" falsecount="5"/>
         <line num="69" count="0" type="stmt"/>
         <line num="75" count="0" type="stmt"/>
         <line num="84" count="0" type="stmt"/>
-        <line num="89" count="29" type="stmt"/>
-        <line num="133" count="29" type="stmt"/>
+        <line num="89" count="33" type="stmt"/>
+        <line num="133" count="33" type="stmt"/>
       </file>
       <file name="Answer.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/questionsAnswers/Answer.jsx">
         <metrics statements="12" coveredstatements="7" conditionals="6" coveredconditionals="3" methods="4" coveredmethods="1"/>
         <line num="7" count="3" type="stmt"/>
-        <line num="8" count="87" type="stmt"/>
-        <line num="10" count="87" type="stmt"/>
-        <line num="11" count="87" type="stmt"/>
-        <line num="12" count="87" type="stmt"/>
-        <line num="14" count="87" type="stmt"/>
+        <line num="8" count="99" type="stmt"/>
+        <line num="10" count="99" type="stmt"/>
+        <line num="11" count="99" type="stmt"/>
+        <line num="12" count="99" type="stmt"/>
+        <line num="14" count="99" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="19" count="87" type="stmt"/>
+        <line num="19" count="99" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
@@ -454,33 +454,33 @@
       <file name="Answers.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/questionsAnswers/Answers.jsx">
         <metrics statements="13" coveredstatements="10" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="3"/>
         <line num="7" count="3" type="stmt"/>
-        <line num="8" count="116" type="stmt"/>
-        <line num="9" count="116" type="stmt"/>
-        <line num="10" count="957" type="stmt"/>
-        <line num="13" count="116" type="stmt"/>
-        <line num="15" count="116" type="stmt"/>
+        <line num="8" count="132" type="stmt"/>
+        <line num="9" count="132" type="stmt"/>
+        <line num="10" count="1089" type="stmt"/>
+        <line num="13" count="132" type="stmt"/>
+        <line num="15" count="132" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="19" count="116" type="cond" truecount="1" falsecount="1"/>
-        <line num="20" count="116" type="stmt"/>
-        <line num="25" count="493" type="cond" truecount="2" falsecount="0"/>
-        <line num="26" count="87" type="stmt"/>
+        <line num="19" count="132" type="cond" truecount="1" falsecount="1"/>
+        <line num="20" count="132" type="stmt"/>
+        <line num="25" count="561" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="99" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
         <line num="57" count="0" type="stmt"/>
       </file>
       <file name="Question.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/questionsAnswers/Question.jsx">
         <metrics statements="16" coveredstatements="11" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="2"/>
-        <line num="12" count="13" type="stmt"/>
+        <line num="12" count="16" type="stmt"/>
         <line num="23" count="3" type="stmt"/>
-        <line num="24" count="116" type="stmt"/>
-        <line num="25" count="116" type="stmt"/>
-        <line num="26" count="116" type="stmt"/>
-        <line num="28" count="116" type="stmt"/>
-        <line num="29" count="116" type="stmt"/>
-        <line num="30" count="116" type="stmt"/>
-        <line num="31" count="116" type="stmt"/>
-        <line num="33" count="116" type="stmt"/>
+        <line num="24" count="132" type="stmt"/>
+        <line num="25" count="132" type="stmt"/>
+        <line num="26" count="132" type="stmt"/>
+        <line num="28" count="132" type="stmt"/>
+        <line num="29" count="132" type="stmt"/>
+        <line num="30" count="132" type="stmt"/>
+        <line num="31" count="132" type="stmt"/>
+        <line num="33" count="132" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
-        <line num="38" count="116" type="stmt"/>
+        <line num="38" count="132" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
         <line num="49" count="0" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
@@ -489,34 +489,34 @@
       <file name="Questions.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/questionsAnswers/Questions.jsx">
         <metrics statements="16" coveredstatements="14" conditionals="2" coveredconditionals="1" methods="9" coveredmethods="9"/>
         <line num="9" count="3" type="stmt"/>
-        <line num="10" count="474" type="stmt"/>
-        <line num="11" count="474" type="stmt"/>
-        <line num="12" count="474" type="stmt"/>
-        <line num="13" count="474" type="stmt"/>
-        <line num="14" count="474" type="stmt"/>
-        <line num="16" count="43" type="stmt"/>
-        <line num="18" count="43" type="stmt"/>
-        <line num="19" count="28" type="stmt"/>
-        <line num="22" count="43" type="stmt"/>
-        <line num="33" count="116" type="stmt"/>
-        <line num="36" count="116" type="cond" truecount="1" falsecount="1"/>
-        <line num="37" count="116" type="stmt"/>
-        <line num="38" count="116" type="stmt"/>
+        <line num="10" count="526" type="stmt"/>
+        <line num="11" count="526" type="stmt"/>
+        <line num="12" count="526" type="stmt"/>
+        <line num="13" count="526" type="stmt"/>
+        <line num="14" count="526" type="stmt"/>
+        <line num="16" count="48" type="stmt"/>
+        <line num="18" count="48" type="stmt"/>
+        <line num="19" count="31" type="stmt"/>
+        <line num="22" count="48" type="stmt"/>
+        <line num="33" count="132" type="stmt"/>
+        <line num="36" count="132" type="cond" truecount="1" falsecount="1"/>
+        <line num="37" count="132" type="stmt"/>
+        <line num="38" count="132" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
         <line num="49" count="0" type="stmt"/>
       </file>
       <file name="SearchBar.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/questionsAnswers/SearchBar.jsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="8" count="26" type="stmt"/>
-        <line num="28" count="28" type="stmt"/>
-        <line num="30" count="28" type="stmt"/>
+        <line num="8" count="29" type="stmt"/>
+        <line num="28" count="31" type="stmt"/>
+        <line num="30" count="31" type="stmt"/>
       </file>
       <file name="qaSlice.js" path="/Users/jennagroth/immersive/FEC/client/src/components/questionsAnswers/qaSlice.js">
         <metrics statements="19" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="3"/>
         <line num="2" count="3" type="stmt"/>
         <line num="4" count="3" type="stmt"/>
-        <line num="7" count="28" type="stmt"/>
-        <line num="8" count="23" type="stmt"/>
+        <line num="7" count="31" type="stmt"/>
+        <line num="8" count="26" type="stmt"/>
         <line num="12" count="3" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
@@ -526,31 +526,31 @@
         <line num="28" count="3" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
-        <line num="49" count="15" type="stmt"/>
-        <line num="50" count="15" type="stmt"/>
-        <line num="51" count="60" type="stmt"/>
+        <line num="49" count="18" type="stmt"/>
+        <line num="50" count="18" type="stmt"/>
+        <line num="51" count="68" type="stmt"/>
         <line num="55" count="0" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
         <line num="63" count="3" type="stmt"/>
       </file>
       <file name="questionsAnswers.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/questionsAnswers/questionsAnswers.jsx">
         <metrics statements="20" coveredstatements="10" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="3"/>
-        <line num="16" count="26" type="stmt"/>
+        <line num="16" count="29" type="stmt"/>
         <line num="28" count="3" type="stmt"/>
-        <line num="29" count="459" type="stmt"/>
-        <line num="30" count="28" type="stmt"/>
-        <line num="31" count="28" type="stmt"/>
-        <line num="33" count="28" type="stmt"/>
-        <line num="34" count="28" type="stmt"/>
-        <line num="36" count="28" type="stmt"/>
+        <line num="29" count="509" type="stmt"/>
+        <line num="30" count="31" type="stmt"/>
+        <line num="31" count="31" type="stmt"/>
+        <line num="33" count="31" type="stmt"/>
+        <line num="34" count="31" type="stmt"/>
+        <line num="36" count="31" type="stmt"/>
         <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="38" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
-        <line num="45" count="28" type="stmt"/>
+        <line num="45" count="31" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
         <line num="47" count="0" type="stmt"/>
-        <line num="50" count="28" type="stmt"/>
+        <line num="50" count="31" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
         <line num="69" count="0" type="stmt"/>
         <line num="70" count="0" type="stmt"/>
@@ -561,100 +561,100 @@
       <metrics statements="186" coveredstatements="119" conditionals="100" coveredconditionals="49" methods="75" coveredmethods="36"/>
       <file name="addReview.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/ratingsReviews/addReview.jsx">
         <metrics statements="42" coveredstatements="27" conditionals="33" coveredconditionals="14" methods="14" coveredmethods="5"/>
-        <line num="21" count="15" type="stmt"/>
-        <line num="31" count="13" type="stmt"/>
-        <line num="43" count="17" type="stmt"/>
-        <line num="44" count="17" type="stmt"/>
-        <line num="45" count="263" type="stmt"/>
-        <line num="46" count="263" type="stmt"/>
-        <line num="47" count="17" type="stmt"/>
-        <line num="48" count="17" type="stmt"/>
-        <line num="49" count="17" type="stmt"/>
-        <line num="50" count="17" type="stmt"/>
-        <line num="51" count="17" type="stmt"/>
-        <line num="52" count="17" type="stmt"/>
-        <line num="53" count="17" type="stmt"/>
-        <line num="54" count="17" type="stmt"/>
-        <line num="57" count="17" type="cond" truecount="1" falsecount="1"/>
+        <line num="21" count="18" type="stmt"/>
+        <line num="31" count="16" type="stmt"/>
+        <line num="43" count="21" type="stmt"/>
+        <line num="44" count="21" type="stmt"/>
+        <line num="45" count="305" type="stmt"/>
+        <line num="46" count="305" type="stmt"/>
+        <line num="47" count="21" type="stmt"/>
+        <line num="48" count="21" type="stmt"/>
+        <line num="49" count="21" type="stmt"/>
+        <line num="50" count="21" type="stmt"/>
+        <line num="51" count="21" type="stmt"/>
+        <line num="52" count="21" type="stmt"/>
+        <line num="53" count="21" type="stmt"/>
+        <line num="54" count="21" type="stmt"/>
+        <line num="57" count="21" type="cond" truecount="1" falsecount="1"/>
         <line num="58" count="0" type="stmt"/>
-        <line num="59" count="17" type="cond" truecount="1" falsecount="1"/>
+        <line num="59" count="21" type="cond" truecount="1" falsecount="1"/>
         <line num="60" count="0" type="stmt"/>
-        <line num="61" count="17" type="cond" truecount="1" falsecount="1"/>
+        <line num="61" count="21" type="cond" truecount="1" falsecount="1"/>
         <line num="62" count="0" type="stmt"/>
-        <line num="63" count="17" type="cond" truecount="1" falsecount="1"/>
+        <line num="63" count="21" type="cond" truecount="1" falsecount="1"/>
         <line num="64" count="0" type="stmt"/>
-        <line num="65" count="17" type="cond" truecount="1" falsecount="1"/>
+        <line num="65" count="21" type="cond" truecount="1" falsecount="1"/>
         <line num="66" count="0" type="stmt"/>
-        <line num="69" count="17" type="stmt"/>
+        <line num="69" count="21" type="stmt"/>
         <line num="70" count="0" type="stmt"/>
-        <line num="73" count="17" type="stmt"/>
+        <line num="73" count="21" type="stmt"/>
         <line num="74" count="0" type="stmt"/>
-        <line num="77" count="17" type="stmt"/>
+        <line num="77" count="21" type="stmt"/>
         <line num="78" count="0" type="stmt"/>
-        <line num="81" count="17" type="stmt"/>
+        <line num="81" count="21" type="stmt"/>
         <line num="82" count="0" type="stmt"/>
-        <line num="85" count="17" type="stmt"/>
+        <line num="85" count="21" type="stmt"/>
         <line num="86" count="0" type="stmt"/>
-        <line num="89" count="17" type="stmt"/>
+        <line num="89" count="21" type="stmt"/>
         <line num="90" count="0" type="cond" truecount="0" falsecount="5"/>
         <line num="91" count="0" type="stmt"/>
         <line num="97" count="0" type="stmt"/>
-        <line num="108" count="17" type="stmt"/>
+        <line num="108" count="21" type="stmt"/>
         <line num="122" count="0" type="stmt"/>
-        <line num="357" count="17" type="stmt"/>
+        <line num="357" count="21" type="stmt"/>
         <line num="363" count="0" type="stmt"/>
       </file>
       <file name="breakdown.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/ratingsReviews/breakdown.jsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="6" count="4" type="stmt"/>
-        <line num="7" count="28" type="stmt"/>
+        <line num="7" count="32" type="stmt"/>
       </file>
       <file name="productBreakdown.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/ratingsReviews/productBreakdown.jsx">
         <metrics statements="12" coveredstatements="12" conditionals="6" coveredconditionals="6" methods="3" coveredmethods="3"/>
         <line num="7" count="4" type="stmt"/>
-        <line num="8" count="460" type="stmt"/>
-        <line num="10" count="29" type="stmt"/>
-        <line num="45" count="29" type="stmt"/>
-        <line num="56" count="29" type="stmt"/>
-        <line num="71" count="29" type="cond" truecount="2" falsecount="0"/>
-        <line num="72" count="15" type="stmt"/>
-        <line num="76" count="60" type="stmt"/>
-        <line num="77" count="60" type="cond" truecount="4" falsecount="0"/>
-        <line num="78" count="30" type="stmt"/>
-        <line num="97" count="30" type="stmt"/>
-        <line num="121" count="14" type="stmt"/>
+        <line num="8" count="512" type="stmt"/>
+        <line num="10" count="34" type="stmt"/>
+        <line num="45" count="34" type="stmt"/>
+        <line num="56" count="34" type="stmt"/>
+        <line num="71" count="34" type="cond" truecount="2" falsecount="0"/>
+        <line num="72" count="19" type="stmt"/>
+        <line num="76" count="73" type="stmt"/>
+        <line num="77" count="73" type="cond" truecount="4" falsecount="0"/>
+        <line num="78" count="37" type="stmt"/>
+        <line num="97" count="36" type="stmt"/>
+        <line num="121" count="15" type="stmt"/>
       </file>
       <file name="ratingsBreakdown.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/ratingsReviews/ratingsBreakdown.jsx">
         <metrics statements="38" coveredstatements="27" conditionals="8" coveredconditionals="5" methods="16" coveredmethods="8"/>
         <line num="10" count="4" type="stmt"/>
         <line num="29" count="4" type="stmt"/>
-        <line num="30" count="46" type="stmt"/>
-        <line num="31" count="46" type="stmt"/>
-        <line num="32" count="477" type="stmt"/>
-        <line num="33" count="477" type="stmt"/>
-        <line num="34" count="477" type="stmt"/>
-        <line num="35" count="477" type="stmt"/>
-        <line num="36" count="477" type="stmt"/>
-        <line num="38" count="46" type="stmt"/>
-        <line num="39" count="46" type="stmt"/>
-        <line num="40" count="46" type="stmt"/>
-        <line num="41" count="46" type="stmt"/>
-        <line num="42" count="46" type="stmt"/>
-        <line num="44" count="46" type="stmt"/>
+        <line num="30" count="57" type="stmt"/>
+        <line num="31" count="56" type="stmt"/>
+        <line num="32" count="534" type="stmt"/>
+        <line num="33" count="534" type="stmt"/>
+        <line num="34" count="534" type="stmt"/>
+        <line num="35" count="534" type="stmt"/>
+        <line num="36" count="532" type="stmt"/>
+        <line num="38" count="54" type="stmt"/>
+        <line num="39" count="54" type="stmt"/>
+        <line num="40" count="54" type="stmt"/>
+        <line num="41" count="54" type="stmt"/>
+        <line num="42" count="54" type="stmt"/>
+        <line num="44" count="54" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
-        <line num="49" count="46" type="stmt"/>
-        <line num="50" count="32" type="stmt"/>
-        <line num="51" count="32" type="stmt"/>
-        <line num="52" count="32" type="stmt"/>
-        <line num="55" count="46" type="stmt"/>
-        <line num="56" count="29" type="cond" truecount="2" falsecount="0"/>
-        <line num="57" count="15" type="stmt"/>
-        <line num="58" count="15" type="stmt"/>
-        <line num="59" count="15" type="stmt"/>
-        <line num="60" count="15" type="stmt"/>
-        <line num="61" count="15" type="stmt"/>
-        <line num="65" count="46" type="stmt"/>
+        <line num="49" count="54" type="stmt"/>
+        <line num="50" count="39" type="stmt"/>
+        <line num="51" count="39" type="stmt"/>
+        <line num="52" count="39" type="stmt"/>
+        <line num="55" count="54" type="stmt"/>
+        <line num="56" count="34" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="19" type="stmt"/>
+        <line num="58" count="19" type="stmt"/>
+        <line num="59" count="19" type="stmt"/>
+        <line num="60" count="19" type="stmt"/>
+        <line num="61" count="19" type="stmt"/>
+        <line num="65" count="54" type="stmt"/>
         <line num="88" count="0" type="stmt"/>
         <line num="101" count="0" type="stmt"/>
         <line num="114" count="0" type="stmt"/>
@@ -668,7 +668,7 @@
       <file name="ratingsReviews.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/ratingsReviews/ratingsReviews.jsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="6" count="4" type="stmt"/>
-        <line num="7" count="28" type="stmt"/>
+        <line num="7" count="32" type="stmt"/>
       </file>
       <file name="ratingsReviewsSlice.js" path="/Users/jennagroth/immersive/FEC/client/src/components/ratingsReviews/ratingsReviewsSlice.js">
         <metrics statements="19" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="10" coveredmethods="0"/>
@@ -694,43 +694,43 @@
       </file>
       <file name="review.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/ratingsReviews/review.jsx">
         <metrics statements="43" coveredstatements="24" conditionals="34" coveredconditionals="14" methods="16" coveredmethods="6"/>
-        <line num="22" count="13" type="stmt"/>
+        <line num="22" count="16" type="stmt"/>
         <line num="34" count="4" type="stmt"/>
-        <line num="35" count="465" type="stmt"/>
-        <line num="36" count="465" type="stmt"/>
-        <line num="37" count="465" type="stmt"/>
-        <line num="38" count="465" type="stmt"/>
-        <line num="39" count="465" type="stmt"/>
-        <line num="41" count="8091" type="stmt"/>
-        <line num="42" count="8091" type="stmt"/>
-        <line num="43" count="8091" type="stmt"/>
-        <line num="45" count="465" type="stmt"/>
-        <line num="46" count="465" type="stmt"/>
-        <line num="48" count="465" type="stmt"/>
-        <line num="54" count="465" type="stmt"/>
-        <line num="55" count="465" type="stmt"/>
-        <line num="56" count="465" type="stmt"/>
-        <line num="58" count="465" type="stmt"/>
+        <line num="35" count="558" type="stmt"/>
+        <line num="36" count="558" type="stmt"/>
+        <line num="37" count="558" type="stmt"/>
+        <line num="38" count="558" type="stmt"/>
+        <line num="39" count="558" type="stmt"/>
+        <line num="41" count="9362" type="stmt"/>
+        <line num="42" count="9362" type="stmt"/>
+        <line num="43" count="9362" type="stmt"/>
+        <line num="45" count="558" type="stmt"/>
+        <line num="46" count="558" type="stmt"/>
+        <line num="48" count="558" type="stmt"/>
+        <line num="54" count="558" type="stmt"/>
+        <line num="55" count="558" type="stmt"/>
+        <line num="56" count="558" type="stmt"/>
+        <line num="58" count="558" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
-        <line num="62" count="465" type="stmt"/>
+        <line num="62" count="558" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
-        <line num="66" count="465" type="stmt"/>
+        <line num="66" count="558" type="stmt"/>
         <line num="67" count="0" type="stmt"/>
         <line num="68" count="0" type="stmt"/>
         <line num="69" count="0" type="stmt"/>
         <line num="70" count="0" type="stmt"/>
-        <line num="73" count="465" type="stmt"/>
+        <line num="73" count="558" type="stmt"/>
         <line num="74" count="0" type="stmt"/>
         <line num="75" count="0" type="stmt"/>
         <line num="76" count="0" type="stmt"/>
         <line num="77" count="0" type="stmt"/>
-        <line num="80" count="465" type="stmt"/>
+        <line num="80" count="558" type="stmt"/>
         <line num="81" count="0" type="stmt"/>
-        <line num="84" count="465" type="cond" truecount="1" falsecount="1"/>
+        <line num="84" count="558" type="cond" truecount="1" falsecount="1"/>
         <line num="85" count="0" type="stmt"/>
-        <line num="87" count="465" type="stmt"/>
+        <line num="87" count="558" type="stmt"/>
         <line num="109" count="0" type="stmt"/>
-        <line num="140" count="165" type="stmt"/>
+        <line num="140" count="198" type="stmt"/>
         <line num="190" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="192" count="0" type="stmt"/>
         <line num="197" count="0" type="cond" truecount="0" falsecount="4"/>
@@ -741,32 +741,32 @@
       <file name="reviewActions.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/ratingsReviews/reviewActions.jsx">
         <metrics statements="9" coveredstatements="8" conditionals="6" coveredconditionals="5" methods="4" coveredmethods="3"/>
         <line num="8" count="4" type="stmt"/>
-        <line num="9" count="31" type="stmt"/>
-        <line num="10" count="462" type="stmt"/>
-        <line num="11" count="462" type="stmt"/>
-        <line num="13" count="31" type="cond" truecount="2" falsecount="0"/>
-        <line num="14" count="15" type="stmt"/>
+        <line num="9" count="35" type="stmt"/>
+        <line num="10" count="513" type="stmt"/>
+        <line num="11" count="513" type="stmt"/>
+        <line num="13" count="35" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="18" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
-        <line num="27" count="16" type="cond" truecount="3" falsecount="1"/>
-        <line num="28" count="16" type="stmt"/>
+        <line num="27" count="17" type="cond" truecount="3" falsecount="1"/>
+        <line num="28" count="17" type="stmt"/>
       </file>
       <file name="reviewList.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/ratingsReviews/reviewList.jsx">
         <metrics statements="6" coveredstatements="6" conditionals="5" coveredconditionals="5" methods="5" coveredmethods="5"/>
         <line num="11" count="4" type="stmt"/>
-        <line num="12" count="462" type="stmt"/>
-        <line num="13" count="462" type="stmt"/>
-        <line num="14" count="462" type="stmt"/>
-        <line num="16" count="31" type="stmt"/>
-        <line num="30" count="465" type="stmt"/>
+        <line num="12" count="515" type="stmt"/>
+        <line num="13" count="515" type="stmt"/>
+        <line num="14" count="515" type="stmt"/>
+        <line num="16" count="37" type="stmt"/>
+        <line num="30" count="558" type="stmt"/>
       </file>
       <file name="reviewSortSearch.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/ratingsReviews/reviewSortSearch.jsx">
         <metrics statements="13" coveredstatements="6" conditionals="6" coveredconditionals="0" methods="5" coveredmethods="4"/>
         <line num="10" count="4" type="stmt"/>
-        <line num="11" count="462" type="stmt"/>
-        <line num="12" count="462" type="stmt"/>
-        <line num="13" count="462" type="stmt"/>
-        <line num="14" count="31" type="stmt"/>
-        <line num="16" count="31" type="stmt"/>
+        <line num="11" count="513" type="stmt"/>
+        <line num="12" count="513" type="stmt"/>
+        <line num="13" count="513" type="stmt"/>
+        <line num="14" count="35" type="stmt"/>
+        <line num="16" count="35" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
         <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="38" count="0" type="stmt"/>
@@ -777,7 +777,29 @@
       </file>
     </package>
     <package name="src.components.relatedItemsComparison">
-      <metrics statements="61" coveredstatements="28" conditionals="2" coveredconditionals="0" methods="29" coveredmethods="12"/>
+      <metrics statements="79" coveredstatements="74" conditionals="2" coveredconditionals="2" methods="29" coveredmethods="26"/>
+      <file name="mockRelData.js" path="/Users/jennagroth/immersive/FEC/client/src/components/relatedItemsComparison/mockRelData.js">
+        <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="469" count="1" type="stmt"/>
+        <line num="829" count="1" type="stmt"/>
+        <line num="836" count="1" type="stmt"/>
+        <line num="1020" count="1" type="stmt"/>
+        <line num="1042" count="1" type="stmt"/>
+        <line num="1044" count="1" type="stmt"/>
+        <line num="1046" count="1" type="stmt"/>
+        <line num="1048" count="1" type="stmt"/>
+        <line num="1050" count="1" type="stmt"/>
+        <line num="1052" count="1" type="stmt"/>
+        <line num="1054" count="1" type="stmt"/>
+        <line num="1056" count="1" type="stmt"/>
+        <line num="1058" count="1" type="stmt"/>
+        <line num="1060" count="1" type="stmt"/>
+        <line num="1062" count="1" type="stmt"/>
+        <line num="1064" count="1" type="stmt"/>
+        <line num="1066" count="1" type="stmt"/>
+      </file>
       <file name="outfitSlice.js" path="/Users/jennagroth/immersive/FEC/client/src/components/relatedItemsComparison/outfitSlice.js">
         <metrics statements="6" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="2" count="3" type="stmt"/>
@@ -789,63 +811,62 @@
       </file>
       <file name="relatedItemsComparison.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/relatedItemsComparison/relatedItemsComparison.jsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="10" count="26" type="stmt"/>
+        <line num="10" count="29" type="stmt"/>
         <line num="26" count="3" type="stmt"/>
-        <line num="27" count="28" type="stmt"/>
-        <line num="29" count="28" type="stmt"/>
+        <line num="27" count="31" type="stmt"/>
+        <line num="29" count="31" type="stmt"/>
       </file>
       <file name="relatedSlice.js" path="/Users/jennagroth/immersive/FEC/client/src/components/relatedItemsComparison/relatedSlice.js">
-        <metrics statements="51" coveredstatements="22" conditionals="2" coveredconditionals="0" methods="25" coveredmethods="10"/>
+        <metrics statements="50" coveredstatements="49" conditionals="2" coveredconditionals="2" methods="25" coveredmethods="24"/>
         <line num="2" count="3" type="stmt"/>
         <line num="4" count="3" type="stmt"/>
-        <line num="5" count="60" type="stmt"/>
+        <line num="5" count="68" type="stmt"/>
         <line num="8" count="3" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
+        <line num="9" count="8" type="stmt"/>
         <line num="12" count="3" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
         <line num="16" count="3" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="18" count="16" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="16" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
         <line num="30" count="3" type="stmt"/>
-        <line num="34" count="28" type="stmt"/>
-        <line num="36" count="15" type="stmt"/>
-        <line num="39" count="15" type="stmt"/>
-        <line num="40" count="15" type="stmt"/>
-        <line num="41" count="60" type="stmt"/>
-        <line num="43" count="15" type="stmt"/>
-        <line num="46" count="15" type="stmt"/>
-        <line num="49" count="15" type="stmt"/>
-        <line num="50" count="15" type="stmt"/>
-        <line num="51" count="15" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="67" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="76" count="0" type="stmt"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
-        <line num="86" count="0" type="stmt"/>
-        <line num="87" count="0" type="stmt"/>
-        <line num="89" count="0" type="stmt"/>
-        <line num="92" count="15" type="stmt"/>
-        <line num="94" count="15" type="stmt"/>
+        <line num="34" count="31" type="stmt"/>
+        <line num="36" count="18" type="stmt"/>
+        <line num="39" count="18" type="stmt"/>
+        <line num="40" count="18" type="stmt"/>
+        <line num="41" count="68" type="stmt"/>
+        <line num="43" count="17" type="stmt"/>
+        <line num="46" count="17" type="stmt"/>
+        <line num="49" count="17" type="stmt"/>
+        <line num="50" count="17" type="stmt"/>
+        <line num="51" count="23" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="58" count="8" type="stmt"/>
+        <line num="60" count="2" type="stmt"/>
+        <line num="63" count="2" type="stmt"/>
+        <line num="66" count="2" type="stmt"/>
+        <line num="67" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="68" count="3" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="78" count="4" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="87" count="4" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
+        <line num="94" count="18" type="stmt"/>
         <line num="98" count="3" type="stmt"/>
         <line num="106" count="0" type="stmt"/>
-        <line num="111" count="15" type="stmt"/>
+        <line num="111" count="18" type="stmt"/>
         <line num="116" count="3" type="stmt"/>
       </file>
     </package>
@@ -880,64 +901,64 @@
       <metrics statements="9" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
       <file name="outfitCard.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/relatedItemsComparison/outfitCard/outfitCard.jsx">
         <metrics statements="9" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <line num="10" count="3" type="stmt"/>
-        <line num="23" count="3" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.relatedItemsComparison.outfitList">
       <metrics statements="8" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="3"/>
       <file name="outfitList.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/relatedItemsComparison/outfitList/outfitList.jsx">
         <metrics statements="8" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="3"/>
-        <line num="8" count="26" type="stmt"/>
+        <line num="8" count="29" type="stmt"/>
         <line num="23" count="3" type="stmt"/>
-        <line num="24" count="28" type="stmt"/>
-        <line num="26" count="459" type="stmt"/>
-        <line num="29" count="28" type="cond" truecount="1" falsecount="1"/>
+        <line num="24" count="31" type="stmt"/>
+        <line num="26" count="509" type="stmt"/>
+        <line num="29" count="31" type="cond" truecount="1" falsecount="1"/>
         <line num="30" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
-        <line num="43" count="28" type="stmt"/>
+        <line num="43" count="31" type="stmt"/>
       </file>
     </package>
     <package name="src.components.relatedItemsComparison.relatedProductCard">
-      <metrics statements="11" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <metrics statements="11" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2"/>
       <file name="relatedProductCard.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/relatedItemsComparison/relatedProductCard/relatedProductCard.jsx">
-        <metrics statements="11" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="34" count="3" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
+        <metrics statements="11" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="37" count="3" type="stmt"/>
+        <line num="38" count="8" type="stmt"/>
+        <line num="39" count="8" type="stmt"/>
+        <line num="40" count="8" type="stmt"/>
+        <line num="42" count="8" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
+        <line num="45" count="8" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
+        <line num="49" count="8" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.relatedItemsComparison.relatedProductsList">
-      <metrics statements="12" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="5"/>
+      <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
       <file name="relatedProductsList.jsx" path="/Users/jennagroth/immersive/FEC/client/src/components/relatedItemsComparison/relatedProductsList/relatedProductsList.jsx">
-        <metrics statements="12" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="5"/>
-        <line num="10" count="26" type="stmt"/>
+        <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
+        <line num="10" count="29" type="stmt"/>
         <line num="26" count="3" type="stmt"/>
-        <line num="27" count="28" type="stmt"/>
-        <line num="28" count="28" type="stmt"/>
-        <line num="29" count="459" type="stmt"/>
-        <line num="30" count="459" type="stmt"/>
-        <line num="32" count="28" type="stmt"/>
-        <line num="33" count="28" type="stmt"/>
-        <line num="37" count="28" type="cond" truecount="1" falsecount="1"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="51" count="28" type="stmt"/>
+        <line num="27" count="32" type="stmt"/>
+        <line num="28" count="32" type="stmt"/>
+        <line num="29" count="510" type="stmt"/>
+        <line num="30" count="510" type="stmt"/>
+        <line num="32" count="32" type="stmt"/>
+        <line num="33" count="31" type="stmt"/>
+        <line num="37" count="32" type="cond" truecount="2" falsecount="0"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="42" count="8" type="stmt"/>
+        <line num="51" count="30" type="stmt"/>
       </file>
     </package>
   </project>
