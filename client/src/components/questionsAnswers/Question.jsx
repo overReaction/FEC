@@ -38,7 +38,7 @@ const Question = props => {
   return (
     <div data-testid="question">
       <Paper className={classes.paper}>
-        <b data-testid="question">Q: {props.question.question_body}</b>
+        <b>Q: {props.question.question_body}</b>
         <span style={{ float: 'right', marginTop: 0 }}>
           Helpful? &nbsp;
           {!helpfulQClicked ?
