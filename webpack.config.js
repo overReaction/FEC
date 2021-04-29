@@ -1,5 +1,5 @@
 const ESLintPlugin = require('eslint-webpack-plugin');
-const TerserPlugin = require("terser-webpack-plugin");
+//const TerserPlugin = require("terser-webpack-plugin");
 //const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
@@ -28,15 +28,15 @@ module.exports = {
     path: __dirname + '/client/dist'
   },
   watch: true,
-  plugins: [new ESLintPlugin(), new TerserPlugin()],
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        parallel: 2
-      })
-    ]
-  }
+  plugins: [new ESLintPlugin()]
+  // optimization: {
+  //   minimize: true,
+  //   minimizer: [
+  //     new TerserPlugin({
+  //       parallel: 2
+  //     })
+  //   ]
+  // }
 };
 
 // module.exports = {
