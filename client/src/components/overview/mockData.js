@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+/* eslint-disable indent */
+/* eslint-disable quote-props */
 
 const reviewsMeta = {
   "product_id": "18078",
@@ -1045,4 +1048,4 @@ const product = {
   ]
 };
 
-module.exports = { reviewsMeta, reviewsNone, reviews, styles, related, qa, product}
+module.exports = { reviewsMeta, reviewsNone, reviews, styles, related, qa, product };
