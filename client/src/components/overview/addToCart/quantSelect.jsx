@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Select from 'react-select';
 import { updateQuantDropDownDisplay } from './cartSlice.js';
+import InputLabel from '@material-ui/core/InputLabel';
 
 const QuantSelect = (props) => {
   const dispatch = useDispatch();
@@ -18,21 +19,29 @@ const QuantSelect = (props) => {
 
   if (quant) {
     return (
-      <Select
-        isClearable ={false}
-        value={dropDownDisplay}
-        options={getQuantities(quant)}
-        onChange={(selected) => {
-          dispatch(updateQuantDropDownDisplay(selected));
-        }} />
+      <>
+        <InputLabel id="quantSelect">Select quantity</InputLabel>
+        <Select
+          labelId="quantSelect"
+          isClearable ={false}
+          value={dropDownDisplay}
+          options={getQuantities(quant)}
+          onChange={(selected) => {
+            dispatch(updateQuantDropDownDisplay(selected));
+          }} />
+      </>
     );
   } else {
     return (
-      <Select
-        isDisabled={true}
-        isClearable ={false}
-        value={dropDownDisplay}
-        options={{}} />
+      <>
+        <InputLabel id="quantSelect">Select quantity</InputLabel>
+        <Select
+          labelId="quantSelect"
+          isDisabled={true}
+          isClearable ={false}
+          value={dropDownDisplay}
+          options={{}} />
+      </>
     );
   }
 };

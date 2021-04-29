@@ -33,6 +33,7 @@ const ExpandedView = (props) => {
         </Grid>
         <Grid item container xs={10} justify="center" onClick={() => dispatch(expandView(false))}>
           <img
+            alt="main product photo"
             onClick={() => dispatch(magnifyView(true))}
             src={currentPhoto.url}
             style={{

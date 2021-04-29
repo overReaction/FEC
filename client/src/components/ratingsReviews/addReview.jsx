@@ -621,9 +621,8 @@ export default function AddReviewModal () {
           {uploadedPhotos.map((image) => {
             console.log(image);
             return (
-              <Grid item>
-                <img src={image}/>
-              </Grid>
+              //Return image somehow
+              <span/>
             );
           })}
         </Grid>

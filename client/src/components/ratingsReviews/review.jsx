@@ -139,7 +139,7 @@ const Review = ({ review }) => {
                 {review.photos.map((photo, index) => {
                   return (
                     <GridListTile key={index} >
-                      <img src={photo.url} onClick={handleOpen}/>
+                      <img alt={`review photo ${index}`}src={photo.url} onClick={handleOpen}/>
                       <Modal
                         open={photoOpen}
                         onClose={handleClose}
@@ -147,7 +147,7 @@ const Review = ({ review }) => {
                         className={classes.modal}
                       >
                         <Container className={classes.modal}>
-                          <img src={photo.url}
+                          <img alt={`review photo ${index}`} src={photo.url}
                             style={{ maxHeight: '50%', maxWidth: '50%' }}/>
                         </Container>
                       </Modal>
@@ -200,7 +200,6 @@ const Review = ({ review }) => {
                   }
                 }}>No</a> ({nonHelpfulness}) | &nbsp;
               <a href="#RatingsReviews"
-                id="reportAnchor"
                 onClick={() => {
                   handleReportClick();
                 }}
@@ -211,7 +210,6 @@ const Review = ({ review }) => {
               <a>Yes</a> ({helpfulness}) | &nbsp;
               <a>No</a> ({nonHelpfulness}) | &nbsp;
               <a
-                id="reportAnchor"
                 onClick={() => {
                   handleReportClick();
                 }}

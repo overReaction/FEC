@@ -30,6 +30,7 @@ const GalleryMainImg = (props) => {
       </Grid>
       <Grid item container xs={8} justify="center">
         <img
+          alt="main product photo"
           onClick={() => dispatch(expandView(true))}
           src={currentPhoto.url}
           style={{

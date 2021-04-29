@@ -148,7 +148,7 @@ export default function AddAModal (props) {
         onClick={handleOpen}
         style={{ border: 'none',
           backgroundColor: 'white',
-          color: '#777777' }}>
+          color: 'black' }}>
         <u>Add Answer</u>
       </button>
       <Modal

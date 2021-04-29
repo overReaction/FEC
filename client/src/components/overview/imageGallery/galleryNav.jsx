@@ -86,7 +86,9 @@ const GalleryNav = (props) => {
               >
                 <StepContent
                   onClick={() => dispatch(setStep(index))}>
-                  <img src={url}
+                  <img
+                    alt={`thumbnail ${index}`}
+                    src={url}
                     style={activeStep === index ?
                       { filter: "drop-shadow(8px 8px 10px gray)", objectFit: "cover", height: 75, width: 75 } :
                       { objectFit: "cover", height: 75, width: 75 }}
