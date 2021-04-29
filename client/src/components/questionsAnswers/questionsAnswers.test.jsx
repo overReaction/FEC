@@ -48,7 +48,7 @@ describe('QA Widget', () => {
   });
 
   test('Should have an More Answered Questions button', () => {
-    expect(screen.getByTestId('moreQsButton')).toBeInTheDocument();
+    expect(screen.getByTestId('more-questions')).toBeInTheDocument();
   });
 });
 
@@ -75,5 +75,15 @@ describe('Questions List Component', () => {
 
   test('Should have an Answer component', () => {
     expect(screen.queryAllByTestId("answer")).toHaveLength(7);
+  });
+
+  test('Two more questions should be diplayed after clicking More Answerered Questions button', () => {
+    userEvent.click(screen.getByTestId('more-questions'));
+    expect(screen.queryAllByTestId('question')).toHaveLength(6);
+  });
+
+  test('Two more answers should be diplayed after clicking Show More Answers button', () => {
+    userEvent.click(screen.getByTestId('more-answers'));
+    expect(screen.queryAllByTestId('answers')).toHaveLength(6);
   });
 });

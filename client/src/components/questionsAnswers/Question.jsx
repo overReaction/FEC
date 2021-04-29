@@ -43,13 +43,14 @@ const Question = props => {
           Helpful? &nbsp;
           {!helpfulQClicked ?
             <u
+              data-testid="helpful-question"
               className="clickable"
               onClick={() => {
                 dispatch(incrementHelpfulQuestionCount(questionId));
                 setQuestionHelpfulnessCount(questionHelpfulnessCount + 1);
                 setHelpfulQClicked(true);
               }}>Yes
-            </u> : <span>&nbsp;</span>}
+            </u> : <span data-testid="marked-helpful-question">&nbsp;</span>}
             ({questionHelpfulnessCount}) &nbsp; | &nbsp;
           <u style={{ display: 'inline-block' }}>
             <AddAModal
