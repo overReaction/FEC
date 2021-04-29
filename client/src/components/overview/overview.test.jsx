@@ -116,7 +116,6 @@ describe('Product Information component', () => {
   });
 
   test('Should display a price which is derived from the initial default selected style', async () => {
-    screen.debug(undefined, 300000);
     expect(screen.getByTestId('price')).toHaveTextContent('$140.00');
   });
 

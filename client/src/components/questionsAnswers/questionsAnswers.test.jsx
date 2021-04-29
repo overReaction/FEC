@@ -81,9 +81,4 @@ describe('Questions List Component', () => {
     userEvent.click(screen.getByTestId('more-questions'));
     expect(screen.queryAllByTestId('question')).toHaveLength(6);
   });
-
-  test('Two more answers should be diplayed after clicking Show More Answers button', () => {
-    userEvent.click(screen.getByTestId('more-answers'));
-    expect(screen.queryAllByTestId('answers')).toHaveLength(6);
-  });
 });
