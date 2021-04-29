@@ -609,7 +609,7 @@ export default function AddReviewModal () {
           <div>Minimum required characters left:{50 - reviewBody.length}</div> :
           <div>Minimum reached</div>}
         <br/>
-        <Button variant="outlined" component="label" disabled={uploadedPhotos.length >= 5}>Upload your photos
+        <Button variant="outlined" aria-label="upload photos" component="label" disabled={uploadedPhotos.length >= 5}>Upload your photos
           <input
             type="file"
             accept="image/*"
@@ -653,8 +653,8 @@ export default function AddReviewModal () {
         <div>For authentication reasons, you will not be emailed</div>
         <br/>
         <ButtonGroup>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button>Submit</Button>
+          <Button aria-label="cancel" onClick={handleClose}>Cancel</Button>
+          <Button aria-label="submit">Submit</Button>
         </ButtonGroup>
       </FormControl>
     </div>
@@ -663,6 +663,7 @@ export default function AddReviewModal () {
   return (
     <>
       <Button
+        aria-label="add a review"
         variant="outlined"
         size="medium"
         endIcon={<AddIcon />}

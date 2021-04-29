@@ -185,14 +185,14 @@ const Review = ({ review }) => {
           {reviewReviewed === false ?
             <Grid item xs={12}>
               Was this review helpful? &nbsp;
-              <a href="#RatingsReviews" id="yesHelpfulAnchor"
+              <a href="#RatingsReviews"
                 onClick={(e) => {
                   if (helpfulReviews.indexOf(review.review_id) === -1 &&
                   nonHelpfulReviews.indexOf(review.review_id) === -1) {
                     handleHelpfulClick(e);
                   }
                 }}>Yes</a> ({helpfulness}) | &nbsp;
-              <a href="#RatingsReviews" id="notHelpfulAnchor"
+              <a href="#RatingsReviews"
                 onClick={(e) => {
                   if (helpfulReviews.indexOf(review.review_id) === -1 &&
                   nonHelpfulReviews.indexOf(review.review_id) === -1) {
@@ -200,6 +200,7 @@ const Review = ({ review }) => {
                   }
                 }}>No</a> ({nonHelpfulness}) | &nbsp;
               <a href="#RatingsReviews"
+                id="reportAnchor"
                 onClick={() => {
                   handleReportClick();
                 }}
@@ -207,9 +208,10 @@ const Review = ({ review }) => {
             </Grid> :
             <Grid item xs={12}>
               Was this review helpful? &nbsp;
-              <a id="yesHelpfulAnchor">Yes</a> ({helpfulness}) | &nbsp;
-              <a id="notHelpfulAnchor">No</a> ({nonHelpfulness}) | &nbsp;
-              <a href="#RatingsReviews"
+              <a>Yes</a> ({helpfulness}) | &nbsp;
+              <a>No</a> ({nonHelpfulness}) | &nbsp;
+              <a
+                id="reportAnchor"
                 onClick={() => {
                   handleReportClick();
                 }}

@@ -123,8 +123,8 @@ export default function AddQModal () {
         <br/>
         <br/>
         <ButtonGroup style={{ display: 'inline-flex' }}>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={onSubmitClick}>Submit</Button>
+          <Button aria-label="discard question" onClick={handleClose}>Cancel</Button>
+          <Button aria-label="submit question" onClick={onSubmitClick}>Submit</Button>
         </ButtonGroup>
       </form>
     </div>
@@ -133,6 +133,7 @@ export default function AddQModal () {
   return (
     <div>
       <Button
+        aria-label="add question"
         data-testid="addQbutton"
         variant="outlined"
         onClick={handleOpen}>

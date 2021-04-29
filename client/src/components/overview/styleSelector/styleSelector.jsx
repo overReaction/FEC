@@ -70,7 +70,7 @@ const StyleSelector = (props) => {
                 {style.style_id === currentStyle.style_id ?
                   <GridListTileBar //Conditional rendering for currently selected style
                     actionIcon={
-                      <IconButton>
+                      <IconButton disabled>
                         <DoneOutlineIcon classes={{ root: classes.icon }}/>
                       </IconButton>}
                     actionPosition="left"

@@ -37,7 +37,7 @@ const OutfitCard = ({ productInfo, index }) => {
           title={productInfo.name}
           subtitle={`$${productInfo.default_price}`}
           actionIcon={
-            <IconButton onClick={() => handleOutfitClick()}>
+            <IconButton aria-label="remove from outfit" onClick={() => handleOutfitClick()}>
               <ClearIcon className={classes.icon}/>
             </IconButton>
           }

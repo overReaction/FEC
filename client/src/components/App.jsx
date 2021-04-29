@@ -50,7 +50,7 @@ var App = () => {
       <React.Fragment>
         <CssBaseline />
         <Grid container direction="column" >
-          <Grid item style={{ textAlign: 'center' }}>
+          {/* <Grid item style={{ textAlign: 'center' }}>
             <h1> Project Catwalk </h1>
             <div> Try clicking one of these buttons to update the product id
               (imagine you were clicking a thumbnail for a related item)</div>
@@ -59,7 +59,7 @@ var App = () => {
               <Button onClick={() => dispatch(changeProductId(18079))}> 18079 </Button>
               <Button onClick={() => dispatch(changeProductId(18080))}> 18080 </Button>
             </ButtonGroup>
-          </Grid>
+          </Grid> */}
           <Grid item>
             <Overview />
           </Grid>

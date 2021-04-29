@@ -24,7 +24,7 @@ const ExpandedView = (props) => {
     <div style={{ maxHeight: '100vh', maxWidth: '100vw', backgroundColor: 'black' }}>
       <Grid container alignItems="center">
         <Grid item xs={1}>
-          <IconButton
+          <IconButton aria-label="previous photo"
             style={activeStep === 0 ? { visibility: 'hidden', color: 'white' } : { color: 'white' }}
             onClick={() => dispatch(decrement())}
           >
@@ -43,7 +43,7 @@ const ExpandedView = (props) => {
             }}/>
         </Grid>
         <Grid item xs={1}>
-          <IconButton
+          <IconButton aria-label="next photo"
             style={activeStep === currentStyle.photos.length - 1 ?
               { visibility: 'hidden', color: 'white' } :
               { color: 'white' }}
@@ -63,7 +63,7 @@ const ExpandedView = (props) => {
           if (activeStep === index) {
             return (
               <Grid item key={index}>
-                <IconButton onClick={() => dispatch(setStep(index))}>
+                <IconButton aria-label="current thumbnail" onClick={() => dispatch(setStep(index))}>
                   <RadioButtonCheckedIcon style={{ color: 'white' }}/>
                 </IconButton>
               </Grid>
@@ -71,7 +71,7 @@ const ExpandedView = (props) => {
           } else {
             return (
               <Grid item key={index}>
-                <IconButton onClick={() => dispatch(setStep(index))}>
+                <IconButton aria-label="select a thumbnail" onClick={() => dispatch(setStep(index))}>
                   <RadioButtonUncheckedIcon style={{ color: 'white' }}/>
                 </IconButton>
               </Grid>

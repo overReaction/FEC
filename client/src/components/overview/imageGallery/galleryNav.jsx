@@ -53,7 +53,7 @@ const GalleryNav = (props) => {
       <div style={{ height: 'auto', maxHeight: 700 }}>
 
         <div>
-          <IconButton
+          <IconButton aria-label="next photo"
             disabled={activeStep === 0}
             onClick={() => dispatch(decrement())}
           >
@@ -96,7 +96,7 @@ const GalleryNav = (props) => {
             );
           })}
         </Stepper>
-        <IconButton
+        <IconButton aria-label="previous photo"
           disabled={activeStep === currentStyle.photos.length - 1}
           onClick={() => dispatch(increment())}
         >

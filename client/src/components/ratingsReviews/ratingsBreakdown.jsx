@@ -183,6 +183,7 @@ const RatingsBreakdown = (props) => {
               </Grid>
               <Grid item xs={3}>
                 <Button
+                  aria-label="clear filters"
                   variant="outlined"
                   size="small"
                   onClick={() => dispatch(clearFilter())}

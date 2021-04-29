@@ -51,7 +51,7 @@ const RealtedProductCard = ({ productInfo }) => {
           title={productInfo.name}
           subtitle={`$${productInfo.default_price}`}
           actionIcon={
-            <IconButton onClick={handleOpen}>
+            <IconButton aria-label="view product details" onClick={handleOpen}>
               <StarBorderIcon className={classes.icon}/>
             </IconButton>
           }

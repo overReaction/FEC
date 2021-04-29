@@ -34,6 +34,7 @@ const Answers = (props) => {
         </Grid>
         <div style={{ textAlign: 'center' }}>
           <button
+            aria-label="load more answers"
             onClick={onMoreAnswersClick}
             style={{ border: 'none',
               backgroundColor: 'white',
@@ -59,6 +60,7 @@ const Answers = (props) => {
         </Grid>
         <div style={{ textAlign: 'center' }}>
           <button
+            aria-label="load more answers"
             onClick={onMoreAnswersClick}
             style={{ border: 'none',
               backgroundColor: 'white',

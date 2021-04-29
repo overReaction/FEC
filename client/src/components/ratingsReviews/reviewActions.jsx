@@ -14,6 +14,7 @@ const ReviewActions = (props) => {
     return (
       <div>
         <Button
+          aria-label="load more reviews"
           variant="outlined"
           size="medium"
           onClick={() => dispatch(loadReviews())}
@@ -27,6 +28,7 @@ const ReviewActions = (props) => {
   } else if (numOfReviews === reviewsCount || numOfReviews <= 2) {
     return (
       <Button
+        aria-label="add a reviews"
         variant="outlined"
         size="medium"
         endIcon={<AddIcon />}

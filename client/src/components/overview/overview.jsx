@@ -63,13 +63,13 @@ const Overview = (props) => {
                   <span><b>SHARE > </b></span>
                 </Grid>
                 <Grid data-testid="share-icons">
-                  <IconButton data-testid="fb-icon" href="#" style={{ color: "black" }}>
+                  <IconButton aria-label="share on facebook" data-testid="fb-icon" href="#" style={{ color: "black" }}>
                     <FacebookIcon/>
                   </IconButton>
-                  <IconButton data-testid="twitter-icon" href="#" style={{ color: "black" }}>
+                  <IconButton aria-label="share on twitter" data-testid="twitter-icon" href="#" style={{ color: "black" }}>
                     <TwitterIcon/>
                   </IconButton>
-                  <IconButton data-testid="pinterest-icon" href="#" style={{ color: "black" }}>
+                  <IconButton aria-label="share on pinterest" data-testid="pinterest-icon" href="#" style={{ color: "black" }}>
                     <PinterestIcon/>
                   </IconButton>
                 </Grid>
