@@ -1,3 +1,5 @@
+import axios from 'axios';
+jest.mock('axios');
 import React from "react";
 import { render, screen } from '@testing-library/react'; //Allows artificial rendering
 import userEvent from '@testing-library/user-event'; //Allows triggering of user events. Not demo'd on this page.
