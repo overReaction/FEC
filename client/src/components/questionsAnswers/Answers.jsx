@@ -2,7 +2,9 @@
 import React, { useState } from 'react';
 import Answer from './Answer.jsx';
 import { Grid } from '@material-ui/core/';
+import { useDispatch } from 'react-redux';
 
+import { countShowMoreAnswersClick } from '../appSlice.js';
 
 const Answers = (props) => {
   const [answers] = useState(props.answers[props.index]);
@@ -12,6 +14,7 @@ const Answers = (props) => {
 
   const [moreAnswersClicked, setMoreAnswersClicked] = useState(false);
 
+  const dispatch = useDispatch();
   const onMoreAnswersClick = () => {
     setMoreAnswersClicked(!moreAnswersClicked);
   };
@@ -35,7 +38,10 @@ const Answers = (props) => {
         <div style={{ textAlign: 'center' }}>
           <button
             aria-label="load more answers"
-            onClick={onMoreAnswersClick}
+            onClick={() => {
+              onMoreAnswersClick();
+              dispatch(countShowMoreAnswersClick());
+            }}
             style={{ border: 'none',
               backgroundColor: 'white',
               color: '#777777',

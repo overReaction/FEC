@@ -14,6 +14,9 @@ import StickyHeadTable from '../comparisonModal/comparisonModal.jsx';
 import { changeProductId } from '../../appSlice.js';
 import StarRating from '../../starRating.jsx';
 
+//Tracking
+import { countProductCardClick, countCompareClick } from '../../appSlice.js';
+
 const useStyles = makeStyles((theme) => ({
   title: {
     color: theme.palette.primary.light
@@ -49,14 +52,25 @@ const RealtedProductCard = ({ productInfo }) => {
   return (
     <div >
       <GridListTile >
-        <img alt={`${productInfo.name}`} data-testid="relatedProductImage" src={productInfo.photo} style={{ height: '100%', maxHeight: 400, width: 'auto' }} onClick={() => dispatch(changeProductId(productInfo.id))}/>
+        <img
+          alt={`${productInfo.name}`}
+          data-testid="relatedProductImage"
+          src={productInfo.photo}
+          style={{ height: '100%', maxHeight: 400, width: 'auto' }}
+          onClick={() => {
+            dispatch(changeProductId(productInfo.id));
+            dispatch(countProductCardClick());
+          }}/>
         <GridListTileBar
           title={productInfo.name}
           subtitle={<div data-testid="relatedProductCard">
             <span>{`$${productInfo.default_price}`}</span>
             <StarRating rating={productInfo.ratings}/></div>}
           actionIcon={
-            <IconButton aria-label="view product details" onClick={handleOpen}>
+            <IconButton aria-label="view product details" onClick={() => {
+              handleOpen();
+              dispatch(countCompareClick());
+            }}>
               <StarBorderIcon className={classes.icon}/>
             </IconButton>
           }

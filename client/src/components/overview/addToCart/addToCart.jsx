@@ -17,6 +17,9 @@ import Grid from '@material-ui/core/Grid';
 import SizeSelect from './sizeSelect.jsx';
 import QuantSelect from './quantSelect.jsx';
 
+//Tracking
+import { countAddToCartClick, countAddToOutfitClick } from '../../appSlice.js';
+
 const AddToCart = (props) => {
   const dispatch = useDispatch();
   const sku = useSelector((state) => state.cart.sku);
@@ -71,6 +74,7 @@ const AddToCart = (props) => {
               dispatch(updateSizeDropDownDisplay({ value: 'default', label: 'SELECT SIZE' }));
               dispatch(updateQuantDropDownDisplay({ value: null, label: '-' }));
               dispatch(updateSkuInfo({}));
+              dispatch(countAddToCartClick());
             }
           }}
         >Add to cart</Button>
@@ -81,7 +85,10 @@ const AddToCart = (props) => {
           size="medium"
           disabled={outfitIds.includes(productId)}
           style={sizes.length === 0 ? { display: 'none' } : {}}
-          onClick={() => handleOutfitClick()}
+          onClick={() => {
+            handleOutfitClick();
+            dispatch(countAddToOutfitClick());
+          }}
         >Add to outfit</Button>
       </Grid>
     </Grid>

@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 1500,
     minWidth: 40,
     padding: 0
-  },
+  }
   // paper: {
   //   padding: theme.spacing(2),
   //   textAlign: 'center',

@@ -72,14 +72,178 @@ export const appSlice = createSlice({
     reviews: [],
     reviewMetadata: {},
     rating: 0,
-    numOfRatings: 0
+    numOfRatings: 0,
+
+    overviewClicks: 0,
+    addToCartClicks: 0,
+    addToOutfitClicks: 0,
+
+    relatedProductsClicks: 0,
+    compareClicks: 0,
+    productCardClicks: 0,
+
+    questionsAnswersClicks: 0,
+    moreAnsweredQuestionsClicks: 0,
+    showMoreAnswersClicks: 0,
+
+    ratingsReviewsClicks: 0,
+    sortBy5StarsClicks: 0,
+    sortBy1StarClicks: 0,
+
+    trackingData: []
   },
   //A reducer is a function that receives the current state and an action object, decides how to update the state if necessary, and returns the new state
   reducers: {
-    //Redux toolkit allows for "mutating" logic in reducers by interally copying initial state and producing a new state object
     changeProductId: (state, action) => {
-      //Set the productId in state to be equal to the value of action.payload
       state.productId = action.payload;
+    },
+
+    // OVERVIEW TRACKING
+    countOverviewClick: (state, action) => {
+      state.overviewClicks++;
+    },
+    countAddToCartClick: (state, action) => {
+      state.overviewClicks++;
+      state.addToCartClicks++;
+      state.trackingData.push({
+        productId: state.productId,
+        addToCartClicks: state.addToCartClicks,
+        widget: 'Overview',
+        overviewClicks: state.overviewClicks
+      });
+      // console.log({
+      //   productId: state.productId,
+      //   addToCartClicks: state.addToCartClicks,
+      //   widget: 'Overview',
+      //   overviewClicks: state.overviewClicks
+      // });
+    },
+    countAddToOutfitClick: (state, action) => {
+      state.overviewClicks++;
+      state.addToOutfitClicks++;
+      state.trackingData.push({
+        productId: state.productId,
+        addToOutfitClicks: state.addToOutfitClicks,
+        widget: 'Overview',
+        overviewClicks: state.overviewClicks
+      });
+      // console.log({
+      //   productId: state.productId,
+      //   addToOutfitClicks: state.addToOutfitClicks,
+      //   widget: 'Overview',
+      //   overviewClicks: state.overviewClicks
+      // });
+    },
+
+    // RELATED PRODUCTS TRACKING
+    countRelatedProductsClick: (state, action) => {
+      state.relatedProductsClicks++;
+    },
+    countCompareClick: (state, action) => {
+      state.relatedProductsClicks++;
+      state.compareClicks++;
+      state.trackingData.push({
+        productId: state.productId,
+        compareClicks: state.compareClicks,
+        widget: 'Related Products',
+        relatedProductsClicks: state.relatedProductsClicks
+      });
+      // console.log({
+      //   productId: state.productId,
+      //   compareClicks: state.compareClicks,
+      //   widget: 'Related Products',
+      //   relatedProductsClicks: state.relatedProductsClicks
+      // });
+    },
+    countProductCardClick: (state, action) => {
+      state.relatedProductsClicks++;
+      state.productCardClicks++;
+      state.trackingData.push({
+        productId: state.productId,
+        productCardClicks: state.productCardClicks,
+        widget: 'Related Products',
+        relatedProductsClicks: state.relatedProductsClicks
+      });
+      // console.log({
+      //   productId: state.productId,
+      //   productCardClicks: state.productCardClicks,
+      //   widget: 'Related Products',
+      //   relatedProductsClicks: state.relatedProductsClicks
+      // });
+    },
+
+    // QUESTIONS & ANSWERS TRACKING
+    countQuestionsAnswersClick: (state, action) => {
+      state.questionsAnswersClicks++;
+    },
+    countMoreAnsweredQuestionsClick: (state, action) => {
+      state.questionsAnswersClicks++;
+      state.moreAnsweredQuestionsClicks++;
+      state.trackingData.push({
+        productId: state.productId,
+        moreAnsweredQuestionsClicks: state.moreAnsweredQuestionsClicks,
+        widget: 'Questions & Answers',
+        totalWidgetClicks: state.questionsAnswersClicks
+      });
+      // console.log({
+      //   productId: state.productId,
+      //   moreAnsweredQuestionsClicks: state.moreAnsweredQuestionsClicks,
+      //   widget: 'Questions & Answers',
+      //   totalWidgetClicks: state.questionsAnswersClicks
+      // });
+    },
+    countShowMoreAnswersClick: (state, action) => {
+      state.questionsAnswersClicks++;
+      state.showMoreAnswersClicks++;
+      state.trackingData.push({
+        productId: state.productId,
+        showMoreAnswersClicks: state.showMoreAnswersClicks,
+        widget: 'Questions & Answers',
+        questionsAnswersClicks: state.questionsAnswersClicks
+      });
+      // console.log({
+      //   productId: state.productId,
+      //   moreAnsweredQuestionsClicks: state.moreAnsweredQuestionsClicks,
+      //   widget: 'Questions & Answers',
+      //   totalWidgetClicks: state.questionsAnswersClicks
+      // });
+    },
+
+    // RATINGS & REVIEWS TRACKING
+    countRatingsReviewsClick: (state, action) => {
+      state.ratingsReviewsClicks++;
+    },
+    countSortBy5StarsClick: (state, action) => {
+      state.ratingsReviewsClicks++;
+      state.sortBy5StarsClicks++;
+      state.trackingData.push({
+        productId: state.productId,
+        sortBy5StarsClicks: state.sortBy5StarsClicks,
+        widget: 'Ratings & Reviews',
+        ratingsReviewsClicks: state.ratingsReviewsClicks
+      });
+      // console.log({
+      //   productId: state.productId,
+      //   sortBy5StarsClicks: state.sortBy5StarsClicks,
+      //   widget: 'Ratings & Reviews',
+      //   ratingsReviewsClicks: state.ratingsReviewsClicks
+      // });
+    },
+    countSortBy1StarClick: (state, action) => {
+      state.ratingsReviewsClicks++;
+      state.sortBy1StarClicks++;
+      state.trackingData.push({
+        productId: state.productId,
+        sortBy1StarClicks: state.sortBy1StarClicks,
+        widget: 'Ratings & Reviews',
+        ratingsReviewsClicks: state.ratingsReviewsClicks
+      });
+      // console.log({
+      //   productId: state.productId,
+      //   sortBy1StarClicks: state.sortBy1StarClicks,
+      //   widget: 'Ratings & Reviews',
+      //   ratingsReviewsClicks: state.ratingsReviewsClicks
+      // });
     }
   },
   //Reducers that depend upon async actions are defined here
@@ -107,7 +271,26 @@ export const appSlice = createSlice({
 });
 
 //Action creators are generated for each reducer function. Add multiple like so { reducer1, reducer2, ...}
-export const { changeProductId } = appSlice.actions;
+export const {
+  changeProductId,
+
+  countOverviewClick,
+  countAddToCartClick,
+  countAddToOutfitClick,
+
+  countRelatedProductsClick,
+  countCompareClick,
+  countProductCardClick,
+
+  countQuestionsAnswersClick,
+  countMoreAnsweredQuestionsClick,
+  countShowMoreAnswersClick,
+
+  countRatingsReviewsClick,
+  countSortBy5StarsClick,
+  countSortBy1StarClick
+
+} = appSlice.actions;
 
 //Makes the reducers defined above available to the store
 export default appSlice.reducer;
