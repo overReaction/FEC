@@ -69,7 +69,7 @@ export default function StickyHeadTable (props) {
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              {columns.map((column) => (
+              {columns.map((column, index) => (
                 <TableCell
                   key={column.id}
                   align={column.align}

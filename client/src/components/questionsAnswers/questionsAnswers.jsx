@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeProductId } from '../appSlice.js';
 import { handleMoreQsClick } from './qaSlice.js';
 
 import { Grid } from '@material-ui/core/';
@@ -12,6 +11,9 @@ import { Paper } from '@material-ui/core/';
 import Questions from './Questions.jsx';
 import SearchBar from './SearchBar.jsx';
 import AddQModal from './AddQuestion.jsx';
+
+//TRACKING
+import { changeProductId, countMoreAnsweredQuestionsClick } from '../appSlice.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,7 +62,10 @@ const QuestionsAnswers = props => {
             <Button
               data-testid="more-questions"
               variant="outlined"
-              onClick={() => dispatch(handleMoreQsClick())}> MORE ANSWERED QUESTIONS </Button>
+              onClick={() => {
+                dispatch(handleMoreQsClick());
+                dispatch(countMoreAnsweredQuestionsClick());
+              }}> MORE ANSWERED QUESTIONS </Button>
             <AddQModal />
           </ButtonGroup>
           <br />

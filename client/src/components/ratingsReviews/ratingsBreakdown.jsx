@@ -7,6 +7,9 @@ import { seeAllReviews, adjustFilter, clearFilter } from './ratingsReviewsSlice.
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
+//TRACKING
+import { countSortBy5StarsClick, countSortBy1StarClick} from '../appSlice.js';
+
 const useStyles = makeStyles({
   root: {
     width: '100%',
@@ -85,8 +88,10 @@ const RatingsBreakdown = (props) => {
         }
         <Grid container item spacing={1}>
           <Grid item container alignItems="center" spacing={1} className={classes.hover}
-            onClick={() => handleRatingClick(5)}
-          >
+            onClick={() => {
+              handleRatingClick(5);
+              dispatch(countSortBy5StarsClick());
+            }}>
             <Grid item xs={2}>
               5 stars
             </Grid>
@@ -137,8 +142,10 @@ const RatingsBreakdown = (props) => {
             </Grid>
           </Grid>
           <Grid item container alignItems="center" spacing={1} className={classes.hover}
-            onClick={() => handleRatingClick(1)}
-          >
+            onClick={() => {
+              handleRatingClick(1);
+              dispatch(countSortBy1StarClick());
+            }}>
             <Grid item xs={2}>
               1 star
             </Grid>
