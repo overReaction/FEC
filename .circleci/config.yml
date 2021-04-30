@@ -8,7 +8,7 @@ jobs:
     docker:
       - image: circleci/node:latest-browsers
         environment:
-          NODE_ENV: production
+          NODE_ENV: development
     steps:
       - checkout
       - run: echo "running docker build"
@@ -16,7 +16,7 @@ jobs:
     docker:
       - image: circleci/node:latest-browsers
         environment:
-          NODE_ENV: production
+          NODE_ENV: development
     steps:
       - checkout
       - node/install-packages
