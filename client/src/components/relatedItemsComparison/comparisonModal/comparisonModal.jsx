@@ -8,6 +8,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { v4 as uuidv4 } from 'uuid';
 
 
 export default function StickyHeadTable (props) {
@@ -24,18 +25,6 @@ export default function StickyHeadTable (props) {
   const featuresObj = {};
 
   function createData (currentFeatures, comparedFeatures) {
-    // currentFeatures.map((item, index) => {
-    //   comparedFeatures.map((characteristic) => {
-    //     if (currentFeatures[index].feature === characteristic.feature) {
-    //       rows.push({ currentProduct: currentFeatures[index].value,
-    //         feature: characteristic.feature,
-    //         comparedProduct: characteristic.value });
-    //     }
-    //   });
-    //   rows.push({ currentProduct: item.value,
-    //     feature: item.feature,
-    //     comparedProduct: '' });
-    // });
     currentFeatures.map((item) => {
       featuresObj[item.feature] = { current: item.value, compared: null };
     });
@@ -71,7 +60,7 @@ export default function StickyHeadTable (props) {
             <TableRow>
               {columns.map((column, index) => (
                 <TableCell
-                  key={column.id}
+                  key={uuidv4()}
                   align={column.align}
                   style={{ minWidth: column.minWidth }}
                 >
@@ -83,11 +72,11 @@ export default function StickyHeadTable (props) {
           <TableBody>
             {rows.slice().map((row) => {
               return (
-                <TableRow hover role="checkbox" tabIndex={-1} >
+                <TableRow key={uuidv4()} hover role="checkbox" tabIndex={-1} >
                   {columns.map((column) => {
                     const value = row[column.id];
                     return (
-                      <TableCell key={column.id} align={column.align}>
+                      <TableCell key={uuidv4()} align={column.align}>
                         {value}
                       </TableCell>
                     );
