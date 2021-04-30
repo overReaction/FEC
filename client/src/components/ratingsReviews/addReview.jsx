@@ -18,6 +18,10 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 
+import ImageUpload from './ImageUpload.jsx';
+import Badge from '@material-ui/core/Badge';
+import ImageUploading from 'react-images-uploading';
+
 function getModalStyle () {
   return {
     display: 'flex',
@@ -59,7 +63,17 @@ export default function AddReviewModal () {
   const [length, setLength] = useState(0);
   const [fit, setFit] = useState(0);
   const [reviewBody, setReviewBody] = useState('');
-  const [uploadedPhotos, uploadPhoto] = useState([]);
+  // const [uploadedPhotos, uploadPhoto] = useState([]);
+
+  // Image Upload
+  const [images, setImages] = useState([]);
+  const maxNumber = 5;
+
+  const onChange = (imageList) => {
+    setImages(imageList);
+    console.log(images);
+  };
+  // Image Upload
 
   const [email, setEmail] = useState('');
   let ratingToolTip;
@@ -112,22 +126,22 @@ export default function AddReviewModal () {
     setReviewBody(event.target.value);
   };
 
-  const handlePhotoUpload = (event) => {
-    let fd = new FormData();
-    fd.append('image', event.target.files[0]);
-    axios.post('/reviewPhotos', fd, {
-      headers: {
-        'accept': 'application/json',
-        'Accept-Language': 'en-US,en;q=0.8',
-        'Content-Type': `multipart/form-data; boundary=${fd._boundary}`
-      }
-    })
-      .then(response => {
-        let newPhotoArray = [...uploadedPhotos];
-        newPhotoArray.push(response.data.path);
-        uploadPhoto(newPhotoArray);
-      });
-  };
+  // const handlePhotoUpload = (event) => {
+  //   let fd = new FormData();
+  //   fd.append('image', event.target.files[0]);
+  //   axios.post('/reviewPhotos', fd, {
+  //     headers: {
+  //       'accept': 'application/json',
+  //       'Accept-Language': 'en-US,en;q=0.8',
+  //       'Content-Type': `multipart/form-data; boundary=${fd._boundary}`
+  //     }
+  //   })
+  //     .then(response => {
+  //       let newPhotoArray = [...uploadedPhotos];
+  //       newPhotoArray.push(response.data.path);
+  //       uploadPhoto(newPhotoArray);
+  //     });
+  // };
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
@@ -609,15 +623,71 @@ export default function AddReviewModal () {
           <div>Minimum required characters left:{50 - reviewBody.length}</div> :
           <div>Minimum reached</div>}
         <br/>
-        <Button variant="outlined" component="label" disabled={uploadedPhotos.length >= 5}>Upload your photos
+        {/* <Button variant="outlined" component="label" disabled={uploadedPhotos.length >= 5}>Upload your photos
           <input
             type="file"
             accept="image/*"
             hidden
-            onChange={handlePhotoUpload}
+            // onChange={handlePhotoUpload}
           />
-        </Button>
-        <Grid container spacing={1}>
+        </Button> */}
+        {/* <ImageUpload /> */}
+
+        {/* IMAGE UPLOADING */}
+        <div className="image-upload-wrapper">
+          <ImageUploading
+            multiple
+            value={images}
+            onChange={onChange}
+            maxNumber={maxNumber}
+            dataURLKey="data_url">
+            {({ imageList, onImageUpload, onImageRemoveAll, onImageRemove }) => (
+              <div >
+                <Button variant="outlined" onClick={onImageUpload}>
+              Upload Photo
+                </Button>
+            &nbsp;
+                <Button
+                  variant="outlined"
+                  onClick={onImageRemoveAll}
+                  color="secondary">
+              Remove All
+                </Button>
+                <div
+                  style={{
+                    display: 'flex',
+                    marginTop: '12px',
+                    flex: '0 0 350px'
+                  }}>
+                  {imageList.map((image, index) => (
+                    <div key={index} className="image-item">
+                      <div>
+                        <Badge
+                          color="secondary"
+                          badgeContent={
+                            <span onClick={() => onImageRemove(index)}>x</span>
+                          }
+                          style={{ cursor: 'pointer', marginRight: '12px' }}>
+                          {
+                            <img
+                              src={image['data_url']}
+                              alt=""
+                              width="75"
+                              height="75"
+                            />
+                          }
+                        </Badge>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </ImageUploading>
+        </div>
+        {/* IMAGE UPLOADING */}
+
+        {/* <Grid container spacing={1}>
           {uploadedPhotos.map((image) => {
             console.log(image);
             return (
@@ -626,7 +696,7 @@ export default function AddReviewModal () {
               </Grid>
             );
           })}
-        </Grid>
+        </Grid> */}
         <br/>
         <FormLabel required>What is your nickname?</FormLabel>
         <TextField
