@@ -65,12 +65,12 @@ const StyleSelector = (props) => {
                 onClick={() => dispatch(selectStyle(style))}
                 classes={{ tile: classes.root }}
               >
-                <img src={url} style={{ objectFit: 'cover' }}/>
+                <img alt={`style ${index}`} src={url} style={{ objectFit: 'cover' }}/>
 
                 {style.style_id === currentStyle.style_id ?
                   <GridListTileBar //Conditional rendering for currently selected style
                     actionIcon={
-                      <IconButton>
+                      <IconButton disabled aria-label="currently selected style">
                         <DoneOutlineIcon classes={{ root: classes.icon }}/>
                       </IconButton>}
                     actionPosition="left"

@@ -171,13 +171,13 @@ export const appSlice = createSlice({
         relatedProductsClicks: state.relatedProductsClicks,
         timestamp: new Date().toString()
       });
-      console.log({
-        productId: state.productId,
-        productCardClicks: state.productCardClicks,
-        widget: 'Related Products',
-        relatedProductsClicks: state.relatedProductsClicks,
-        timestamp: new Date().toString()
-      });
+      // console.log({
+      //   productId: state.productId,
+      //   productCardClicks: state.productCardClicks,
+      //   widget: 'Related Products',
+      //   relatedProductsClicks: state.relatedProductsClicks,
+      //   timestamp: new Date().toString()
+      // });
     },
 
     // QUESTIONS & ANSWERS TRACKING

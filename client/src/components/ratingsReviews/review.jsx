@@ -139,7 +139,7 @@ const Review = ({ review }) => {
                 {review.photos.map((photo, index) => {
                   return (
                     <GridListTile key={index} >
-                      <img src={photo.url} onClick={handleOpen}/>
+                      <img alt={`review photo ${index}`}src={photo.url} onClick={handleOpen}/>
                       <Modal
                         open={photoOpen}
                         onClose={handleClose}
@@ -147,7 +147,7 @@ const Review = ({ review }) => {
                         className={classes.modal}
                       >
                         <Container className={classes.modal}>
-                          <img src={photo.url}
+                          <img alt={`review photo ${index}`} src={photo.url}
                             style={{ maxHeight: '50%', maxWidth: '50%' }}/>
                         </Container>
                       </Modal>
@@ -185,14 +185,14 @@ const Review = ({ review }) => {
           {reviewReviewed === false ?
             <Grid item xs={12}>
               Was this review helpful? &nbsp;
-              <a href="#RatingsReviews" id="yesHelpfulAnchor"
+              <a href="#RatingsReviews"
                 onClick={(e) => {
                   if (helpfulReviews.indexOf(review.review_id) === -1 &&
                   nonHelpfulReviews.indexOf(review.review_id) === -1) {
                     handleHelpfulClick(e);
                   }
                 }}>Yes</a> ({helpfulness}) | &nbsp;
-              <a href="#RatingsReviews" id="notHelpfulAnchor"
+              <a href="#RatingsReviews"
                 onClick={(e) => {
                   if (helpfulReviews.indexOf(review.review_id) === -1 &&
                   nonHelpfulReviews.indexOf(review.review_id) === -1) {
@@ -207,9 +207,9 @@ const Review = ({ review }) => {
             </Grid> :
             <Grid item xs={12}>
               Was this review helpful? &nbsp;
-              <a id="yesHelpfulAnchor">Yes</a> ({helpfulness}) | &nbsp;
-              <a id="notHelpfulAnchor">No</a> ({nonHelpfulness}) | &nbsp;
-              <a href="#RatingsReviews"
+              <a>Yes</a> ({helpfulness}) | &nbsp;
+              <a>No</a> ({nonHelpfulness}) | &nbsp;
+              <a
                 onClick={() => {
                   handleReportClick();
                 }}

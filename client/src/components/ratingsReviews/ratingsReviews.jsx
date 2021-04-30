@@ -1,7 +1,18 @@
 import React from 'react';
-import ReviewList from './reviewList.jsx';
-import Breakdown from './breakdown.jsx';
 import Grid from '@material-ui/core/Grid';
+
+import Loadable from 'react-loadable';
+import Loading from '../loading.jsx';
+
+const BreakdownLoadable = Loadable({
+  loader: () => import('./breakdown.jsx'),
+  loading: Loading
+});
+
+const ReviewListLoadable = Loadable({
+  loader: () => import('./reviewList.jsx'),
+  loading: Loading
+});
 
 const RatingsReviews = (props) => {
   return (
@@ -11,10 +22,10 @@ const RatingsReviews = (props) => {
       style={{ padding: '1em' }}>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <Breakdown />
+          <BreakdownLoadable />
         </Grid>
         <Grid item xs={9}>
-          <ReviewList />
+          <ReviewListLoadable />
         </Grid>
       </Grid>
     </div>

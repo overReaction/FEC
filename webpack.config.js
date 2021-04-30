@@ -1,9 +1,9 @@
 const ESLintPlugin = require('eslint-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   entry: __dirname + '/client/src/index.jsx',
-  mode: 'development',
   module: {
     rules: [
       {
@@ -26,7 +26,6 @@ module.exports = {
     filename: 'ignoredBundle.js',
     path: __dirname + '/client/dist'
   },
-  watch: true,
   plugins: [new ESLintPlugin()],
   optimization: {
     minimize: true,

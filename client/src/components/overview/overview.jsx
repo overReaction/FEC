@@ -19,6 +19,7 @@ import ImageGallery from './imageGallery/imageGallery.jsx';
 import StyleSelector from './styleSelector/styleSelector.jsx';
 import AddToCart from './addToCart/addToCart.jsx';
 
+
 const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 0,
@@ -63,13 +64,13 @@ const Overview = (props) => {
                   <span><b>SHARE > </b></span>
                 </Grid>
                 <Grid data-testid="share-icons">
-                  <IconButton data-testid="fb-icon" href="#" style={{ color: "black" }}>
+                  <IconButton aria-label="share on facebook" data-testid="fb-icon" href="#" style={{ color: "black" }}>
                     <FacebookIcon/>
                   </IconButton>
-                  <IconButton data-testid="twitter-icon" href="#" style={{ color: "black" }}>
+                  <IconButton aria-label="share on twitter" data-testid="twitter-icon" href="#" style={{ color: "black" }}>
                     <TwitterIcon/>
                   </IconButton>
-                  <IconButton data-testid="pinterest-icon" href="#" style={{ color: "black" }}>
+                  <IconButton aria-label="share on pinterest" data-testid="pinterest-icon" href="#" style={{ color: "black" }}>
                     <PinterestIcon/>
                   </IconButton>
                 </Grid>
