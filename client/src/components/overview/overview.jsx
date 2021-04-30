@@ -104,6 +104,9 @@ const Overview = (props) => {
                   <div style={{ fontSize: `1em` }}> <b>FEATURES > </b></div>
                 </Grid>
                 {productInfo.features ?
+                  <div>
+                    Loading
+                  </div> :
                   productInfo.features.map((feature, index) => {
                     return (
                       <Grid item
@@ -121,10 +124,7 @@ const Overview = (props) => {
                         </Grid>
                       </Grid>
                     );
-                  }) :
-                  <div>
-                    Loading
-                  </div>
+                  })
                 }
               </Grid>
             </Grid>
