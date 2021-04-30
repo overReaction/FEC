@@ -4,7 +4,6 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   entry: __dirname + '/client/src/index.jsx',
-  mode: 'development',
   module: {
     rules: [
       {
@@ -27,7 +26,6 @@ module.exports = {
     filename: 'ignoredBundle.js',
     path: __dirname + '/client/dist'
   },
-  watch: true,
   plugins: [new ESLintPlugin()],
   optimization: {
     minimize: true,
