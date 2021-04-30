@@ -112,13 +112,13 @@ export const appSlice = createSlice({
         overviewClicks: state.overviewClicks,
         timestamp: new Date().toString()
       });
-      console.log({
-        productId: state.productId,
-        addToCartClicks: state.addToCartClicks,
-        widget: 'Overview',
-        overviewClicks: state.overviewClicks,
-        timestamp: new Date().toString()
-      });
+      // console.log({
+      //   productId: state.productId,
+      //   addToCartClicks: state.addToCartClicks,
+      //   widget: 'Overview',
+      //   overviewClicks: state.overviewClicks,
+      //   timestamp: new Date().toString()
+      // });
     },
     countAddToOutfitClick: (state, action) => {
       state.overviewClicks++;
@@ -130,13 +130,13 @@ export const appSlice = createSlice({
         overviewClicks: state.overviewClicks,
         timestamp: new Date().toString()
       });
-      console.log({
-        productId: state.productId,
-        addToOutfitClicks: state.addToOutfitClicks,
-        widget: 'Overview',
-        overviewClicks: state.overviewClicks,
-        timestamp: new Date().toString()
-      });
+      // console.log({
+      //   productId: state.productId,
+      //   addToOutfitClicks: state.addToOutfitClicks,
+      //   widget: 'Overview',
+      //   overviewClicks: state.overviewClicks,
+      //   timestamp: new Date().toString()
+      // });
     },
 
     // RELATED PRODUCTS TRACKING
@@ -153,13 +153,13 @@ export const appSlice = createSlice({
         relatedProductsClicks: state.relatedProductsClicks,
         timestamp: new Date().toString()
       });
-      console.log({
-        productId: state.productId,
-        compareClicks: state.compareClicks,
-        widget: 'Related Products',
-        relatedProductsClicks: state.relatedProductsClicks,
-        timestamp: new Date().toString()
-      });
+      // console.log({
+      //   productId: state.productId,
+      //   compareClicks: state.compareClicks,
+      //   widget: 'Related Products',
+      //   relatedProductsClicks: state.relatedProductsClicks,
+      //   timestamp: new Date().toString()
+      // });
     },
     countProductCardClick: (state, action) => {
       state.relatedProductsClicks++;
@@ -191,16 +191,16 @@ export const appSlice = createSlice({
         productId: state.productId,
         moreAnsweredQuestionsClicks: state.moreAnsweredQuestionsClicks,
         widget: 'Questions & Answers',
-        totalWidgetClicks: state.questionsAnswersClicks,
+        questionsAnswersClicks: state.questionsAnswersClicks,
         timestamp: new Date().toString()
       });
-      console.log({
-        productId: state.productId,
-        moreAnsweredQuestionsClicks: state.moreAnsweredQuestionsClicks,
-        widget: 'Questions & Answers',
-        totalWidgetClicks: state.questionsAnswersClicks,
-        timestamp: new Date().toString()
-      });
+      // console.log({
+      //   productId: state.productId,
+      //   moreAnsweredQuestionsClicks: state.moreAnsweredQuestionsClicks,
+      //   widget: 'Questions & Answers',
+      //   questionsAnswersClicks: state.questionsAnswersClicks,
+      //   timestamp: new Date().toString()
+      // });
     },
     countShowMoreAnswersClick: (state, action) => {
       state.questionsAnswersClicks++;
@@ -212,13 +212,13 @@ export const appSlice = createSlice({
         questionsAnswersClicks: state.questionsAnswersClicks,
         timestamp: new Date().toString()
       });
-      console.log({
-        productId: state.productId,
-        moreAnsweredQuestionsClicks: state.moreAnsweredQuestionsClicks,
-        widget: 'Questions & Answers',
-        totalWidgetClicks: state.questionsAnswersClicks,
-        timestamp: new Date().toString()
-      });
+      // console.log({
+      //   productId: state.productId,
+      //   moreAnsweredQuestionsClicks: state.moreAnsweredQuestionsClicks,
+      //   widget: 'Questions & Answers',
+      //   questionsAnswersClicks: state.questionsAnswersClicks,
+      //   timestamp: new Date().toString()
+      // });
     },
 
     // RATINGS & REVIEWS TRACKING
@@ -235,13 +235,13 @@ export const appSlice = createSlice({
         ratingsReviewsClicks: state.ratingsReviewsClicks,
         timestamp: new Date().toString()
       });
-      console.log({
-        productId: state.productId,
-        sortBy5StarsClicks: state.sortBy5StarsClicks,
-        widget: 'Ratings & Reviews',
-        ratingsReviewsClicks: state.ratingsReviewsClicks,
-        timestamp: new Date().toString()
-      });
+      // console.log({
+      //   productId: state.productId,
+      //   sortBy5StarsClicks: state.sortBy5StarsClicks,
+      //   widget: 'Ratings & Reviews',
+      //   ratingsReviewsClicks: state.ratingsReviewsClicks,
+      //   timestamp: new Date().toString()
+      // });
     },
     countSortBy1StarClick: (state, action) => {
       state.ratingsReviewsClicks++;
@@ -253,13 +253,13 @@ export const appSlice = createSlice({
         ratingsReviewsClicks: state.ratingsReviewsClicks,
         timestamp: new Date().toString()
       });
-      console.log({
-        productId: state.productId,
-        sortBy1StarClicks: state.sortBy1StarClicks,
-        widget: 'Ratings & Reviews',
-        ratingsReviewsClicks: state.ratingsReviewsClicks,
-        timestamp: new Date().toString()
-      });
+      // console.log({
+      //   productId: state.productId,
+      //   sortBy1StarClicks: state.sortBy1StarClicks,
+      //   widget: 'Ratings & Reviews',
+      //   ratingsReviewsClicks: state.ratingsReviewsClicks,
+      //   timestamp: new Date().toString()
+      // });
     }
   },
   //Reducers that depend upon async actions are defined here
