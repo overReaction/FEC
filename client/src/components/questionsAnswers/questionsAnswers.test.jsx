@@ -2,6 +2,7 @@ import axios from 'axios';
 jest.mock('axios');
 
 import React from "react";
+import "@testing-library/react/dont-cleanup-after-each";
 import { render, screen, cleanup } from '@testing-library/react'; //Allows artificial rendering
 import userEvent from '@testing-library/user-event'; //Allows triggering of user events. Not demo'd on this page.
 import '@testing-library/jest-dom'; //Provides a set of custom jest matchers that you can use to extend jest. These will make your tests more declarative, clear to read and to maintain.
@@ -11,39 +12,17 @@ import store from '../../store.js';
 import { Provider } from 'react-redux';
 import { reviewsMeta, reviews, styles, related, qa, product } from './mockData.js';
 
+import Loadable from 'react-loadable';
+Loadable.preloadAll();
+
 /* Some example templates for testing are provided below. In general, you will
 1)render the component (see examples below)
 2)query for the component: https://testing-library.com/docs/queries/about
 3)optionally insert user events to manipulate elements: https://testing-library.com/docs/ecosystem-user-event
 4)test assertions about the component: https://github.com/testing-library/jest-dom */
 
-jest.mock("../relatedItemsComparison/relatedItemsComparison", () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div>Help</div>;
-    }
-  };
-});
-jest.mock("../ratingsReviews/ratingsReviews", () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div>Help</div>;
-    }
-  };
-});
-jest.mock("../overview/overview", () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div>Help</div>;
-    }
-  };
-});
-
 describe('QA Widget', () => {
-  beforeEach(async () => {
+  beforeAll(async () => {
     axios.get.mockResolvedValueOnce({ data: reviewsMeta });
     axios.get.mockResolvedValueOnce({ data: reviews });
     axios.get.mockResolvedValueOnce({ data: styles });
@@ -54,9 +33,6 @@ describe('QA Widget', () => {
       <Provider store={store}>
         <App />
       </Provider>);
-  });
-  afterEach(async () => {
-    cleanup();
   });
 
   test('Should have a list of questions', () => {
@@ -77,18 +53,7 @@ describe('QA Widget', () => {
 });
 
 describe('Questions List Component', () => {
-  beforeEach(async () => {
-    axios.get.mockResolvedValueOnce({ data: reviewsMeta });
-    axios.get.mockResolvedValueOnce({ data: reviews });
-    axios.get.mockResolvedValueOnce({ data: styles });
-    axios.get.mockResolvedValueOnce({ data: related });
-    axios.get.mockResolvedValueOnce({ data: qa });
-    await render(
-      <Provider store={store}>
-        <App />
-      </Provider>);
-  });
-  afterEach(async () => {
+  afterAll(() => {
     cleanup();
   });
 
