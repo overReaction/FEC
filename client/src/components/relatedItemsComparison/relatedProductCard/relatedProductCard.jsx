@@ -51,12 +51,25 @@ const RealtedProductCard = ({ productInfo }) => {
 
   return (
     <div >
-      <GridListTile >
+      <GridListTile style={{
+        position: 'relative',
+        minWidth: '20px',
+        maxWidth: '700px',
+        minHeight: '20px',
+        maxHeight: '450px'
+      }}>
         <img
           alt={`${productInfo.name}`}
           data-testid="relatedProductImage"
           src={productInfo.photo}
-          style={{ height: '100%', maxHeight: 400, width: 'auto' }}
+          style={{
+            position: 'top',
+            width: '100% !important',
+            maxHeight: '400px',
+            maxWidth: '664px',
+            overflow: 'hidden',
+            height: '100%'
+          }}
           onClick={() => {
             dispatch(changeProductId(productInfo.id));
             dispatch(countProductCardClick());

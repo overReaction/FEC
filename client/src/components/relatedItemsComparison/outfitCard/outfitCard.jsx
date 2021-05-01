@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { changeProductId } from '../../appSlice.js';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
@@ -33,8 +34,27 @@ const OutfitCard = ({ productInfo, index }) => {
 
   return (
     <div data-testid="outfitCard">
-      <GridListTile >
-        <img alt={`outfit photo ${index}`} src={productInfo.photo} style={{ height: '100%', maxHeight: 400, width: 'auto' }}/>
+      <GridListTile style={{
+        position: 'relative',
+        minWidth: '20px',
+        maxWidth: '700px',
+        minHeight: '20px',
+        maxHeight: '450px'
+      }}>
+        <img alt={`outfit photo ${index}`}
+          src={productInfo.photo}
+          style={{
+            position: 'top',
+            width: '100% !important',
+            maxHeight: '400px',
+            maxWidth: '664px',
+            overflow: 'hidden',
+            height: '100%'
+          }}
+          onClick={() => {
+            dispatch(changeProductId(productInfo.id));
+          }}
+        />
         <GridListTileBar
           title={productInfo.name}
           subtitle={<div>
