@@ -45,7 +45,6 @@ const GalleryNav = (props) => {
     if (currentStyle.photos[activeStep] && currentStyle.photos[activeStep].url) {
       dispatch(setCurrentPhoto(currentStyle.photos[activeStep]));
       let pics = JSON.parse(JSON.stringify(currentStyle.photos));
-      console.log(pics);
       pics.forEach((item, index) => {
         item.index = index;
       });

@@ -70,7 +70,7 @@ const ProductBreakdown = (props) => {
 
   if (chars.characteristics) {
     return (
-      <Grid container spacing={1}>
+      <Grid item xs={12} container spacing={1}>
         {Object.keys(chars.characteristics).map((char) => {
           let score = parseInt(chars.characteristics[char].value, 10) / 5;
           if (char === 'Quality' || char === 'Comfort') {

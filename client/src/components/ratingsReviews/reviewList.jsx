@@ -33,7 +33,7 @@ const ReviewList = (props) => {
   }, [reviews]);
 
   return (
-    <Grid container spacing={1} >
+    <Grid item xs={8} container spacing={1} style={{ flexGrow: 3 }}>
       <Grid item xs={12}>
         <ReviewSortSearchLoadable />
       </Grid>
@@ -46,7 +46,6 @@ const ReviewList = (props) => {
           overflowY: 'auto'
         }}>
         {shownReviews.map((review, index) => {
-          console.log(review);
           return (
             <Box
               item

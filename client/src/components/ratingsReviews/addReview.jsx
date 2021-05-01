@@ -619,7 +619,6 @@ export default function AddReviewModal () {
         </Button>
         <Grid container spacing={1}>
           {uploadedPhotos.map((image) => {
-            console.log(image);
             return (
               //Return image somehow
               <span/>
