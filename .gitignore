@@ -30,6 +30,7 @@ coverage
 /client/dist/22.ignoredBundle.js
 /client/dist/23.ignoredBundle.js
 /client/dist/24.ignoredBundle.js
+/client/dist/25.ignoredBundle.js
 
 /client/dist/2.ignoredBundle.js.LICENSE.txt
 /client/dist/3.ignoredBundle.js.LICENSE.txt
@@ -54,3 +55,4 @@ coverage
 /client/dist/22.ignoredBundle.js.LICENSE.txt
 /client/dist/23.ignoredBundle.js.LICENSE.txt
 /client/dist/24.ignoredBundle.js.LICENSE.txt
+/client/dist/25.ignoredBundle.js.LICENSE.txt
