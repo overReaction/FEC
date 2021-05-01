@@ -248,8 +248,8 @@ export default function AddReviewModal () {
           </Grid>
           <Grid item>
             <RadioGroup row name="recommended" value={recommended} onChange={handleChangeRecommended}>
-              <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-              <FormControlLabel value="No" control={<Radio />} label="No" />
+              <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+              <FormControlLabel value="no" control={<Radio />} label="No" />
             </RadioGroup>
           </Grid>
         </Grid>
