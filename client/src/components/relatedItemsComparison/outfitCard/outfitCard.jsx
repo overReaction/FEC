@@ -34,14 +34,14 @@ const OutfitCard = ({ productInfo, index }) => {
   return (
     <div data-testid="outfitCard">
       <GridListTile >
-        <img src={productInfo.photo} style={{ height: '100%', maxHeight: 400, width: 'auto' }}/>
+        <img alt={`outfit photo ${index}`} src={productInfo.photo} style={{ height: '100%', maxHeight: 400, width: 'auto' }}/>
         <GridListTileBar
           title={productInfo.name}
           subtitle={<div>
             <span>{`$${productInfo.default_price}`}</span>
             <StarRating rating={productInfo.ratings}/></div>}
           actionIcon={
-            <IconButton onClick={() => handleOutfitClick()}>
+            <IconButton aria-label="remove from outfit" onClick={() => handleOutfitClick()}>
               <ClearIcon className={classes.icon}/>
             </IconButton>
           }

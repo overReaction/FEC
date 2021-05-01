@@ -53,7 +53,7 @@ const GalleryNav = (props) => {
       <div style={{ height: 'auto', maxHeight: 700 }}>
 
         <div>
-          <IconButton
+          <IconButton aria-label="next photo"
             disabled={activeStep === 0}
             onClick={() => dispatch(decrement())}
           >
@@ -86,7 +86,9 @@ const GalleryNav = (props) => {
               >
                 <StepContent
                   onClick={() => dispatch(setStep(index))}>
-                  <img src={url}
+                  <img
+                    alt={`thumbnail ${index}`}
+                    src={url}
                     style={activeStep === index ?
                       { filter: "drop-shadow(8px 8px 10px gray)", objectFit: "cover", height: 75, width: 75 } :
                       { objectFit: "cover", height: 75, width: 75 }}
@@ -96,7 +98,7 @@ const GalleryNav = (props) => {
             );
           })}
         </Stepper>
-        <IconButton
+        <IconButton aria-label="previous photo"
           disabled={activeStep === currentStyle.photos.length - 1}
           onClick={() => dispatch(increment())}
         >

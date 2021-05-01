@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
-    color: theme.palette.text.secondary
+    color: theme.palette.text.primary
   }
 }));
 
@@ -60,6 +60,7 @@ const QuestionsAnswers = props => {
           </Grid>
           <ButtonGroup>
             <Button
+              aria-label="load more questions"
               data-testid="more-questions"
               variant="outlined"
               onClick={() => {
@@ -70,11 +71,11 @@ const QuestionsAnswers = props => {
           </ButtonGroup>
           <br />
           <br />
-          <ButtonGroup aria-label="outlined primary button group">
+          {/* <ButtonGroup aria-label="outlined primary button group">
             <Button onClick={() => dispatch(changeProductId(18084))}> 18084 </Button>
             <Button onClick={() => dispatch(changeProductId(18085))}> 18085 </Button>
             <Button onClick={() => dispatch(changeProductId(18086))}> 18086 </Button>
-          </ButtonGroup>
+          </ButtonGroup> */}
           <div> Current Product ID: {productId}</div>
         </Paper>
       </div>

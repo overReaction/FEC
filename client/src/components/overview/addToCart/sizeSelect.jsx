@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Select from 'react-select';
+import InputLabel from '@material-ui/core/InputLabel';
 import {
   updateSku,
   throwErr,
@@ -59,39 +60,55 @@ const SizeSelect = (props) => {
 
   if (sizes.length === 0) { //If there are no sizes available
     return (
-      <Select
-        value={{ value: 'default', label: 'OUT OF STOCK' }}
-        isDisabled={true}
-        options={{}} />
+      <>
+        <InputLabel id="sizeSelect">Select size</InputLabel>
+        <Select
+          aria-label="size selector"
+          aria-required={true}
+          labelId="sizeSelect"
+          value={{ value: 'default', label: 'OUT OF STOCK' }}
+          isDisabled={true}
+          options={{}} />
+      </>
     );
   } else if (err === true) { //If the user pressed add to cart w/o a selected size
     return (
-      <Select
-        value={dropDownDisplay}
-        menuIsOpen={true}
-        options={sizes}
-        onChange={(selected) => {
-          dispatch(updateSizeDropDownDisplay(selected));
-          dispatch(updateQuantDropDownDisplay({ value: 1, label: '1' }));
-          dispatch(updateSku(selected.value));
-          dispatch(updateSkuInfo(skus[selected.value]));
-          dispatch(throwErr(false));
-        }}
-      />
+      <>
+        <InputLabel id="sizeSelect">Select size</InputLabel>
+        <Select
+          aria-label="size selector"
+          aria-required={true}
+          labelId="sizeSelect"
+          value={dropDownDisplay}
+          menuIsOpen={true}
+          options={sizes}
+          onChange={(selected) => {
+            dispatch(updateSizeDropDownDisplay(selected));
+            dispatch(updateQuantDropDownDisplay({ value: 1, label: '1' }));
+            dispatch(updateSku(selected.value));
+            dispatch(updateSkuInfo(skus[selected.value]));
+            dispatch(throwErr(false));
+          }}
+        />
+      </>
     );
   } else { //Normal display if none of the above
     return (
-      <Select
-        value={dropDownDisplay}
-        options={sizes}
-        onChange={(selected) => {
-          dispatch(updateSizeDropDownDisplay(selected));
-          dispatch(updateQuantDropDownDisplay({ value: 1, label: '1' }));
-          dispatch(updateSku(selected.value));
-          dispatch(updateSkuInfo(skus[selected.value]));
-          dispatch(throwErr(false));
-        }}
-      />
+      <>
+        <InputLabel id="sizeSelect">Select size</InputLabel>
+        <Select
+          labelId="sizeSelect"
+          value={dropDownDisplay}
+          options={sizes}
+          onChange={(selected) => {
+            dispatch(updateSizeDropDownDisplay(selected));
+            dispatch(updateQuantDropDownDisplay({ value: 1, label: '1' }));
+            dispatch(updateSku(selected.value));
+            dispatch(updateSkuInfo(skus[selected.value]));
+            dispatch(throwErr(false));
+          }}
+        />
+      </>
     );
   }
 };

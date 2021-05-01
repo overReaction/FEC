@@ -129,8 +129,8 @@ export default function AddAModal (props) {
         <br/>
         <br/>
         <ButtonGroup style={{ display: 'inline-flex' }}>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={() => {
+          <Button aria-label="discard answer" onClick={handleClose}>Cancel</Button>
+          <Button aria-label="submit answer" onClick={() => {
             onSubmitClick(props.questionId,
               dispatch(fetchQuestions(productId)));
           }}>Submit</Button>
@@ -143,11 +143,12 @@ export default function AddAModal (props) {
     <div>
       <button
         className="clickable"
+        aria-label="add your answer"
         data-testid="addAnswerButton"
         onClick={handleOpen}
         style={{ border: 'none',
           backgroundColor: 'white',
-          color: '#777777' }}>
+          color: 'black' }}>
         <u>Add Answer</u>
       </button>
       <Modal

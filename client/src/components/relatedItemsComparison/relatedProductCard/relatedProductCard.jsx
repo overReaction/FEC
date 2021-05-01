@@ -53,6 +53,7 @@ const RealtedProductCard = ({ productInfo }) => {
     <div >
       <GridListTile >
         <img
+          alt={`${productInfo.name}`}
           data-testid="relatedProductImage"
           src={productInfo.photo}
           style={{ height: '100%', maxHeight: 400, width: 'auto' }}
@@ -66,7 +67,7 @@ const RealtedProductCard = ({ productInfo }) => {
             <span>{`$${productInfo.default_price}`}</span>
             <StarRating rating={productInfo.ratings}/></div>}
           actionIcon={
-            <IconButton onClick={() => {
+            <IconButton aria-label="view product details" onClick={() => {
               handleOpen();
               dispatch(countCompareClick());
             }}>

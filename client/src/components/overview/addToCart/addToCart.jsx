@@ -62,6 +62,7 @@ const AddToCart = (props) => {
       </Grid>
       <Grid item xs={6}>
         <Button
+          aria-label="add to cart"
           variant="outlined"
           size="medium"
           style={sizes.length === 0 ? { display: 'none' } : {}}
@@ -79,7 +80,7 @@ const AddToCart = (props) => {
         >Add to cart</Button>
       </Grid>
       <Grid item xs={6}>
-        <Button
+        <Button aria-label="add to outfit"
           variant="outlined"
           size="medium"
           disabled={outfitIds.includes(productId)}
