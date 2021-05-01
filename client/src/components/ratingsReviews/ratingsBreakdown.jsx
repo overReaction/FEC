@@ -66,7 +66,7 @@ const RatingsBreakdown = (props) => {
   }, [ratings]);
 
   return (
-    <Grid container spacing={1}>
+    <Grid item container xs = {12} spacing={1}>
       <Grid container item alignItems="center" spacing={2}>
         <Grid item>
           <h2>RATINGS AND REVIEWS</h2>
@@ -151,7 +151,7 @@ const RatingsBreakdown = (props) => {
               value={twoStars * 100}/>
           </Grid>
           <Grid item xs={1}>
-            <span>({twoStars * numOfRatings})</span>
+            <span>({Math.floor(twoStars * numOfRatings)})</span>
           </Grid>
         </Grid>
         <Grid item container alignItems="center" spacing={1} className={classes.hover}

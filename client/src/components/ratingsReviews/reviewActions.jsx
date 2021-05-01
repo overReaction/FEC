@@ -34,14 +34,7 @@ const ReviewActions = (props) => {
     );
   } else if (numOfReviews === reviewsCount || numOfReviews <= 2) {
     return (
-      <Button
-        aria-label="add a reviews"
-        variant="outlined"
-        size="medium"
-        endIcon={<AddIcon />}
-      >
-        Add Review
-      </Button>
+      <AddReviewModalLoadable/>
     );
   }
 };
