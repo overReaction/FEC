@@ -20,7 +20,6 @@ import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import { fetchReviewsNewest, fetchReviewsHelpful, fetchReviewsRelevant } from '../appSlice.js';
 
-// import ImageUpload from './ImageUpload.jsx';
 import Badge from '@material-ui/core/Badge';
 import ImageUploading from 'react-images-uploading';
 
@@ -73,19 +72,20 @@ export default function AddReviewModal () {
   const [characteristics, setCharacteristics] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [submitSucceeded, setSubmitSucceeded] = useState(false);
-  // const [uploadedPhotos, uploadPhoto] = useState([]);
 
   const getCharacteristics = () => {
     let currentCharacteristics = {};
     Object.keys(reviewMetadata.characteristics).forEach(c => {
-      currentCharacteristics[reviewMetadata.characteristics[c].id] = Number(Math.round(reviewMetadata.characteristics[c].value));
+      let key = reviewMetadata.characteristics[c].id;
+      let val = Number(Math.round(reviewMetadata.characteristics[c].value));
+      currentCharacteristics[key] = val;
     });
     setCharacteristics(currentCharacteristics);
   };
   // Image Upload
   const [images, setImages] = useState([]);
   const maxNumber = 5;
-  var imgURLs = [];
+  // var imgURLs = [];
 
   const onChangeImage = (imageList) => {
     setImages(imageList);
@@ -112,8 +112,8 @@ export default function AddReviewModal () {
           recc = false;
         }
 
-        imgURLs = images.map(img => img.data_url);
-        console.log(`Img urls: ${imgURLs}`);
+        // imgURLs = images.map(img => img.data_url);
+        // console.log(`Img urls: ${imgURLs}`);
 
         axios.post(`/api/?endpoint=reviews`, {
           product_id: productId,
@@ -126,7 +126,7 @@ export default function AddReviewModal () {
           photos: [],
           characteristics: characteristics
         })
-          .then(console.log(characteristics))
+          // .then(console.log(characteristics))
           .then(
             setRating(0),
             setRecommended(false),
@@ -216,7 +216,6 @@ export default function AddReviewModal () {
   const onSubmitClick = () => {
     getCharacteristics();
     setSubmitted(true);
-    // console.log(characteristics);
   };
 
   const body = (
@@ -784,7 +783,9 @@ export default function AddReviewModal () {
         <br/>
         <ButtonGroup>
           <Button onClick={handleClose}>Cancel</Button>
-          {!submitSucceeded ? <Button onClick={onSubmitClick}>Submit</Button> : <Button color="secondary">Review Submitted!</Button>}
+          {!submitSucceeded ?
+            <Button onClick={onSubmitClick}>Submit</Button> :
+            <Button color="secondary">Review Submitted!</Button>}
         </ButtonGroup>
       </FormControl>
     </div>
