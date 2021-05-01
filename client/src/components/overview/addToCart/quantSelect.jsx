@@ -1,13 +1,9 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import Select from 'react-select';
-import { updateQuantDropDownDisplay } from './cartSlice.js';
-import InputLabel from '@material-ui/core/InputLabel';
+import { useSelector } from 'react-redux';
+import QuantDropdown from './quantDropdown.jsx';
 
 const QuantSelect = (props) => {
-  const dispatch = useDispatch();
   const quant = useSelector((state) => state.cart.skuInfo.quantity);
-  const dropDownDisplay = useSelector((state) => state.cart.quantDropDownDisplay);
 
   const getQuantities = (quantAvail) => {
     let quants = [];
@@ -19,33 +15,11 @@ const QuantSelect = (props) => {
 
   if (quant) {
     return (
-      <>
-        <InputLabel id="quantSelect">Select quantity</InputLabel>
-        <Select
-          labelId="quantSelect"
-          aria-label="quantity selector"
-          aria-required={true}
-          isClearable ={false}
-          value={dropDownDisplay}
-          options={getQuantities(quant)}
-          onChange={(selected) => {
-            dispatch(updateQuantDropDownDisplay(selected));
-          }} />
-      </>
+      <QuantDropdown options={getQuantities(quant)} disabled={false}/>
     );
   } else {
     return (
-      <>
-        <InputLabel id="quantSelect">Select quantity</InputLabel>
-        <Select
-          aria-label="quantity selector"
-          aria-required={true}
-          labelId="quantSelect"
-          isDisabled={true}
-          isClearable ={false}
-          value={dropDownDisplay}
-          options={{}} />
-      </>
+      <QuantDropdown options={{}} disabled/>
     );
   }
 };

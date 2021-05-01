@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 //Material UI
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
 
 //Redux
 import { fetchProductInfo } from './appSlice.js';
@@ -73,20 +72,10 @@ var App = () => {
     return (
       <React.Fragment>
         <CssBaseline />
-        <Grid container direction="column" >
-          <Grid item>
-            <OverviewLoadable />
-          </Grid>
-          <Grid >
-            <RICLoadable />
-          </Grid>
-          <Grid item>
-            <QALoadable />
-          </Grid>
-          <Grid item>
-            <RRLoadable />
-          </Grid>
-        </Grid>
+        <OverviewLoadable />
+        <RICLoadable />
+        <QALoadable />
+        <RRLoadable />
       </React.Fragment>
     );
   }

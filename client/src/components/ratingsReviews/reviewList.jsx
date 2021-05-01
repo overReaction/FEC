@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import Grid from '@material-ui/core/Grid';
@@ -26,7 +26,11 @@ const ReviewList = (props) => {
   const reviews = useSelector((state) => state.app.reviews);
   const numReviewsToShow = useSelector((state) => state.reviews.reviewsCount);
   const ratingsToShow = useSelector((state) => state.reviews.filter);
-  let shownReviews = [...reviews].slice(0, numReviewsToShow + 1);
+  const [shownReviews, updateShownReviews] = useState([...reviews].slice(0, numReviewsToShow + 1));
+
+  useEffect(() => {
+    updateShownReviews([...reviews].slice(0, numReviewsToShow + 1));
+  }, [reviews]);
 
   return (
     <Grid container spacing={1} >
@@ -42,6 +46,7 @@ const ReviewList = (props) => {
           overflowY: 'auto'
         }}>
         {shownReviews.map((review, index) => {
+          console.log(review);
           return (
             <Box
               item
