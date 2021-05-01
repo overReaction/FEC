@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
@@ -17,7 +18,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
-
+import { fetchReviewsNewest, fetchReviewsHelpful, fetchReviewsRelevant } from '../appSlice.js';
 
 // import ImageUpload from './ImageUpload.jsx';
 import Badge from '@material-ui/core/Badge';
@@ -51,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 export default function AddReviewModal () {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const sort = useSelector((state) => state.reviews.sortBy.value);
   const productId = useSelector((state) => state.app.productId);
   const productInfo = useSelector((state) => state.app.productInfo);
   const reviewMetadata = useSelector((state) => state.app.reviewMetadata);
@@ -70,6 +72,7 @@ export default function AddReviewModal () {
   const [email, setEmail] = useState('');
   const [characteristics, setCharacteristics] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitSucceeded, setSubmitSucceeded] = useState(false);
   // const [uploadedPhotos, uploadPhoto] = useState([]);
 
   const getCharacteristics = () => {
@@ -87,10 +90,16 @@ export default function AddReviewModal () {
   const onChangeImage = (imageList) => {
     setImages(imageList);
   };
-  // Image Upload
 
   const handleClose = () => {
     setOpen(false);
+    if (sort === 'newest') {
+      dispatch(fetchReviewsNewest(productId));
+    } else if (sort === 'relevant') {
+      dispatch(fetchReviewsRelevant(productId));
+    } else if (sort === 'helpful') {
+      dispatch(fetchReviewsHelpful(productId));
+    }
   };
 
   useEffect(() => {
@@ -103,6 +112,9 @@ export default function AddReviewModal () {
           recc = false;
         }
 
+        imgURLs = images.map(img => img.data_url);
+        console.log(`Img urls: ${imgURLs}`);
+
         axios.post(`/api/?endpoint=reviews`, {
           product_id: productId,
           rating: overallRating,
@@ -113,11 +125,7 @@ export default function AddReviewModal () {
           email: email,
           photos: [],
           characteristics: characteristics
-        }
-          // {
-          //   headers: { 'content-type': 'multipart/form-data' }
-          // }
-        )
+        })
           .then(console.log(characteristics))
           .then(
             setRating(0),
@@ -132,24 +140,19 @@ export default function AddReviewModal () {
             setQuality(0),
             setReviewSummary(''),
             setReviewBody(''),
-            handleClose()
+            handleClose(),
+            setSubmitSucceeded(true)
           )
           .catch(error => {
             console.log('error!', error);
           });
       } else {
-      // eslint-disable-next-line no-alert
         alert('Whoops! Ensure all required fields are not blank and that you have provided a valid email address.');
       }
-    } else {
       return;
     }
   }, [submitted]);
 
-  useEffect(() => {
-    imgURLs = images.map(img => img.data_url);
-    console.log(`Img urls: ${imgURLs}`);
-  }, [images]);
 
   let ratingToolTip;
 
@@ -209,25 +212,6 @@ export default function AddReviewModal () {
   const handleEmail = (event) => {
     setEmail(event.target.value);
   };
-
-  // const handlePhotoUpload = (event) => {
-  //   let fd = new FormData();
-  //   fd.append('image', event.target.files[0]);
-  //   axios.post('/reviewPhotos', fd, {
-  //     headers: {
-  //       'accept': 'application/json',
-  //       'Accept-Language': 'en-US,en;q=0.8',
-  //       'Content-Type': `multipart/form-data; boundary=${fd._boundary}`
-  //     }
-  //   })
-  //     .then(response => {
-  //       let newPhotoArray = [...uploadedPhotos];
-  //       newPhotoArray.push(response.data.path);
-  //       uploadPhoto(newPhotoArray);
-  //     });
-  // };
-
-  // console.log(reviewMetadata.characteristics);
 
   const onSubmitClick = () => {
     getCharacteristics();
@@ -716,15 +700,6 @@ export default function AddReviewModal () {
           <div>Minimum required characters left:{50 - reviewBody.length}</div> :
           <div>Minimum reached</div>}
         <br/>
-        {/* <Button variant="outlined" component="label" disabled={uploadedPhotos.length >= 5}>Upload your photos
-          <input
-            type="file"
-            accept="image/*"
-            hidden
-            // onChange={handlePhotoUpload}
-          />
-        </Button> */}
-        {/* <ImageUpload /> */}
 
         {/* IMAGE UPLOADING */}
         <div className="image-upload-wrapper">
@@ -780,16 +755,6 @@ export default function AddReviewModal () {
         </div>
         {/* IMAGE UPLOADING */}
 
-        {/* <Grid container spacing={1}>
-          {uploadedPhotos.map((image) => {
-            console.log(image);
-            return (
-              <Grid item>
-                <img src={image}/>
-              </Grid>
-            );
-          })}
-        </Grid> */}
         <br/>
         <FormLabel required>What is your nickname?</FormLabel>
         <TextField
@@ -819,7 +784,7 @@ export default function AddReviewModal () {
         <br/>
         <ButtonGroup>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={onSubmitClick}>Submit</Button>
+          {!submitSucceeded ? <Button onClick={onSubmitClick}>Submit</Button> : <Button color="secondary">Review Submitted!</Button>}
         </ButtonGroup>
       </FormControl>
     </div>
