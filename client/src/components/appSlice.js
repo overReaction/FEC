@@ -63,6 +63,16 @@ const getNumOfReviews = (objectOfRatings) => {
   return total;
 };
 
+const postTrackingData = (data) => {
+  axios.post('/api/?endpoint=interactions', data);
+  // .then(response => {
+  //   console.log(response.data);
+  // })
+  // .catch(error => {
+  //   console.log('Err posting tracking info');
+  // });
+};
+
 export const appSlice = createSlice({
   name: 'app',
   initialState: {
@@ -74,6 +84,7 @@ export const appSlice = createSlice({
     rating: 0,
     numOfRatings: 0,
 
+    // Tracking
     overviewClicks: 0,
     addToCartClicks: 0,
     addToOutfitClicks: 0,
@@ -112,6 +123,11 @@ export const appSlice = createSlice({
         overviewClicks: state.overviewClicks,
         timestamp: new Date().toString()
       });
+      postTrackingData({
+        element: 'AddToCart',
+        widget: 'Overview',
+        time: new Date().toString()
+      });
       // console.log({
       //   productId: state.productId,
       //   addToCartClicks: state.addToCartClicks,
@@ -129,6 +145,11 @@ export const appSlice = createSlice({
         widget: 'Overview',
         overviewClicks: state.overviewClicks,
         timestamp: new Date().toString()
+      });
+      postTrackingData({
+        element: 'AddToOutfit',
+        widget: 'Overview',
+        time: new Date().toString()
       });
       // console.log({
       //   productId: state.productId,
@@ -153,6 +174,11 @@ export const appSlice = createSlice({
         relatedProductsClicks: state.relatedProductsClicks,
         timestamp: new Date().toString()
       });
+      postTrackingData({
+        element: 'CompareProducts',
+        widget: 'Related Products',
+        time: new Date().toString()
+      });
       // console.log({
       //   productId: state.productId,
       //   compareClicks: state.compareClicks,
@@ -170,6 +196,11 @@ export const appSlice = createSlice({
         widget: 'Related Products',
         relatedProductsClicks: state.relatedProductsClicks,
         timestamp: new Date().toString()
+      });
+      postTrackingData({
+        element: 'ProductCard',
+        widget: 'Related Products',
+        time: new Date().toString()
       });
       // console.log({
       //   productId: state.productId,
@@ -194,6 +225,11 @@ export const appSlice = createSlice({
         questionsAnswersClicks: state.questionsAnswersClicks,
         timestamp: new Date().toString()
       });
+      postTrackingData({
+        element: 'MoreAnswererdQuestions',
+        widget: 'Questions & Answers',
+        time: new Date().toString()
+      });
       // console.log({
       //   productId: state.productId,
       //   moreAnsweredQuestionsClicks: state.moreAnsweredQuestionsClicks,
@@ -211,6 +247,11 @@ export const appSlice = createSlice({
         widget: 'Questions & Answers',
         questionsAnswersClicks: state.questionsAnswersClicks,
         timestamp: new Date().toString()
+      });
+      postTrackingData({
+        element: 'MoreAnswers',
+        widget: 'Questions & Answers',
+        time: new Date().toString()
       });
       // console.log({
       //   productId: state.productId,
@@ -235,6 +276,11 @@ export const appSlice = createSlice({
         ratingsReviewsClicks: state.ratingsReviewsClicks,
         timestamp: new Date().toString()
       });
+      postTrackingData({
+        element: 'SortBy5Stars',
+        widget: 'Ratings & Reviews',
+        time: new Date().toString()
+      });
       // console.log({
       //   productId: state.productId,
       //   sortBy5StarsClicks: state.sortBy5StarsClicks,
@@ -252,6 +298,11 @@ export const appSlice = createSlice({
         widget: 'Ratings & Reviews',
         ratingsReviewsClicks: state.ratingsReviewsClicks,
         timestamp: new Date().toString()
+      });
+      postTrackingData({
+        element: 'SortBy1Star',
+        widget: 'Ratings & Reviews',
+        time: new Date().toString()
       });
       // console.log({
       //   productId: state.productId,
