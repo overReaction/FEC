@@ -1,28 +1,33 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const window = function (windowSize, currentPosition, array) {
+  if (currentPosition < windowSize) {
+    return array.slice(0, windowSize);
+  } else if (currentPosition === array.length - 1) {
+    return array.slice(array.length - windowSize);
+  } else {
+    return array.slice(currentPosition - (windowSize - 1), currentPosition + 1);
+  }
+};
+
 export const gallerySlice = createSlice({
   name: 'gallery',
   initialState: {
     allStylePhotos: [],
     currentStep: 0,
     currentPhoto: {},
-    visibleSteps: [0, 1, 2, 3, 4, 5, 6]
+    visibleSteps: []
   },
   reducers: {
     increment: (state, action) => {
+      state.visibleSteps = window(7, state.currentStep + 1, state.allStylePhotos);
+      state.currentPhoto = state.allStylePhotos[state.currentStep + 1];
       state.currentStep++;
-      state.currentPhoto = state.allStylePhotos[state.currentStep];
-      if (state.visibleSteps.indexOf(state.currentStep) === -1) {
-        let arr = [];
-        for (let x = state.currentStep; arr.length <= 7; x--) {
-          arr.unshift(x);
-        }
-        state.visibleSteps = arr;
-      }
     },
     decrement: (state, action) => {
+      state.visibleSteps = window(7, state.currentStep - 1, state.allStylePhotos);
+      state.currentPhoto = state.allStylePhotos[state.currentStep - 1];
       state.currentStep--;
-      state.currentPhoto = state.allStylePhotos[state.currentStep];
     },
     setStep: (state, action) => {
       state.currentStep = action.payload;
@@ -33,12 +38,13 @@ export const gallerySlice = createSlice({
     },
     setStylePhotos: (state, action) => {
       state.allStylePhotos = action.payload;
-      //console.log(action.payload);
       if (action.payload.length === 0) {
         state.currentPhoto = {
-          thumbnail_url: "https://images.unsplash.com/photo-1599508704512-2f19efd1e35f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=675&q=80",
-          url: "https://images.unsplash.com/photo-1599508704512-2f19efd1e35f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=675&q=80"
+          thumbnail_url: "/assets/imgPlaceholder.jpeg",
+          url: "/assets/imgPlaceholder.jpeg"
         };
+      } else {
+        state.visibleSteps = window(7, state.currentStep, state.allStylePhotos);
       }
     }
   }

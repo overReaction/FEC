@@ -66,144 +66,144 @@ const RatingsBreakdown = (props) => {
   }, [ratings]);
 
   return (
-    <>
-      <h2>RATINGS AND REVIEWS</h2>
-      <Grid container spacing={1}>
-        <Grid container item alignItems="center" spacing={2}>
-          <Grid item>
-            <h1>{rating.toFixed(2)}</h1>
+    <Grid container spacing={1}>
+      <Grid container item alignItems="center" spacing={2}>
+        <Grid item>
+          <h2>RATINGS AND REVIEWS</h2>
+        </Grid>
+        <Grid item>
+          <h1>{rating.toFixed(2)}</h1>
+        </Grid>
+        <Grid item>
+          <StarRating rating={rating}/>
+        </Grid>
+        <Grid item>
+          ({numOfRatings})
+        </Grid>
+      </Grid>
+      {ratings.recommended ?
+        <Grid item xs={12}>
+          {Math.floor(calculatePercentRecommended())}% of reviews recommend this product.
+        </Grid> :
+        <span/>
+      }
+      <Grid container item spacing={1}>
+        <Grid item container alignItems="center" spacing={1} className={classes.hover}
+          onClick={() => {
+            handleRatingClick(5);
+            dispatch(countSortBy5StarsClick());
+          }}>
+          <Grid item xs={2}>
+            5 stars
           </Grid>
-          <Grid item>
-            <StarRating rating={rating}/>
+          <Grid item xs={9}>
+            <LinearProgress aria-label={"Percent of 5 star reviews"}
+              classes={{ root: classes.root }}
+              variant="determinate"
+              value={fiveStars * 100}/>
           </Grid>
-          <Grid item>
-            ({numOfRatings})
+          <Grid item xs={1}>
+            <span>({fiveStars * numOfRatings})</span>
           </Grid>
         </Grid>
-        {ratings.recommended ?
-          <Grid item xs={12}>
-            {Math.floor(calculatePercentRecommended())}% of reviews recommend this product.
+        <Grid item container alignItems="center" spacing={1} className={classes.hover}
+          onClick={() => handleRatingClick(4)}
+        >
+          <Grid item xs={2}>
+            4 stars
+          </Grid>
+          <Grid item xs={9}>
+            <LinearProgress aria-label={"Percent of 4 star reviews"}
+              classes={{ root: classes.root }}
+              variant="determinate"
+              value={fourStars * 100}/>
+          </Grid>
+          <Grid item xs={1}>
+            <span>({fourStars * numOfRatings})</span>
+          </Grid>
+        </Grid>
+        <Grid item container alignItems="center" spacing={1} className={classes.hover}
+          onClick={() => handleRatingClick(3)}
+        >
+          <Grid item xs={2}>
+            3 stars
+          </Grid>
+          <Grid item xs={9}>
+            <LinearProgress aria-label={"Percent of 3 star reviews"}
+              classes={{ root: classes.root }}
+              variant="determinate"
+              value={threeStars * 100}/>
+          </Grid>
+          <Grid item xs={1}>
+            <span>({threeStars * numOfRatings})</span>
+          </Grid>
+        </Grid>
+        <Grid item container alignItems="center" spacing={1} className={classes.hover}
+          onClick={() => handleRatingClick(2)}
+        >
+          <Grid item xs={2}>
+            2 stars
+          </Grid>
+          <Grid item xs={9}>
+            <LinearProgress aria-label={"Percent of 2 star reviews"}
+              classes={{ root: classes.root }}
+              variant="determinate"
+              value={twoStars * 100}/>
+          </Grid>
+          <Grid item xs={1}>
+            <span>({twoStars * numOfRatings})</span>
+          </Grid>
+        </Grid>
+        <Grid item container alignItems="center" spacing={1} className={classes.hover}
+          onClick={() => {
+            handleRatingClick(1);
+            dispatch(countSortBy1StarClick());
+          }}>
+          <Grid item xs={2}>
+            1 star
+          </Grid>
+          <Grid item xs={9}>
+            <LinearProgress aria-label={"Percent of 1 star reviews"}
+              classes={{ root: classes.root }}
+              variant="determinate"
+              value={oneStars * 100}/>
+          </Grid>
+          <Grid item xs={1}>
+            <span>({oneStars * numOfRatings})</span>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid container item>
+        {filters.length > 0 ?
+          <Grid item container alignItems="center">
+            <Grid item xs={9}>
+              Filtered by star ratings: &nbsp;
+              {filters.map((number, index) => {
+                if (index === filters.length - 1) {
+                  return (
+                    <span key={number}>{number}</span>
+                  );
+                }
+                return (
+                  <span key={number}>{number}, </span>
+                );
+              })}
+            </Grid>
+            <Grid item xs={3}>
+              <Button
+                aria-label="clear filters"
+                variant="outlined"
+                size="small"
+                onClick={() => dispatch(clearFilter())}
+              >
+                Clear all
+              </Button>
+            </Grid>
           </Grid> :
           <span/>
         }
-        <Grid container item spacing={1}>
-          <Grid item container alignItems="center" spacing={1} className={classes.hover}
-            onClick={() => {
-              handleRatingClick(5);
-              dispatch(countSortBy5StarsClick());
-            }}>
-            <Grid item xs={2}>
-              5 stars
-            </Grid>
-            <Grid item xs={9}>
-              <LinearProgress aria-label={"Percent of 5 star reviews"}
-                classes={{ root: classes.root }}
-                variant="determinate"
-                value={fiveStars * 100}/>
-            </Grid>
-            <Grid item xs={1}>
-              <span>({fiveStars * numOfRatings})</span>
-            </Grid>
-          </Grid>
-          <Grid item container alignItems="center" spacing={1} className={classes.hover}
-            onClick={() => handleRatingClick(4)}
-          >
-            <Grid item xs={2}>
-              4 stars
-            </Grid>
-            <Grid item xs={9}>
-              <LinearProgress aria-label={"Percent of 4 star reviews"}
-                classes={{ root: classes.root }}
-                variant="determinate"
-                value={fourStars * 100}/>
-            </Grid>
-            <Grid item xs={1}>
-              <span>({fourStars * numOfRatings})</span>
-            </Grid>
-          </Grid>
-          <Grid item container alignItems="center" spacing={1} className={classes.hover}
-            onClick={() => handleRatingClick(3)}
-          >
-            <Grid item xs={2}>
-              3 stars
-            </Grid>
-            <Grid item xs={9}>
-              <LinearProgress aria-label={"Percent of 3 star reviews"}
-                classes={{ root: classes.root }}
-                variant="determinate"
-                value={threeStars * 100}/>
-            </Grid>
-            <Grid item xs={1}>
-              <span>({threeStars * numOfRatings})</span>
-            </Grid>
-          </Grid>
-          <Grid item container alignItems="center" spacing={1} className={classes.hover}
-            onClick={() => handleRatingClick(2)}
-          >
-            <Grid item xs={2}>
-              2 stars
-            </Grid>
-            <Grid item xs={9}>
-              <LinearProgress aria-label={"Percent of 2 star reviews"}
-                classes={{ root: classes.root }}
-                variant="determinate"
-                value={twoStars * 100}/>
-            </Grid>
-            <Grid item xs={1}>
-              <span>({twoStars * numOfRatings})</span>
-            </Grid>
-          </Grid>
-          <Grid item container alignItems="center" spacing={1} className={classes.hover}
-            onClick={() => {
-              handleRatingClick(1);
-              dispatch(countSortBy1StarClick());
-            }}>
-            <Grid item xs={2}>
-              1 star
-            </Grid>
-            <Grid item xs={9}>
-              <LinearProgress aria-label={"Percent of 1 star reviews"}
-                classes={{ root: classes.root }}
-                variant="determinate"
-                value={oneStars * 100}/>
-            </Grid>
-            <Grid item xs={1}>
-              <span>({oneStars * numOfRatings})</span>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid container item>
-          {filters.length > 0 ?
-            <Grid item container alignItems="center">
-              <Grid item xs={9}>
-                Filtered by star ratings: &nbsp;
-                {filters.map((number, index) => {
-                  if (index === filters.length - 1) {
-                    return (
-                      <span key={number}>{number}</span>
-                    );
-                  }
-                  return (
-                    <span key={number}>{number}, </span>
-                  );
-                })}
-              </Grid>
-              <Grid item xs={3}>
-                <Button
-                  aria-label="clear filters"
-                  variant="outlined"
-                  size="small"
-                  onClick={() => dispatch(clearFilter())}
-                >
-                 Clear all
-                </Button>
-              </Grid>
-            </Grid> :
-            <span/>
-          }
-        </Grid>
       </Grid>
-    </>
+    </Grid>
   );
 };
 
