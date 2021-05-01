@@ -39,19 +39,23 @@ const GalleryNav = (props) => {
   const dispatch = useDispatch();
   const currentStyle = useSelector((state) => state.overview.currentStyle);
   const activeStep = useSelector((state) => state.gallery.currentStep);
-  const visibleSteps = useSelector((state) => state.gallery.visibleSteps);
+  const visiblePhotos = useSelector((state) => state.gallery.visibleSteps);
 
   useEffect(() => {
     if (currentStyle.photos[activeStep] && currentStyle.photos[activeStep].url) {
       dispatch(setCurrentPhoto(currentStyle.photos[activeStep]));
-      dispatch(setStylePhotos(currentStyle.photos));
+      let pics = JSON.parse(JSON.stringify(currentStyle.photos));
+      console.log(pics);
+      pics.forEach((item, index) => {
+        item.index = index;
+      });
+      dispatch(setStylePhotos(pics));
     }
   }, [currentStyle]);
 
   return (
     <ThemeProvider theme={theme}>
       <div style={{ height: 'auto', maxHeight: 700 }}>
-
         <div>
           <IconButton aria-label="next photo"
             disabled={activeStep === 0}
@@ -67,7 +71,7 @@ const GalleryNav = (props) => {
           style={{ height: "auto", maxHeight: 650 }}
           connector={<></>}
         >
-          {currentStyle.photos.map((photo, index) => {
+          {visiblePhotos.map((photo) => {
             var url;
             if (photo && photo.thumbnail_url) {
               url = photo.thumbnail_url;
@@ -80,16 +84,15 @@ const GalleryNav = (props) => {
             }
             return (
               <Step
-                key={index}
-                expanded={true}
-                style={visibleSteps.indexOf(index) === -1 ? { display: "none" } : {}}
+                key={photo.index}
+                expanded
               >
                 <StepContent
-                  onClick={() => dispatch(setStep(index))}>
+                  onClick={() => dispatch(setStep(photo.index))}>
                   <img
-                    alt={`thumbnail ${index}`}
+                    alt={`thumbnail`}
                     src={url}
-                    style={activeStep === index ?
+                    style={activeStep === photo.index ?
                       { filter: "drop-shadow(8px 8px 10px gray)", objectFit: "cover", height: 75, width: 75 } :
                       { objectFit: "cover", height: 75, width: 75 }}
                   />

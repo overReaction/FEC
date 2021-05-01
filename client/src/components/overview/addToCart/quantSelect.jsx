@@ -19,7 +19,7 @@ const QuantSelect = (props) => {
     );
   } else {
     return (
-      <QuantDropdown options={{}} disabled={true}/>
+      <QuantDropdown options={{}} disabled/>
     );
   }
 };

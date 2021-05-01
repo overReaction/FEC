@@ -15,7 +15,7 @@ const QuantDropdown = (props) => {
       <Select
         labelId="quantSelect"
         aria-label="quantity selector"
-        aria-required={true}
+        aria-required
         isClearable ={false}
         value={dropDownDisplay}
         isDisabled={props.disabled}
