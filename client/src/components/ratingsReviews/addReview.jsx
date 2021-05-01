@@ -126,7 +126,6 @@ export default function AddReviewModal () {
           photos: [],
           characteristics: characteristics
         })
-          // .then(console.log(characteristics))
           .then(
             setRating(0),
             setRecommended(false),
