@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -18,7 +18,8 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 
-import ImageUpload from './ImageUpload.jsx';
+
+// import ImageUpload from './ImageUpload.jsx';
 import Badge from '@material-ui/core/Badge';
 import ImageUploading from 'react-images-uploading';
 
@@ -52,30 +53,104 @@ export default function AddReviewModal () {
   const dispatch = useDispatch();
   const productId = useSelector((state) => state.app.productId);
   const productInfo = useSelector((state) => state.app.productInfo);
+  const reviewMetadata = useSelector((state) => state.app.reviewMetadata);
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
   const [overallRating, setRating] = useState(0);
-  const [recommended, setRecommended] = useState("yes");
+  const [recommended, setRecommended] = useState('yes');
   const [size, setSize] = useState(0);
   const [width, setWidth] = useState(0);
   const [comfort, setComfort] = useState(0);
   const [quality, setQuality] = useState(0);
   const [length, setLength] = useState(0);
   const [fit, setFit] = useState(0);
+  const [reviewSummary, setReviewSummary] = useState('');
   const [reviewBody, setReviewBody] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
+  const [characteristics, setCharacteristics] = useState({});
+  const [submitted, setSubmitted] = useState(false);
   // const [uploadedPhotos, uploadPhoto] = useState([]);
 
+  const getCharacteristics = () => {
+    let currentCharacteristics = {};
+    Object.keys(reviewMetadata.characteristics).forEach(c => {
+      currentCharacteristics[reviewMetadata.characteristics[c].id] = Number(Math.round(reviewMetadata.characteristics[c].value));
+    });
+    setCharacteristics(currentCharacteristics);
+  };
   // Image Upload
   const [images, setImages] = useState([]);
   const maxNumber = 5;
+  var imgURLs = [];
 
-  const onChange = (imageList) => {
+  const onChangeImage = (imageList) => {
     setImages(imageList);
-    console.log(images);
   };
   // Image Upload
 
-  const [email, setEmail] = useState('');
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    if (submitted) {
+      let recc;
+      if (reviewBody.length && nickname.length && email.length) {
+        if (recommended === 'yes') {
+          recc = true;
+        } else {
+          recc = false;
+        }
+
+        axios.post(`/api/?endpoint=reviews`, {
+          product_id: productId,
+          rating: overallRating,
+          summary: reviewSummary,
+          body: reviewBody,
+          recommend: recc,
+          name: nickname,
+          email: email,
+          photos: [],
+          characteristics: characteristics
+        }
+          // {
+          //   headers: { 'content-type': 'multipart/form-data' }
+          // }
+        )
+          .then(console.log(characteristics))
+          .then(
+            setRating(0),
+            setRecommended(false),
+            setNickname(''),
+            setEmail(''),
+            setFit(0),
+            setLength(0),
+            setSize(0),
+            setWidth(0),
+            setComfort(0),
+            setQuality(0),
+            setReviewSummary(''),
+            setReviewBody(''),
+            handleClose()
+          )
+          .catch(error => {
+            console.log('error!', error);
+          });
+      } else {
+      // eslint-disable-next-line no-alert
+        alert('Whoops! Ensure all required fields are not blank and that you have provided a valid email address.');
+      }
+    } else {
+      return;
+    }
+  }, [submitted]);
+
+  useEffect(() => {
+    imgURLs = images.map(img => img.data_url);
+    console.log(`Img urls: ${imgURLs}`);
+  }, [images]);
+
   let ratingToolTip;
 
   if (overallRating === 1) {
@@ -90,9 +165,6 @@ export default function AddReviewModal () {
     ratingToolTip = 'Great';
   }
 
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const handleChangeRecommended = (event) => {
     setRecommended(event.target.value);
@@ -126,6 +198,18 @@ export default function AddReviewModal () {
     setReviewBody(event.target.value);
   };
 
+  const handleReviewSummary = (event) => {
+    setReviewSummary(event.target.value);
+  };
+
+  const handleNickname = (event) => {
+    setNickname(event.target.value);
+  };
+
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
   // const handlePhotoUpload = (event) => {
   //   let fd = new FormData();
   //   fd.append('image', event.target.files[0]);
@@ -142,6 +226,14 @@ export default function AddReviewModal () {
   //       uploadPhoto(newPhotoArray);
   //     });
   // };
+
+  // console.log(reviewMetadata.characteristics);
+
+  const onSubmitClick = () => {
+    getCharacteristics();
+    setSubmitted(true);
+    // console.log(characteristics);
+  };
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
@@ -174,8 +266,8 @@ export default function AddReviewModal () {
           </Grid>
           <Grid item>
             <RadioGroup row name="recommended" value={recommended} onChange={handleChangeRecommended}>
-              <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-              <FormControlLabel value="no" control={<Radio />} label="No" />
+              <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+              <FormControlLabel value="No" control={<Radio />} label="No" />
             </RadioGroup>
           </Grid>
         </Grid>
@@ -597,6 +689,7 @@ export default function AddReviewModal () {
         <br/>
         <FormLabel>Review Summary</FormLabel>
         <TextField
+          onChange={handleReviewSummary}
           id="reviewSummary"
           label="Review summary"
           placeholder="Example: Best purchase ever!"
@@ -608,6 +701,7 @@ export default function AddReviewModal () {
         <br/>
         <FormLabel required>Review Body</FormLabel>
         <TextField
+          onChange={handleReviewBody}
           id="reviewBody"
           label="Review body"
           placeholder="Why did you like the product or not?"
@@ -615,7 +709,6 @@ export default function AddReviewModal () {
           variant="outlined"
           value={reviewBody}
           multiline
-          onChange={handleReviewBody}
           inputProps={{
             maxLength: 1000
           }}/>
@@ -638,7 +731,7 @@ export default function AddReviewModal () {
           <ImageUploading
             multiple
             value={images}
-            onChange={onChange}
+            onChange={onChangeImage}
             maxNumber={maxNumber}
             dataURLKey="data_url">
             {({ imageList, onImageUpload, onImageRemoveAll, onImageRemove }) => (
@@ -700,6 +793,7 @@ export default function AddReviewModal () {
         <br/>
         <FormLabel required>What is your nickname?</FormLabel>
         <TextField
+          onChange={handleNickname}
           id="nickname"
           label="Nickname"
           placeholder="Example: jackson11!"
@@ -712,6 +806,7 @@ export default function AddReviewModal () {
         <br/>
         <FormLabel required>Your email</FormLabel>
         <TextField
+          onChange={handleEmail}
           id="email"
           label="E-mail"
           placeholder="Example: jackson11@email.com"
@@ -724,7 +819,7 @@ export default function AddReviewModal () {
         <br/>
         <ButtonGroup>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button>Submit</Button>
+          <Button onClick={onSubmitClick}>Submit</Button>
         </ButtonGroup>
       </FormControl>
     </div>

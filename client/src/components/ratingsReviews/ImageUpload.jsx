@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
-import Badge from '@material-ui/core/Badge';
+import { Button, Badge } from '@material-ui/core';
 import ImageUploading from 'react-images-uploading';
 
 const ImageUpload = () => {
