@@ -26,11 +26,7 @@ const ReviewList = (props) => {
   const reviews = useSelector((state) => state.app.reviews);
   const numReviewsToShow = useSelector((state) => state.reviews.reviewsCount);
   const ratingsToShow = useSelector((state) => state.reviews.filter);
-  const [shownReviews, updateShownReviews] = useState([...reviews].slice(0, numReviewsToShow + 1));
-
-  useEffect(() => {
-    updateShownReviews([...reviews].slice(0, numReviewsToShow + 1));
-  }, [reviews]);
+  let shownReviews = [...reviews].slice(0, numReviewsToShow);
 
   return (
     <Grid item xs={8} container spacing={1} style={{ flexGrow: 3 }}>
