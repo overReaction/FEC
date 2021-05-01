@@ -5,51 +5,21 @@ import React from "react";
 import "@testing-library/react/dont-cleanup-after-each";
 import { render, screen, cleanup } from '@testing-library/react'; //Allows artificial rendering
 import userEvent from '@testing-library/user-event'; //Allows triggering of user events. Not demo'd on this page.
-import { act } from "react-dom/test-utils";
 import '@testing-library/jest-dom'; //Provides a set of custom jest matchers that you can use to extend jest. These will make your tests more declarative, clear to read and to maintain.
+
 import Loadable from 'react-loadable';
 Loadable.preloadAll();
+
 import App from '../App.jsx';
 import store from '../../store.js';
 import { Provider } from 'react-redux';
-import { reviewsMeta, reviews, reviewsNone, styles, related, qa, product } from './mockData.js';
+import { reviewsMeta, reviews, styles, related, qa, product } from './mockData.js';
 
 /* Some example templates for testing are provided below. In general, you will
 1)render the component (see examples below)
 2)query for the component: https://testing-library.com/docs/queries/about
 3)optionally insert user events to manipulate elements: https://testing-library.com/docs/ecosystem-user-event
 4)test assertions about the component: https://github.com/testing-library/jest-dom */
-
-// describe('Overview Widget', () => {
-//   beforeAll(() => {
-//     render(
-//       <Provider store={store}>
-//         <App />
-//       </Provider>);
-//   });
-//   afterAll(() => {
-//     cleanup();
-//   });
-//   test('The Overview Widget should render to the screen', () => {
-//     expect(screen.getByTestId('overview')).toBeInTheDocument();
-//   });
-
-//   test('Should have an image gallery', () => {
-//     expect(screen.getByTestId('gallery')).toBeInTheDocument();
-//   });
-
-//   test('Should have a product information section', () => {
-//     expect(screen.getByTestId('product-info')).toBeInTheDocument();
-//   });
-
-//   test('Should have a style selector', () => {
-//     expect(screen.getByTestId('style-selector')).toBeInTheDocument();
-//   });
-
-//   test('Should have an add to cart section', () => {
-//     expect(screen.getByTestId('add-to-cart')).toBeInTheDocument();
-//   });
-// });
 
 describe('Product Information component', () => {
   beforeAll(async () => {
