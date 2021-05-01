@@ -70,54 +70,52 @@ const ProductBreakdown = (props) => {
 
   if (chars.characteristics) {
     return (
-      <>
-        <Grid container spacing={1}>
-          {Object.keys(chars.characteristics).map((char) => {
-            let score = parseInt(chars.characteristics[char].value, 10) / 5;
-            if (char === 'Quality' || char === 'Comfort') {
-              return (
-                <Grid container item xs={12} key={char}>
-                  <Grid item xs={12}>
-                    {char}
+      <Grid container spacing={1}>
+        {Object.keys(chars.characteristics).map((char) => {
+          let score = parseInt(chars.characteristics[char].value, 10) / 5;
+          if (char === 'Quality' || char === 'Comfort') {
+            return (
+              <Grid container item xs={12} key={char}>
+                <Grid item xs={12}>
+                  {char}
+                </Grid>
+                <Grid item xs={1}/>
+                <ThemeProvider theme={theme}>
+                  <Grid item xs={10}>
+                    <Slider
+                      aria-label={`${char} rating`}
+                      value={score * 100}
+                      track={false}
+                      marks={marksQuality}
+                    />
+                  </Grid>
+                </ThemeProvider>
+                <Grid item xs={1}/>
+              </Grid>
+            );
+          } else {
+            return (
+              <Grid container item xs={12} key={char}>
+                <Grid item xs={12}>
+                  {char}
+                </Grid>
+                <Grid item xs={1}/>
+                <ThemeProvider theme={theme}>
+                  <Grid item xs={10}>
+                    <Slider
+                      aria-label={`${char} rating`}
+                      value={score * 100}
+                      track={false}
+                      marks={marksSizing}
+                    />
                   </Grid>
                   <Grid item xs={1}/>
-                  <ThemeProvider theme={theme}>
-                    <Grid item xs={10}>
-                      <Slider
-                        aria-label={`${char} rating`}
-                        value={score * 100}
-                        track={false}
-                        marks={marksQuality}
-                      />
-                    </Grid>
-                  </ThemeProvider>
-                  <Grid item xs={1}/>
-                </Grid>
-              );
-            } else {
-              return (
-                <Grid container item xs={12} key={char}>
-                  <Grid item xs={12}>
-                    {char}
-                  </Grid>
-                  <Grid item xs={1}/>
-                  <ThemeProvider theme={theme}>
-                    <Grid item xs={10}>
-                      <Slider
-                        aria-label={`${char} rating`}
-                        value={score * 100}
-                        track={false}
-                        marks={marksSizing}
-                      />
-                    </Grid>
-                    <Grid item xs={1}/>
-                  </ThemeProvider>
-                </Grid>
-              );
-            }
-          })}
-        </Grid>
-      </>
+                </ThemeProvider>
+              </Grid>
+            );
+          }
+        })}
+      </Grid>
     );
   } else {
     return (
