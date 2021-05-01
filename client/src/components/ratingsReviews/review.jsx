@@ -65,7 +65,7 @@ const Review = ({ review }) => {
 
   const handleHelpfulClick = (e) => {
     dispatch(markHelpful(review.review_id));
-    addHelpfulness(helpfulness + 1);
+    addHelpfulness(review.helpfulness + 1);
     reviewReview(true);
     e.target.removeAttribute("href");
   };
@@ -191,7 +191,7 @@ const Review = ({ review }) => {
                   nonHelpfulReviews.indexOf(review.review_id) === -1) {
                     handleHelpfulClick(e);
                   }
-                }}>Yes</a> ({helpfulness}) | &nbsp;
+                }}>Yes</a> ({review.helpfulness}) | &nbsp;
               <a href="#RatingsReviews"
                 onClick={(e) => {
                   if (helpfulReviews.indexOf(review.review_id) === -1 &&
