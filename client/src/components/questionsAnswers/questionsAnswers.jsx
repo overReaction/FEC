@@ -50,7 +50,7 @@ const QuestionsAnswers = props => {
   };
 
   return (
-    <div data-testid="qa">
+    <div data-testid="qa" style={{ width: '72%', marginLeft: '12%' }}>
       <h2 style={{ marginLeft: 15 }}>QUESTIONS & ANSWERS</h2>
       <div>
         <Paper className={classes.paper}>

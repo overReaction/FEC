@@ -19,8 +19,8 @@ const RatingsReviews = (props) => {
     <div
       data-testid="RatingsReviews"
       id="RatingsReviews"
-      style={{ padding: '1em' }}>
-      <Grid container spacing={1}>
+      style={{ padding: '1em', width: '80%', marginLeft: '8%' }}>
+      <Grid container spacing={1} justify="center">
         <BreakdownLoadable />
         <ReviewListLoadable />
       </Grid>

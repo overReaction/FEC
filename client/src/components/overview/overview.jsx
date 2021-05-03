@@ -35,7 +35,7 @@ const Overview = (props) => {
   const productInfo = useSelector((state) => state.app.productInfo);
 
   return (
-    <div data-testid="overview" style={{ padding: 20 }}>
+    <div data-testid="overview" style={{ width: '80%', padding: '2%', marginLeft: '10%' }}>
       <Grid container spacing={2}>
         <Grid item container spacing={2} wrap="wrap-reverse">
           <Grid item justify="center" container xs={7}>
@@ -82,13 +82,13 @@ const Overview = (props) => {
           <Grid item
             spacing={2}
             container
-            xs={12}
+            xs={10}
             wrap="wrap"
             data-testid="product-details"
+            justify="center"
           >
             <Grid item
               xs={7}
-              style={{ border: '1px solid black' }}
             >
               <div style={{ fontSize: `1.5em` }}>
                 <b>{productInfo.slogan}</b>
@@ -96,11 +96,10 @@ const Overview = (props) => {
               {productInfo.description}
             </Grid>
             <Grid item
-              xs={5}
-              style={{ border: '1px solid black' }}
+              xs={4}
             >
-              <Grid item container>
-                <Grid item xs={12}>
+              <Grid item container style={{ paddingLeft: '1%', borderLeft: '3px solid black' }} >
+                <Grid item xs={12} >
                   <div style={{ fontSize: `1em` }}> <b>FEATURES > </b></div>
                 </Grid>
                 {!productInfo.features ?
