@@ -36,7 +36,7 @@ const Question = props => {
   };
 
   return (
-    <div data-testid="question">
+    <div data-testid="question" style={{ padding: '0.3em' }}>
       <Paper className={classes.paper}>
         <b>Q: {props.question.question_body}</b>
         <span style={{ float: 'right', marginTop: 0 }}>

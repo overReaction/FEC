@@ -49,6 +49,19 @@ var App = () => {
   const viewMagnified = useSelector((state) => state.overview.magnified);
   const dispatch = useDispatch();
 
+  const container = {
+    display: 'flex',
+    width: '100vw',
+    flexDirection: 'column',
+    alignItems: 'center'
+  };
+
+  const item = {
+    flexGrow: 1,
+    flexShrink: 1,
+    width: '75%'
+  }
+;
   useEffect(() => {
     document.title = `Let's OverReact!`;
     dispatch(fetchProductInfo(productId));
@@ -70,13 +83,21 @@ var App = () => {
     );
   } else {
     return (
-      <React.Fragment>
+      <div style={container}>
         <CssBaseline />
-        <OverviewLoadable />
-        <RICLoadable />
-        <QALoadable />
-        <RRLoadable />
-      </React.Fragment>
+        <div style={item}>
+          <OverviewLoadable />
+        </div>
+        <div style={item}>
+          <RICLoadable />
+        </div>
+        <div style={item}>
+          <QALoadable />
+        </div>
+        <div style={item}>
+          <RRLoadable />
+        </div>
+      </div>
     );
   }
 };

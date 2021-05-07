@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 //TRACKING
-import { countSortBy5StarsClick, countSortBy1StarClick} from '../appSlice.js';
+import { countSortBy5StarsClick, countSortBy1StarClick } from '../appSlice.js';
 
 const useStyles = makeStyles({
   root: {
@@ -69,7 +69,7 @@ const RatingsBreakdown = (props) => {
     <Grid item container xs = {12} spacing={1}>
       <Grid container item alignItems="center" spacing={2}>
         <Grid item>
-          <h2>RATINGS AND REVIEWS</h2>
+          <h2>AVERAGE RATING:</h2>
         </Grid>
         <Grid item>
           <h1>{rating.toFixed(2)}</h1>

@@ -12,6 +12,9 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import PinterestIcon from '@material-ui/icons/Pinterest';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 
 //Components
 import ProductInformation from './productInformation/productInformation.jsx';
@@ -20,13 +23,27 @@ import StyleSelector from './styleSelector/styleSelector.jsx';
 import AddToCart from './addToCart/addToCart.jsx';
 
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 0,
     flexShrink: 1,
     maxWidth: 450,
     minWidth: 410,
-    padding: 0
+    padding: theme.spacing(2)
+  },
+  title: {
+    display: 'flex',
+    flexGrow: 0,
+    flexShrink: 1,
+    color: 'white'
+  },
+  appBar: {
+    display: 'flex',
+    flexGrow: 0,
+    flexShrink: 1,
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    backgroundColor: 'black'
   }
 }));
 
@@ -35,8 +52,15 @@ const Overview = (props) => {
   const productInfo = useSelector((state) => state.app.productInfo);
 
   return (
-    <div data-testid="overview" style={{ padding: 20 }}>
+    <div data-testid="overview" style={{ padding: '3em' }}>
       <Grid container spacing={2}>
+        <AppBar position="static" className={classes.appBar}>
+          <Toolbar variant="dense">
+            <Typography variant="h5" className={classes.title}>
+              PRODUCT OVERVIEW
+            </Typography>
+          </Toolbar>
+        </AppBar>
         <Grid item container spacing={2} wrap="wrap-reverse">
           <Grid item justify="center" container xs={7}>
             <ImageGallery />
@@ -82,23 +106,18 @@ const Overview = (props) => {
           <Grid item
             spacing={2}
             container
+            alignItems="center"
             xs={12}
             wrap="wrap"
             data-testid="product-details"
           >
-            <Grid item
-              xs={7}
-              style={{ border: '1px solid black' }}
-            >
+            <Grid item xs={7}>
               <div style={{ fontSize: `1.5em` }}>
                 <b>{productInfo.slogan}</b>
               </div>
               {productInfo.description}
             </Grid>
-            <Grid item
-              xs={5}
-              style={{ border: '1px solid black' }}
-            >
+            <Grid item xs={5} >
               <Grid item container>
                 <Grid item xs={12}>
                   <div style={{ fontSize: `1em` }}> <b>FEATURES > </b></div>

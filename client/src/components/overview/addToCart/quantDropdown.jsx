@@ -10,20 +10,18 @@ const QuantDropdown = (props) => {
   const dropDownDisplay = useSelector((state) => state.cart.quantDropDownDisplay);
 
   return (
-    <>
-      <InputLabel id="quantSelect">Select quantity</InputLabel>
-      <Select
-        labelId="quantSelect"
-        aria-label="quantity selector"
-        aria-required
-        isClearable ={false}
-        value={dropDownDisplay}
-        isDisabled={props.disabled}
-        options={props.options}
-        onChange={(selected) => {
-          dispatch(updateQuantDropDownDisplay(selected));
-        }} />
-    </>
+    <Select
+      labelId="quantSelect"
+      aria-label="quantity selector"
+      aria-required
+      isClearable ={false}
+      value={dropDownDisplay}
+      isDisabled={props.disabled}
+      options={props.options}
+      onChange={(selected) => {
+        dispatch(updateQuantDropDownDisplay(selected));
+      }} />
+
   );
 };
 
