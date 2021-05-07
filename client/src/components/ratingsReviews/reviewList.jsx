@@ -29,7 +29,7 @@ const ReviewList = (props) => {
   let shownReviews = [...reviews].slice(0, numReviewsToShow);
 
   return (
-    <Grid item xs={8} container spacing={1} style={{ flexGrow: 3 }}>
+    <Grid item xs={8} container style={{ flexGrow: 3 }}>
       <Grid item xs={12}>
         <ReviewSortSearchLoadable />
       </Grid>
