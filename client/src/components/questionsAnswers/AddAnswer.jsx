@@ -70,7 +70,7 @@ export default function AddAModal (props) {
 
   const onSubmitClick = (questionId) => {
     if (answer.length && nickname.length && email.length) {
-      axios.put(`http://3.134.95.148/qa/answers`, {
+      axios.put(`http://18.219.220.111:3000/qa/answers`, {
         body: answer,
         name: nickname,
         email: email,

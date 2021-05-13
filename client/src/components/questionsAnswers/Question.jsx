@@ -31,7 +31,7 @@ const Question = props => {
   const [reported, setReported] = useState(false);
 
   const onReportClick = (questionId) => {
-    axios.put(`http://3.134.95.148/qa/questions/${questionId}/report`)
+    axios.put(`http://18.219.220.111:3000/qa/questions/${questionId}/report`)
       .then(setReported(true));
   };
 
