@@ -1,4 +1,7 @@
-# Threads
+<p align='center'>
+  <img src='screenshots/Screen Shot 2021-05-31 at 5.23.21 PM.png'/>
+  <img src='screenshots/Screen Shot 2021-05-31 at 5.24.27 PM.png'/>
+</p>
 An online shopping platform for a clothing retailer.
 
 ## Features
@@ -18,11 +21,11 @@ An online shopping platform for a clothing retailer.
 - Back end: Express, Axios
 
 ## Preview:
-<img src='Screen Shot 2021-05-31 at 5.03.06 PM.png'/>
-<img src='Screen Shot 2021-05-31 at 5.05.23 PM.png'/>
-<img src='Screen Shot 2021-05-31 at 5.07.03 PM.png'/>
-<img src='Screen Shot 2021-05-31 at 5.07.37 PM.png'/>
-<img src='Screen Shot 2021-05-31 at 5.08.56 PM.png'/>
+<img src='screenshots/Screen Shot 2021-05-31 at 5.03.06 PM.png'/>
+<img src='screenshots/Screen Shot 2021-05-31 at 5.05.23 PM.png'/>
+<img src='screenshots/Screen Shot 2021-05-31 at 5.07.03 PM.png'/>
+<img src='screenshots/Screen Shot 2021-05-31 at 5.07.37 PM.png'/>
+<img src='screenshots/Screen Shot 2021-05-31 at 5.08.56 PM.png'/>
 
 ## Installation:
 - From your terminal, `git clone https://github.com/overReaction/FEC.git`
@@ -39,7 +42,7 @@ module.exports = {
 - In a separate terminal, `npm run start`
 
 ## Usage:
-Navigate to localhost:3000
+Navigate to localhost:3000 after running the above commands
 
 ## File Structure
 ```
