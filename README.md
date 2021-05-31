@@ -2,7 +2,6 @@
   <img src='screenshots/Screen Shot 2021-05-31 at 5.23.21 PM.png'/>
   <img src='screenshots/Screen Shot 2021-05-31 at 5.24.27 PM.png'/>
 </p>
-An online shopping platform for a clothing retailer.
 
 ## Features
 - Browse available styles for a given product
