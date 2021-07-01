@@ -49,6 +49,13 @@ const GalleryNav = (props) => {
         item.index = index;
       });
       dispatch(setStylePhotos(pics));
+    } else {
+      let dummyPhoto = [{
+        thumbnail_url: "/assets/imgPlaceholder.jpeg",
+        url: "/assets/imgPlaceholder.jpeg"
+      }];
+      dispatch(setCurrentPhoto(dummyPhoto[0]));
+      dispatch(setStylePhotos(dummyPhoto));
     }
   }, [currentStyle]);
 
