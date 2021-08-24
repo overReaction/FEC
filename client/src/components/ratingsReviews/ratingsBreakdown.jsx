@@ -57,11 +57,35 @@ const RatingsBreakdown = (props) => {
 
   useEffect(() => {
     if (ratings.ratings) {
-      setFiveStars(parseInt(ratings.ratings[5], 10) / numOfRatings);
-      setFourStars(parseInt(ratings.ratings[4], 10) / numOfRatings);
-      setThreeStars(parseInt(ratings.ratings[3], 10) / numOfRatings);
-      setTwoStars(parseInt(ratings.ratings[2], 10) / numOfRatings);
-      setOneStars(parseInt(ratings.ratings[1], 10) / numOfRatings);
+      if (parseInt(ratings.ratings[5], 10)) {
+        setFiveStars(parseInt(ratings.ratings[5], 10) / numOfRatings);
+      } else {
+        setFiveStars(0);
+      }
+
+      if (parseInt(ratings.ratings[4], 10)) {
+        setFourStars(parseInt(ratings.ratings[4], 10) / numOfRatings);
+      } else {
+        setFourStars(0);
+      }
+
+      if (parseInt(ratings.ratings[3], 10)) {
+        setThreeStars(parseInt(ratings.ratings[3], 10) / numOfRatings);
+      } else {
+        setThreeStars(0);
+      }
+
+      if (parseInt(ratings.ratings[2], 10)) {
+        setTwoStars(parseInt(ratings.ratings[2], 10) / numOfRatings);
+      } else {
+        setTwoStars(0);
+      }
+
+      if (parseInt(ratings.ratings[1], 10)) {
+        setOneStars(parseInt(ratings.ratings[1], 10) / numOfRatings);
+      } else {
+        setOneStars(0);
+      }
     }
   }, [ratings]);
 
