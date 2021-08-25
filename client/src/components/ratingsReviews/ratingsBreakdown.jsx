@@ -28,7 +28,6 @@ const useStyles = makeStyles({
   }
 });
 
-
 const RatingsBreakdown = (props) => {
   const dispatch = useDispatch();
   const classes = useStyles();
