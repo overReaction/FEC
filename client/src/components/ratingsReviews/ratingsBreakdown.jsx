@@ -57,31 +57,31 @@ const RatingsBreakdown = (props) => {
 
   useEffect(() => {
     if (ratings.ratings) {
-      if (parseInt(ratings.ratings[5], 10)) {
+      if (!isNaN(parseInt(ratings.ratings[5], 10))) {
         setFiveStars(parseInt(ratings.ratings[5], 10) / numOfRatings);
       } else {
         setFiveStars(0);
       }
 
-      if (parseInt(ratings.ratings[4], 10)) {
+      if (!isNaN(parseInt(ratings.ratings[4], 10))) {
         setFourStars(parseInt(ratings.ratings[4], 10) / numOfRatings);
       } else {
         setFourStars(0);
       }
 
-      if (parseInt(ratings.ratings[3], 10)) {
+      if (!isNaN(parseInt(ratings.ratings[3], 10))) {
         setThreeStars(parseInt(ratings.ratings[3], 10) / numOfRatings);
       } else {
         setThreeStars(0);
       }
 
-      if (parseInt(ratings.ratings[2], 10)) {
+      if (!isNaN(parseInt(ratings.ratings[2], 10))) {
         setTwoStars(parseInt(ratings.ratings[2], 10) / numOfRatings);
       } else {
         setTwoStars(0);
       }
 
-      if (parseInt(ratings.ratings[1], 10)) {
+      if (!isNaN(parseInt(ratings.ratings[1], 10))) {
         setOneStars(parseInt(ratings.ratings[1], 10) / numOfRatings);
       } else {
         setOneStars(0);
@@ -96,7 +96,7 @@ const RatingsBreakdown = (props) => {
           <h2>AVERAGE RATING:</h2>
         </Grid>
         <Grid item>
-          <h1>{rating.toFixed(2)}</h1>
+          <h2>{isNaN(rating) ? 'No ratings yet!' : rating.toFixed(2)}</h2>
         </Grid>
         <Grid item>
           <StarRating rating={rating}/>
